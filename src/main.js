@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import '@/common/normalize.css'
+import '@/common/css/normalize.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.config.productionTip = false
