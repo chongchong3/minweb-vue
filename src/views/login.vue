@@ -1,6 +1,6 @@
 <template>
   <div>
-      login
+      login test
   </div>
 </template>
 <script>
