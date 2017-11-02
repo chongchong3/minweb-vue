@@ -1,9 +1,6 @@
+import Vue from 'vue'
 export function getDesinerMes(params) {
-    return fetch("/designer/listDesigners", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json;charset=UTF-8"
-     },
-     body: JSON.stringify(params)
-   })
+  return Vue.http.post('/designer/listDesigners', {page_no:1,page_size:20})
+
+
  }

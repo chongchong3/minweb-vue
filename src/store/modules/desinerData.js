@@ -14,17 +14,17 @@ const desiner = {
   actions: {
     // 获取
     GetDesinerMes({ commit },params) {
-     
+      return new Promise((resolve, reject) => {
       getDesinerMes(params)
       .then(response=>{
-        debugger
-        // commit("SELECT_DESINER",response.data.result)
-          
+        
+        commit("SELECT_DESINER",response.data.data.result);
+        resolve(response);
       })
       .catch(error => {
-        console.log(error);
+        reject(error);
       });
-
+    });
     },
 
   }
