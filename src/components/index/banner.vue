@@ -3,10 +3,10 @@
 			  <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
 			    <!-- slides -->
 			    <swiper-slide class="swiper-item">
-			    	<img src="../../../static/images/banner.jpg" />
+			    	<img src="../../../static/images/banner.jpg"  loc="http://www.baidu.com"/>
 			    </swiper-slide>
 			    <swiper-slide class="swiper-item">
-			    	<img src="../../../static/images/banner.jpg" />
+			    	<img src="../../../static/images/banner.jpg" loc="http://www.bbboo.com"/>
 			    </swiper-slide>
 			    <swiper-slide class="swiper-item">
 			    	<img src="../../../static/images/banner.jpg" />
@@ -17,9 +17,7 @@
 			    <!-- Optional controls -->
 			    <div class="swiper-pagination"  slot="pagination"></div>
 			  </swiper>
-		<div class="bottom-pad">
-
-		</div>
+		
 	</div>
 
 </template>
@@ -49,10 +47,9 @@
           // swiper callbacks
           // swiper的各种回调函数也可以出现在这个对象中，和swiper官方一样
           onTransitionStart (swiper) {
-            console.log(swiper)
           },
           onClick(swiper){
-          	
+          	window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
           }
           // more Swiper configs and callbacks...
           // ...
@@ -69,7 +66,7 @@
     mounted() {
       // you can use current swiper instance object to do something(swiper methods)
       // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-      console.log('this is current swiper instance object', this.swiper)
+//    console.log('this is current swiper instance object', this.swiper)
 //    this.swiper.slideTo(3, 1000, false)
     }
   }
@@ -77,19 +74,19 @@
 <style>
 	.banner-c {
 		width: 100%;
-		background: green;
+		background:#fff;
 	}
-	
+	.banner-c:after{
+		height: 0.2rem;
+		background: #f4f4f4;
+		display: block;
+		content: " ";
+	}
 	.swiper-container {
 		overflow: hidden;
 		position: relative;
 	}
 	
-	.bottom-pad {
-		height: 0.2rem;
-		background: #f4f4f4;
-		width: 100%;
-	}
 	.swiper-wrapper{
 		height:100%;
 		overflow: hidden;
@@ -113,11 +110,13 @@
   .swiper-pagination-bullet{
   	width:0.4rem;
   	height:0.04rem;
-  	background:#c5bbb3;
+  	opacity: .6;
+  	background:#fff;
   	display: inline-block;
   	margin: 0px 0.12rem;
   }
   .swiper-pagination-bullet-active{
   	background:#fff;
+  	opacity: 1;
   }
 </style>
