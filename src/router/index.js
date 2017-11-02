@@ -9,6 +9,7 @@ const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views
 const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
+const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
 const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 
 export default new Router({
@@ -48,6 +49,13 @@ export default new Router({
       name: 'caseDetails',
       component: caseDetails,
       meta: {title: '案例详情'}
+      
+    },
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: aboutUs,
+      meta: {title: '关于我们'}
       
     },
     {
