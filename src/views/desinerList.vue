@@ -5,14 +5,19 @@
 </template>
 <script>
 export default {
-  data(){
-    return {
-
-    }
-  },
-  mounted(){
-
-
-  
-}
-}
+  created() {
+    var _self = this;
+    
+    this.$store
+      .dispatch("GetDesinerMes", { page_no: 1, page_size: 20 })
+      .then(response => {
+        var data = response.data.data.result;
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    
+  }
+};
+</script>
