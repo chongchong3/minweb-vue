@@ -1,6 +1,7 @@
 <template>
-<div class="desinerList">
-	<ul>
+<div >
+	<head-nav></head-nav>
+	<ul class="desinerList">
 		<li class="singDesiner">
 			<div class="topDesc">
 				<img src="http://placehold.it/60x60" class="headImg">
@@ -36,8 +37,13 @@
  </div>
 </template>
 <script>
+import headNav from '@/components/headNav'
 export default {
+	components:{
+		headNav
+ 	},
 }
+
 </script>
 
 <style scoped>

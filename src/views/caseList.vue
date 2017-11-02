@@ -1,6 +1,7 @@
 <template>
-  <div class="caseList">
-    <ul>
+  <div >
+    <head-nav></head-nav>
+    <ul class="caseList">
       <li class="singleCase">
         <div class="leftPic">
           <img src="http://placehold.it/160x120" class="headPic">
@@ -39,7 +40,11 @@
   </div>
 </template>
 <script>
+import headNav from '@/components/headNav'
 export default {
+  components:{
+		headNav
+ 	},
   data(){
     return{
       page_no:1,
