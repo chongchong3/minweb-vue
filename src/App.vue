@@ -22,4 +22,10 @@ body {
 .container {
   height: 100%;
 }
+.more{
+	color:#999;
+	font-size: 0.24rem;
+	line-height: 32px;
+	margin-bottom: 0.44rem;
+}
 </style>
