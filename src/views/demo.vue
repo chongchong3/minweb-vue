@@ -1,42 +1,14 @@
 <template>
-  <div class="topNav">
-      <div class="cont">
-          <span class="btnNav btn"><img src="static/images/menu.png" ></span>
-          <span class="btnChat btn"><img src="static/images/call.png" ></span>
-      </div>
-  </div>
+ <div>
+      <left-nav></left-nav>
+  <head-nav></head-nav>
+ </div>
 </template>
+
 <script>
+import leftNav from "../components/leftNav";
+import headNav from "../components/headNav";
 export default {
-  
-}
+  components: { leftNav, headNav }
+};
 </script>
-<style >
-.topNav {
-    height: .52rem;
-    background: #f5f5f5;
-    overflow: hidden;
-    line-height: .52rem;
-}
-.topNav .cont{
-    margin: 0 .16rem;
-    background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80) no-repeat center;
-    height: 100%;
-    background-size: .17rem;
-
-}
-.topNav .btnNav {
-    float:left;
-}
-.topNav .btnChat  {
- float:right;
-}
-.topNav .btn {
-    display: inline-block;
-    width:.17rem;
-}  
-.topNav .btn  img {
-    width:100%;
-}
-</style>
-

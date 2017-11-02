@@ -42,8 +42,10 @@
 .lefBar {
     width:100%;
     height: 100%;
-    position: relative;
-    display: none;
+    position: absolute;
+    top:0;
+    z-index:22;
+
 }
 .shadow {
     position: absolute;
