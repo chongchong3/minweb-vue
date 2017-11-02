@@ -20,7 +20,7 @@ export default {
 }
 .topNav .cont{
     margin: 0 .16rem;
-    background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png) no-repeat center;
+    background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80) no-repeat center;
     height: 100%;
     background-size: .17rem;
 
