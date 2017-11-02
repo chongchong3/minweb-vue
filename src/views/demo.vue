@@ -1,109 +1,42 @@
 <template>
-  <div class="lefBar">
-      <div class="shadow"></div>
-      <div class="nav">
-          <ul>
-              <li class="active">
-                  <router-link  to="/index">
-                      <i><img src="static/images/home.png"></i>
-                      <span>首页</span>
-                  </router-link>
-              </li>
-                <li>
-                  <router-link  to="/caseList">
-                      <i><img src="static/images/trash.png"></i>
-                      <span>查看案例</span>
-                  </router-link>
-              </li>
-                <li>
-                  <router-link  to="/desinerList">
-                      <i><img src="static/images/person.png"></i>
-                      <span>找设计师</span>
-                  </router-link>
-              </li>
-                <li>
-                  <router-link  to="/chat">
-                      <i><img src="static/images/call.png"></i>
-                      <span>在线咨询</span>
-                  </router-link>
-              </li>
-                <li>
-                  <router-link  to="aboutUs">
-                      <i><img src="static/images/warn.png"></i>
-                      <span>关于</span>
-                  </router-link>
-              </li>
-          </ul>
-          
+  <div class="topNav">
+      <div class="cont">
+          <span class="btnNav btn"><img src="static/images/menu.png" ></span>
+          <span class="btnChat btn"><img src="static/images/call.png" ></span>
       </div>
   </div>
 </template>
-<style scoped>
-.lefBar {
-    width:100%;
-    height: 100%;
-    position: relative;
-}
-.shadow {
-    position: absolute;
-    width:100%;
-    height: 100%;
-    opacity: .5;
-    z-index: 2;
-    background-color: #000;
-
-}
-.lefBar ul {
-    margin:0;
-    padding:.16rem 0 0 0;
-}
-.lefBar ul,
-.lefBar li {
-  list-style: none;
+<script>
+export default {
   
 }
-.lefBar li.active{
-    background: #eeeeee;
+</script>
+<style >
+.topNav {
+    height: .52rem;
+    background: #f5f5f5;
+    overflow: hidden;
+    line-height: .52rem;
 }
-.lefBar .nav{
-       position: relative;
-       z-index:55;
-    width:66.718%;
-    position: relative;
-    background: #fafafa;
+.topNav .cont{
+    margin: 0 .16rem;
+    background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png) no-repeat center;
     height: 100%;
+    background-size: .17rem;
+
 }
-.lefBar ul li i {
-  width: 0.16rem;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left:.14rem;
+.topNav .btnNav {
+    float:left;
 }
-.lefBar ul li:nth-child(1){
-    margin-top:0;
+.topNav .btnChat  {
+ float:right;
 }
-.lefBar li:last-child{
-    padding-top: .05rem;
-    border-top:#eee 1px solid;
-}
-.lefBar li {
-    line-height: .33rem;
-    margin:.14rem 0;
-    
-}
-.lefBar ul li i img {
-  width: 100%;
-}
-.lefBar ul li i span {
-  display: inline-block;
-  vertical-align: middle;
-}
-.lefBar li  a {
-    color:#666;
-    text-decoration: none;
+.topNav .btn {
+    display: inline-block;
+    width:.17rem;
+}  
+.topNav .btn  img {
+    width:100%;
 }
 </style>
 
-<script>
-export default {};
-</script>
