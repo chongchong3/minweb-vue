@@ -6,7 +6,7 @@ Vue.use(Router)
 const Index = () => import(/* webpackChunkName: "mint-index" */ '@/views/index')
 const guide = () => import(/* webpackChunkName: "mint-guide" */ '@/views/guide')
 const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerList')
-const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/desinerList')
+const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 
