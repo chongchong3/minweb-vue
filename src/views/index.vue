@@ -16,7 +16,7 @@
   </swiper>
 </template>
 <style>
-.imgWrap {width:100%;overflow: hidden}
+.imgWrap {width:100%;overflow: hidden;height: 2rem;}
 .swiper-slide {
   width:100%;
   float:left;
