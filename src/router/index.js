@@ -31,7 +31,7 @@ export default new Router({
       meta: {title: 'login'}
     },
     {
-      path: '/desinerList',
+      path: '/desiner',
       name: 'desinerList',
       component: desinerList,
       meta: {title: 'desinerList'}

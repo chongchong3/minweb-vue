@@ -5,15 +5,20 @@ import App from './App'
 import router from './router'
 import '@/common/css/normalize.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import store from './store'
+import vueRsource from 'vue-resource'
 
 Vue.config.productionTip = false
 
 Vue.use(VueAwesomeSwiper)
 
+Vue.use(vueRsource)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

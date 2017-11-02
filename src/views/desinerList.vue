@@ -19,8 +19,17 @@
 </template>
 <script>
 export default {
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+
+
   
 }
+<<<<<<< HEAD
 </script>
 <style scoped>
 p{margin: 0;padding:0;}
@@ -45,3 +54,6 @@ p{margin: 0;padding:0;}
 
 
 </style>
+=======
+}
+>>>>>>> 3ab51c8d4a109bf9ca63f7e0e0e498bee4cdefa4

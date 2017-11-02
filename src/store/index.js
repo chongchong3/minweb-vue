@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import login from './modules/login';
-import caseData from './modules/caseData';
-import desinerData from './modules/desinerData';
-import login from './modules/login';
+import Case from './modules/caseData';
+import desiner from './modules/desinerData';
 import chat from './modules/chat';
 
 import getters from './getters';
