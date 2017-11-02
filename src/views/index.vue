@@ -29,7 +29,7 @@ export default {
   data(){
     return {
       swiperOption: {
-  
+         autoplay: 3000,
           grabCursor: true,
           setWrapperSize: true,
           autoHeight: true,
