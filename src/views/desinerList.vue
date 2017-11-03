@@ -1,5 +1,6 @@
 <template>
 <div >
+	<!-- <left-nav></left-nav> -->
 	<head-nav></head-nav>
 	<ul class="desinerList">
 		<li class="singDesiner">
@@ -38,9 +39,11 @@
 </template>
 <script>
 import headNav from '@/components/headNav'
+import leftNav from "../components/leftNav";
 export default {
 	components:{
-		headNav
+		headNav,
+		leftNav
  	},
 }
 
