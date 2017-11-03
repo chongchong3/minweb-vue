@@ -1,6 +1,6 @@
 import wx from 'weixin-js-sdk'
 import Vue from 'vue'
-const getId= function (){
+const getId= function (url){
   Vue.$jsonp('https://bos.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        

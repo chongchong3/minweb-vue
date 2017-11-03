@@ -15,8 +15,9 @@ export default {
   },
   created() {
     /*微信朋友圈分享*/
-    this.wxShareApi.getId();
-    this.wxShareApi.shareReady('分享的标题','分享的描述','分享的链接','分享的图片地址');
+    debugger
+    this.shareWx.getId(this.$route.fullPath);
+    this.shareWx.shareReady('分享的标题','分享的描述','分享的链接','分享的图片地址');
 
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
