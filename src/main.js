@@ -10,6 +10,10 @@ import vueRsource from 'vue-resource'
 
 Vue.config.productionTip = false
 
+import untils from '@/common/js/common'
+
+Vue.prototype.untils=untils;
+
 Vue.use(VueAwesomeSwiper)
 
 Vue.use(vueRsource)

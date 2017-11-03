@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="demoContainer" >
     <left-nav></left-nav>
     <head-nav></head-nav>
  </div>
@@ -14,11 +14,19 @@ export default {
     return {};
   },
   created() {
-      
+   
     this.$store.commit("setNav", {
-        isShow:false,
-        current:'index'
+      isShow: false,
+      current: "index"
     });
-  }
+  },
+
 };
 </script>
+<style>
+.demoContainer {
+  height: 200rem;
+  background: #ccc;
+}
+</style>
+

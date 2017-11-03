@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created(){
+
+  }
 }
 </script>
 
@@ -18,6 +21,7 @@ html {
 body {
   font-size:12px;
    height: 100%;
+   overflow: scroll;
 }
 .container {
   height: 100%;
