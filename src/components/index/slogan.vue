@@ -20,23 +20,25 @@
 	.slogan-c:after{
 		content:" ";
 		display:block;
-		height:0.2rem;
+		height:0.09rem;
 		background: #f4f4f4;
 	}
 	.slogan-logo{
-		height: 1.92rem;
+		height: 0.44rem;
 		background-image: url(../../../static/images/logo.png);
 		background-repeat:no-repeat;
 		background-position: center;
-		margin-top: 0.44rem;
-		margin-bottom: 0.36rem;
+		background-size:.44rem;
+		margin-top: 0.19rem;
+		margin-bottom: 0.16rem;
 	}
 	.slogan-title{
 		color:#000;
-		font-size:0.48rem;
-		line-height: 0.64rem;
+		font-size:0.21rem;
+		line-height: 0.28rem;
 		text-align: center;
-		margin-bottom: 0.2rem;
+		margin-bottom: 0.09rem;
+		font-weight:bold ;
 	}
 	.slogan-c .more{
 		display: block;
