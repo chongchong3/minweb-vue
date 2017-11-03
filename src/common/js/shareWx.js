@@ -1,6 +1,7 @@
 import wx from 'weixin-js-sdk'
-const getId= function (obj,url){
-    obj.$jsonp('https://bos.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
+import Vue from 'vue'
+const getId= function (){
+  Vue.$jsonp('https://bos.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
       if (res.code != "200") {
@@ -40,9 +41,9 @@ const  shareReady=function(title,desc,link,imgUrl){
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link||'https://bos.wesetup.cn/chatactsTest/index.html#/shareStart',
-          title: title||'测试你的性格', // 分享标题
-          desc: desc||'怎么不信？我们可以试试', // 分享描述
+          link:link,
+          title: title, // 分享标题
+          desc: desc, // 分享描述
           imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
           success: function(success) {
               console.log(success);
@@ -53,9 +54,9 @@ const  shareReady=function(title,desc,link,imgUrl){
           }
         });
         wx.onMenuShareTimeline({
-            link:link||'https://wesetup.cn/chatactsTest/index.html#/shareStart',
-            title: title||'测试你的性格', // 分享标题
-            desc: desc||'怎么不信？我们可以试试', // 分享描述
+            link:link,
+            title: title, // 分享标题
+            desc: desc, // 分享描述
             imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
           success: function(success) {
              console.log(success);

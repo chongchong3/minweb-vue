@@ -10,9 +10,9 @@ import vueRsource from 'vue-resource'
 
 Vue.config.productionTip = false
 
-import untils from '@/common/js/common'
+import shareWx from '@/common/js/shareWx'
 
-Vue.prototype.untils=untils;
+Vue.prototype.shareWx=shareWx;
 
 Vue.use(VueAwesomeSwiper)
 

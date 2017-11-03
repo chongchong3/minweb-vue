@@ -6,27 +6,27 @@
 </template>
 
 <script>
-
-import leftNav from "../components/leftNav";
-import headNav from "../components/headNav";
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import headNav from "../components/headNav"; //引用顶部菜单栏
 export default {
   components: { leftNav, headNav },
   data() {
     return {};
   },
   created() {
-   
-    this.$store.commit("setNav", {
-      isShow: false,
-      current: "index"
-    });
-  },
+    /*微信朋友圈分享*/
+    this.wxShareApi.getId();
+    this.wxShareApi.shareReady('分享的标题','分享的描述','分享的链接','分享的图片地址');
 
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "index" //设置左菜单栏高亮
+    });
+  }
 };
 </script>
 <style>
 .demoContainer {
-
   background: #ccc;
 }
 </style>
