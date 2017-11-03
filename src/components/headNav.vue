@@ -1,7 +1,7 @@
 <template>
  <div class="topNav" id="topNav">
       <div class="cont">
-          <span class="btnNav btn"><img src="static/images/menu.png" ></span>
+          <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
           <span class="btnChat btn">
                 <router-link  to="/chat">
                     <img src="static/images/call.png" >
@@ -18,9 +18,9 @@ export default {
   created() {
     this.navControl();
   },
+
   methods: {
     navControl() {
-     
       var beforeScrollTop = document.body.scrollTop;
       var startY = 0;
       var endY = 0;
@@ -56,6 +56,12 @@ export default {
           topNav.style.display = "block";
           beforeScrollTop = afterScrollTop;
         }
+      });
+    },
+    showMenu() {
+      this.$store.commit("setNav", {
+        isShow: true,
+        current: this.$store.getters.nav.current
       });
     }
   }

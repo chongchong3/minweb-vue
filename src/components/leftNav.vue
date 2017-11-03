@@ -1,9 +1,9 @@
 <template>
-  <div class="lefBar" v-bind:class="{ 'show': navState.isShow }">
-      <div class="shadow"></div>
+  <div class="lefBar" v-bind:class="{ 'show': $store.state.nav.nav.isShow }">
+      <div class="shadow" @click="hideLeftBar"></div>
       <div class="nav">
           <ul>
-              <li v-for="item in menu" v-bind:class="{ 'active': navState.current==item.link }">
+              <li v-for="item in menu" v-bind:class="{ 'active': $store.state.nav.nav.current==item.link }">
                   <router-link  :to="'/'+item.link">
                       <i><img :src="'static/images/'+item.icon+'.png'"></i>
                       <span>{{item.name}}</span>
@@ -22,12 +22,20 @@
   top: 0;
   z-index: 22;
   display: none;
-  left: -100%;
 }
 .show {
   display: block;
-  left: 0;
-  transition: width 2s;
+  animation: animateLeft 0.5s;
+}
+@keyframes animateLeft {
+  from {
+    opacity: 0;
+    left: -50%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
 }
 .shadow {
   position: absolute;
@@ -59,7 +67,7 @@
 .lefBar ul li i {
   width: 0.16rem;
   display: inline-block;
-  
+
   margin-left: 0.14rem;
 }
 .lefBar ul li:nth-child(1) {
@@ -76,10 +84,9 @@
 .lefBar ul li i img {
   width: 100%;
   vertical-align: middle;
-
 }
-.lefBar ul li  span {
-    margin-left:.1rem;
+.lefBar ul li span {
+  margin-left: 0.1rem;
   display: inline-block;
   vertical-align: middle;
 }
@@ -90,6 +97,7 @@
 </style>
 
 <script>
+import store from "@/store";
 export default {
   data() {
     return {
@@ -99,12 +107,16 @@ export default {
         { link: "desinerList", icon: "person", name: "找设计师" },
         { link: "chat", icon: "call", name: "在线咨询" },
         { link: "aboutUs", icon: "warn", name: "关于" }
-      ],
-      navState: this.$store.getters.nav
+      ]
     };
   },
-  created() {
-    
+  methods: {
+    hideLeftBar() {
+      this.$store.commit("setNav", {
+        isShow: false,
+        current: this.$store.getters.nav.current
+      });
+    }
   }
 };
 </script>

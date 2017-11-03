@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import leftNav from "../components/leftNav";
 import headNav from "../components/headNav";
 export default {
@@ -25,7 +26,7 @@ export default {
 </script>
 <style>
 .demoContainer {
-  height: 200rem;
+
   background: #ccc;
 }
 </style>
