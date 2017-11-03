@@ -59,7 +59,7 @@
 .lefBar ul li i {
   width: 0.16rem;
   display: inline-block;
-  vertical-align: middle;
+  
   margin-left: 0.14rem;
 }
 .lefBar ul li:nth-child(1) {
@@ -75,8 +75,11 @@
 }
 .lefBar ul li i img {
   width: 100%;
+  vertical-align: middle;
+
 }
-.lefBar ul li i span {
+.lefBar ul li  span {
+    margin-left:.1rem;
   display: inline-block;
   vertical-align: middle;
 }

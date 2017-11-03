@@ -1,7 +1,7 @@
 <template>
  <div>
     <left-nav></left-nav>
-  <head-nav></head-nav>
+    <head-nav></head-nav>
  </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   created() {
       
     this.$store.commit("setNav", {
-        isShow:true,
+        isShow:false,
         current:'index'
     });
   }
