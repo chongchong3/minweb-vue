@@ -15,7 +15,8 @@ export default {
   },
   created() {
     /*微信朋友圈分享*/
-    this.shareWx.getId();
+    debugger
+    this.shareWx.getId(this.$route.fullPath);
     this.shareWx.shareReady('分享的标题','分享的描述','分享的链接','分享的图片地址');
 
     this.$store.commit("setNav", {
