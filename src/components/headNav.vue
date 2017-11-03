@@ -73,7 +73,7 @@ export default {
   background: #f5f5f5;
   overflow: hidden;
   line-height: 0.52rem;
-  position: fixed;
+  position: relative;
   width: 100%;
   top: 0;
 }
