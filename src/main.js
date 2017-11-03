@@ -7,6 +7,7 @@ import '@/common/css/normalize.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './store'
 import vueRsource from 'vue-resource'
+import VueJsonp from 'vue-jsonp'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,7 @@ Vue.prototype.shareWx=shareWx;
 Vue.use(VueAwesomeSwiper)
 
 Vue.use(vueRsource)
+Vue.use(VueJsonp)
 
 /* eslint-disable no-new */
 new Vue({
