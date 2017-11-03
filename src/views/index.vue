@@ -17,25 +17,31 @@
   <div>
   		<banner-content></banner-content>
       <slogan></slogan>
+      <case-banner></case-banner>
+      <desiner-banner></desiner-banner>
   </div>
 
 </template>
 <style>
 .imgWrap {width:100%;overflow: hidden;height: 2rem;}
-.swiper-slide {
+/*.swiper-slide {
   width:100%;
   float:left;
   height:100%;
-  }
+  }*/
 </style>
 
 <script>
 	import slogan from "../components/index/slogan"
 	import bannerContent from "../components/index/banner"
+	import caseBanner from "../components/index/caseBanner"
+	import desinerBanner from "../components/index/desinerBanner"
 export default {
 	components:{
   	slogan,
-  	bannerContent
+  	bannerContent,
+  	caseBanner,
+  	desinerBanner
  },
   data(){
     return {

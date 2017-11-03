@@ -28,8 +28,8 @@ body {
 }
 .more{
 	color:#999;
-	font-size: 0.24rem;
-	line-height: 32px;
-	margin-bottom: 0.44rem;
+	font-size: 0.11rem;
+	line-height: 14px;
+	margin-bottom: 0.09rem;
 }
 </style>

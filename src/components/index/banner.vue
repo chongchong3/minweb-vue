@@ -77,7 +77,7 @@
 		background:#fff;
 	}
 	.banner-c:after{
-		height: 0.2rem;
+		height: 0.09rem;
 		background: #f4f4f4;
 		display: block;
 		content: " ";
@@ -87,7 +87,7 @@
 		position: relative;
 	}
 	
-	.swiper-wrapper{
+	.banner-c .swiper-wrapper{
 		height:100%;
 		overflow: hidden;
 	}
@@ -108,12 +108,12 @@
   	text-align: center;
   }
   .swiper-pagination-bullet{
-  	width:0.4rem;
-  	height:0.04rem;
+  	width:0.2rem;
+  	height:0.02rem;
   	opacity: .6;
   	background:#fff;
   	display: inline-block;
-  	margin: 0px 0.12rem;
+  	margin: 0px 0.04rem;
   }
   .swiper-pagination-bullet-active{
   	background:#fff;
