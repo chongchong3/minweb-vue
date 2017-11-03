@@ -2,7 +2,6 @@
   <div class="lefBar" v-bind:class="{ 'show': $store.state.nav.nav.isShow }">
       <div class="shadow" @click="hideLeftBar"></div>
       <div class="nav">
-        <p>{{ $store.state.nav.nav.current}}</p>
           <ul>
               <li v-for="item in menu" v-bind:class="{ 'active': $store.state.nav.nav.current==item.link }">
                   <router-link  :to="'/'+item.link">
