@@ -6,7 +6,6 @@ const desinerCase = {
 
   mutations: {
     SELECT_CASE: (state, data) => {
-
       state.caseData = data;
     },
 
@@ -18,7 +17,7 @@ const desinerCase = {
       return new Promise((resolve, reject) => {
         getCaseMes(params)
       .then(response=>{
-        debugger
+        
         commit("SELECT_CASE",response.data.data.result);
         resolve(response);
       })
