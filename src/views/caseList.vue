@@ -69,6 +69,7 @@ export default {
   },
   methods:{
     getMoreData(){
+      
       //接口数据
       // this.$store
       //   .dispatch("getDesinerMes", {page_no:this.page_no,page_size:20})

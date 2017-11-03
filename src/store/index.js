@@ -13,7 +13,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   modules: {
     desiner,
-    nav
+    nav,
+    Case
 
   },
   getters
