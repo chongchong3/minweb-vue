@@ -34,7 +34,7 @@
 			</div>
 		</li>
 	</ul>
-     
+     <p>{{$store.state}}</p>
  </div>
 </template>
 <script>
@@ -44,7 +44,17 @@ export default {
 	components:{
 		headNav,
 		leftNav
- 	},
+	 },
+	created() {
+		var _self = this;
+		this.$store
+		.dispatch("GetDesinerMes", { page_size: 20, page_no: 1 })
+		.then(json => {
+			var json = _self.$store.state.Case;
+			console.log(json)
+		})
+		.catch(err => {});
+	},
 }
 
 </script>
