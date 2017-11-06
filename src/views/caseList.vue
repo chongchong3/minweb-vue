@@ -37,10 +37,12 @@
         </div>
       </li>
     </ul>
+    <p>{{$store.state.Case}}</p>
   </div>
 </template>
 <script>
-import headNav from '@/components/headNav'
+import headNav from '@/components/headNav';
+// import store from "@/store";
 export default {
   components:{
 		headNav
@@ -51,6 +53,18 @@ export default {
       moreData:false,
       dataJson:null
     }
+  },
+  created() {
+    var _self = this;
+
+
+    this.$store
+      .dispatch("GetCaseMes", { page_size: 20, page_no: 1 })
+      .then(json => {
+        var json = _self.$store.state.Case;
+        console.log(json)
+      })
+      .catch(err => {});
   },
   mounted(){
     var _self=this;
