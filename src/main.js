@@ -10,6 +10,8 @@ import store from './store'
 import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
 
+
+
 Vue.config.productionTip = false
 
 import shareWx from '@/common/js/shareWx'
@@ -20,6 +22,8 @@ Vue.use(VueAwesomeSwiper)
 
 Vue.use(vueRsource)
 Vue.use(VueJsonp)
+
+
 
 /* eslint-disable no-new */
 new Vue({

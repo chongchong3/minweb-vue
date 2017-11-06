@@ -25,11 +25,7 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "index" //设置左菜单栏高亮
     });
-    var _self = this;
-
-
-    this.$store
-      .dispatch("GetCaseMes", { page_size: 20, page_no: 1 })
+    this.$store.dispatch("GetCaseMes", { page_size: 20, page_no: 1 })
       .then(json => {})
       .catch(err => {});
   }
