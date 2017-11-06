@@ -19,7 +19,7 @@
 			</div>
 		</li>
 	</ul>
-     <p>{{$store.state}}</p>
+     <p>{{this.dataJson}}</p>
  </div>
 </template>
 <script>
@@ -30,14 +30,21 @@ export default {
 		headNav,
 		leftNav
 	 },
+	 data(){
+		return{
+		page_no:1,
+		moreData:false,
+		dataJson:null
+		}
+	},
 	created() {
 		var _self = this;
 		this.$store
 		.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
 		.then(json => {
-			debugger
-			var json = _self.$store.state.Case;
-			console.log(json)
+			// _self.dataJson = _self.$store.state.desiner;
+			_self.dataJson=json.data.data;
+			console.log(json.data.data)
 		})
 		.catch(err => {});
 	},

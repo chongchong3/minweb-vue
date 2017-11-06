@@ -2,40 +2,23 @@
   <div >
     <head-nav></head-nav>
     <ul class="caseList">
-      <li class="singleCase">
+      <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
         <div class="leftPic">
           <img src="http://placehold.it/160x120" class="headPic">
         </div>
         <div class="detail">
-          <p class="title">四家大院门厅晚风香堂</p>
-          <p class="houseType">大户型</p>
+          <p class="title">{{single.title}}</p>
+          <p class="houseType">{{single.house_type}}</p>
           <div class="desiner">
-            <img class="headImg" src="http://placehold.it/40x40" alt="">
+            <img class="headImg" :src="single.head_image_url" alt="">
             <div class="nameLev">
-              <p class="desinerName">梁启超</p>
-              <p class="desinerRank">牛逼设计师</p>
+              <p class="desinerName">{{single.designer_name}}</p>
+              <p class="desinerRank">{{single.designer_level}}</p>
             </div>   
           </div>
         </div>
       </li>
-      <!-- <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-        <div class="leftPic">
-          <img src="http://placehold.it/160x120" class="headPic">
-        </div>
-        <div class="detail">
-          <p class="title">四家大院门厅晚风香堂</p>
-          <p class="houseType">大户型</p>
-          <div class="desiner">
-            <img class="headImg" src="http://placehold.it/40x40" alt="">
-            <div class="nameLev">
-              <p class="desinerName">梁启超</p>
-              <p class="desinerRank">牛逼设计师</p>
-            </div>   
-          </div>
-        </div>
-      </li> -->
     </ul>
-    <p>{{$store.state}}</p>
   </div>
 </template>
 <script>
@@ -48,19 +31,19 @@ export default {
   data(){
     return{
       page_no:1,
+      page_size:4,
       moreData:false,
       dataJson:null
     }
   },
   created() {
     var _self = this;
-
-
     this.$store
       .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
-        var json = _self.$store.state;
-        console.log(json)
+        // var json = _self.$store.state;
+        _self.dataJson=json.data.data.list;
+        console.log(json.data.data.list)
       })
       .catch(err => {});
   },
@@ -72,26 +55,29 @@ export default {
        *       网页可视高度  window.innerHeight       文档高度  document.body.scrollHeight
        */
       if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight){
-        console.log("加载数据");
         _self.page_no++;
+        _self.page_size*=_self.page_no;
         // _self.moreData = true;
         _self.getMoreData();
       }
     });
   },
   methods:{
+    
     getMoreData(){
-      
       //接口数据
-      // this.$store
-      //   .dispatch("GetCaseMes", {page_no:this.page_no,page_size:20})
-      //   .then(() => {
-      //     var json = _self.$store.getters.userMes;
-      //     _self.dataJson = json;
-      //   })
-      //   .catch(err => {
+      var _self=this;
+      this.$store
+        .dispatch("GetCaseMes", {page_no:this.page_no,page_size:this.page_size})
+        .then((json) => {
+          console.log("加载数据");
+          // var json = _self.$store.getters.userMes;
+          console.log(json.data.data.list);
+          _self.dataJson = json.data.data.list;
+        })
+        .catch(err => {
       
-      //   });
+        });
     }
   }
 }
@@ -135,6 +121,8 @@ ul, li, p{
 .headImg{
   float: left;
   border-radius: 50%;
+  width: .4rem;
+  height: .4rem;
 }
 .nameLev{
   margin-left: .1rem;
