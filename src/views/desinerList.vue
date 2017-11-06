@@ -50,6 +50,7 @@ export default {
 		this.$store
 		.dispatch("GetDesinerMes", { page_size: 20, page_no: 1 })
 		.then(json => {
+			debugger
 			var json = _self.$store.state.Case;
 			console.log(json)
 		})

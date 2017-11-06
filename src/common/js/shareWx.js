@@ -1,7 +1,7 @@
 import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 const getId= function (url){
-  Vue.jsonp('https://bos.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
+  Vue.jsonp('https://app.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
       if (res.code != "200") {
