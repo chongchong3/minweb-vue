@@ -14,12 +14,11 @@
             <div class="nameLev">
               <p class="desinerName">梁启超</p>
               <p class="desinerRank">牛逼设计师</p>
-            </div>
-            
+            </div>   
           </div>
         </div>
       </li>
-      <li class="singleCase">
+      <!-- <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
         <div class="leftPic">
           <img src="http://placehold.it/160x120" class="headPic">
         </div>
@@ -31,13 +30,12 @@
             <div class="nameLev">
               <p class="desinerName">梁启超</p>
               <p class="desinerRank">牛逼设计师</p>
-            </div>
-            
+            </div>   
           </div>
         </div>
-      </li>
+      </li> -->
     </ul>
-    <p>{{$store.state.Case}}</p>
+    <p>{{$store.state}}</p>
   </div>
 </template>
 <script>
@@ -59,9 +57,9 @@ export default {
 
 
     this.$store
-      .dispatch("GetCaseMes", { page_size: 20, page_no: 1 })
+      .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
-        var json = _self.$store.state.Case;
+        var json = _self.$store.state;
         console.log(json)
       })
       .catch(err => {});
@@ -86,7 +84,7 @@ export default {
       
       //接口数据
       // this.$store
-      //   .dispatch("getDesinerMes", {page_no:this.page_no,page_size:20})
+      //   .dispatch("GetCaseMes", {page_no:this.page_no,page_size:20})
       //   .then(() => {
       //     var json = _self.$store.getters.userMes;
       //     _self.dataJson = json;
@@ -107,6 +105,7 @@ ul, li, p{
 .caseList{
   margin: 0 auto;
   width: 96%;
+  height: 2000px;
 } 
 .singleCase{
   overflow:hidden;

@@ -18,21 +18,6 @@
 				<img src="http://placehold.it/100x60" class="">
 			</div>
 		</li>
-		<li class="singDesiner">
-			<div class="topDesc">
-				<img src="http://placehold.it/60x60" class="headImg">
-				<div class="rightText">
-					<p><span class="desinerName">梁启超</span>&nbsp;<span class="desinerRank">大咖设计师</span></p>
-					<p><span>杭州</span>&nbsp;|&nbsp;<span>中央美术教授</span></p>
-					<p><span>300-400</span><span>元/平方</span></p>
-				</div>
-			</div>
-			<div class="imgList">
-				<img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-			</div>
-		</li>
 	</ul>
      <p>{{$store.state}}</p>
  </div>
@@ -48,7 +33,7 @@ export default {
 	created() {
 		var _self = this;
 		this.$store
-		.dispatch("GetDesinerMes", { page_size: 20, page_no: 1 })
+		.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
 		.then(json => {
 			debugger
 			var json = _self.$store.state.Case;
