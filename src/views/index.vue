@@ -45,14 +45,14 @@ export default {
  },
   data(){
     return {
-      swiperOption: {
-        //  autoplay: 3000,
-            pagination: '.swiper-pagination',
-          paginationClickable: true,
-          onTransitionStart (swiper) {
-            console.log(swiper)
-          }
-        }
+//    swiperOption: {
+//      //  autoplay: 3000,
+//          pagination: '.swiper-pagination',
+//        paginationClickable: true,
+//        onTransitionStart (swiper) {
+//          console.log(swiper)
+//        }
+//      }
     }
 	}
 	
