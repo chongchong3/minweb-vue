@@ -46,18 +46,9 @@ export default {
   data(){
     return {
       swiperOption: {
-         autoplay: 3000,
-          grabCursor: true,
-          setWrapperSize: true,
-          autoHeight: true,
-          pagination: '.swiper-pagination',
+        //  autoplay: 3000,
+            pagination: '.swiper-pagination',
           paginationClickable: true,
-          prevButton: '.swiper-button-prev',
-          nextButton: '.swiper-button-next',
-          scrollbar: '.swiper-scrollbar',
-          mousewheelControl: true,
-          observeParents: true,
-          debugger: true,
           onTransitionStart (swiper) {
             console.log(swiper)
           }

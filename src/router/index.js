@@ -10,6 +10,7 @@ const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseL
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
+const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
 const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 
 export default new Router({
@@ -56,6 +57,13 @@ export default new Router({
       name: 'aboutUs',
       component: aboutUs,
       meta: {title: '关于我们'}
+      
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: chat,
+      meta: {title: '在线客服'}
       
     },
     {
