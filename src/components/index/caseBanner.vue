@@ -149,9 +149,9 @@
  	width:100%;
 	 display: block;
  }
- .swiper-slide{
+ /*.swiper-slide{
 	 flex-shrink: unset;
- }
+ }*/
  .des-c{
  	width:auto;
 	 margin-bottom:.16rem;
@@ -171,6 +171,7 @@
  }
  .name-theme-c{
  	margin-left:.36rem;
+ 	margin-right:0.09rem;
  }
  .name-theme-c p{
  	padding: 0;

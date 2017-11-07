@@ -35,7 +35,6 @@
 </template>
 <script>
   import store from "@/store"
-  import $ from "jquery"
   export default {
     data() {
       return {
