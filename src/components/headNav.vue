@@ -39,40 +39,37 @@ export default {
         }
       });
       window.addEventListener("scroll", function(e) {
-       
         var topNav = document.getElementById("topNav");
         var afterScrollTop = document.body.scrollTop;
         var delta = afterScrollTop - beforeScrollTop;
-       
-
-  
 
         if (delta > 10) {
-          debugger
+          debugger;
           //down
           topNav.style.display = "none";
           beforeScrollTop = afterScrollTop;
           return;
         }
         if (delta < -10) {
-            debugger
+          debugger;
           topNav.style.display = "block";
           beforeScrollTop = afterScrollTop;
         }
       });
     },
     showMenu() {
+   ;
       this.$store.commit("setNav", {
         isShow: true,
         current: this.$store.getters.nav.current
       });
     },
-    hideMenu(){
-       this.$store.commit("setNav", {
+    hideMenu() {
+      this.$store.commit("setNav", {
         isShow: false,
         current: this.$store.getters.nav.current
       });
-      return false
+      return false;
     }
   }
 };
@@ -86,7 +83,7 @@ export default {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index:2;
+  z-index: 2;
 }
 .topNav .cont {
   margin: 0 0.16rem;

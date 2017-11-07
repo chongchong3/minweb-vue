@@ -1,6 +1,6 @@
 <template>
 
-  <div class="lefBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
+  <div class="lefBar" id="leftBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
       <div class="shadow" @click="hideLeftBar"></div>
       <div class="nav">
           <ul>
@@ -115,6 +115,8 @@ export default {
         isShow: false,
         current: this.$store.getters.nav.current
       });
+    
+
     },
     goLink(link) {
       this.$router.push({

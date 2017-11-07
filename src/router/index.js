@@ -48,7 +48,7 @@ export default new Router({
       meta: {title: '设计师列表'}
     },
     {
-      path: '/desinerDetails',
+      path: '/desinerDetails/:desiner_id',
       name: 'desinerDetails',
       component: desinerDetails,
       meta: {title: '设计师详情'}

@@ -30,7 +30,6 @@ export default {
       .then(json => {})
       .catch(err => {});
 
- 
   }
 };
 </script>

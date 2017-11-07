@@ -21,7 +21,7 @@ html {
 body {
   font-size:12px;
    height: 100%;
-   overflow: scroll;
+  
    
 }
 .container {

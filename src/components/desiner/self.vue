@@ -1,6 +1,6 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)">
+        <video-player id="video-player-box" x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)">
         </video-player>
 
         <div class="slef-background hasTips" id="slef-background">
@@ -50,7 +50,7 @@
 
     width: .6rem;
     margin: 0 0 0 .3rem;
-    /* background: url('../../static/images/video.png'); */
+    background: url('../../../static/images/video.png');
     background-size: 100% 100%;
     height: .6rem;
 }
@@ -113,7 +113,7 @@
     text-align: left;
     z-index: 99;
     background: transparent;
-    /* background: url('../../static/images/videoBg.png'); */
+    background: url('../../../static/images/videoBg.png');
     background-size: 100% 100%;
 }
 .hasTips .score img {
@@ -156,28 +156,19 @@ export default {
     methods: {
 
         videoPlay: function(event) {
-            $('.slef-background').addClass('hide');
-            $('.video-player-box').removeClass('hide');
+             document.getElementById('slef-background').style.display="none";
+            document.getElementById('video-player-box').style.display="block";
             this.player.show();
             this.player.play();
         },
-
-        // listen event
-        onPlayerPlay(player) {
-            // console.log('player play!', player)
-        },
-        onPlayerPause(player) {
-            // console.log('player pause!', player)
-        },
-
-        // or listen state event
         onPlayerEnded(playerCurrentState) {
             this.videoHide();
         },
         
         videoHide(){
-            $('.slef-background').removeClass('hide');
-            $('.video-player-box').addClass('hide');
+            document.getElementById('slef-background').style.display="block";
+            document.getElementById('video-player-box').style.display="none";
+          
             this.player.pause();
         }
 
