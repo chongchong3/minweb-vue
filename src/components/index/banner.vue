@@ -71,7 +71,7 @@
     }
   }
 </script>
-<style>
+<style >
 	.banner-c {
 		width: 100%;
 		background:#fff;

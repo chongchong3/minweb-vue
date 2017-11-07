@@ -294,6 +294,7 @@ p.bg-none {
 }
 </style>
 <script>
+
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
 import headNav from "../components/headNav"; //引用顶部菜单栏
 export default {
@@ -311,4 +312,5 @@ export default {
     });
   }
 };
+
 </script>

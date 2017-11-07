@@ -37,76 +37,78 @@
  </div>
 </template>
 <script>
-import headNav from '@/components/headNav'
+import headNav from "@/components/headNav";
 import leftNav from "../components/leftNav";
 export default {
-	components:{
-		headNav,
-		leftNav
-	 },
-	 data(){
-		return{
-		page_no:1,
-		moreData:false,
-		dataJson:null
-		}
-	},
-	created() {
-		var _self = this;
-		this.$store
-		.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
-		.then(json => {
-			_self.dataJson=json.data.data;
-			console.log(json.data.data)
-		})
-		.catch(err => {});
-	},
-}
-
+  components: {
+    headNav,
+    leftNav
+  },
+  data() {
+    return {
+      page_no: 1,
+      moreData: false,
+      dataJson: null
+    };
+  },
+  created() {
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "desinerList" //设置左菜单栏高亮
+    });
+    var _self = this;
+    this.$store.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
+      .then(json => {
+        _self.dataJson = json.data.data;
+        console.log(json.data.data);
+      })
+      .catch(err => {});
+  }
+};
 </script>
 
 <style scoped>
-ul, li, p{
+ul,
+li,
+p {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-p{
-	line-height: .2rem;
+p {
+  line-height: 0.2rem;
 }
-.desinerList{
-	margin: 0 auto;
-	width:96%;
+.desinerList {
+  margin: 0 auto;
+  width: 96%;
 }
-.singDesiner{
-	margin-top: .1rem;
-	padding:.1rem 0;
-	border-bottom: 1px solid #ccc;
+.singDesiner {
+  margin-top: 0.1rem;
+  padding: 0.1rem 0;
+  border-bottom: 1px solid #ccc;
 }
-.topDesc{
-	margin-bottom: .1rem;
-	overflow:hidden;
+.topDesc {
+  margin-bottom: 0.1rem;
+  overflow: hidden;
 }
-.headImg{
-	float: left;
-	border-radius: 50%;
-	width: .6rem;
-  	height: .6rem;
+.headImg {
+  float: left;
+  border-radius: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
 }
-.rightText{
-	margin-left:.1rem;
-	float: left;
+.rightText {
+  margin-left: 0.1rem;
+  float: left;
 }
-.desinerName{
-	font-size: 18px;
-	font-weight: bold;
+.desinerName {
+  font-size: 18px;
+  font-weight: bold;
 }
-.desinerRank{
-	color: #93D36A;
+.desinerRank {
+  color: #93d36a;
 }
-.imgList{
+.imgList {
 }
-
-
 </style>
 

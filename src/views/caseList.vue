@@ -1,5 +1,6 @@
 <template>
   <div >
+     <left-nav></left-nav>
     <head-nav></head-nav>
     <ul class="caseList">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
@@ -23,10 +24,12 @@
 </template>
 <script>
 import headNav from '@/components/headNav';
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
 // import store from "@/store";
 export default {
   components:{
-		headNav
+    headNav,
+    leftNav
  	},
   data(){
     return{
@@ -39,9 +42,12 @@ export default {
   },
   created() {
     var _self = this;
+     this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "caseList" //设置左菜单栏高亮
+    });
     _self.moreData = true;
-    this.$store
-      .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
+    this.$store.dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
         console.log(json.data.data.list)

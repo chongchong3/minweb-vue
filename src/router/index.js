@@ -6,6 +6,7 @@ Vue.use(Router)
 const Index = () => import(/* webpackChunkName: "mint-index" */ '@/views/index')
 const guide = () => import(/* webpackChunkName: "mint-guide" */ '@/views/guide')
 const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerList')
+const desinerDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerDetails')
 const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
@@ -45,6 +46,12 @@ export default new Router({
       name: 'desinerList',
       component: desinerList,
       meta: {title: '设计师列表'}
+    },
+    {
+      path: '/desinerDetails',
+      name: 'desinerDetails',
+      component: desinerDetails,
+      meta: {title: '设计师详情'}
     },
     {
       path: '/caseList',

@@ -7,9 +7,9 @@
 				<span class="list-title">
 					看设计案例
 				</span>
-				<a class="more">
-					查看更多
-				</a>
+				<router-link to="/caseList/" tag="span" class="more">
+					了解更多
+				</router-link>
 			</div>
 			<div class="case-detail-list-c">
 				<swiper :options="caseOption" >
@@ -82,7 +82,7 @@
     }
   }
 </script>
-<style>
+<style scoped="scoped">
 	.case-horize-list-c{
 		background:#fff;
 		
