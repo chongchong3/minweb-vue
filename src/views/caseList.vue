@@ -38,6 +38,7 @@ export default {
   },
   created() {
     var _self = this;
+    _self.moreData = true;
     this.$store
       .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
@@ -57,9 +58,11 @@ export default {
        */
       if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight-100){
         _self.page_no++;
-        _self.page_size*=_self.page_no;
-        // _self.moreData = true;
-        _self.getMoreData();
+        _self.page_size=_self.page_no*4;
+        if(_self.moreData){
+           _self.getMoreData();
+        }
+       
       }
     });
   },
@@ -74,6 +77,10 @@ export default {
           // var JSON=json.data.data.list;
           // _self.dataJson=_self.dataJson[_self.dataJson.JSON];
           _self.dataJson = json.data.data.list;
+          _self.moreData=false;
+          setTimeout(()=>{
+             _self.moreData = true;
+          },1000);
         })
         .catch(err => {
       
@@ -137,7 +144,7 @@ ul, li, p{
   line-height: .2rem;
 }
 .desinerRank{
-  color: blue;
+  color: #93D36A;
   line-height: .2rem;
 }
 </style>
