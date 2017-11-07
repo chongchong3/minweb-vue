@@ -33,7 +33,8 @@ export default {
       page_no:1,
       page_size:4,
       moreData:false,
-      dataJson:null
+      dataJson:null,
+      touchmove:false
     }
   },
   created() {
@@ -51,33 +52,61 @@ export default {
   },
   mounted(){
     var _self=this;
-    window.addEventListener('scroll',function(){
-      /**
-       * 就是计算滚动条位置，当滚动条位置加上网页可视高度等于页面高度时触发加载函数
-       *       网页可视高度  window.innerHeight       文档高度  document.body.scrollHeight
-       */
-      if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight-100){
+    var startPageY;
+    console.log(document.body.scrollHeight);
+    document.body.addEventListener("touchstart", function(e) {
+        startPageY = e.targetTouches[0].pageY;
+        console.log(startPageY)
+    });
+    document.body.addEventListener('touchmove',function(e){
+      _self.touchmove=true;
+    });
+    document.body.addEventListener("touchend", function(e) {
+        // var endPageY = e.targetTouches[0].pageY;
+        // console.log(endPageY)
+    });
+    if(startPageY>=document.body.scrollHeight-100 && _self.touchmove ){
         _self.page_no++;
         _self.page_size=_self.page_no*4;
-        if(_self.moreData){
+        // if(_self.moreData){
            _self.getMoreData();
-        }
+        // }
        
       }
-    });
+  
+    // window.addEventListener('scroll',function(){
+    //   /**
+    //    * 就是计算滚动条位置，当滚动条位置加上网页可视高度等于页面高度时触发加载函数
+    //    *       网页可视高度  window.innerHeight       文档高度  document.body.scrollHeight
+    //    * clientX / clientY: //触摸点相对浏览器窗口的位置
+    //    * pageX / pageY: //触摸点相对于页面的位置
+    //    * screenX / screenY: //触摸点相对于屏幕的位置
+    //    * 
+    //    */
+      
+      // if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight-100){
+      //   _self.page_no++;
+      //   _self.page_size=_self.page_no*4;
+      //   if(_self.moreData){
+      //      _self.getMoreData();
+      //   }
+       
+      // }
+    // });
   },
   methods:{  
     getMoreData(){
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:1,page_size:_self.page_size})
+        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:4})
         .then((json) => {
-          console.log(json.data.data.list);
-          // var JSON=json.data.data.list;
-          // _self.dataJson=_self.dataJson[_self.dataJson.JSON];
-          _self.dataJson = json.data.data.list;
           _self.moreData=false;
+          var data = json.data.data.list;
+          for (var i = 0; i < data.length; i++) {
+            _self.dataJson.push(data[i]);
+          }
+          console.log(_self.dataJson)
           setTimeout(()=>{
              _self.moreData = true;
           },1000);
@@ -87,7 +116,7 @@ export default {
         });
     },
     choice(e, index){
-      console.log(index);
+      // console.log(index);
     }
   }
 }

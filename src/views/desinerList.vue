@@ -28,9 +28,9 @@
 				</div>
 			</div>
 			<div class="imgList">
-				<img :src="single.designer_case_list[0]" class="caseImg">
-				<img :src="single.designer_case_list[1]" class="caseImg">
-				<img :src="single.designer_case_list[2]" class="caseImg">
+				<img :src="single.designer_case_list[0].wide_screen_image" class="caseImg">
+				<img :src="single.designer_case_list[1].wide_screen_image" class="caseImg">
+				<img :src="single.designer_case_list[2].wide_screen_image" class="caseImg">
 			</div>
 		</li>
 	</ul>
