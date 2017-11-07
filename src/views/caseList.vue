@@ -41,11 +41,12 @@ export default {
     this.$store
       .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
-        // var json = _self.$store.state;
         _self.dataJson=json.data.data.list;
         console.log(json.data.data.list)
       })
-      .catch(err => {});
+      .catch(err => {
+        console.log(err)
+      });
   },
   mounted(){
     var _self=this;
@@ -54,7 +55,7 @@ export default {
        * 就是计算滚动条位置，当滚动条位置加上网页可视高度等于页面高度时触发加载函数
        *       网页可视高度  window.innerHeight       文档高度  document.body.scrollHeight
        */
-      if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight){
+      if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight-100){
         _self.page_no++;
         _self.page_size*=_self.page_no;
         // _self.moreData = true;
@@ -62,22 +63,24 @@ export default {
       }
     });
   },
-  methods:{
-    
+  methods:{  
     getMoreData(){
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:this.page_no,page_size:this.page_size})
+        .dispatch("GetCaseMes", {page_no:this.page_no,page_size:4})
         .then((json) => {
-          console.log("加载数据");
-          // var json = _self.$store.getters.userMes;
           console.log(json.data.data.list);
+          // var JSON=json.data.data.list;
+          // _self.dataJson=_self.dataJson[_self.dataJson.JSON];
           _self.dataJson = json.data.data.list;
         })
         .catch(err => {
       
         });
+    },
+    choice(e, index){
+      console.log(index);
     }
   }
 }
@@ -91,7 +94,6 @@ ul, li, p{
 .caseList{
   margin: 0 auto;
   width: 96%;
-  height: 2000px;
 } 
 .singleCase{
   overflow:hidden;
@@ -108,8 +110,11 @@ ul, li, p{
   float: left;
 }
 .detail .title{
-  font-size: 16px;
+  /* font-size: 16px; */
   margin-bottom: .1rem;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .houseType{
  

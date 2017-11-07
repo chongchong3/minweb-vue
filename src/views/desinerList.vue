@@ -18,8 +18,22 @@
 				<img src="http://placehold.it/100x60" class="">
 			</div>
 		</li>
+		<li class="singDesiner" v-for="(single, index) in dataJson" @click="choice($event,index)">
+			<div class="topDesc">
+				<img :src="single.head_image_url" class="headImg">
+				<div class="rightText">
+					<p><span class="desinerName">{{single.designer_name}}</span>&nbsp;<span class="desinerRank">{{single.designer_level}}</span></p>
+					<p><span>杭州</span>&nbsp;|&nbsp;<span>{{single.descript}}</span></p>
+					<p><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
+				</div>
+			</div>
+			<div class="imgList">
+				<img :src="single.designer_case_list[0]" class="caseImg">
+				<img :src="single.designer_case_list[1]" class="caseImg">
+				<img :src="single.designer_case_list[2]" class="caseImg">
+			</div>
+		</li>
 	</ul>
-     <p>{{this.dataJson}}</p>
  </div>
 </template>
 <script>
@@ -77,6 +91,8 @@ p{
 .headImg{
 	float: left;
 	border-radius: 50%;
+	width: .6rem;
+  	height: .6rem;
 }
 .rightText{
 	margin-left:.1rem;
