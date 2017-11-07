@@ -1,6 +1,6 @@
 <template>
   <div >
-     <left-nav></left-nav>
+    <left-nav></left-nav>
     <head-nav></head-nav>
     <ul class="caseList">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
@@ -55,50 +55,26 @@ export default {
       .catch(err => {
         console.log(err)
       });
-  },
-  mounted(){
-    var _self=this;
     var startPageY;
     console.log(document.body.scrollHeight);
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
-        console.log(startPageY)
+        if(startPageY>=document.body.scrollHeight-100){
+          _self.page_no++;
+          _self.page_size=_self.page_no*4;
+           _self.getMoreData();
+       
+      }
+      console.log(startPageY)
     });
     document.body.addEventListener('touchmove',function(e){
       _self.touchmove=true;
     });
     document.body.addEventListener("touchend", function(e) {
         // var endPageY = e.targetTouches[0].pageY;
-        // console.log(endPageY)
     });
-    if(startPageY>=document.body.scrollHeight-100 && _self.touchmove ){
-        _self.page_no++;
-        _self.page_size=_self.page_no*4;
-        // if(_self.moreData){
-           _self.getMoreData();
-        // }
-       
-      }
-  
-    // window.addEventListener('scroll',function(){
-    //   /**
-    //    * 就是计算滚动条位置，当滚动条位置加上网页可视高度等于页面高度时触发加载函数
-    //    *       网页可视高度  window.innerHeight       文档高度  document.body.scrollHeight
-    //    * clientX / clientY: //触摸点相对浏览器窗口的位置
-    //    * pageX / pageY: //触摸点相对于页面的位置
-    //    * screenX / screenY: //触摸点相对于屏幕的位置
-    //    * 
-    //    */
-      
-      // if(window.pageYOffset + window.innerHeight >= document.body.scrollHeight-100){
-      //   _self.page_no++;
-      //   _self.page_size=_self.page_no*4;
-      //   if(_self.moreData){
-      //      _self.getMoreData();
-      //   }
-       
-      // }
-    // });
+  },
+  mounted(){
   },
   methods:{  
     getMoreData(){

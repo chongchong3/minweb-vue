@@ -3,7 +3,7 @@
 	<!-- <left-nav></left-nav> -->
 	<head-nav></head-nav>
 	<ul class="desinerList">
-		<li class="singDesiner">
+		<!-- <li class="singDesiner">
 			<div class="topDesc">
 				<img src="http://placehold.it/60x60" class="headImg">
 				<div class="rightText">
@@ -17,7 +17,7 @@
 				<img src="http://placehold.it/100x60" class="">
 				<img src="http://placehold.it/100x60" class="">
 			</div>
-		</li>
+		</li> -->
 		<li class="singDesiner" v-for="(single, index) in dataJson" @click="choice($event,index)">
 			<div class="topDesc">
 				<img :src="single.head_image_url" class="headImg">
@@ -28,9 +28,12 @@
 				</div>
 			</div>
 			<div class="imgList">
-				<img :src="single.designer_case_list[0].wide_screen_image" class="caseImg">
+        <img src="http://placehold.it/100x60" class="">
+				<img src="http://placehold.it/100x60" class="">
+				<img src="http://placehold.it/100x60" class="">
+				<!-- <img :src="single.designer_case_list[0].wide_screen_image" class="caseImg">
 				<img :src="single.designer_case_list[1].wide_screen_image" class="caseImg">
-				<img :src="single.designer_case_list[2].wide_screen_image" class="caseImg">
+				<img :src="single.designer_case_list[2].wide_screen_image" class="caseImg"> -->
 			</div>
 		</li>
 	</ul>
@@ -48,7 +51,8 @@ export default {
     return {
       page_no: 1,
       moreData: false,
-      dataJson: null
+      dataJson: null,
+
     };
   },
   created() {
@@ -63,8 +67,43 @@ export default {
         console.log(json.data.data);
       })
       .catch(err => {});
+    //加载更多
+    var startPageY;
+    console.log(document.body.scrollHeight);
+    document.body.addEventListener("touchstart", function(e) {
+        startPageY = e.targetTouches[0].pageY;
+        if(startPageY>=document.body.scrollHeight-100){
+          _self.page_no++;
+          _self.page_size=_self.page_no*4;
+          _self.getMoreData();
+        }
+      console.log(startPageY)
+    });
+  },
+  methods:{  
+    getMoreData(){
+      //接口数据
+      var _self=this;
+      this.$store
+        .dispatch("GetDesinerMes", {page_no:_self.page_no,page_size:4})
+        .then((json) => {
+          _self.moreData=false;
+          var data = json.data.data;
+          for (var i = 0; i < data.length; i++) {
+            _self.dataJson.push(data[i]);
+          }
+          console.log(_self.dataJson)
+          
+        })
+        .catch(err => {
+      
+        });
+    },
+    choice(e, index){
+      // console.log(index);
+    }
   }
-};
+}
 </script>
 
 <style scoped>
