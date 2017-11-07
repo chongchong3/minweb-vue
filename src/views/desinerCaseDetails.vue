@@ -19,8 +19,8 @@ export default {
   methods: {
     getData() {
         debugger
-      var desinerMes=this.$store.getters.desinerDetails;
-      var data =desinerMes.designer_uid?desinerMes:JSON.parse(localStorage.desinerDetails);// 
+      var desinerDetails=this.$store.getters.desinerDetails;
+      var data =desinerMes.designer_uid?desinerDetails:JSON.parse(localStorage.desinerDetails);// 
       this.caseDetails = data.designer_case_list[this.$route.query.caseId].case_detail;
       document.title = data.designer_case_list[this.$route.query.caseId].title;
 
