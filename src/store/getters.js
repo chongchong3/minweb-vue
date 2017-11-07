@@ -1,8 +1,9 @@
 const getters = {
-    deserList: state => state.desiner.deserList,
-    nav:state=>state.nav.nav,
-    desinerList:state=>state.desinerCase.caseList
+    deserList: state => state.desinerList.dataList,
+    nav:state=>state.leftBar.nav,
+    caseList:state=>state.desinerCase.dataList
 
   };
+  
   export default getters
   

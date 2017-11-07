@@ -2,7 +2,7 @@
  <div class="demoContainer" >
     <left-nav></left-nav>
     <head-nav></head-nav>
-    <p>{{$store.state}}test</p>
+    <p>state结构：{{$store.state}}</p>
  </div>
 </template>
 

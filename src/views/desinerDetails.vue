@@ -64,7 +64,7 @@ body {
 </style>
 
 <script>
-import "../../static/swiper.min.css";
+
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 

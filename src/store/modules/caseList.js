@@ -1,12 +1,12 @@
 import { getCaseMes } from '@/api/caseList';
-const desinerCase = {
+const caseList = {
   state: {
-    caseData: {},
+    dataList: {},
   },
 
   mutations: {
     SELECT_CASE: (state, data) => {
-      state.caseData = data;
+      state.dataList = data;
     },
 
   },
@@ -30,4 +30,4 @@ const desinerCase = {
   }
 };
 
-export default desinerCase;
+export default caseList;

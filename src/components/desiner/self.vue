@@ -50,7 +50,7 @@
 
     width: .6rem;
     margin: 0 0 0 .3rem;
-    background: url('../../static/images/video.png');
+    /* background: url('../../static/images/video.png'); */
     background-size: 100% 100%;
     height: .6rem;
 }
@@ -113,7 +113,7 @@
     text-align: left;
     z-index: 99;
     background: transparent;
-    background: url('../../static/images/videoBg.png');
+    /* background: url('../../static/images/videoBg.png'); */
     background-size: 100% 100%;
 }
 .hasTips .score img {

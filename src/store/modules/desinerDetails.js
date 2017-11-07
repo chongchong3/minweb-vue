@@ -1,12 +1,12 @@
 import { getDesinerMes } from '@/api/desinerDetails';
-const desiner = {
+const desinerDetails = {
   state: {
-    deserData: {},
+    dataList: {},
   },
 
   mutations: {
     SELECT_DESINER_DETAILS: (state, data) => {
-      state.deserData = data;
+      state.dataList = data;
     },
 
   },
@@ -30,4 +30,4 @@ const desiner = {
   }
 };
 
-export default desiner;
+export default desinerDetails;
