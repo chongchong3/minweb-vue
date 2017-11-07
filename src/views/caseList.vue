@@ -5,7 +5,7 @@
     <ul class="caseList">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
         <div class="leftPic">
-          <img src="http://placehold.it/160x120" class="headPic">
+          <img src="http://placehold.it/157x108" class="headPic">
         </div>
         <div class="detail">
           <p class="title">{{single.title}}</p>
@@ -35,18 +35,18 @@ export default {
     return{
       page_no:1,
       page_size:4,
-      moreData:false,
+      moreData:true,
       dataJson:null,
       touchmove:false
     }
   },
   created() {
+    //标题超出处理
     var _self = this;
      this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "caseList" //设置左菜单栏高亮
     });
-    _self.moreData = true;
     this.$store.dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
@@ -59,36 +59,48 @@ export default {
     console.log(document.body.scrollHeight);
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
-        if(startPageY>=document.body.scrollHeight-100){
+        if(startPageY>=document.body.scrollHeight-100 && _self.moreData){
           _self.page_no++;
           _self.page_size=_self.page_no*4;
            _self.getMoreData();
        
       }
-      console.log(startPageY)
     });
     document.body.addEventListener('touchmove',function(e){
-      _self.touchmove=true;
+      // _self.touchmove=true;
     });
     document.body.addEventListener("touchend", function(e) {
         // var endPageY = e.targetTouches[0].pageY;
     });
+    
   },
-  mounted(){
+  updated(){
+    var titleArr = document.querySelectorAll('.title');
+    titleArr.forEach(function(e,index) {
+      if(e.innerHTML.length>11){
+        console.log(e.innerHTML)
+        var ss = e.innerHTML.substring(0,11) + '...';
+        console.log(ss)
+      }
+      
+    }, this);
   },
   methods:{  
     getMoreData(){
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:4})
+        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:20})
         .then((json) => {
           _self.moreData=false;
           var data = json.data.data.list;
+          console.log(data)
+          if(data.length==0){
+            _self.moreData ==false;
+          }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
-          console.log(_self.dataJson)
           setTimeout(()=>{
              _self.moreData = true;
           },1000);
@@ -114,21 +126,24 @@ ul, li, p{
   width: 96%;
 } 
 .singleCase{
+   display: flex;                /*设置为flex布局*/
+  justify-content: space-around;
   overflow:hidden;
   border-bottom: 1px solid #ccc;
 }
 .leftPic{
   margin:.1rem 0;
-  float: left;
+  width: 1.57rem;
+  height: 1.08rem;
 }
 .detail{
   position: relative;
   margin-top:.1rem;
   margin-left:.1rem;
-  float: left;
+  width: 100%;
 }
 .detail .title{
-  /* font-size: 16px; */
+  font-size: 14px;
   margin-bottom: .1rem;
   overflow: hidden;
   text-overflow:ellipsis;
@@ -139,7 +154,7 @@ ul, li, p{
 }
 .desiner{
   position: relative;
-  top: .4rem;
+  top: .3rem;
 }
 .headImg{
   float: left;

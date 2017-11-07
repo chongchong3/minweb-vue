@@ -1,104 +1,27 @@
 <template>
-  <section class="finan">
-    <!-- 上拉加载更多 -->
-    <loa-more
-    :bottom-method="loadBottom"
-    :bottom-all-loaded="allLoaded"
-    :bottomPullText='bottomText'
-    :auto-fill="false"
-    @bottom-status-change="handleBottomChange"
-    ref="loadmore">
-        <div>
-         <ul class="caseList">
-          <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-            <div class="leftPic">
-              <img src="http://placehold.it/160x120" class="headPic">
-            </div>
-            <div class="detail">
-              <p class="title">{{single.title}}</p>
-              <p class="houseType">{{single.house_type}}</p>
-              <div class="desiner">
-                <img class="headImg" :src="single.head_image_url" alt="">
-                <div class="nameLev">
-                  <p class="desinerName">{{single.designer_name}}</p>
-                  <p class="desinerRank">{{single.designer_level}}</p>
-                </div>   
-              </div>
-            </div>
-          </li>
-        </ul>
+  <div >
+    <ul class="caseList">
+      <li class="singleCase">
+        <div class="leftPic">
+          <img src="http://placehold.it/157x108" class="headPic">
         </div>
-        <div v-show="loading" slot="bottom" class="loading"> 这个div是为让上拉加载的时候显示一张加载的gif图
-          
+        <div class="detail">
+          <p class="title">超级无敌</p>
+          <p class="houseType">大户型</p>
+          <div class="desiner">
+            <img class="headImg" src="http://placehold.it/40x40" alt="">
+            <div class="nameLev">
+              <p class="desinerName">
+                李发全
+              </p>
+              <p class="desinerRank">设计师</p>
+            </div>   
+          </div>
         </div>
-    </loa-more>
-  </section>
+      </li>
+    </ul>
+  </div>
 </template>
-<script>
-import LoaMore from '@/components/case/list'
-export default {
-  components:{
-		LoaMore
- 	},
-    name: 'FinancialGroup',
-    props:{
-
-    },
-    data () {
-        return {
-            //  上拉加载数据
-            scrollHeight: 0,
-            scrollTop: 0,
-            containerHeight: 0,
-            loading: false,
-            allLoaded: false,
-            bottomText: '上拉加载更多...',
-            bottomStatus: '',
-            pageNo: 1,
-            totalCount: '',
-            dataJson:null
-
-        }
-    },
-    methods: {
-    /* 下拉加载 */
-    _scroll: function(ev) {
-        ev = ev || event;
-        this.scrollHeight = this.$refs.innerScroll.scrollHeight;
-        this.scrollTop = this.$refs.innerScroll.scrollTop;
-        this.containerHeight = this.$refs.innerScroll.offsetHeight;
-    },
-    loadBottom: function() {
-        this.loading = true;
-        this.pageNo += 1;   // 每次更迭加载的页数
-        if (this.pageNo == this.totalGetCount) {
-            // 当allLoaded = true时上拉加载停止
-            this.loading = false;
-            this.allLoaded = true;
-        }
-        this.$store
-        .dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
-        .then(json => {
-           setTimeout(() => {
-          // 要使用的后台返回的数据写在setTimeout里面
-            _self.dataJson=json.data.data;
-            console.log(json.data.data)
-              this.$nextTick(() => {
-                  this.loading = false;
-                  
-              })
-          }, 1000)
-          console.log(json.data.data)
-        })
-        .catch(err => {});
-    },
-    handleBottomChange(status) {
-        this.bottomStatus = status;
-    },
-}
-}
-
-</script>
 <style scoped>
 ul, li, p{
   margin: 0;
@@ -110,21 +33,23 @@ ul, li, p{
   width: 96%;
 } 
 .singleCase{
+   display: flex;                /*设置为flex布局*/
+  justify-content: space-around;
   overflow:hidden;
   border-bottom: 1px solid #ccc;
 }
 .leftPic{
   margin:.1rem 0;
-  float: left;
+  width: 1.57rem;
+  height: 1.08rem;
 }
 .detail{
-  position: relative;
   margin-top:.1rem;
   margin-left:.1rem;
-  float: left;
+  width: 100%;
 }
 .detail .title{
-  /* font-size: 16px; */
+  font-size: 14px;
   margin-bottom: .1rem;
   overflow: hidden;
   text-overflow:ellipsis;
@@ -135,7 +60,7 @@ ul, li, p{
 }
 .desiner{
   position: relative;
-  top: .4rem;
+  top: .3rem;
 }
 .headImg{
   float: left;
@@ -155,7 +80,4 @@ ul, li, p{
   line-height: .2rem;
 }
 </style>
-
-
-
 
