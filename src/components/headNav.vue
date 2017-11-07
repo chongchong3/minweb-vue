@@ -30,7 +30,7 @@ export default {
       document.body.addEventListener("touchend", function(e) {
         var topNav = document.getElementById("topNav");
         endY = e.changedTouches[0].clientY;
-
+        console.log(endY - startY );
         if (endY - startY < -50) {
           topNav.style.display = "none";
           return;
@@ -40,19 +40,23 @@ export default {
         }
       });
       window.addEventListener("scroll", function(e) {
+       
         var topNav = document.getElementById("topNav");
         var afterScrollTop = document.body.scrollTop;
         var delta = afterScrollTop - beforeScrollTop;
+       
 
-        if (delta === 0) return false;
+  
 
         if (delta > 10) {
+          debugger
           //down
           topNav.style.display = "none";
           beforeScrollTop = afterScrollTop;
           return;
         }
         if (delta < -10) {
+            debugger
           topNav.style.display = "block";
           beforeScrollTop = afterScrollTop;
         }
@@ -73,9 +77,10 @@ export default {
   background: #f5f5f5;
   overflow: hidden;
   line-height: 0.52rem;
-  position: relative;
+  position: fixed;
   width: 100%;
   top: 0;
+  z-index:2;
 }
 .topNav .cont {
   margin: 0 0.16rem;
