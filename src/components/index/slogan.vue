@@ -6,9 +6,10 @@
 			全球设计严选<br>
 			(SLOGAN)
 		</div>
-		<a class="more">
+		<router-link to="/aboutUs/" tag="span" class="more">
 			了解更多
-		</a>
+		</router-link>
+		
 	</div>
 </template>
 <script>
@@ -16,7 +17,7 @@
 		
 	}
 </script>
-<style>
+<style scoped="scoped">
 	.slogan-c:after{
 		content:" ";
 		display:block;
@@ -40,7 +41,7 @@
 		margin-bottom: 0.09rem;
 		font-weight:bold ;
 	}
-	.slogan-c .more{
+	 .more{
 		display: block;
 		text-align: center;
 	}

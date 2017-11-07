@@ -15,6 +15,8 @@
   </swiper>-->
 
   <div>
+  		<left-nav></left-nav>
+    	<head-nav></head-nav>
   		<banner-content></banner-content>
       <slogan></slogan>
       <case-banner></case-banner>
@@ -32,6 +34,8 @@
 </style>
 
 <script>
+	import leftNav from "../components/leftNav"; //引用左侧菜单栏
+	import headNav from "../components/headNav"; //引用顶部菜单栏
 	import slogan from "../components/index/slogan"
 	import bannerContent from "../components/index/banner"
 	import caseBanner from "../components/index/caseBanner"
@@ -41,7 +45,9 @@ export default {
   	slogan,
   	bannerContent,
   	caseBanner,
-  	desinerBanner
+  	desinerBanner,
+  	leftNav,
+  	headNav
  },
   data(){
     return {

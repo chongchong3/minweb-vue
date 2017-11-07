@@ -1,5 +1,11 @@
 <template>
+	<div>
+		
+	
+	<left-nav></left-nav>
+		<head-nav></head-nav>
 	<div class="aboutus-c">
+		
 		<div class="head-c">
 			<h1 class="aboutus-title">关于设计IN
 				<div class="title-bg"></div>
@@ -88,7 +94,7 @@
 			<img src="../../static/images/qrcode.jpg" />
 		</section>
 	</div>
-	
+	</div>
 </template>
 <style scoped="scoped">
 	.aboutus-c{
@@ -291,7 +297,12 @@
 	}
 </style>
 <script>
+	import leftNav from "../components/leftNav"; //引用左侧菜单栏
+	import headNav from "../components/headNav"; //引用顶部菜单栏
 	export default{
-		
+		components:{
+			leftNav,
+			headNav
+		}
 	}
 </script>

@@ -12,25 +12,24 @@
 				</a>
 			</div>
 			<div class="case-detail-list-c">
-				<swiper :options="caseOption" :not-next-tick="notNextTick" ref="mySwiper">
+				<swiper :options="caseOption" >
 			    <!-- slides -->
-			   
-			    <swiper-slide class="case-item">
-		    		<div class="detail-case">
-							<div class="img-c">
-								<img src="../../../static/images/banner.jpg" />
-							</div>
-							<div class="des-c">
-								<div class="portrait">
-									
+				    <swiper-slide class="case-item" v-for="(onecase,index) in caseList" :key="index">
+			    		<div class="detail-case">
+			    				<div class="img-c"  @click="jumpTo(onecase.case_h5_url)">
+									<img :src="onecase.head_image_url" />
 								</div>
-								<div class="name-theme-c">
-									<p class="theme">四家大院门厅晚宴都是科技时代</p>
-									<p class="name">梁启超</p>
+								<div class="des-c">
+									<div class="portrait">
+										<img  :src="onecase.head_image_url" />
+									</div>
+									<div class="name-theme-c">
+										<p class="theme"  @click="jumpTo(onecase.case_h5_url)">{{onecase.title}}</p>
+										<p class="name">{{onecase.designer_name}}</p>
+									</div>
 								</div>
-							</div>
 						</div>
-			    </swiper-slide>
+				    </swiper-slide>
 			  </swiper>
 			</div>
 		</div>
@@ -42,6 +41,7 @@
     name: 'carrousel',
     data() {
       return {
+      	caseList:[],
         // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
         // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
         notNextTick: true,
@@ -67,10 +67,18 @@
       }
     },
     mounted() {
-      // you can use current swiper instance object to do something(swiper methods)
-      // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-//    console.log('this is current swiper instance object', this.swiper)
-//    this.swiper.slideTo(3, 1000, false)
+      this.$store
+    	    .dispatch("GetCaseMes",{page_size: 6, page_no: 1})
+    		.then(json => {
+    			if(json.body.code == "200"){
+    			this.caseList = json.body.data.list;
+    		}})
+      		.catch(err => {});
+    },
+    methods:{
+    	jumpTo(url){
+    		window.location.href=url;
+    	}
     }
   }
 </script>
@@ -147,6 +155,7 @@
  	float:left;
  }
  .img-c{
+ 	display: block;
  	margin-right:0.09rem;
  	margin-bottom:0.07rem;
  }
@@ -161,13 +170,16 @@
  	content:""; display:block; height:0; visibility:hidden; clear:both; 
  }
  .portrait{
-	width:32px;
+	
+	
+	float:left;
+	margin-right: 4px;
+ }
+ .portrait img{
+ 	width:32px;
 	height:32px;
 	border-radius: 16px;
 	border:none;
-	background: url(../../../static/images/logo.png) center;
-	float:left;
-	margin-right: 4px;
  }
  .name-theme-c{
  	float: left;

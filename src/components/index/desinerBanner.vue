@@ -12,18 +12,17 @@
 				</a>
 			</div>
 			<div class="designer-detail-list-c">
-				<swiper :options="designerOption" :not-next-tick="notNextTick" ref="mySwiper">
+				<swiper :options="designerOption" >
 			    <!-- slides -->
-			   
-			    <swiper-slide class="designer-item">
+			    <swiper-slide class="designer-item" v-for="(designer,index) in designerList" :key="index">
 		    		<div class="detail-designer">
-						<div class="img-c">
-							<img src="../../../static/images/designer.jpg" />
+						<div class="img-c" >
+							<img :src="designer.head_image_url" />
 						</div>
 						<div class="design-des-c">
-							<p class="name">梁启超</p>
+							<p class="name">{{designer.designer_name}}</p>
 							<p class="profession">杭州 | 大院门厅晚宴都而服务费是科技时代</p>
-							<p class="level">大咖设计师</p>
+							<p class="level">{{designer.designer_level}}</p>
 						</div>
 					</div>
 			    </swiper-slide>
@@ -35,22 +34,23 @@
 	</div>
 </template>
 <script>
-// swiper options example:
+  import store from "@/store"
   export default {
     data() {
       return {
+      	designerList:[],
         // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
         // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
         notNextTick: true,
         designerOption: {
         	pagination: 'null',
-        slidesPerView: 'auto',
-        paginationClickable: true,
-          onTransitionStart (swiper) {
-          },
-          onClick(swiper){
+        	slidesPerView: 'auto',
+        	paginationClickable: true,
+          		onTransitionStart (swiper) {
+          	},
+          	onClick(swiper){
           	
-          }
+          	}
           // more Swiper configs and callbacks...
           // ...
         }
@@ -64,10 +64,13 @@
       }
     },
     mounted() {
-      // you can use current swiper instance object to do something(swiper methods)
-      // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-//    console.log('this is current swiper instance object', this.swiper)
-//    this.swiper.slideTo(3, 1000, false)
+    	this.$store
+    	    .dispatch("GetDesinerMes",{page_size: 6, page_no: 1})
+    		.then(json => {
+    			if(json.body.code == "200"){
+    			this.designerList = json.body.data;
+    		}})
+      		.catch(err => {});
     }
   }
 </script>
