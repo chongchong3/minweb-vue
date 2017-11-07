@@ -136,12 +136,10 @@
  	text-align: center;
     font-size: 18px;
     background: #fff;
-    width: 80%;
+  
 
  }
- .detail-case{
- 	float:left;
- }
+
  .img-c{
  	display: block;
  	margin-right:0.09rem;
@@ -156,25 +154,23 @@
  }
  .des-c{
  	width:auto;
- 	margin-bottom:.16rem;
+	 margin-bottom:.16rem;
+	 overflow: hidden;
  }
  .des-c:after{
  	content:""; display:block; height:0; visibility:hidden; clear:both; 
  }
  .portrait{
-	
-	
+	width:.32rem;
 	float:left;
-	margin-right: 4px;
  }
  .portrait img{
- 	width:32px;
-	height:32px;
+ 	width:100%;
 	border-radius: 16px;
 	border:none;
  }
  .name-theme-c{
- 	float: left;
+ 	margin-left:.36rem;
  }
  .name-theme-c p{
  	padding: 0;
@@ -188,7 +184,6 @@
  .name-theme-c p.theme{
  	font-size:.14rem;
  	line-height: .18rem;
- 	width:1.3rem;
  	overflow: hidden;
  	text-overflow: ellipsis;
  	white-space: nowrap;
