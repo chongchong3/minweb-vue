@@ -93,7 +93,8 @@
 .swiper-picList .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 3.4rem;
+    width:88%;
+    margin:.1rem 2%;
     height: 100%;
 }
 
@@ -123,19 +124,9 @@ export default {
     created() {
         vm = this;
         this.swiperOptionCase = {
-            effect: 'coverflow',
             initialSlide: vm.$route.query.caseId,
-            grabCursor: true,
-            centeredSlides: true,
             slidesPerView: 'auto',
-            coverflow: {
-                rotate: 5,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true
-            },
-
+    
             onTouchEnd: swiper => {
 
                 this.$emit('goDetails', swiper);
