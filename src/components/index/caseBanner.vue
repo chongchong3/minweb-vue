@@ -168,6 +168,8 @@
  	width:100%;
 	border-radius: 16px;
 	border:none;
+	display:inline-block ;
+	margin-top:.02rem;
  }
  .name-theme-c{
  	margin-left:.36rem;
