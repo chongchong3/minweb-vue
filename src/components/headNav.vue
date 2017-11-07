@@ -30,7 +30,6 @@ export default {
       document.body.addEventListener("touchend", function(e) {
         var topNav = document.getElementById("topNav");
         endY = e.changedTouches[0].clientY;
-        console.log(endY - startY );
         if (endY - startY < -50) {
           topNav.style.display = "none";
           return;
