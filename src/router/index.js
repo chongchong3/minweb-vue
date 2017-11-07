@@ -23,6 +23,12 @@ export default new Router({
       meta: {title: '首页'}
     },
     {
+      path: '/index',
+      name: 'index',
+      component: Index,
+      meta: {title: '首页'}
+    },
+    {
       path: '/guide',
       name: 'guide',
       component: guide,

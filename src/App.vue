@@ -22,8 +22,10 @@ body {
   font-size:12px;
    height: 100%;
    overflow: scroll;
+   
 }
 .container {
+  padding-top:.52rem;
   height: 100%;
 }
 .more{

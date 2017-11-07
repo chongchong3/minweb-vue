@@ -60,7 +60,13 @@ export default {
 //        }
 //      }
     }
-	}
+  },
+   created() {
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "index" //设置左菜单栏高亮
+    });
+  }
 	
   
 }

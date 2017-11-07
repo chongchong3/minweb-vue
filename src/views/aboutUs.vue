@@ -97,212 +97,218 @@
 	</div>
 </template>
 <style scoped="scoped">
-	.aboutus-c{
-		padding:0 0.2rem;
-		text-align: center;
-	}
-	.head-c{
-		text-align: center;
-	}
-	.aboutus-title{
-		margin:0 auto ;
-		margin-top:.45rem;
-		font-weight: bold;
-		font-size:0.17rem;
-		line-height: .23rem;
-		text-align:center;
-		padding:0;
-		letter-spacing: .02rem;
-		position: relative;
-		width:1rem;
-		/*padding-bottom:0.2rem;*/
-	}
-	.title-bg{
-		width:0.95rem;
-		height:0.06rem;
-		background:#fff999;
-		position:absolute;
-		opacity: .7;
-		top:.09rem;
-		left:0.02rem;
-	}
-	.underline{
-		width:1rem;
-		background-color:#636363;
-		border:none;
-		height:1px;
-		margin:0 auto;
-	}
-	h2{
-		font-size:.14rem;
-		line-height: .19rem;
-		display: inline-block;
-		background-color:#fff100;
-		margin:0 auto;
-		letter-spacing: .01rem;
-		margin-top:.35rem;
-		margin-bottom:.2rem;
-	}
-	.art01{
-		font-size:.12rem;
-		line-height: .2rem;
-		text-align: justify;
-		letter-spacing: 0.01rem;
-		color: #636363;
-	}
-	.aboutus-arrow{
-		margin:0 auto;
-		margin-top:.23rem;
-		margin-bottom:.05rem;
-		text-align: center;
-		font-size:.12rem;
-		position: relative;
-		width: 1rem;
-		color:#636363;
-	}
-	.aboutus-arrow:after{
-		position: absolute;
-		right:-.05rem;
-		top:-.05rem;
-		content: "";
-		background:url(../../static/images/wui-spirite.png) 0px .02rem no-repeat;
-		width:.2rem;
-		height:.2rem;
-		display: block;
-	}
-	img{
-		width:100%;
-	}
-	.service-title{
-		font-size: 0.13rem;
-		line-height: .23rem;
-		margin:.46rem 0 .26rem;
-		text-align: center;
-		
-	}
-	.strict-designer-title{
-		position: relative;
-		text-align: left;
-		text-indent: .3rem;
-		margin:0;
-		font-size:.12rem;
-		letter-spacing: .01rem;
-		margin-bottom: 0.08rem;
-	}
-	.strict-designer-title:before{
-		position: absolute;
-		left:0rem;
-		top:-.05rem;
-		content: "";
-		background:url(../../static/images/wui-spirite.png) 0px -.35rem no-repeat;
-		display: block;
-		background-size: 100%;
-		width:.27rem;
-		height:.2rem;
-	}
-	.art02{
-		font-size:.12rem;
-		line-height: .2rem;
-		text-align: justify;
-		letter-spacing: 0.01rem;
-		margin-bottom:.15rem;
-		color:#636363;
-	}
-	.dotted-line{
-		width:100%;
-		height:2px;
-		border: none;
-		background:url(../../static/images/split-line.png) repeat-x;
-	}
-	.serive-sub-title{
-		text-align: right;
-		font-weight: 500 ;
-		position: relative;
-		margin-top:.38rem;
-		
-	}
-	.serive-sub-title:before{
-		position: absolute;
-		right:1.4rem;
-		top:-.04rem;
-		content: "";
-		background:url(../../static/images/wui-spirite.png) 0px -.15rem no-repeat;
-		background-size: 100%;
-		width:.27rem;
-		height:.2rem;
-		display: block;
-	}
-	.service-section{
-		text-align: right;
-	}
-	p{
-		margin: 0;
-	}
-	p.bg-black{
-		background-color:#000;
-		color:#fff;
-		display: inline-block;
-		font-size:.12rem;
-		line-height: .18rem;
-		margin-bottom:.07rem;
-	}
-	p.bg-none{
-		color:#636363;
-		display: inline-block;
-		font-size:.12rem;
-		line-height: .18rem;
-		margin-bottom:.09rem;
-	}
-	.version-section{
-		text-align: center;
-	}
-	.version-section p{
-		display: block;
-		line-height: .19rem;
-		font-size: .12rem;
-	}
-	.version-section p.text-left{
-		text-align: left;
-		margin-bottom:.23rem;
-	}
-	.contact-section{
-		color:#636363;
-		text-align: center;
-		font-size: .12rem;
-		line-height: .2rem;
-	}
-	.contact-section h2{
-		background:none;
-		font-size:.15rem;
-		margin-bottom:0;
-		margin-top:.3rem;
-	}
-	.contact-section .con-sub-title{
-		margin-bottom:.11rem;
-		margin-top: .29rem;
-	}
-	.contact-section p{
-		margin-bottom: .07rem;
-	}
-	.contact-section p:last-child{
-		margin-bottom:.34rem;
-	}
-	.qrCode-section{
-		
-	}
-	.qrCode-section img{
-		width:100%;
-		margin-bottom:.5rem;
-		/*border:.02rem solid #000;*/
-	}
+.aboutus-c {
+  padding: 0 0.2rem;
+  text-align: center;
+}
+.head-c {
+  text-align: center;
+}
+.aboutus-title {
+  margin: 0 auto;
+  margin-top: 0.45rem;
+  font-weight: bold;
+  font-size: 0.17rem;
+  line-height: 0.23rem;
+  text-align: center;
+  padding: 0;
+  letter-spacing: 0.02rem;
+  position: relative;
+  width: 1rem;
+  /*padding-bottom:0.2rem;*/
+}
+.title-bg {
+  width: 0.95rem;
+  height: 0.06rem;
+  background: #fff999;
+  position: absolute;
+  opacity: 0.7;
+  top: 0.09rem;
+  left: 0.02rem;
+}
+.underline {
+  width: 1rem;
+  background-color: #636363;
+  border: none;
+  height: 1px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 0.14rem;
+  line-height: 0.19rem;
+  display: inline-block;
+  background-color: #fff100;
+  margin: 0 auto;
+  letter-spacing: 0.01rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+.art01 {
+  font-size: 0.12rem;
+  line-height: 0.2rem;
+  text-align: justify;
+  letter-spacing: 0.01rem;
+  color: #636363;
+}
+.aboutus-arrow {
+  margin: 0 auto;
+  margin-top: 0.23rem;
+  margin-bottom: 0.05rem;
+  text-align: center;
+  font-size: 0.12rem;
+  position: relative;
+  width: 1rem;
+  color: #636363;
+}
+.aboutus-arrow:after {
+  position: absolute;
+  right: -0.05rem;
+  top: -0.05rem;
+  content: "";
+  background: url(../../static/images/wui-spirite.png) 0px 0.02rem no-repeat;
+  width: 0.2rem;
+  height: 0.2rem;
+  display: block;
+}
+img {
+  width: 100%;
+}
+.service-title {
+  font-size: 0.13rem;
+  line-height: 0.23rem;
+  margin: 0.46rem 0 0.26rem;
+  text-align: center;
+}
+.strict-designer-title {
+  position: relative;
+  text-align: left;
+  text-indent: 0.3rem;
+  margin: 0;
+  font-size: 0.12rem;
+  letter-spacing: 0.01rem;
+  margin-bottom: 0.08rem;
+}
+.strict-designer-title:before {
+  position: absolute;
+  left: 0rem;
+  top: -0.05rem;
+  content: "";
+  background: url(../../static/images/wui-spirite.png) 0px -0.35rem no-repeat;
+  display: block;
+  background-size: 100%;
+  width: 0.27rem;
+  height: 0.2rem;
+}
+.art02 {
+  font-size: 0.12rem;
+  line-height: 0.2rem;
+  text-align: justify;
+  letter-spacing: 0.01rem;
+  margin-bottom: 0.15rem;
+  color: #636363;
+}
+.dotted-line {
+  width: 100%;
+  height: 2px;
+  border: none;
+  background: url(../../static/images/split-line.png) repeat-x;
+}
+.serive-sub-title {
+  text-align: right;
+  font-weight: 500;
+  position: relative;
+  margin-top: 0.38rem;
+}
+.serive-sub-title:before {
+  position: absolute;
+  right: 1.4rem;
+  top: -0.04rem;
+  content: "";
+  background: url(../../static/images/wui-spirite.png) 0px -0.15rem no-repeat;
+  background-size: 100%;
+  width: 0.27rem;
+  height: 0.2rem;
+  display: block;
+}
+.service-section {
+  text-align: right;
+}
+p {
+  margin: 0;
+}
+p.bg-black {
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  font-size: 0.12rem;
+  line-height: 0.18rem;
+  margin-bottom: 0.07rem;
+}
+p.bg-none {
+  color: #636363;
+  display: inline-block;
+  font-size: 0.12rem;
+  line-height: 0.18rem;
+  margin-bottom: 0.09rem;
+}
+.version-section {
+  text-align: center;
+}
+.version-section p {
+  display: block;
+  line-height: 0.19rem;
+  font-size: 0.12rem;
+}
+.version-section p.text-left {
+  text-align: left;
+  margin-bottom: 0.23rem;
+}
+.contact-section {
+  color: #636363;
+  text-align: center;
+  font-size: 0.12rem;
+  line-height: 0.2rem;
+}
+.contact-section h2 {
+  background: none;
+  font-size: 0.15rem;
+  margin-bottom: 0;
+  margin-top: 0.3rem;
+}
+.contact-section .con-sub-title {
+  margin-bottom: 0.11rem;
+  margin-top: 0.29rem;
+}
+.contact-section p {
+  margin-bottom: 0.07rem;
+}
+.contact-section p:last-child {
+  margin-bottom: 0.34rem;
+}
+.qrCode-section {
+}
+.qrCode-section img {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  /*border:.02rem solid #000;*/
+}
 </style>
 <script>
-	import leftNav from "../components/leftNav"; //引用左侧菜单栏
-	import headNav from "../components/headNav"; //引用顶部菜单栏
-	export default{
-		components:{
-			leftNav,
-			headNav
-		}
-	}
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import headNav from "../components/headNav"; //引用顶部菜单栏
+export default {
+  components: {
+    leftNav,
+    headNav
+  },
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "aboutUs" //设置左菜单栏高亮
+    });
+  }
+};
 </script>

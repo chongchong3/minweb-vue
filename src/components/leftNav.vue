@@ -3,11 +3,11 @@
       <div class="shadow" @click="hideLeftBar"></div>
       <div class="nav">
           <ul>
-              <li v-for="item in menu" v-bind:class="{ 'active': $store.state.nav.nav.current==item.link }">
-                  <router-link  :to="'/'+item.link">
+              <li v-for="item in menu" v-bind:class="{ 'active': $store.state.nav.nav.current==item.link }" @click="goLink(item.link)">
+                  <!-- <router-link  :to="'/'+item.link"> -->
                       <i><img :src="'static/images/'+item.icon+'.png'"></i>
                       <span>{{item.name}}</span>
-                  </router-link>
+                  <!-- </router-link> -->
               </li>
           </ul>
           
@@ -116,6 +116,12 @@ export default {
         isShow: false,
         current: this.$store.getters.nav.current
       });
+    },
+    goLink(link){
+       this.$router.push({
+        path:'/'+link
+      });
+      this.hideLeftBar();
     }
   }
 };
