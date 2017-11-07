@@ -47,6 +47,7 @@
     background: #fff;
     border-radius: .06rem;
     color: #000;
+    text-align: center;
 }
 
 .swiper-picList .explain .degree {

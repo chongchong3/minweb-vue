@@ -110,7 +110,7 @@ export default {
             vm.$refs.childMethod.videoHide();
           }
           if (swiper.activeIndex == 3) {
-            window.location.href ="./#/descript/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
+            window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
           }
         },
         onTouchEnd(swiper) {}
