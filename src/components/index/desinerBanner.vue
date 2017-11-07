@@ -132,19 +132,7 @@
     font-size: 18px;
     background: #fff;
     width: 80%;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+
     margin-right:0.09rem;
  }
  .detail-designer{
@@ -157,6 +145,7 @@
  }
  .img-c img{
  	width:100%;
+	 display: block;
  }
  .design-des-c p{
  	text-align: left;
@@ -179,7 +168,6 @@
 	font-size:.11rem;
 	line-height: 0.14rem;
 	color:#999;
-	width:1.7rem;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

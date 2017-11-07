@@ -137,19 +137,7 @@
     font-size: 18px;
     background: #fff;
     width: 80%;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+
  }
  .detail-case{
  	float:left;
@@ -161,6 +149,10 @@
  }
  .img-c img{
  	width:100%;
+	 display: block;
+ }
+ .swiper-slide{
+	 flex-shrink: unset;
  }
  .des-c{
  	width:auto;
