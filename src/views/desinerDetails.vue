@@ -5,7 +5,6 @@
                 <zoom :zoomMes="zoomData"></zoom>
             </swiper-slide>
             <swiper-slide>
-
                 <self :selfMes="selfData" ref="childMethod"></self>
             </swiper-slide>
             <swiper-slide v-if="zoomData.designer_level">
@@ -18,7 +17,7 @@
         </swiper>
     </div>
 </template>
-<style >
+<style  >
 html {
   font-size: 100px;
   position: relative;
@@ -40,7 +39,10 @@ video,
 .vjs-tech {
   width: 100%;
 }
-
+.container {
+    padding-top:0;
+    height: 100%;
+}
 html,
 body {
   position: relative;
@@ -48,7 +50,18 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+.page-swiper {
+  width:100%;
+    height:100%;
+}
+.page-swiper .swiper-container {
+    width:100%;
+  height: 100%;
 
+}
+img,video{
+  max-width:100%;
+}
 .hasTips {
   position: relative;
 }
@@ -72,7 +85,7 @@ import caseList from "../components/desiner/caseList";
 var vm = {},
   _initia = 0;
 export default {
-  components: { zoom, self, caseList, arrow },
+  components: { zoom, self, caseList },
   data() {
     return {
       caseId: 0,
@@ -83,7 +96,6 @@ export default {
       caseData: [],
       caseDetails: "",
       swiperOptionPae: {
-        scrollbar: ".swiper-scrollbar",
         scrollbarHide: false,
         direction: "vertical",
         initialSlide: _initia,
@@ -98,7 +110,7 @@ export default {
             vm.$refs.childMethod.videoHide();
           }
           if (swiper.activeIndex == 3) {
-            window.location.href ="./#/descript/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
+            window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
           }
         },
         onTouchEnd(swiper) {}
@@ -123,13 +135,17 @@ export default {
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
     },
     getData() {
-      var _designer_uid = this.$route.params.desiner_id;
-      this.$store.dispatch("GetDesinerMes", _designer_uid)
-        .then(() => {
-          var data = this.$store.getters.desinerMes;
-          localStorage.setItem("desinerMes",JSON.stringify(data));
 
-          this.setData(data);
+      
+      var _designer_uid = this.$route.params.desiner_id;
+      this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
+        .then((response) => {
+            debugger
+            console.log(response);
+   
+          localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data));
+
+          this.setData(response.data);
         })
         .catch(error => {
           console.log(error);

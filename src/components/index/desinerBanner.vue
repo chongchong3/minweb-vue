@@ -1,5 +1,5 @@
 <template>
-	<div class="designer-horize-list-c">
+	<div id="designHorizeList" class="designer-horize-list-c" ref="designHorizeList">
 		<div class="designer-c">
 			<div class="list-title-c">
 				<div class="vertical-bar">
@@ -11,17 +11,17 @@
 					了解更多
 				</router-link>
 			</div>
-			<div class="designer-detail-list-c">
+			<div  class="designer-detail-list-c">
 				<swiper :options="designerOption" >
 			    <!-- slides -->
 			    <swiper-slide class="designer-item" v-for="(designer,index) in designerList" :key="index">
-		    		<div class="detail-designer">
+		    		<div :id="'test'+index"  class="detail-designer">
 						<div class="img-c" >
 							<img :src="designer.head_image_url" />
 						</div>
 						<div class="design-des-c">
 							<p class="name">{{designer.designer_name}}</p>
-							<p class="profession">{{designer.city}} | {{designer.plantform_descript}}</p>
+							<p class="profession" >{{designer.city}} | {{designer.plantform_descript}}</p>
 							<p class="level">{{designer.designer_level}}</p>
 						</div>
 					</div>
@@ -71,12 +71,20 @@
     			this.designerList = json.body.data;
     		}})
       		.catch(err => {});
+//		console.log(document.querySelector("profession"))
+//		console.log($(".profession"))
+//		$(".profession").width($(".detail-designer").width());
     }
+   
+		
+    
+    
   }
 </script>
 <style scoped="scoped">
 .designer-horize-list-c{
 	background:#fff;
+	
 	
 }
  .designer-detail-list-c .designer-item{
@@ -123,29 +131,20 @@
     font-size: 18px;
     background: #fff;
     width: 80%;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+
+    margin-right:0.09rem;
  }
  .detail-designer{
+ 	width:100%;
  	float:left;
  }
  .img-c{
- 	margin-right:0.09rem;
+ 	
  	margin-bottom:0.07rem;
  }
  .img-c img{
  	width:100%;
+	 display: block;
  }
  .design-des-c p{
  	text-align: left;
@@ -168,7 +167,6 @@
 	font-size:.11rem;
 	line-height: 0.14rem;
 	color:#999;
-	width:1.8rem;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

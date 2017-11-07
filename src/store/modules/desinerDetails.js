@@ -1,4 +1,4 @@
-import { getDesinerMes } from '@/api/desinerDetails';
+import { getDesinerDetails } from '@/api/desinerDetails';
 const desinerDetails = {
   state: {
     dataList: {},
@@ -17,8 +17,7 @@ const desinerDetails = {
       return new Promise((resolve, reject) => {
       getDesinerDetails(params)
       .then(response=>{
-        
-        commit("SELECT_DESINER_DETAILS",response.data.data.result);
+        commit("SELECT_DESINER_DETAILS",response.data);
         resolve(response);
       })
       .catch(error => {

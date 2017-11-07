@@ -8,6 +8,7 @@ const guide = () => import(/* webpackChunkName: "mint-guide" */ '@/views/guide')
 const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerList')
 const desinerDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerDetails')
 const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
+const desinerCaseDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerCaseDetails')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
@@ -48,10 +49,16 @@ export default new Router({
       meta: {title: '设计师列表'}
     },
     {
-      path: '/desinerDetails',
+      path: '/desinerDetails/:desiner_id',
       name: 'desinerDetails',
       component: desinerDetails,
       meta: {title: '设计师详情'}
+    },
+    {
+      path: '/desinerCaseDetails/:desiner_id',
+      name: 'desinerCaseDetails',
+      component: desinerCaseDetails,
+      meta: {title: '设计师案例详情'}
     },
     {
       path: '/caseList',
