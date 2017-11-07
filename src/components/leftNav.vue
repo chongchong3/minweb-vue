@@ -111,10 +111,10 @@ export default {
   },
   methods: {
     hideLeftBar() {
-      // this.$store.commit("setNav", {
-      //   isShow: false,
-      //   current: this.$store.getters.nav.current
-      // });
+      this.$store.commit("setNav", {
+        isShow: false,
+        current: this.$store.getters.nav.current
+      });
     },
     goLink(link) {
       this.$router.push({
