@@ -23,7 +23,7 @@
 				<img :src="single.head_image_url" class="headImg">
 				<div class="rightText">
 					<p><span class="desinerName">{{single.designer_name}}</span>&nbsp;<span class="desinerRank">{{single.designer_level}}</span></p>
-					<p><span>杭州</span>&nbsp;|&nbsp;<span>{{single.descript}}</span></p>
+					<p><span>杭州</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
 					<p><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
 				</div>
 			</div>
@@ -103,7 +103,7 @@ p{
 	font-weight: bold;
 }
 .desinerRank{
-	color: #f0f;
+	color: #93D36A;
 }
 .imgList{
 }

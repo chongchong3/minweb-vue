@@ -28,16 +28,18 @@ export default {
 }
 .button{
 	position: absolute;
-    bottom: 1rem;
+    bottom: .6rem;
     left:50%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 　　-ms-transform: translate(-50%, -50%);
 　　-o-transform: translate(-50%, -50%);
 　　transform: translate(-50%, -50%);
-	height: .2rem;
-	width: 2rem;
-	line-height: .2rem;
+	height: .4rem;
+	width: 1rem;
+    background: #93D36A;
+    color: #fff;
+	line-height: .4rem;
 	text-align: center;
 }
 
