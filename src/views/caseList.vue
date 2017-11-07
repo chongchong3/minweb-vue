@@ -68,7 +68,7 @@ export default {
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:this.page_no,page_size:4})
+        .dispatch("GetCaseMes", {page_no:1,page_size:_self.page_size})
         .then((json) => {
           console.log(json.data.data.list);
           // var JSON=json.data.data.list;
