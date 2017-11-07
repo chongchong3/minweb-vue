@@ -1,4 +1,4 @@
-import { getCaseMes } from '@/api/caseData';
+import { getCaseMes } from '@/api/caseList';
 const desinerCase = {
   state: {
     caseData: {},

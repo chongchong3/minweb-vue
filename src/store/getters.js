@@ -1,7 +1,7 @@
 const getters = {
-    deserData: state => state.desiner.deserData,
+    deserList: state => state.desiner.deserList,
     nav:state=>state.nav.nav,
-    desinerCase:state=>state.desinerCase.caseData
+    desinerList:state=>state.desinerCase.caseList
 
   };
   export default getters

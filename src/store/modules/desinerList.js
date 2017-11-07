@@ -1,4 +1,4 @@
-import { getDesinerMes } from '@/api/desinerData';
+import { getDesinerMes } from '@/api/desinerList';
 const desiner = {
   state: {
     deserData: {},
