@@ -3,7 +3,7 @@
       <div class="cont">
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
           <span class="btnChat btn">
-                <router-link  to="/chat">
+                <router-link  to="/chat" >
                     <img src="static/images/call.png" >
                 </router-link>
             </span>
@@ -67,6 +67,13 @@ export default {
         isShow: true,
         current: this.$store.getters.nav.current
       });
+    },
+    hideMenu(){
+       this.$store.commit("setNav", {
+        isShow: false,
+        current: this.$store.getters.nav.current
+      });
+      return false
     }
   }
 };
