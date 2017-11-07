@@ -71,7 +71,7 @@
     }
   }
 </script>
-<style>
+<style scoped="scoped">
 	.banner-c {
 		width: 100%;
 		background:#fff;

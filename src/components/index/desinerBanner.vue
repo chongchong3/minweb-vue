@@ -7,9 +7,9 @@
 				<span class="list-title">
 					找设计师
 				</span>
-				<a class="more">
-					查看更多
-				</a>
+				<router-link to="/desiner/" tag="span" class="more">
+					了解更多
+				</router-link>
 			</div>
 			<div class="designer-detail-list-c">
 				<swiper :options="designerOption" >
@@ -21,7 +21,7 @@
 						</div>
 						<div class="design-des-c">
 							<p class="name">{{designer.designer_name}}</p>
-							<p class="profession">杭州 | 大院门厅晚宴都而服务费是科技时代</p>
+							<p class="profession">{{designer.city}} | {{designer.plantform_descript}}</p>
 							<p class="level">{{designer.designer_level}}</p>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
     }
   }
 </script>
-<style>
+<style scoped="scoped">
 .designer-horize-list-c{
 	background:#fff;
 	
