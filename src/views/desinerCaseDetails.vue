@@ -1,10 +1,18 @@
 <template>
-    <div v-html="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
+<div>
+<div v-html="caseDetails" class="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
     </div>
+    <appointment></appointment> 
+</div>
+    
 </template>
 <script>
 var vm = {};
+
+import appointment from "../components/appointment";
+
 export default {
+    components: { appointment },
   data() {
     return {
       startY: 0,
@@ -40,6 +48,12 @@ export default {
   }
 };
 </script>
+<style>
+.caseDetails img {
+  max-width: 100%;
+}
+</style>
+
 
 
 

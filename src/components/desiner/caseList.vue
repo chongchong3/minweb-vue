@@ -63,6 +63,9 @@
 .swiper-picList .explain .tit {
     margin-top: .15rem;
     font-size: .18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .swiper-picList .explain .houseName {
