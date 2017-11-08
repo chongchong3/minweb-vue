@@ -40,7 +40,7 @@ export default {
   data(){
     return{
       page_no:1,
-      page_size:4,
+      page_size:6,
       moreData:true,
       dataJson:null,
       touchmove:false
@@ -56,7 +56,6 @@ export default {
     this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
-        console.log(_self.dataJson)
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
      
       })
@@ -68,7 +67,6 @@ export default {
         startPageY = e.targetTouches[0].pageY;
         if(startPageY>=document.body.scrollHeight-100 && _self.moreData){
           _self.page_no++;
-          _self.page_size=_self.page_no*4;
            _self.getMoreData();
        
       }
@@ -89,12 +87,16 @@ export default {
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:4})
+        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:_self.page_size})
         .then((json) => {
           var data = json.data.data.list;
+          if(data.length<_self.page_size){
+            _self.moreData=false;
+          }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
+          // console.log(_self.dataJson)
    
         })
         .catch(err => {

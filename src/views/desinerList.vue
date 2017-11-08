@@ -45,8 +45,9 @@ export default {
   data() {
     return {
       page_no: 1,
-      moreData: false,
+      moreData: true,
       dataJson: null,
+      page_size:6
 
     };
   },
@@ -56,7 +57,7 @@ export default {
       current: "desinerList" //设置左菜单栏高亮
     });
     var _self = this;
-    this.$store.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
+    this.$store.dispatch("GetDesinerMes", { page_size: _self.page_size, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data;
         console.log(_self.dataJson);
@@ -66,9 +67,8 @@ export default {
     var startPageY;
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
-        if(startPageY>=document.body.scrollHeight-100){
+        if(startPageY>=document.body.scrollHeight-100 && _self.moreData){
           _self.page_no++;
-          _self.page_size=_self.page_no*4;
           _self.getMoreData();
         }
     });
@@ -78,14 +78,13 @@ export default {
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetDesinerMes", {page_no:_self.page_no,page_size:4})
+        .dispatch("GetDesinerMes", {page_no:_self.page_no,page_size:_self.page_size})
         .then((json) => {
-          _self.moreData=false;
           var data = json.data.data;
+          if(data.length<_self.page_size){
+            _self.moreData=false;
+          }
           for (var i = 0; i < data.length; i++) {
-            // if(data[i].plantform_descript.length>17){
-            //   data[i].plantform_descript = data[i].plantform_descript.substring(0,17) + '...';
-            // };
             _self.dataJson.push(data[i]);
           }
           console.log(_self.dataJson)
