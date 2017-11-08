@@ -81,12 +81,12 @@ img,video{
 import Vue from 'vue'
 import '@/common/css/swiper.min.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
+import VueVideoPlayer from 'vue-video-player'
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 
 import caseList from "../components/desiner/caseList";
-
+Vue.use(VueVideoPlayer)
 Vue.use(VueAwesomeSwiper)
 
 var vm = {},
@@ -141,28 +141,23 @@ export default {
       this.caseId = swiper.activeIndex;
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
     },
-    getData() {
-
-      
+    getData() { 
       var _designer_uid = this.$route.params.desiner_id;
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
-            
-            console.log(response);
-   
-          localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data));
-
-          this.setData(response.data);
+          localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
+          this.setData(response.data.data);
         })
         .catch(error => {
           console.log(error);
         });
     },
     setData(data) {
+      debugger
       this.caseDetails = data.designer_case_list[0].case_detail;
       this.zoomData = {
         name: data.designer_name,
-        score: data.designer_ability.customer_satisfaction,
+        score: data.designer_level,
         headImg: data.full_body_shot_url,
         price: data.designer_price,
         brief: data.plantform_descript,
@@ -176,7 +171,7 @@ export default {
       };
       this.caseData = {
         list: data.designer_case_list,
-        score: data.designer_ability.customer_satisfaction
+        score:data.designer_level,
       };
       if (_initia == 2) {
         document.title = res.data.designer_name + "的案例";
