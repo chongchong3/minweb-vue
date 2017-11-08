@@ -4,12 +4,12 @@
     <head-nav></head-nav>
     <ul class="caseList">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-        <div class="leftPic">
-          <img src="http://placehold.it/157x108" class="headPic">
+        <div class="leftPic" @click="linkTo(single.case_h5_url)">
+          <img :src="single.widescreen_image" class="headPic">
         </div>
         <div class="detail">
-          <p class="title">{{single.title}}</p>
-          <p class="houseType">{{single.house_type}}</p>
+          <p class="title" @click="linkTo(single.case_h5_url)">{{single.title}}</p>
+          <p class="houseType" @click="linkTo(single.case_h5_url)">{{single.house_type}}</p>
           <div class="desiner">
             <img class="headImg" :src="single.head_image_url" alt="">
             <div class="nameLev">
@@ -47,16 +47,21 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "caseList" //设置左菜单栏高亮
     });
-    this.$store.dispatch("GetCaseMes", { page_size: 4, page_no: 1 })
+    this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
+        _self.dataJson.forEach((e, index)=>{
+        if(e.title.length>11){
+          _self.dataJson[index].title = e.title.substring(0,11) + '...';
+        };
+        
+        })
         console.log(json.data.data.list)
       })
       .catch(err => {
         console.log(err)
       });
     var startPageY;
-    console.log(document.body.scrollHeight);
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
         if(startPageY>=document.body.scrollHeight-100 && _self.moreData){
@@ -75,22 +80,22 @@ export default {
     
   },
   updated(){
-    var titleArr = document.querySelectorAll('.title');
-    titleArr.forEach(function(e,index) {
-      if(e.innerHTML.length>11){
-        console.log(e.innerHTML)
-        var ss = e.innerHTML.substring(0,11) + '...';
-        console.log(ss)
-      }
+  //   var titleArr = document.querySelectorAll('.title');
+  //   titleArr.forEach(function(e,index) {
+  //     if(e.innerHTML.length>11){
+  //       console.log(e.innerHTML)
+  //       var ss = e.innerHTML.substring(0,11) + '...';
+  //       console.log(ss)
+  //     }
       
-    }, this);
+  //   }, this);
   },
   methods:{  
     getMoreData(){
       //接口数据
       var _self=this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:20})
+        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:4})
         .then((json) => {
           _self.moreData=false;
           var data = json.data.data.list;
@@ -99,6 +104,9 @@ export default {
             _self.moreData ==false;
           }
           for (var i = 0; i < data.length; i++) {
+            if(data[i].title.length>11){
+              data[i].title = data[i].title.substring(0,11) + '...';
+            };
             _self.dataJson.push(data[i]);
           }
           setTimeout(()=>{
@@ -111,6 +119,9 @@ export default {
     },
     choice(e, index){
       // console.log(index);
+    },
+    linkTo(url){
+    		window.location.href=url;
     }
   }
 }
@@ -133,6 +144,10 @@ ul, li, p{
 }
 .leftPic{
   margin:.1rem 0;
+  width: 1.57rem;
+  height: 1.08rem;
+}
+.headPic{
   width: 1.57rem;
   height: 1.08rem;
 }

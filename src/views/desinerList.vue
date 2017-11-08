@@ -23,7 +23,7 @@
 				<img :src="single.head_image_url" class="headImg">
 				<div class="rightText">
 					<p><span class="desinerName">{{single.designer_name}}</span>&nbsp;<span class="desinerRank">{{single.designer_level}}</span></p>
-					<p><span>{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.descript}}</span></p>
+					<p><span>{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
 					<p><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
 				</div>
 			</div>
@@ -64,12 +64,16 @@ export default {
     this.$store.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data;
-        console.log(json.data.data);
+        _self.dataJson.forEach((e, index)=>{
+        if(e.plantform_descript.length>17){
+          _self.dataJson[index].plantform_descript = e.plantform_descript.substring(0,11) + '...';
+        }
+        console.log(_self.dataJson);
+      })
       })
       .catch(err => {});
     //加载更多
     var startPageY;
-    console.log(document.body.scrollHeight);
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
         if(startPageY>=document.body.scrollHeight-100){
@@ -77,7 +81,7 @@ export default {
           _self.page_size=_self.page_no*4;
           _self.getMoreData();
         }
-      console.log(startPageY)
+      // console.log(startPageY)
     });
   },
   methods:{  
