@@ -4,25 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import '@/common/css/normalize.css'
-
-import VueVideoPlayer from 'vue-video-player'
 import store from './store'
 import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
-
-
-
-Vue.config.productionTip = false
-
 import shareWx from '@/common/js/shareWx'
-
+Vue.config.productionTip = false
 Vue.prototype.shareWx=shareWx;
-
-Vue.use(VueVideoPlayer)
 Vue.use(vueRsource)
 Vue.use(VueJsonp)
-
-
 
 /* eslint-disable no-new */
 new Vue({
