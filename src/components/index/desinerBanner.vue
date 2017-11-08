@@ -15,16 +15,18 @@
 				<swiper :options="designerOption" >
 			    <!-- slides -->
 			    <swiper-slide class="designer-item" v-for="(designer,index) in designerList" :key="index">
-		    		<div :id="'test'+index"  class="detail-designer">
-						<div class="img-c" >
-							<img :src="designer.head_image_url" />
-						</div>
-						<div class="design-des-c">
-							<p class="name">{{designer.designer_name}}</p>
-							<p class="profession" >{{designer.city}} | {{designer.plantform_descript}}</p>
-							<p class="level">{{designer.designer_level}}</p>
-						</div>
-					</div>
+			    	<router-link :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
+			    		<!--<div  class="detail-designer">-->
+							<div class="img-c" >
+								<img :src="designer.head_image_url" />
+							</div>
+							<div class="design-des-c">
+								<p class="name">{{designer.designer_name}}</p>
+								<p class="profession" >{{designer.city}} | {{designer.plantform_descript}}</p>
+								<p class="level">{{designer.designer_level}}</p>
+							</div>
+						<!--</div>-->
+			    	</router-link>
 			    </swiper-slide>
 			    <!-- Optional controls -->
 			    <!--<div class="swiper-pagination"  slot="pagination"></div>-->

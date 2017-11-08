@@ -78,10 +78,17 @@ img,video{
 
 <script>
 
+import Vue from 'vue'
+import '@/common/css/swiper.min.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 
 import caseList from "../components/desiner/caseList";
+
+Vue.use(VueAwesomeSwiper)
+
 var vm = {},
   _initia = 0;
 export default {

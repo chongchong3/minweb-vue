@@ -4,8 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import '@/common/css/normalize.css'
-import '@/common/css/swiper.min.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 import VueVideoPlayer from 'vue-video-player'
 import store from './store'
 import vueRsource from 'vue-resource'
@@ -19,7 +18,6 @@ import shareWx from '@/common/js/shareWx'
 
 Vue.prototype.shareWx=shareWx;
 
-Vue.use(VueAwesomeSwiper)
 Vue.use(VueVideoPlayer)
 Vue.use(vueRsource)
 Vue.use(VueJsonp)
