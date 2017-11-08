@@ -119,7 +119,7 @@ export default {
         });
     },
     choice(e, index){
-      // console.log(index);
+      console.log(index);
     },
     linkTo(url){
     		window.location.href=url;
