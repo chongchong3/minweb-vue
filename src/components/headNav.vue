@@ -15,8 +15,14 @@ export default {
   data() {
     return {};
   },
+  mounted(){
+    if(document.getElementById("topNav")){
+      this.navControl();
+    }
+     
+  },
   created() {
-    this.navControl();
+   
   },
 
   methods: {
@@ -29,6 +35,9 @@ export default {
       });
       document.body.addEventListener("touchend", function(e) {
         var topNav = document.getElementById("topNav");
+        if(!topNav){
+          return
+        }
         endY = e.changedTouches[0].clientY;
         if (endY - startY < -50) {
           topNav.style.display = "none";
