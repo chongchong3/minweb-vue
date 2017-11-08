@@ -51,10 +51,7 @@ export default {
         var topNav = document.getElementById("topNav");
         var afterScrollTop = document.body.scrollTop;
         var delta = afterScrollTop - beforeScrollTop;
-
         if (delta > 10) {
-          debugger;
-          //down
           topNav.style.display = "none";
           beforeScrollTop = afterScrollTop;
           return;
