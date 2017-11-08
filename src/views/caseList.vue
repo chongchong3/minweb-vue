@@ -2,7 +2,7 @@
   <div >
     <left-nav></left-nav>
     <head-nav></head-nav>
-    <ul class="caseList">
+    <ul class="caseListContainer">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
         <div class="leftPic" @click="linkTo(single.case_h5_url)">
           <img :src="single.widescreen_image" class="headPic">
@@ -51,13 +51,7 @@ export default {
       .then(json => {
         _self.dataJson=json.data.data.list;
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
-        _self.dataJson.forEach((e, index)=>{
-        if(e.title.length>11){
-          _self.dataJson[index].title = e.title.substring(0,11) + '...';
-        };
-        
-        })
-        console.log(json.data.data.list)
+     
       })
       .catch(err => {
         console.log(err)
@@ -81,15 +75,7 @@ export default {
     
   },
   updated(){
-  //   var titleArr = document.querySelectorAll('.title');
-  //   titleArr.forEach(function(e,index) {
-  //     if(e.innerHTML.length>11){
-  //       console.log(e.innerHTML)
-  //       var ss = e.innerHTML.substring(0,11) + '...';
-  //       console.log(ss)
-  //     }
-      
-  //   }, this);
+
   },
   methods:{  
     getMoreData(){
@@ -104,15 +90,7 @@ export default {
           if(data.length==0){
             _self.moreData ==false;
           }
-          for (var i = 0; i < data.length; i++) {
-            if(data[i].title.length>11){
-              data[i].title = data[i].title.substring(0,11) + '...';
-            };
-            _self.dataJson.push(data[i]);
-          }
-          setTimeout(()=>{
-             _self.moreData = true;
-          },1000);
+   
         })
         .catch(err => {
       
@@ -133,32 +111,34 @@ ul, li, p{
   padding: 0;
   list-style-type: none;
 }
-.caseList{
+.caseListContainer{
   margin: 0 auto;
   width: 96%;
 } 
 .singleCase{
-   display: flex;                /*设置为flex布局*/
-  justify-content: space-around;
+
   overflow:hidden;
   border-bottom: 1px solid #ccc;
 }
-.leftPic{
-  margin:.1rem 0;
-  width: 1.57rem;
-  height: 1.08rem;
+.caseListContainer .leftPic{
+  /* margin:.1rem 0; */
+  width: 1.4rem;
+  float:left;
+  /* height: 1.08rem; */
+}
+.caseListContainer li {
+  overflow: hidden;
+  padding:.14rem 0;
 }
 .headPic{
-  width: 1.57rem;
-  height: 1.08rem;
+  width:100%;
+  display: block;
 }
-.detail{
-  position: relative;
-  margin-top:.1rem;
-  margin-left:.1rem;
-  width: 100%;
+.caseListContainer .detail{
+  margin-left:1.5rem;
+
 }
-.detail .title{
+.caseListContainer .detail .title{
   font-size: 14px;
   margin-bottom: .1rem;
   overflow: hidden;
@@ -166,11 +146,11 @@ ul, li, p{
   white-space: nowrap;
 }
 .houseType{
+  color:#9e9e9e;
  
 }
-.desiner{
-  position: relative;
-  top: .3rem;
+.caseListContainer .desiner{
+ margin-top:.25rem;
 }
 .headImg{
   float: left;
