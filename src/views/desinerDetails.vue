@@ -143,6 +143,12 @@ export default {
     },
     getData() { 
       var _designer_uid = this.$route.params.desiner_id;
+      
+      if(this.$store.getters.desinerDetails.designer_uid){
+         this.setData(this.$store.getters.desinerDetails);
+        return
+
+      }
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
@@ -173,7 +179,7 @@ export default {
         score:data.designer_level,
       };
       if (_initia == 2) {
-        document.title = res.data.designer_name + "的案例";
+        document.title = data.designer_name + "的案例";
         return;
       }
       document.title = "设计师详情";

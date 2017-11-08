@@ -6,6 +6,7 @@ import desinerList from './modules/desinerList';
 import chat from './modules/chat';
 import leftBar from './modules/leftBar';
 import desinerDetails from './modules/desinerDetails';
+import caseDetails from './modules/caseDetails';
 import getters from './getters';
 
 Vue.use(Vuex);
@@ -16,7 +17,8 @@ const store = new Vuex.Store({
     desinerList,
     chat,
     leftBar,
-    desinerDetails
+    desinerDetails,
+    caseDetails
 
   },
   getters

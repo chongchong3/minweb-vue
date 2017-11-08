@@ -1,6 +1,7 @@
 <template>
   <div class="appoinmnet">
       <div class="main">
+    
           <div class="fl">
               <div class="head">
                  <img :src="desinerMes.head_image_url" >
