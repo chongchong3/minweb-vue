@@ -17,7 +17,6 @@ const desinerDetails = {
       return new Promise((resolve, reject) => {
       getDesinerDetails(params)
       .then(response=>{
-        debugger
         commit("SELECT_DESINER_DETAILS",response.data.data);
         resolve(response);
       })

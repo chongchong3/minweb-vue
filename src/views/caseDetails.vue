@@ -1,39 +1,45 @@
 <template>
-    <div v-html="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
+  <div>
+      <div v-html="caseDetails" >
     </div>
+      <appointment :desinerMes="desinerCaseMes"></appointment> 
+  </div>
 </template>
 <script>
 var vm = {};
+import appointment from "../components/appointment";
 export default {
+    components: { appointment },
   data() {
     return {
       startY: 0,
       caseDetails: "",
-      caseId: 0
+      caseId: 0,
+      desinerCaseMes:{}
     };
+  },
+  mounted(){
+    this.getData();
   },
   created() {
     vm = this;
-    this.getData();
+    
   },
   methods: {
     getData() {
-      var desinerMes=this.$store.getters.desinerMes;
-      var data =desinerMes.designer_uid?desinerMes:JSON.parse(localStorage.desinerMes);// 
-      this.caseDetails = data.designer_case_list[this.$route.query.caseId].case_detail;
-      document.title = data.designer_case_list[this.$route.query.caseId].title;
-
-    },
-    touchstart(event) {
-      this.startY = event.changedTouches[0].pageY;
-    },
-    touchend(event) {
-      var endY = event.changedTouches[0].pageY;
-      var offsetTop = event.target.offsetTop;
-      if (this.startY - endY < -30 && offsetTop < document.body.clientWidth) {
-        // var url = "./#/" +this.$route.query.from + "/" +this.$route.params.desiner_id + "?caseId=" + this.$route.query.caseId +"&startIndex=1";
-        // window.location.href = url;
+      
+      var deserList=this.$store.getters.deserList;
+      var caseId=this.$route.params.case_id;
+      var data =deserList.designer_uid?deserList:JSON.parse(localStorage.GetCaseList);// 
+      this.caseDetails = data[caseId].case_detail;
+      document.title = data[caseId].title;
+       this.desinerCaseMes={
+        designer_level:data[caseId].designer_level,
+        designer_uid:data[caseId].designer_uid,
+        designer_name:data[caseId].designer_name,
+        head_image_url:data[caseId].head_image_url,
       }
+
     }
   }
 };

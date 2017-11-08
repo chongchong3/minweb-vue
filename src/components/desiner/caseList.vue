@@ -10,10 +10,9 @@
                     <p class="tit">{{item.title}}</p>
                     <p class="houseName">{{item.house_type_name}}</p>
                     <div class="degree">
-                        <label>客户满意度</label>
-                        <div class="score">
-                            <img :src="level">
-                        </div>
+                        <label>设计师级别</label>
+                        <span class="level">{{level}}</span>
+                        
                     </div>
 
                 </div>
@@ -108,6 +107,9 @@
 .swiper-picList .swiper-slide {
     background-position: center;
     background-size: cover;
+}
+.level {
+    color: #5fa333;
 }
 </style>
 <script>

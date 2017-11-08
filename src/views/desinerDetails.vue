@@ -153,7 +153,6 @@ export default {
         });
     },
     setData(data) {
-      debugger
       this.caseDetails = data.designer_case_list[0].case_detail;
       this.zoomData = {
         name: data.designer_name,
