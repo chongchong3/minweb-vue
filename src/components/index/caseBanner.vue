@@ -20,12 +20,18 @@
 									<img :src="onecase.head_image_url" />
 								</div>
 								<div class="des-c">
-									<div class="portrait">
+									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
 										<img  :src="onecase.head_image_url" />
-									</div>
+									</router-link>
+									<!--<div class="portrait">
+										<img  :src="onecase.head_image_url" />
+									</div>-->
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase.case_h5_url)">{{onecase.title}}</p>
-										<p class="name">{{onecase.designer_name}}</p>
+										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
+											{{onecase.designer_name}}
+										</router-link>
+										
 									</div>
 								</div>
 						</div>
