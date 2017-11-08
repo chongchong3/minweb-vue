@@ -141,7 +141,6 @@ ul, li, p{
   margin-top:.1rem;
   margin-left:.1rem;
   width: 100%;
-  overflow: hidden;
 }
 .detail .title{
   font-size: 14px;
