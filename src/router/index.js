@@ -66,7 +66,7 @@ export default new Router({
       meta: {title: '设计IN-设计师严选平台'}
     },
     {
-      path: '/caseDetails',
+      path: '/caseDetails/:case_id',
       name: 'caseDetails',
       component: caseDetails,
       meta: {title: '案例详情'}
