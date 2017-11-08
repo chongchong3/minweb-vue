@@ -5,20 +5,30 @@
 	<ul class="desinerList">
 		<li class="singDesiner" v-for="(single, index) in dataJson" @click="choice($event,index)">
 			<div class="topDesc">
+        <router-link :to="'desinerDetails/'+single.designer_uid">
 				<img :src="single.head_image_url" class="headImg">
+        </router-link>
 				<div class="rightText">
-					<p><span class="desinerName">{{single.designer_name}}</span>&nbsp;<span class="desinerRank">{{single.designer_level}}</span></p>
-					<p><span>{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
-					<p><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
-				</div>
+          <router-link :to="'desinerDetails/'+single.designer_uid">
+					<p class="textUnder">
+            <span class="desinerName">{{single.designer_name}}</span>&nbsp;
+            <span class="desinerRank">{{single.designer_level}}</span></p>
+					</router-link>
+          <router-link :to="'desinerDetails/'+single.designer_uid">
+          <p class="plantform_descript"><span class="city">{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
+					</router-link>
+          <router-link :to="'desinerDetails/'+single.designer_uid">
+          <p class="price"><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
+          </router-link>
+        </div>
 			</div>
 			<div class="imgList">
-        <img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-				<!-- <img :src="single.designer_case_list[0].wide_screen_image" class="caseImg">
-				<img :src="single.designer_case_list[1].wide_screen_image" class="caseImg">
-				<img :src="single.designer_case_list[2].wide_screen_image" class="caseImg"> -->
+        <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)"><img :src="single.designer_case_list[0].cover_image" class="imgH"></div>
+				<div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)"><img :src="single.designer_case_list[0].cover_image" class="imgH"></div>
+        <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)"><img :src="single.designer_case_list[0].cover_image" class="imgH"></div>
+				<!-- <img :src="single.designer_case_list[0].cover_image" class="caseImg">
+				<img :src="single.designer_case_list[1].cover_image" class="caseImg"> -->
+				<!-- <img :src="single.designer_case_list[2].wide_screen_image" class="caseImg"> -->
 			</div>
 		</li>
 	</ul>
@@ -49,12 +59,7 @@ export default {
     this.$store.dispatch("GetDesinerMes", { page_size: 4, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data;
-        _self.dataJson.forEach((e, index)=>{
-        if(e.plantform_descript.length>17){
-          _self.dataJson[index].plantform_descript = e.plantform_descript.substring(0,17) + '...';
-        }
         console.log(_self.dataJson);
-      })
       })
       .catch(err => {});
     //加载更多
@@ -66,7 +71,6 @@ export default {
           _self.page_size=_self.page_no*4;
           _self.getMoreData();
         }
-      // console.log(startPageY)
     });
   },
   methods:{  
@@ -79,9 +83,9 @@ export default {
           _self.moreData=false;
           var data = json.data.data;
           for (var i = 0; i < data.length; i++) {
-            if(data[i].plantform_descript.length>17){
-              data[i].plantform_descript = data[i].plantform_descript.substring(0,17) + '...';
-            };
+            // if(data[i].plantform_descript.length>17){
+            //   data[i].plantform_descript = data[i].plantform_descript.substring(0,17) + '...';
+            // };
             _self.dataJson.push(data[i]);
           }
           console.log(_self.dataJson)
@@ -93,6 +97,9 @@ export default {
     },
     choice(e, index){
       // console.log(index);
+    },
+    linkTo(url){
+    		window.location.href=url;
     }
   }
 }
@@ -113,35 +120,61 @@ p {
   margin: 0 auto;
   width: 96%;
 }
-.singDesiner {
+.desinerList .singDesiner {
   margin-top: 0.1rem;
   padding: 0.1rem 0;
   border-bottom: 1px solid #ccc;
 }
-.topDesc {
+.desinerList .topDesc {
   margin-bottom: 0.1rem;
   overflow: hidden;
 }
-.headImg {
+.desinerList .headImg {
   float: left;
   border-radius: 50%;
   width: 0.6rem;
   height: 0.6rem;
 }
-.rightText {
+.desinerList .rightText {
   margin-left: 0.1rem;
-  float: left;
+  margin-left: .7rem;
+  text-decoration: none;
 }
-.desinerName {
-  font-size: 18px;
-  font-weight: bold;
+.desinerList .textUnder{
+  text-decoration-style: none;
 }
-.desinerRank {
+.desinerList .plantform_descript{
+  color: #9e9e9e;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.desinerList .price{
+   color: #9e9e9e;
+}
+.desinerList .desinerName {
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+  /* font-weight: bold; */
+}
+.desinerList .desinerRank {
   color: #93d36a;
 }
-.imgList {
+.desinerList .imgList {
+  /* height: 1rem; */
   display: flex;                /*设置为flex布局*/
-  justify-content: space-around;
+  /* justify-content: space-around;
+   */
+  justify-content: space-between;
+}
+.desinerList .imgSingle{
+  width: 32%;
+  height: 1rem;
+}
+.imgH{
+  width: 100%;
+  height: 100%;
 }
 </style>
 
