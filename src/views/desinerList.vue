@@ -1,23 +1,8 @@
 <template>
 <div >
-	<!-- <left-nav></left-nav> -->
+	<left-nav></left-nav>
 	<head-nav></head-nav>
 	<ul class="desinerList">
-		<!-- <li class="singDesiner">
-			<div class="topDesc">
-				<img src="http://placehold.it/60x60" class="headImg">
-				<div class="rightText">
-					<p><span class="desinerName">梁启超</span>&nbsp;<span class="desinerRank">大咖设计师</span></p>
-					<p><span>杭州</span>&nbsp;|&nbsp;<span>中央美术教授</span></p>
-					<p><span>300-400</span><span>元/平方</span></p>
-				</div>
-			</div>
-			<div class="imgList">
-				<img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-				<img src="http://placehold.it/100x60" class="">
-			</div>
-		</li> -->
 		<li class="singDesiner" v-for="(single, index) in dataJson" @click="choice($event,index)">
 			<div class="topDesc">
 				<img :src="single.head_image_url" class="headImg">
@@ -66,7 +51,7 @@ export default {
         _self.dataJson = json.data.data;
         _self.dataJson.forEach((e, index)=>{
         if(e.plantform_descript.length>17){
-          _self.dataJson[index].plantform_descript = e.plantform_descript.substring(0,11) + '...';
+          _self.dataJson[index].plantform_descript = e.plantform_descript.substring(0,17) + '...';
         }
         console.log(_self.dataJson);
       })
@@ -94,6 +79,9 @@ export default {
           _self.moreData=false;
           var data = json.data.data;
           for (var i = 0; i < data.length; i++) {
+            if(data[i].plantform_descript.length>17){
+              data[i].plantform_descript = data[i].plantform_descript.substring(0,17) + '...';
+            };
             _self.dataJson.push(data[i]);
           }
           console.log(_self.dataJson)
@@ -152,6 +140,8 @@ p {
   color: #93d36a;
 }
 .imgList {
+  display: flex;                /*设置为flex布局*/
+  justify-content: space-around;
 }
 </style>
 
