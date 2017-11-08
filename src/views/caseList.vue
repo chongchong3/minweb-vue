@@ -11,10 +11,16 @@
           <p class="title" @click="linkTo(single.case_h5_url)">{{single.title}}</p>
           <p class="houseType" @click="linkTo(single.case_h5_url)">{{single.house_type}}</p>
           <div class="desiner">
+            <router-link :to="'desinerDetails/'+single.designer_uid">
             <img class="headImg" :src="single.head_image_url" alt="">
+            </router-link>
             <div class="nameLev">
+              <router-link :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerName">{{single.designer_name}}</p>
+              </router-link>
+              <router-link :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerRank">{{single.designer_level}}</p>
+              </router-link>
             </div>   
           </div>
         </div>
@@ -50,6 +56,7 @@ export default {
     this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
+        console.log(_self.dataJson)
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
      
       })
@@ -162,6 +169,7 @@ ul, li, p{
 }
 .desinerName{
   line-height: .2rem;
+  color: black;
 }
 .desinerRank{
   color: #93D36A;

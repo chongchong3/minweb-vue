@@ -9,15 +9,18 @@
 				<img :src="single.head_image_url" class="headImg">
         </router-link>
 				<div class="rightText">
+          <router-link :to="'desinerDetails/'+single.designer_uid">
 					<p class="textUnder">
-            <!-- <router-link :to="'desinerDetails/'+single.designer_uid"> -->
             <span class="desinerName">{{single.designer_name}}</span>&nbsp;
-            <!-- </router-link> -->
             <span class="desinerRank">{{single.designer_level}}</span></p>
-					
+					</router-link>
+          <router-link :to="'desinerDetails/'+single.designer_uid">
           <p class="plantform_descript"><span class="city">{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
-					<p class="price"><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
-				</div>
+					</router-link>
+          <router-link :to="'desinerDetails/'+single.designer_uid">
+          <p class="price"><span>{{single.designer_price}}-{{single.designer_high_price}}</span>&nbsp;<span>元/平方</span></p>
+          </router-link>
+        </div>
 			</div>
 			<div class="imgList">
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)"><img :src="single.designer_case_list[0].cover_image" class="imgH"></div>
