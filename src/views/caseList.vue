@@ -84,11 +84,9 @@ export default {
       this.$store
         .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:4})
         .then((json) => {
-          _self.moreData=false;
           var data = json.data.data.list;
-          console.log(data)
-          if(data.length==0){
-            _self.moreData ==false;
+          for (var i = 0; i < data.length; i++) {
+            _self.dataJson.push(data[i]);
           }
    
         })
