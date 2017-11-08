@@ -3,11 +3,11 @@
       <div class="main">
           <div class="fl">
               <div class="head">
-                 <img src="http://dkongjian.dkongjian.cn/2017/09/18/1505718706483-9pegz9l8mshbntbrmn8aug14i.png" >
+                 <img :src="desinerMes.head_image_url" >
              </div>
                 <div class="aside">
-                  <p class="name">小丸子</p>
-                  <img src="http://os5lxzkas.bkt.clouddn.com/score_3.png" class="score">
+                  <p class="name">{{desinerMes.designer_name}}</p>
+                    <p class="level">高级设计师</p>
               </div>
           </div>
           <div class="orderDesiner">预约设计师</div>
@@ -15,6 +15,13 @@
       </div>
   </div>
 </template>
+<script>
+export default {
+   props: ['desinerMes'],
+  
+}
+</script>
+
 <style>
 .appoinmnet {
   box-shadow: -4px -3px 14px #ccc;
@@ -38,22 +45,27 @@
   width: 0.35rem;
   display: inline-block;
   margin-right:.1rem;
+  float:left;
+  margin-top:.1rem;
+  /* margin-top:.1rem; */
 }
 .appoinmnet .head img {
   display: block;
   width: 100%;
   border-radius: 50%;
+
 }
 .appoinmnet .aside {
   display: inline-block;
+  margin-top:.1rem;
 }
 .appoinmnet .aside .name {
-  font-size: 0.18rem;
+  font-size: 0.16rem;
   margin: 0;
 }
 .appoinmnet .orderDesiner {
   display: inline-block;
-    margin-top:.01rem;
+  margin-top:.1rem;
   background-color: #79e149;
   color: #fff;
   padding: 0.06rem 0.07rem;
@@ -63,6 +75,11 @@
 }
 .appoinmnet .score {
   width: 1rem;
+}
+.appoinmnet .level{
+    color: #93D36A;
+    margin:.02rem 0 0 0;
+    font-size:.12rem;
 }
 </style>
 
