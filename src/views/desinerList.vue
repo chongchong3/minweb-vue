@@ -60,7 +60,6 @@ export default {
     this.$store.dispatch("GetDesinerMes", { page_size: _self.page_size, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data;
-        console.log(_self.dataJson);
       })
       .catch(err => {});
     //加载更多
@@ -87,8 +86,6 @@ export default {
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
-          console.log(_self.dataJson)
-          
         })
         .catch(err => {
       

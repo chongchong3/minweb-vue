@@ -42,7 +42,7 @@ export default new Router({
       meta: {title: '登录页'}
     },
     {
-      path: '/desiner',
+      path: '/desinerList',
       name: 'desinerList',
       component: desinerList,
       meta: {title: '设计IN-设计师严选平台'}
