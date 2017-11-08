@@ -50,6 +50,7 @@ export default {
     this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
         _self.dataJson=json.data.data.list;
+        localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
         _self.dataJson.forEach((e, index)=>{
         if(e.title.length>11){
           _self.dataJson[index].title = e.title.substring(0,11) + '...';

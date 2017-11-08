@@ -147,7 +147,7 @@ export default {
       var _designer_uid = this.$route.params.desiner_id;
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
-            debugger
+            
             console.log(response);
    
           localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data));
