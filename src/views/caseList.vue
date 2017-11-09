@@ -65,7 +65,7 @@ export default {
     var startPageY;
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
-        if(startPageY>=document.body.scrollHeight-100 && _self.moreData){
+        if(startPageY>=document.body.scrollHeight-200 && _self.moreData){
           _self.page_no++;
            _self.getMoreData();
        
