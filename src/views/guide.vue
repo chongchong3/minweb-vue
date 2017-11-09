@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         goHome(){
-              this.$router.push({ path:'desiner'});
+              this.$router.push({ path:'/'});
         }
     }
 }

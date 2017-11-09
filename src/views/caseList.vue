@@ -47,8 +47,7 @@ export default {
       page_size:6,
       page_count:1,
       moreData:true,
-      dataJson:null,
-      touchmove:false
+      dataJson:null
     }
   },
   created() {
@@ -62,30 +61,19 @@ export default {
       .then(json => {
         _self.page_count=json.data.data.page_count;
         _self.dataJson=json.data.data.list;
-        console.log(_self.dataJson);
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
       })
       .catch(err => {
         console.log(err)
       });
-    var startPageY, moveEndY, Y, endPageY;
-    document.body.addEventListener("touchstart", function(e) {
-        startPageY = e.targetTouches[0].pageY;
-    });
-    document.body.addEventListener('touchmove',function(e){
-        e.preventDefault();
-        moveEndY = e.changedTouches[0].pageY;
-        Y = moveEndY - startPageY;
-    });
     /**@augments
      * document.body.clientHeight  网页可见区域高
      * document.body.scrollHeight  文档高度 
      */
     document.body.addEventListener("touchend", function(e) {
-        endPageY = e.changedTouches[0].pageY;
-        var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
-        var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
-        var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
+      var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+      var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+      var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
     	
     	if(scrollTop >=(scrollHeight-clientHeight) && _self.moreData){
     			_self.page_no++;
@@ -112,8 +100,6 @@ export default {
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
-          // console.log(_self.dataJson)
-   
         })
         .catch(err => {
       
