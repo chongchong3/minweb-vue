@@ -24,44 +24,7 @@ export default {
   },
 
   methods: {
-    // navControl() {
-    //   var beforeScrollTop = document.body.scrollTop;
-    //   var startY = 0;
-    //   var endY = 0;
-    //   document.body.addEventListener("touchstart", function(e) {
-    //     startY = e.changedTouches[0].clientY;
-    //   });
-    //   document.body.addEventListener("touchend", function(e) {
-    //     var topNav = document.getElementById("topNav");
-    //     if(!topNav){
-    //       return
-    //     }
-    //     endY = e.changedTouches[0].clientY;
-    //     if (endY - startY < -50) {
-    //       topNav.style.display = "none";
-    //       return;
-    //     }
-    //     if (endY - startY > 20) {
-    //       topNav.style.display = "block";
-    //     }
-    //   });
-    //   window.addEventListener("scroll", function(e) {
-    //     var topNav = document.getElementById("topNav");
-    //     var afterScrollTop = document.body.scrollTop;
-    //     var delta = afterScrollTop - beforeScrollTop;
-    //     alert(delta);
-    //     // if (delta > 10) {
-    //     //   topNav.style.display = "none";
-    //     //   beforeScrollTop = afterScrollTop;
-    //     //   return;
-    //     // }
-    //     // if (delta < -10) {
-    //     //   debugger;
-    //     //   topNav.style.display = "block";
-    //     //   beforeScrollTop = afterScrollTop;
-    //     // }
-    //   });
-    // },
+
     showMenu() {
    ;
       this.$store.commit("setNav", {
