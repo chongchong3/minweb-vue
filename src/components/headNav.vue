@@ -15,11 +15,14 @@
 </template>
 <script>
 var start=0;
+var direct='';
 export default {
   data() {
     return {};
   },
-  mounted() {},
+  mounted() {
+    this.touchEvent();
+  },
   created() {},
 
   methods: {
@@ -35,31 +38,30 @@ export default {
         current: this.$store.getters.nav.current
       });
       return false;
+    },
+    touchEvent(){
+        var touchStart=0;
+    document.body.addEventListener('touchstart',function(e){
+     touchStart=e.changedTouches[0].pageY;
+    }, false);  
+    document.body.addEventListener('touchend',function(e){
+       var touchEnd=e.changedTouches[0].pageY;
+       if(touchEnd-touchStart<0){
+          topNav.style.display = "none";
+          touchStart=touchEnd;
+         return
+       }
+       if(touchEnd-touchStart>=0){
+          topNav.style.display = "block";
+           touchStart=touchEnd;
+       }
+
+    }, false);  
     }
   }
 };
 
-window.addEventListener("scroll",function() {
-  if(!topNav){
-    return
-  }
-     var t, l, w, h;
-    if (document.documentElement && document.documentElement.scrollTop) {
-        t = document.documentElement.scrollTop;
-    } else if (document.body) {
-        t = document.body.scrollTop;
-    }
-    if(start-t>0){
-      topNav.style.display = "block";
-      start=t;
-      return
-    }
-    if(start-t<0){
-      topNav.style.display = "none";
-       start=t;
-        return
-    }
-  },false);
+
 </script>
 <style >
 .topNav {
@@ -71,6 +73,7 @@ window.addEventListener("scroll",function() {
   width: 100%;
   top: 0;
   z-index: 2;
+  transition:width 1s;
   box-shadow: 0px 2px 1px #ccc;
 }
 .topNav .cont {
