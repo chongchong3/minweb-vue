@@ -13,6 +13,7 @@ Vue.prototype.shareWx=shareWx;
 Vue.use(vueRsource)
 Vue.use(VueJsonp)
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
