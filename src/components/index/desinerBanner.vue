@@ -7,7 +7,7 @@
 				<span class="list-title">
 					找设计师
 				</span>
-				<router-link to="/desiner/" tag="span" class="more">
+				<router-link to="/desinerList/" tag="span" class="more">
 					查看更多
 				</router-link>
 			</div>
