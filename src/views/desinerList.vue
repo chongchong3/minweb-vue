@@ -70,13 +70,11 @@ export default {
     this.$store.dispatch("GetDesinerMes", { page_size: _self.page_size, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data.result;
-        //  _self.page_count=json.data.data.total;
-        console.log(_self.dataJson)
+        _self.page_count=json.data.data.total;
       })
       .catch(err => {});
     //加载更多
     document.body.addEventListener("touchend", function(e) {
-        var endPageY = e.changedTouches[0].pageY;
         var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
         var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
         var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
@@ -108,7 +106,6 @@ export default {
         });
     },
     choice(e, index){
-      // console.log(index);
     },
     linkTo(url){
     		window.location.href=url;
