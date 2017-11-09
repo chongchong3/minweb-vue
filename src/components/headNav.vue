@@ -37,6 +37,9 @@ export default {
 };
 
 window.addEventListener("scroll",function() {
+  if(!topNav){
+    return
+  }
      var t, l, w, h;
     if (document.documentElement && document.documentElement.scrollTop) {
         t = document.documentElement.scrollTop;
