@@ -8,7 +8,7 @@
 					看设计案例
 				</span>
 				<router-link to="/caseList/" tag="span" class="more">
-					了解更多
+					查看更多
 				</router-link>
 			</div>
 			<div class="case-detail-list-c">
