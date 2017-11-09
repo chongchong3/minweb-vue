@@ -3,7 +3,7 @@
       <div class="cont">
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
           <span class="btnChat btn">
-                <router-link  to="/chat" >
+                <router-link  to="" >
                     <img src="static/images/call.png" >
                 </router-link>
             </span>
@@ -11,22 +11,16 @@
   </div>
 </template>
 <script>
+var start=0;
 export default {
   data() {
     return {};
   },
-  mounted(){
-    
-     
-  },
-  created() {
-   
-  },
+  mounted() {},
+  created() {},
 
   methods: {
-
     showMenu() {
-   ;
       this.$store.commit("setNav", {
         isShow: true,
         current: this.$store.getters.nav.current
@@ -41,6 +35,26 @@ export default {
     }
   }
 };
+
+window.addEventListener("scroll",function() {
+     var t, l, w, h;
+    if (document.documentElement && document.documentElement.scrollTop) {
+        t = document.documentElement.scrollTop;
+    } else if (document.body) {
+        t = document.body.scrollTop;
+    }
+    console.log(start-t)
+    if(start-t>0){
+      topNav.style.display = "block";
+      start=t;
+      return
+    }
+    if(start-t<0){
+      topNav.style.display = "none";
+       start=t;
+        return
+    }
+  },false);
 </script>
 <style >
 .topNav {
