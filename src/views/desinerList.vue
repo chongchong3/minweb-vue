@@ -24,16 +24,16 @@
 			</div>
 			<div class="imgList">
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image" :src="single.designer_case_list[0].cover_image" class="imgH">
-          <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
         </div>
 				<div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image" :src="single.designer_case_list[0].cover_image" class="imgH">
-          <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
         </div>
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image" :src="single.designer_case_list[0].cover_image" class="imgH">
-          <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
         </div>
 				<!-- <img :src="single.designer_case_list[0].cover_image" class="caseImg">
 				<img :src="single.designer_case_list[1].cover_image" class="caseImg"> -->
@@ -72,13 +72,17 @@ export default {
       })
       .catch(err => {});
     //加载更多
-    var startPageY;
-    document.body.addEventListener("touchstart", function(e) {
-        startPageY = e.targetTouches[0].pageY;
-        if(startPageY>=document.body.scrollHeight-200 && _self.moreData){
-          _self.page_no++;
-          _self.getMoreData();
-        }
+    document.body.addEventListener("touchend", function(e) {
+        endPageY = e.changedTouches[0].pageY;
+        var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+        var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+        var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
+    	
+    	if(scrollTop >=(scrollHeight-clientHeight) && _self.moreData){
+    			_self.page_no++;
+        	_self.getMoreData();
+    	}	
+
     });
   },
   methods:{  

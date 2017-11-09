@@ -4,12 +4,16 @@
     <head-nav></head-nav>
     <ul class="caseListContainer">
       <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-        <div class="leftPic" @click="linkTo(single.case_h5_url)">
+        <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
           <img :src="single.widescreen_image" class="headPic">
-        </div>
+        </router-link>
         <div class="detail">
-          <p class="title" @click="linkTo(single.case_h5_url)">{{single.title}}</p>
-          <p class="houseType" @click="linkTo(single.case_h5_url)">{{single.house_type}}</p>
+          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+            <p class="title">{{single.title}}</p>
+          </router-link>
+          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+            <p class="houseType">{{single.house_type}}</p>
+          </router-link>
           <div class="desiner">
             <router-link :to="'desinerDetails/'+single.designer_uid">
             <img class="headImg" :src="single.head_image_url" alt="">
@@ -41,6 +45,7 @@ export default {
     return{
       page_no:1,
       page_size:6,
+      page_count:1,
       moreData:true,
       dataJson:null,
       touchmove:false
@@ -55,27 +60,38 @@ export default {
     });
     this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
+        _self.page_count=json.data.data.page_count;
         _self.dataJson=json.data.data.list;
+        console.log(_self.dataJson);
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
-     
       })
       .catch(err => {
         console.log(err)
       });
-    var startPageY;
+    var startPageY, moveEndY, Y, endPageY;
     document.body.addEventListener("touchstart", function(e) {
         startPageY = e.targetTouches[0].pageY;
-        if(startPageY>=document.body.scrollHeight-200 && _self.moreData){
-          _self.page_no++;
-           _self.getMoreData();
-       
-      }
     });
     document.body.addEventListener('touchmove',function(e){
-      // _self.touchmove=true;
+        e.preventDefault();
+        moveEndY = e.changedTouches[0].pageY;
+        Y = moveEndY - startPageY;
     });
+    /**@augments
+     * document.body.clientHeight  网页可见区域高
+     * document.body.scrollHeight  文档高度 
+     */
     document.body.addEventListener("touchend", function(e) {
-        // var endPageY = e.targetTouches[0].pageY;
+        endPageY = e.changedTouches[0].pageY;
+        var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+        var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+        var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
+    	
+    	if(scrollTop >=(scrollHeight-clientHeight) && _self.moreData){
+    			_self.page_no++;
+        	_self.getMoreData();
+    	}	
+
     });
     
   },
@@ -148,6 +164,7 @@ ul, li, p{
 .caseListContainer .detail .title{
   font-size: 14px;
   margin-bottom: .1rem;
+  color: #000;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
