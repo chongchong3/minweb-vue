@@ -71,7 +71,6 @@
     		.then(json => {
     			if(json.body.code == "200"){
     			this.designerList = json.body.data.result;
-    			console.log(this.designerList)
     		}})
       		.catch(err => {});
 //		console.log(document.querySelector("profession"))

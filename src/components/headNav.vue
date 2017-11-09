@@ -2,11 +2,14 @@
  <div class="topNav" id="topNav">
       <div class="cont">
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
+          
           <span class="btnChat btn">
                 <router-link  to="" >
                     <img src="static/images/call.png" >
                 </router-link>
             </span>
+            
+            <router-link to="/index/" tag="span" class="to-index"></router-link>
       </div>
   </div>
 </template>
@@ -75,8 +78,8 @@ export default {
 }
 .topNav .cont {
   margin: 0 0.16rem;
-  background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
-    no-repeat center;
+  /*background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
+    no-repeat center;*/
   height: 100%;
   background-size: 0.17rem;
 }
@@ -92,6 +95,15 @@ export default {
 }
 .topNav .btn img {
   width: 100%;
+}
+.cont .to-index{
+	display: block;
+	width:.35rem;
+	height:100%;
+	background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
+    no-repeat center;
+    background-size: 0.17rem;
+	margin:0 auto;
 }
 </style>
 

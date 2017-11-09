@@ -3,8 +3,7 @@
 		<div class="slogan-logo">
 		</div>
 		<div class="slogan-title">
-			全球设计严选<br>
-			(SLOGAN)
+			设计师严选平台
 		</div>
 		<router-link to="/aboutUs/" tag="span" class="more">
 			了解更多
