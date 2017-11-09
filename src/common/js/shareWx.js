@@ -1,7 +1,8 @@
 import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 const getId= function (url){
-  Vue.jsonp('https://app.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
+  var ajaxUrl=minWebConfig.wxShareAjaxUrl;
+  Vue.jsonp(ajaxUrl,{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
       if (res.code != "200") {
@@ -44,7 +45,7 @@ const  shareReady=function(title,desc,link,imgUrl){
           link:link,
           title: title, // 分享标题
           desc: desc, // 分享描述
-          imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
+          imgUrl: imgUrl||minWebConfig.qiniuImgUrl+'logo.png', // 分享图标
           success: function(success) {
               console.log(success);
             // 用户确认分享后执行的回调函数
@@ -57,7 +58,7 @@ const  shareReady=function(title,desc,link,imgUrl){
             link:link,
             title: title, // 分享标题
             desc: desc, // 分享描述
-            imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
+            imgUrl: imgUrl||minWebConfig.qiniuImgUrl+'logo.png', // 分享图标
           success: function(success) {
              console.log(success);
             // 用户确认分享后执行的回调函数
