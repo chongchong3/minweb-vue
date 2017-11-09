@@ -51,7 +51,7 @@ export default {
           touchStart=touchEnd;
          return
        }
-       if(touchEnd-touchStart>0){
+       if(touchEnd-touchStart>=0){
           topNav.style.display = "block";
            touchStart=touchEnd;
        }
