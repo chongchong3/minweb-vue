@@ -24,23 +24,21 @@
 			</div>
 			<div class="imgList">
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
+          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
         </div>
 				<div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
+          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
         </div>
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].cover_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].cover_image" class="imgH">
+          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
         </div>
-				<!-- <img :src="single.designer_case_list[0].cover_image" class="caseImg">
-				<img :src="single.designer_case_list[1].cover_image" class="caseImg"> -->
-				<!-- <img :src="single.designer_case_list[2].wide_screen_image" class="caseImg"> -->
 			</div>
 		</li>
 	</ul>
+  <h4 v-if="!moreData" class="info">没有更多了...</h4>
  </div>
 </template>
 <script>
@@ -184,6 +182,9 @@ p {
 .imgH{
   width: 100%;
   height: 100%;
+}
+.info{
+  text-align: center;
 }
 </style>
 

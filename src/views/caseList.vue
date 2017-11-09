@@ -30,6 +30,7 @@
         </div>
       </li>
     </ul>
+    <h4 v-if="!moreData" class="info">没有更多了...</h4>
   </div>
 </template>
 <script>
@@ -179,6 +180,9 @@ ul, li, p{
 .desinerRank{
   color: #93D36A;
   line-height: .2rem;
+}
+.info{
+  text-align: center;
 }
 </style>
 
