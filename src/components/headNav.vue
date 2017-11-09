@@ -68,6 +68,7 @@ window.addEventListener("scroll",function() {
   width: 100%;
   top: 0;
   z-index: 2;
+  box-shadow: 0px 2px 1px #ccc;
 }
 .topNav .cont {
   margin: 0 0.16rem;
