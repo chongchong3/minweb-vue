@@ -46,7 +46,6 @@ window.addEventListener("scroll",function() {
     } else if (document.body) {
         t = document.body.scrollTop;
     }
-    console.log(start-t)
     if(start-t>0){
       topNav.style.display = "block";
       start=t;
