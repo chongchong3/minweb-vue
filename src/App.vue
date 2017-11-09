@@ -21,7 +21,6 @@ export default {
       var topNav = document.getElementById("topNav");
       this.position = position;
       var reduce=prev-position.scrollTop;
-   console.log(reduce);
       if(!topNav||!reduce) {
         return
       }
