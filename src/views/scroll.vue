@@ -1,17 +1,11 @@
 <template>
 
     <swiper :options="swiperOption" ref="mySwiper">
-    <!-- slides -->
-    <!-- <swiper-slide><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1110.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1128.jpg" alt=""></swiper-slide>
-    <swiper-slide><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1186.jpg" alt=""></swiper-slide> -->
     <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1110.jpg" alt=""></div>
     <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1128.jpg" alt=""></div>
     <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1186.jpg" alt=""></div>
-    <!-- Optional controls -->
     <div class="swiper-pagination"  slot="pagination"></div>
     <div class="swiper-scrollbar"   slot="scrollbar"></div>
-    <!-- <div class="bg"> -->
       <div class="button" @click="goHome">
       	进入设计IN
       </div>
@@ -34,12 +28,20 @@ export default {
     //    notNextTick: true,
        direction : 'vertical',
        // swiper configs 所有的配置同swiper官方api配置
-       effect:"coverflow",
+       effect:"coverflow",  //fade   cube   coverflow  flip
+       coverflow: {
+            rotate: 0,
+            stretch: 0,
+            depth: 0,
+            modifier: 1,
+            slideShadows : true
+        },
        grabCursor : true, //手掌形状，拖动时指针会变成抓手形状
        setWrapperSize :true,
     //    autoHeight: true,
        pagination : '.swiper-pagination',
        paginationClickable :true,
+    //    hashnav:true,
     //    prevButton:'.swiper-button-prev',
     //    nextButton:'.swiper-button-next',
     //    scrollbar:'.swiper-scrollbar',
@@ -49,12 +51,12 @@ export default {
    }
  },
  mounted(){
-     var swiper =document.querySelectorAll('.swiper-slide');
+    //  var swiper =document.querySelectorAll('.swiper-slide');
 
-    var scale = window.screen.height / window.screen.width;  
-    swiper[0].style.height = document.body.clientWidth * scale + "px";
-    swiper[1].style.height = document.body.clientWidth * scale + "px";
-    swiper[2].style.height = document.body.clientWidth * scale + "px"; 
+    // var scale = window.screen.height / window.screen.width;  
+    // swiper[0].style.height = document.body.clientWidth * scale + "px";
+    // swiper[1].style.height = document.body.clientWidth * scale + "px";
+    // swiper[2].style.height = document.body.clientWidth * scale + "px"; 
   },
  computed: {
    swiper() {
@@ -70,6 +72,10 @@ export default {
 </script>
 <style scoped>
 @import "../common/css/swiper.min.css";
+#app{
+    margin: 0;
+    padding: 0 !important;
+}
 .swiper-container {
     margin: 0;
     padding: 0;
