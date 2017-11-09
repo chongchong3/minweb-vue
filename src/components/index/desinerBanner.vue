@@ -8,7 +8,7 @@
 					找设计师
 				</span>
 				<router-link to="/desiner/" tag="span" class="more">
-					了解更多
+					查看更多
 				</router-link>
 			</div>
 			<div  class="designer-detail-list-c">
