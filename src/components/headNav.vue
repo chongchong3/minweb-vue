@@ -58,23 +58,23 @@ export default {
         },false);
     },
     scrollEvent() {
-      // window.addEventListener("scroll",function() {
-      //    if(!document.getElementById('topNav')){
-      //     return
-      //   }
-      //     var afterScrollTop =document.documentElement.scrollTop;
-      //     if(afterScrollTop-start>0){
-      //           topNav.style.display = "none";
-      //           start=afterScrollTop;
-      //           return
-      //     }
-      //     if(afterScrollTop-start<0){
-      //         topNav.style.display = "block";
-      //         start=afterScrollTop;
-      //         return
-      //     } 
-      //  },false
-      // );
+      window.addEventListener("scroll",function() {
+         if(!document.getElementById('topNav')){
+          return
+        }
+          var afterScrollTop =document.documentElement.scrollTop;
+          if(afterScrollTop-start>0){
+                topNav.style.display = "none";
+                start=afterScrollTop;
+                return
+          }
+          if(afterScrollTop-start<0){
+              topNav.style.display = "block";
+              start=afterScrollTop;
+              return
+          } 
+       },false
+      );
     }
   }
 };
