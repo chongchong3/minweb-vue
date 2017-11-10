@@ -41,7 +41,8 @@ const getId= function (url){
 
 const  shareReady=function(title,desc,link,imgUrl){
   var qiniuImg=window.minWebConfig.qiniuImgUrl;
-  var currentDomin=window.currentDomin;
+  var currentDomin=window.minWebConfig.currentDomin;
+  debugger
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
