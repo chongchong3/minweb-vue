@@ -65,7 +65,6 @@ export default {
         localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
       })
       .catch(err => {
-        console.log(err)
       });
     /**@augments
      * document.body.clientHeight  网页可见区域高
@@ -107,7 +106,6 @@ export default {
         });
     },
     choice(e, index){
-      console.log(index);
     },
     linkTo(url){
     		window.location.href=url;

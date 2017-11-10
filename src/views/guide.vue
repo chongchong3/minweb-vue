@@ -24,7 +24,7 @@ export default {
    return {
      swiperOption: {
        // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
-    //    notNextTick: true,
+       //  notNextTick: true,
        direction : 'vertical',
        // swiper configs 所有的配置同swiper官方api配置
        effect:"coverflow",  //fade   cube   coverflow  flip
@@ -86,10 +86,6 @@ export default {
 	position: absolute;
     bottom: .56rem;
     left:50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-　　-ms-transform: translate(-50%, -50%);
-　　-o-transform: translate(-50%, -50%);
 　　transform: translate(-50%, -50%);
 	height: .36rem;
 	width: 1rem;
