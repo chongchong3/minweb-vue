@@ -44,7 +44,7 @@ export default {
   },
   created() {
 
-    this.shareWx.getId(this.$route.fullPath);
+  this.shareWx.getId();
 	this.shareWx.shareReady("设计IN-设计师严选平台");
 	
     this.$store.commit("setNav", {

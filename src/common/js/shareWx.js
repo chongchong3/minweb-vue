@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 const getId= function (url){
   var api=window.minWebConfig.serverDomin+'weixin/getWXUrl';
-  Vue.jsonp(api,{url: url||window.location.href.replace(location.hash, "")})
+  Vue.jsonp(api,{url: window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
       if (res.code != "200") {
@@ -42,7 +42,6 @@ const getId= function (url){
 const  shareReady=function(title,desc,link,imgUrl){
   var qiniuImg=window.minWebConfig.qiniuImgUrl;
   var currentDomin=window.minWebConfig.currentDomin;
-  debugger
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({

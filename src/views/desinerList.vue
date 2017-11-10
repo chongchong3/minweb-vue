@@ -60,11 +60,8 @@ export default {
     };
   },
   created() {
-
-    this.shareWx.getId(this.$route.fullPath);
+    this.shareWx.getId();
     this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
-
-
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "desinerList" //设置左菜单栏高亮

@@ -52,7 +52,7 @@ export default {
     };
   },
   created() {
-    this.shareWx.getId(this.$route.fullPath);
+    this.shareWx.getId();
     this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
 
     var _self = this;
