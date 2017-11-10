@@ -8,12 +8,12 @@ import store from './store'
 import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import  '@/config.js'
 import shareWx from '@/common/js/shareWx'
-import minWebConfig from '@/config'
-import '@/config.js'
+
+
 Vue.config.productionTip = false
 Vue.prototype.shareWx=shareWx;
-Vue.prototype.minWebConfig=minWebConfig;
 Vue.use(VueAwesomeSwiper)
 Vue.use(vueRsource)
 Vue.use(VueJsonp)

@@ -1,7 +1,8 @@
 import wx from 'weixin-js-sdk'
 import Vue from 'vue'
+
 const getId= function (url){
-  var api=Vue.minWebConfig.serverDomin+'/weixin/getWXUrl';
+  var api=window.minWebConfig.serverDomin+'weixin/getWXUrl';
   Vue.jsonp(api,{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
@@ -39,14 +40,15 @@ const getId= function (url){
 }
 
 const  shareReady=function(title,desc,link,imgUrl){
-  var prevImgUrl=Vue.minWebConfig.qiniuImgUrl;
+  var qiniuImg=window.minWebConfig.qiniuImgUrl;
+  var currentDomin=window.currentDomin;
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link||Vue.minWebConfig.currentDomin,
-          title: title, // 分享标题
+          link:link||currentDomin,
+          title: title||'设计IN-设计师严选平台', // 分享标题
           desc: desc, // 分享描述
-          imgUrl: imgUrl||prevImgUrl+'logo.png', // 分享图标
+          imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
           success: function(success) {
               console.log(success);
             // 用户确认分享后执行的回调函数
@@ -56,10 +58,10 @@ const  shareReady=function(title,desc,link,imgUrl){
           }
         });
         wx.onMenuShareTimeline({
-            link:link||Vue.minWebConfig.currentDomin,
-            title: title, // 分享标题
+            link:link||currentDomin,
+            title: title||'设计IN-设计师严选平台', // 分享标题
             desc: desc, // 分享描述
-            imgUrl: imgUrl||prevImgUrl+'logo.png', // 分享图标
+            imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
           success: function(success) {
              console.log(success);
             // 用户确认分享后执行的回调函数
