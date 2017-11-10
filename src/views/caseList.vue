@@ -54,6 +54,7 @@ export default {
   created() {
     this.shareWx.getId(this.$route.fullPath);
     this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+
     var _self = this;
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
@@ -70,7 +71,7 @@ export default {
         );
       })
       .catch(err => {
-        console.log(err);
+
       });
     /**@augments
      * document.body.clientHeight  网页可见区域高
@@ -116,9 +117,6 @@ export default {
           }
         })
         .catch(err => {});
-    },
-    choice(e, index) {
-      console.log(index);
     },
     linkTo(url) {
       window.location.href = url;
