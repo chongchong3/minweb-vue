@@ -9,6 +9,7 @@ import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import shareWx from '@/common/js/shareWx'
+import '@/config.js'
 Vue.config.productionTip = false
 Vue.prototype.shareWx=shareWx;
 Vue.use(VueAwesomeSwiper)
