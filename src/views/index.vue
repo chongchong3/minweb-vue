@@ -43,17 +43,14 @@ export default {
     return {};
   },
   created() {
-
-  this.shareWx.getId();
-	this.shareWx.shareReady("设计IN-设计师严选平台");
 	
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "index" //设置左菜单栏高亮
     });
 
-    this.shareWx.getId(this.$route.fullPath);
-    this.shareWx.shareReady("分享的标题", "分享的描述", "分享的链接", "分享的图片地址");
+    this.shareWx.getId();
+    this.shareWx.shareReady("设计IN-设计师严选平台");
   }
 };
 </script>
