@@ -34,154 +34,164 @@
   </div>
 </template>
 <script>
-import headNav from '@/components/headNav';
+import headNav from "@/components/headNav";
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
 // import store from "@/store";
 export default {
-  components:{
+  components: {
     headNav,
     leftNav
- 	},
-  data(){
-    return{
-      page_no:1,
-      page_size:6,
-      page_count:1,
-      moreData:true,
-      dataJson:null
-    }
+  },
+  data() {
+    return {
+      page_no: 1,
+      page_size: 6,
+      page_count: 1,
+      moreData: true,
+      dataJson: null
+    };
   },
   created() {
-    //标题超出处理
+    this.shareWx.getId(this.$route.fullPath);
+    this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
     var _self = this;
-     this.$store.commit("setNav", {
+    this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "caseList" //设置左菜单栏高亮
     });
-    this.$store.dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
+    this.$store
+      .dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
       .then(json => {
-        _self.page_count=json.data.data.page_count;
-        _self.dataJson=json.data.data.list;
-        localStorage.setItem("GetCaseList",JSON.stringify(json.data.data.list));
+        _self.page_count = json.data.data.page_count;
+        _self.dataJson = json.data.data.list;
+        localStorage.setItem(
+          "GetCaseList",
+          JSON.stringify(json.data.data.list)
+        );
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
     /**@augments
      * document.body.clientHeight  网页可见区域高
      * document.body.scrollHeight  文档高度 
      */
     document.body.addEventListener("touchend", function(e) {
-      var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
-      var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
-      var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-    	
-    	if(scrollTop >=(scrollHeight-clientHeight) && _self.moreData){
-    			_self.page_no++;
-        	_self.getMoreData();
-    	}	
+      var clientHeight =
+        document.documentElement.scrollTop === 0
+          ? document.body.clientHeight
+          : document.documentElement.clientHeight;
+      var scrollTop =
+        document.documentElement.scrollTop === 0
+          ? document.body.scrollTop
+          : document.documentElement.scrollTop;
+      var scrollHeight =
+        document.documentElement.scrollTop === 0
+          ? document.body.scrollHeight
+          : document.documentElement.scrollHeight;
 
+      if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
+        _self.page_no++;
+        _self.getMoreData();
+      }
     });
-    
   },
-  updated(){
-
-  },
-  methods:{  
-    getMoreData(){
+  updated() {},
+  methods: {
+    getMoreData() {
       //接口数据
-      var _self=this;
+      var _self = this;
       this.$store
-        .dispatch("GetCaseMes", {page_no:_self.page_no,page_size:_self.page_size})
-        .then((json) => {
+        .dispatch("GetCaseMes", {
+          page_no: _self.page_no,
+          page_size: _self.page_size
+        })
+        .then(json => {
           var data = json.data.data.list;
-          if(data.length<_self.page_size){
-            _self.moreData=false;
+          if (data.length < _self.page_size) {
+            _self.moreData = false;
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
         })
-        .catch(err => {
-      
-        });
+        .catch(err => {});
     },
-    choice(e, index){
+    choice(e, index) {
       console.log(index);
     },
-    linkTo(url){
-    		window.location.href=url;
+    linkTo(url) {
+      window.location.href = url;
     }
   }
-}
+};
 </script>
 <style scoped>
-ul, li, p{
+ul,
+li,
+p {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-.caseListContainer{
+.caseListContainer {
   margin: 0 auto;
   width: 96%;
-} 
-.singleCase{
-
-  overflow:hidden;
+}
+.singleCase {
+  overflow: hidden;
   border-bottom: 1px solid #ccc;
 }
-.caseListContainer .leftPic{
+.caseListContainer .leftPic {
   /* margin:.1rem 0; */
   width: 1.4rem;
-  float:left;
+  float: left;
   /* height: 1.08rem; */
 }
 .caseListContainer li {
   overflow: hidden;
-  padding:.14rem 0;
+  padding: 0.14rem 0;
 }
-.headPic{
-  width:100%;
+.headPic {
+  width: 100%;
   display: block;
 }
-.caseListContainer .detail{
-  margin-left:1.5rem;
-
+.caseListContainer .detail {
+  margin-left: 1.5rem;
 }
-.caseListContainer .detail .title{
+.caseListContainer .detail .title {
   font-size: 14px;
-  margin-bottom: .1rem;
+  margin-bottom: 0.1rem;
   color: #000;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
-.houseType{
-  color:#9e9e9e;
- 
+.houseType {
+  color: #9e9e9e;
 }
-.caseListContainer .desiner{
- margin-top:.25rem;
+.caseListContainer .desiner {
+  margin-top: 0.25rem;
 }
-.headImg{
+.headImg {
   float: left;
   border-radius: 50%;
-  width: .4rem;
-  height: .4rem;
+  width: 0.4rem;
+  height: 0.4rem;
 }
-.nameLev{
-  margin-left: .1rem;
+.nameLev {
+  margin-left: 0.1rem;
   float: left;
 }
-.desinerName{
-  line-height: .2rem;
+.desinerName {
+  line-height: 0.2rem;
   color: black;
 }
-.desinerRank{
-  color: #93D36A;
-  line-height: .2rem;
+.desinerRank {
+  color: #93d36a;
+  line-height: 0.2rem;
 }
-.info{
+.info {
   text-align: center;
 }
 </style>

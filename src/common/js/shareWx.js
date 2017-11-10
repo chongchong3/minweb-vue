@@ -1,7 +1,8 @@
 import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 const getId= function (url){
-  Vue.jsonp('https://app.wesetup.cn/weixin/getWXUrl',{url: url||window.location.href.replace(location.hash, "")})
+  var api=Vue.minWebConfig.serverDomin+'/weixin/getWXUrl';
+  Vue.jsonp(api,{url: url||window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
       if (res.code != "200") {
@@ -38,13 +39,14 @@ const getId= function (url){
 }
 
 const  shareReady=function(title,desc,link,imgUrl){
+  var prevImgUrl=Vue.minWebConfig.qiniuImgUrl;
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link,
+          link:link||Vue.minWebConfig.currentDomin,
           title: title, // 分享标题
           desc: desc, // 分享描述
-          imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
+          imgUrl: imgUrl||prevImgUrl+'logo.png', // 分享图标
           success: function(success) {
               console.log(success);
             // 用户确认分享后执行的回调函数
@@ -54,10 +56,10 @@ const  shareReady=function(title,desc,link,imgUrl){
           }
         });
         wx.onMenuShareTimeline({
-            link:link,
+            link:link||Vue.minWebConfig.currentDomin,
             title: title, // 分享标题
             desc: desc, // 分享描述
-            imgUrl: imgUrl||'http://ovfllimsi.bkt.clouddn.com/logo.png', // 分享图标
+            imgUrl: imgUrl||prevImgUrl+'logo.png', // 分享图标
           success: function(success) {
              console.log(success);
             // 用户确认分享后执行的回调函数

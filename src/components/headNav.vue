@@ -1,6 +1,9 @@
 <template>
- <div class="topNav" id="topNav">
+<div>
+   <p class="test">{{touchY}},{{scrollY}}</p>
+    <div class="topNav" id="topNav">
       <div class="cont">
+       
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
           <span class="btnChat btn">
                 <router-link  to="" >
@@ -9,18 +12,28 @@
             </span>
       </div>
   </div>
+</div>
+
 </template>
 <script>
 var start=0;
+var vm={};
 export default {
   data() {
-    return {};
+    return {
+      scrollY:0,
+      touchY:0,
+
+    };
   },
   mounted() {
     this.touchEvent();
     this.scrollEvent();
   },
-  created() {},
+  
+  created() {
+    vm=this;
+  },
 
   methods: {
     showMenu() {
@@ -42,10 +55,15 @@ export default {
           touchStart = e.changedTouches[0].pageY;
         },false);
       document.body.addEventListener("touchend",function(e) {
+           
         if(!document.getElementById('topNav')){
           return
         }
+      
+    
           var touchEnd = e.changedTouches[0].pageY;
+              vm.touchY=touchEnd - touchStart;//test
+      
           if (touchEnd - touchStart < 0) {
             topNav.style.display = "none";
             touchStart = touchEnd;
@@ -59,10 +77,13 @@ export default {
     },
     scrollEvent() {
       window.addEventListener("scroll",function() {
+       
          if(!document.getElementById('topNav')){
           return
         }
           var afterScrollTop =document.documentElement.scrollTop;
+             vm.touchY=afterScrollTop-start;//test
+             console.log()
           if(afterScrollTop-start>0){
                 topNav.style.display = "none";
                 start=afterScrollTop;
@@ -111,6 +132,15 @@ export default {
 }
 .topNav .btn img {
   width: 100%;
+}
+.test {
+  width:100%;
+  position:fixed;
+  bottom:0;
+  z-index: 9999;
+  height: 20px;
+  background: #fff;
+  color:#000;
 }
 </style>
 

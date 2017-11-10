@@ -10,50 +10,50 @@
 
 </template>
 <style>
-	.imgWrap {
-		width: 100%;
-		overflow: hidden;
-		height: 2rem;
-	}
+.imgWrap {
+  width: 100%;
+  overflow: hidden;
+  height: 2rem;
+}
 </style>
 
 <script>
-	import Vue from 'vue'
-	import '@/common/css/swiper.min.css'
-	import VueAwesomeSwiper from 'vue-awesome-swiper'
-	import leftNav from "../components/leftNav"; //引用左侧菜单栏
-	import headNav from "../components/headNav"; //引用顶部菜单栏
-	import slogan from "../components/index/slogan"
-	import bannerContent from "../components/index/banner"
-	import caseBanner from "../components/index/caseBanner"
-	import desinerBanner from "../components/index/desinerBanner"
+import Vue from "vue";
+import "@/common/css/swiper.min.css";
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import headNav from "../components/headNav"; //引用顶部菜单栏
+import slogan from "../components/index/slogan";
+import bannerContent from "../components/index/banner";
+import caseBanner from "../components/index/caseBanner";
+import desinerBanner from "../components/index/desinerBanner";
 
-	Vue.use(VueAwesomeSwiper)
+Vue.use(VueAwesomeSwiper);
 
 export default {
-	components:{
-  	slogan,
-  	bannerContent,
-  	caseBanner,
-  	desinerBanner,
-  	leftNav,
-  	headNav
- },
-  data(){
-    return {
-
-    }
+  components: {
+    slogan,
+    bannerContent,
+    caseBanner,
+    desinerBanner,
+    leftNav,
+    headNav
   },
-   created() {
+  data() {
+    return {};
+  },
+  created() {
+
+    this.shareWx.getId(this.$route.fullPath);
+	this.shareWx.shareReady("设计IN-设计师严选平台");
+	
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "index" //设置左菜单栏高亮
     });
-    
+
     this.shareWx.getId(this.$route.fullPath);
     this.shareWx.shareReady("分享的标题", "分享的描述", "分享的链接", "分享的图片地址");
   }
-	
-  
-}
+};
 </script>

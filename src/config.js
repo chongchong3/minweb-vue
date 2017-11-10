@@ -1,5 +1,8 @@
+
+
 var minWebConfig={
-    wxShareAjaxUrl:'https://app.wesetup.cn/weixin/getWXUrl', //获取微信公众号的appid的Ajax
-    qiniuImgUrl:'https://img.wesetup.cn/', //七牛镜像路径前缀
-    domin:'' //当前域名
+    serverDomin:'https://app.wesetup.cn/', //服务的域名
+    qiniuImgUrl:'https://img.wesetup.cn/', //七牛图片镜像路径前缀
+    currentDomin:'https://shejiin.net/' //当前域名
 }
+export default {minWebConfig}
