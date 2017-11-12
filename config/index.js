@@ -8,6 +8,7 @@ const path = require('path')
 module.exports = {
   build: {
     testEnv: require('./test.env'),
+    simEnv: require('./sim.env'),
     prodEnv: require('./prod.env'),
     // env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
