@@ -1,7 +1,9 @@
 'use strict'
-const merge = require('webpack-merge')
-const devEnv = require('./dev.env')
+module.exports = {
+  NODE_ENV: '"production"',
+  ENV_CONFIG: '"test"', //发布环境 
+  BASE_API: '"www.shejiin.dev/"',//接口api
+  SHARE_API: '"www.shejiin.dev/"', //分享接口
+  QINIU_IMG:'"https://img.wesetup.cn/"'//七牛图片
+};
 
-module.exports = merge(devEnv, {
-  NODE_ENV: '"testing"'
-})

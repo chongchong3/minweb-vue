@@ -2,7 +2,7 @@ import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 
 const getId= function (){
-  var api=window.minWebConfig.serverDomin+'weixin/getWXUrl';
+  var api= process.env.SHARE_API+'/weixin/getWXUrl';
   Vue.http.post(api,{url: window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
@@ -40,12 +40,12 @@ const getId= function (){
 }
 
 const  shareReady=function(title,desc,link,imgUrl){
-  var qiniuImg=window.minWebConfig.qiniuImgUrl;
-  var currentDomin=window.minWebConfig.currentDomin;
+  var qiniuImg=process.env.QINIU_IMG;
+  var BASE_API=process.env.BASE_API;
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link||currentDomin,
+          link:link||BASE_API,
           title: title||'设计IN-设计师严选平台', // 分享标题
           desc: desc, // 分享描述
           imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
@@ -58,7 +58,7 @@ const  shareReady=function(title,desc,link,imgUrl){
           }
         });
         wx.onMenuShareTimeline({
-            link:link||currentDomin,
+            link:link||BASE_API,
             title: title||'设计IN-设计师严选平台', // 分享标题
             desc: desc, // 分享描述
             imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
