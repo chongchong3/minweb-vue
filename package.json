@@ -10,9 +10,9 @@
     "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
     "build:test": "cross-env NODE_ENV=production env_config=test node build/build.js",
     "build:sim": "cross-env NODE_ENV=production env_config=sim node build/build.js"
-   
   },
   "dependencies": {
+    "chalk": "^2.3.0",
     "fastclick": "^1.0.6",
     "install": "^0.10.1",
     "npm": "^5.5.1",
