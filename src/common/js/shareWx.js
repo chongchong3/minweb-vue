@@ -2,7 +2,7 @@ import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 
 const getId= function (){
-  var api= process.env.SHARE_API+'weixin/getWXUrl';
+  var api= '/weixin/getWXUrl';
   Vue.http.post(api,{url: window.location.href.replace(location.hash, "")})
     .then(function(res) {
        
@@ -41,7 +41,7 @@ const getId= function (){
 
 const  shareReady=function(title,desc,link,imgUrl){
   var qiniuImg=process.env.QINIU_IMG;
-  var BASE_API=process.env.BASE_API;
+  var BASE_API=window.location.href;
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
