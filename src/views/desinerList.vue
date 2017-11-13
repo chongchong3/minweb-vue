@@ -24,16 +24,16 @@
 			</div>
 			<div class="imgList">
         <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-if="single.designer_case_list.length < 1 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
           <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
         </div>
-				<div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
+				<div class="imgSingle" @click="linkTo(single.designer_case_list[1].detail_file_path)">
+          <img v-if="single.designer_case_list.length <2 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[1].wide_screen_image" class="imgH">
         </div>
-        <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list[0].wide_screen_image =='undefined' " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
+        <div class="imgSingle" @click="linkTo(single.designer_case_list[2].detail_file_path)">
+          <img v-if="single.designer_case_list.length <3 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
+          <img v-else :src="single.designer_case_list[2].wide_screen_image" class="imgH">
         </div>
 			</div>
 		</li>

@@ -144,18 +144,22 @@ p {
   /* margin:.1rem 0; */
   width: 1.4rem;
   float: left;
-  /* height: 1.08rem; */
+  height: 1.08rem;
 }
 .caseListContainer li {
   overflow: hidden;
   padding: 0.14rem 0;
 }
 .headPic {
-  width: 100%;
-  display: block;
+  /* width: 100%; */
+  height: 1.08rem;
+  width: 1.4rem;
+  float: left;
+  /* display: block; */
 }
 .caseListContainer .detail {
   margin-left: 1.5rem;
+  
 }
 .caseListContainer .detail .title {
   font-size: 14px;
