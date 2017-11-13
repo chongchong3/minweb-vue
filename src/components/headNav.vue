@@ -63,38 +63,38 @@ export default {
           var touchEnd = e.changedTouches[0].pageY;
               vm.touchY=touchEnd - touchStart;//test
       
-          if (touchEnd - touchStart < 0) {
+          if (touchEnd - touchStart <20) {
             topNav.style.display = "none";
             touchStart = touchEnd;
             return;
           }
-          if (touchEnd - touchStart > 0) {
+          if (touchEnd - touchStart > -20) {
             topNav.style.display = "block";
             touchStart = touchEnd;
           }
         },false);
     },
     scrollEvent() {
-      window.addEventListener("scroll",function() {
+      // window.addEventListener("scroll",function() {
        
-         if(!document.getElementById('topNav')){
-          return
-        }
-          var afterScrollTop =document.documentElement.scrollTop;
-             vm.touchY=afterScrollTop-start;//test
-             console.log()
-          if(afterScrollTop-start>0){
-                topNav.style.display = "none";
-                start=afterScrollTop;
-                return
-          }
-          if(afterScrollTop-start<0){
-              topNav.style.display = "block";
-              start=afterScrollTop;
-              return
-          } 
-       },false
-      );
+      //    if(!document.getElementById('topNav')){
+      //     return
+      //   }
+      //     var afterScrollTop =document.documentElement.scrollTop;
+      //        vm.touchY=afterScrollTop-start;//test
+      //        console.log()
+      //     if(afterScrollTop-start>0){
+      //           topNav.style.display = "none";
+      //           start=afterScrollTop;
+      //           return
+      //     }
+      //     if(afterScrollTop-start<0){
+      //         topNav.style.display = "block";
+      //         start=afterScrollTop;
+      //         return
+      //     } 
+      //  },false
+      // );
     }
   }
 };
