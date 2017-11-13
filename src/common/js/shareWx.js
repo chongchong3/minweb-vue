@@ -2,10 +2,14 @@ import wx from 'weixin-js-sdk'
 import Vue from 'vue'
 
 const getId= function (){
+<<<<<<< HEAD
   var api= '/weixin/getWXUrl';
+=======
+  var api= process.env.BASE_API+'weixin/getWXUrl';
+>>>>>>> aa4b0cbe7b8a681593887601240700c3afe1eb5d
   Vue.http.post(api,{url: window.location.href.replace(location.hash, "")})
     .then(function(res) {
-       
+
       if (res.code != "200") {
         return
       }
