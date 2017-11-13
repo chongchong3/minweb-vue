@@ -50,7 +50,7 @@ export default {
     });
 
     this.shareWx.getId();
-    this.shareWx.shareReady("设计IN-设计师严选平台");
+    this.shareWx.shareReady("设计IN-设计师严选平台","设计IN-设计师严选平台",window.location.href,"https://img.wesetup.cn/logo.png?imageView2/5/w/100");
   }
 };
 </script>
