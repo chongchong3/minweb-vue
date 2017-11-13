@@ -1,6 +1,8 @@
 <template>
 <div>
+   <div class="test">{{touchY}}</div>
     <div class="topNav" id="topNav">
+     
       <div class="cont">
        
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
@@ -16,6 +18,7 @@
 </template>
 <script>
 var start=0;
+var startX=0;
 var vm={};
 export default {
   data() {
@@ -26,8 +29,8 @@ export default {
     };
   },
   mounted() {
-    this.touchEvent();
-    this.scrollEvent();
+    // this.touchEvent();
+    // this.scrollEvent();
   },
   
   created() {
@@ -52,49 +55,49 @@ export default {
       var touchStart = 0;
       document.body.addEventListener( "touchstart", function(e) {
           touchStart = e.changedTouches[0].pageY;
+          startX= e.changedTouches[0].pageX;
         },false);
-      document.body.addEventListener("touchmove",function(e) {
+      document.body.addEventListener("touchend",function(e) {
            
         if(!document.getElementById('topNav')){
           return
         }
-      
-    
           var touchEnd = e.changedTouches[0].pageY;
               vm.touchY=touchEnd - touchStart;//test
-      
-          if (touchEnd - touchStart <20) {
+              vm.touchX=e.changedTouches[0].pageX-startX;
+            if(Math.abs(vm.touchX-vm.touchY)>0){
+                startX=e.changedTouches[0].pageX;
+              return
+            }
+          if (touchEnd - touchStart < -5) {
             topNav.style.display = "none";
             touchStart = touchEnd;
             return;
           }
-          if (touchEnd - touchStart > -20) {
+          if (touchEnd - touchStart > 5) {
             topNav.style.display = "block";
             touchStart = touchEnd;
           }
         },false);
     },
     scrollEvent() {
-      // window.addEventListener("scroll",function() {
+      window.addEventListener("scroll",function() {
        
-      //    if(!document.getElementById('topNav')){
-      //     return
-      //   }
-      //     var afterScrollTop =document.documentElement.scrollTop;
-      //        vm.touchY=afterScrollTop-start;//test
-      //        console.log()
-      //     if(afterScrollTop-start>0){
-      //           topNav.style.display = "none";
-      //           start=afterScrollTop;
-      //           return
-      //     }
-      //     if(afterScrollTop-start<0){
-      //         topNav.style.display = "block";
-      //         start=afterScrollTop;
-      //         return
-      //     } 
-      //  },false
-      // );
+         if(!document.getElementById('topNav')){
+          return
+        }
+          if(vm.touchY<-5){
+                topNav.style.display = "none";
+             
+                return
+          }
+          if(vm.touchY<5){
+              topNav.style.display = "block";
+             
+              return
+          } 
+       },false
+      );
     }
   }
 };
@@ -133,13 +136,15 @@ export default {
   width: 100%;
 }
 .test {
-  width:100%;
-  position:fixed;
-  bottom:0;
-  z-index: 9999;
-  height: 20px;
+  width: 100%;
+  position: fixed;
+  bottom: .2rem;
+  z-index: 99999999;
+  height: .2rem;
+  line-height: .2rem;
   background: #fff;
-  color:#000;
+  color: #000;
+  font-size: 16px;
 }
 </style>
 
