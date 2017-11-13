@@ -50,7 +50,7 @@ export default {
     },
     touchEvent() {
       var touchStart = 0;
-      document.body.addEventListener( "touchstart", function(e) {
+      document.body.addEventListener( "touchmove", function(e) {
           touchStart = e.changedTouches[0].pageY;
         },false);
       document.body.addEventListener("touchend",function(e) {
