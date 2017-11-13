@@ -6,7 +6,7 @@ var api= '/weixin/getWXUrl';
   Vue.http.post(api,{url: window.location.href.replace(location.hash, "")})
     .then(function(res) {
 
-      if (res.code != "200") {
+      if (res.status != "200") {
         return
       }
       wx.config({
