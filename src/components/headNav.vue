@@ -1,6 +1,5 @@
 <template>
 <div>
-   <div class="test">{{touchY}}</div>
     <div class="topNav" id="topNav">
      
       <div class="cont">
