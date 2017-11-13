@@ -10,6 +10,7 @@ module.exports = {
     testEnv: require('./test.env'),
     simEnv: require('./sim.env'),
     prodEnv: require('./prod.env'),
+    prodEnv: require('./env.env'),
     // env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
