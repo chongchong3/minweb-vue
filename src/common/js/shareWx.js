@@ -50,7 +50,7 @@ const  shareReady=function(title,desc,link,imgUrl){
           desc: desc, // 分享描述
           imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
           success: function(success) {
-              console.log(success);
+              console.log(success,'sharesuccess');
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
