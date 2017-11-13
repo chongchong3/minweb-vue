@@ -11,16 +11,58 @@
                     <p class="level">高级设计师</p>
               </div>
           </div>
-          <div class="orderDesiner">预约设计师</div>
+          <div class="orderDesiner" @click="appoinmnet">预约设计师</div>
        
       </div>
   </div>
 </template>
 <script>
 export default {
-   props: ['desinerMes'],
-  
-}
+  props: ["desinerMes"],
+  created(){
+     var userInfo=this.$store.commit("SELECT_USRINFO", {
+      "phone_num":"18733198805",  //手机号
+      "authorization_id":"1123123123",  //授权id  比如微信的OpenID
+      "message_code":"8888"   //验证码
+    });
+    localStorage.setItem("userInfo",JSON.stringify(userInfo));
+  },
+  methods: {
+    appoinmnet() {
+      var userInfo = this.$store.getters.userInfo;
+      var data = userInfo.authorization_id? userInfo: JSON.parse(localStorage.userInfo); //
+      if (!data.authorization_id) {
+        this.$router.push({ path: './login'});
+        return
+      }
+      this.lookFor(data);
+    },
+    lookFor(data) {
+      var _self=this;
+      //预约查询
+           return new Promise((resolve, reject) => {
+             _self.$http.post('/Designer/checkAppointsStatus', {params:{user_id:data.authorization_id}})
+            .then(response=>{
+                if(!response.data.message){
+                      _self.$http.post('/Designer/miniSiteAppoints', {params:{user_id:data.authorization_id}})
+                }
+              resolve(response);
+            }).then(response=>{
+                if(response.data.code!=200){
+                  alert('预约失败')
+
+                }
+                 alert('预约成功');
+            })
+            .catch(error => {
+              reject(error);
+            });
+          });
+
+    },
+    
+  }
+};
 </script>
 
 <style>
@@ -45,20 +87,19 @@ export default {
 .appoinmnet .head {
   width: 0.35rem;
   display: inline-block;
-  margin-right:.1rem;
-  float:left;
-  margin-top:.1rem;
+  margin-right: 0.1rem;
+  float: left;
+  margin-top: 0.1rem;
   /* margin-top:.1rem; */
 }
 .appoinmnet .head img {
   display: block;
   width: 100%;
   border-radius: 50%;
-
 }
 .appoinmnet .aside {
   display: inline-block;
-  margin-top:.1rem;
+  margin-top: 0.1rem;
 }
 .appoinmnet .aside .name {
   font-size: 0.16rem;
@@ -66,7 +107,7 @@ export default {
 }
 .appoinmnet .orderDesiner {
   display: inline-block;
-  margin-top:.1rem;
+  margin-top: 0.1rem;
   background-color: #79e149;
   color: #fff;
   padding: 0.06rem 0.07rem;
@@ -77,10 +118,10 @@ export default {
 .appoinmnet .score {
   width: 1rem;
 }
-.appoinmnet .level{
-    color: #93D36A;
-    margin:.02rem 0 0 0;
-    font-size:.12rem;
+.appoinmnet .level {
+  color: #93d36a;
+  margin: 0.02rem 0 0 0;
+  font-size: 0.12rem;
 }
 </style>
 
