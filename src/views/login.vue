@@ -14,16 +14,12 @@
 	      	<input type="button" id="validBtn" v-bind:class="['valid-btn',{'valid-enable':validEnable}]"  @click="getValidCode" :disabled="isDisable" value="获取验证码"/>
       	</div>
       </div>
+  
       <input type="button" @click="doLogin" v-bind:class="['login-btn-c',{'login-btn-enable':loginEnable}]" :disabled="loginBtnDisable" value="验证登录"/>
   </div>
 </template>
 <script>
-//	import Vue from "vue"
-//	import Validator from "vue-validator"
-//	Vue.use(Validator)
-//	Vue.validator("tel",function(val){
-//		return /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/.test(val)
-//	})
+
 import {sendMsg}  from "../api/login"
 const reg = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
 const regNum = /^([0-9]{4})$/;
@@ -95,7 +91,8 @@ export default {
 			  }, 1000)
   	},
   	validPhone:()=> reg.test(document.getElementById("phone").value),
-  	validValidcode:()=> regNum.test(document.getElementById("validCode").value)
+    validValidcode:()=> regNum.test(document.getElementById("validCode").value),
+ 
   	
   }
 }
