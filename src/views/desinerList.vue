@@ -44,6 +44,7 @@
 <script>
 import headNav from "@/components/headNav";
 import leftNav from "../components/leftNav";
+import { getDesinerMes } from '@/api/desinerList';
 export default {
   components: {
     headNav,
@@ -52,11 +53,10 @@ export default {
   data() {
     return {
       page_no: 1,
-      page_count:1,
+      page_count: 1,
       moreData: true,
       dataJson: null,
-      page_size:6
-
+      page_size: 6
     };
   },
   created() {
@@ -67,51 +67,67 @@ export default {
       current: "desinerList" //设置左菜单栏高亮
     });
     var _self = this;
-    this.$store.dispatch("GetDesinerMes", { page_size: _self.page_size, page_no: 1 })
+    this.getList({ page_size: _self.page_size, page_no: 1 })
       .then(json => {
         _self.dataJson = json.data.data.result;
-        _self.page_count=json.data.data.total;
+        _self.page_count = json.data.data.total;
       })
       .catch(err => {});
     //加载更多
     document.body.addEventListener("touchend", function(e) {
-        var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
-        var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
-        var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-    	
-        if(scrollTop >=(scrollHeight-clientHeight) && _self.moreData){
-            _self.page_no++;
-            _self.getMoreData();
-        }	
+      var clientHeight =
+        document.documentElement.scrollTop === 0
+          ? document.body.clientHeight
+          : document.documentElement.clientHeight;
+      var scrollTop =
+        document.documentElement.scrollTop === 0
+          ? document.body.scrollTop
+          : document.documentElement.scrollTop;
+      var scrollHeight =
+        document.documentElement.scrollTop === 0
+          ? document.body.scrollHeight
+          : document.documentElement.scrollHeight;
 
+      if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
+        _self.page_no++;
+        _self.getMoreData();
+      }
     });
   },
-  methods:{  
-    getMoreData(){
+  methods: {
+    getMoreData() {
       //接口数据
-      var _self=this;
-      this.$store
-        .dispatch("GetDesinerMes", {page_no:_self.page_no,page_size:_self.page_size})
-        .then((json) => {
+      var _self = this;
+      this.getList({  page_no: _self.page_no, page_size: _self.page_size})
+        .then(json => {
           var data = json.data.data.result;
-          if(data.length<_self.page_size){
-            _self.moreData=false;
+          if (data.length < _self.page_size) {
+            _self.moreData = false;
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
         })
-        .catch(err => {
-      
-        });
+        .catch(err => {});
     },
-    choice(e, index){
+    choice(e, index) {},
+    linkTo(url) {
+      window.location.href = url;
     },
-    linkTo(url){
-    		window.location.href=url;
+    getList(params) {
+       var _self = this;
+      return new Promise((resolve, reject) => {
+       getDesinerMes(params)
+          .then(response => {
+            resolve(response);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -146,20 +162,20 @@ p {
 }
 .desinerList .rightText {
   margin-left: 0.1rem;
-  margin-left: .7rem;
+  margin-left: 0.7rem;
   text-decoration: none;
 }
-.desinerList .textUnder{
+.desinerList .textUnder {
   text-decoration-style: none;
 }
-.desinerList .plantform_descript{
+.desinerList .plantform_descript {
   color: #9e9e9e;
   overflow: hidden;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
-.desinerList .price{
-   color: #9e9e9e;
+.desinerList .price {
+  color: #9e9e9e;
 }
 .desinerList .desinerName {
   font-size: 16px;
@@ -172,20 +188,20 @@ p {
 }
 .desinerList .imgList {
   /* height: 1rem; */
-  display: flex;                /*设置为flex布局*/
+  display: flex; /*设置为flex布局*/
   /* justify-content: space-around;
    */
   justify-content: space-between;
 }
-.desinerList .imgSingle{
+.desinerList .imgSingle {
   width: 32%;
   height: 1rem;
 }
-.imgH{
+.imgH {
   width: 100%;
   height: 100%;
 }
-.info{
+.info {
   text-align: center;
 }
 </style>

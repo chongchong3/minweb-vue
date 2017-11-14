@@ -40,24 +40,26 @@ export default {
     lookFor(data) {
       var _self=this;
       //预约查询
-           return new Promise((resolve, reject) => {
-             _self.$http.post('/Designer/checkAppointsStatus', {params:{user_id:data.authorization_id}})
-            .then(response=>{
-                if(!response.data.message){
-                      _self.$http.post('/Designer/miniSiteAppoints', {params:{user_id:data.authorization_id}})
-                }
-              resolve(response);
-            }).then(response=>{
-                if(response.data.code!=200){
-                  alert('预约失败')
+        return new Promise((resolve, reject) => {
+          _self.$http.post('/Designer/checkAppointsStatus', {params:{user_id:data.authorization_id}})
+        .then(response=>{
+            if(!response.data.message){
+            _self.$http.post('/Designer/miniSiteAppoints',{params:{"designer_uid":"43207696962329537","user_id":"43320788568244268"}})
 
-                }
-                 alert('预约成功');
-            })
-            .catch(error => {
-              reject(error);
-            });
-          });
+              // _self.$http.post('/sendMessage',{params:{"phone_num":"18733198805"}})
+            }
+          resolve(response);
+        }).then(response=>{
+            if(response.data.code!=200){
+              alert('预约失败')
+
+            }
+              alert('预约成功');
+        })
+        .catch(error => {
+          reject(error);
+        });
+      });
 
     },
     

@@ -16,24 +16,23 @@
 
 </template>
 <script>
-var start=0;
-var startX=0;
-var vm={};
+var start = 0;
+var startX = 0;
+var vm = {};
 export default {
   data() {
     return {
-      scrollY:0,
-      touchY:0,
-
+      scrollY: 0,
+      touchY: 0
     };
   },
   mounted() {
-    // this.touchEvent();
+    // this.touchDir();
     // this.scrollEvent();
   },
-  
+
   created() {
-    vm=this;
+    vm = this;
   },
 
   methods: {
@@ -50,54 +49,65 @@ export default {
       });
       return false;
     },
-    touchEvent() {
-      var touchStart = 0;
-      document.body.addEventListener( "touchstart", function(e) {
-          touchStart = e.changedTouches[0].pageY;
-          startX= e.changedTouches[0].pageX;
-        },false);
-      document.body.addEventListener("touchend",function(e) {
-           
-        if(!document.getElementById('topNav')){
-          return
-        }
-          var touchEnd = e.changedTouches[0].pageY;
-              vm.touchY=touchEnd - touchStart;//test
-              vm.touchX=e.changedTouches[0].pageX-startX;
-            if(Math.abs(vm.touchX-vm.touchY)>0){
-                startX=e.changedTouches[0].pageX;
-              return
-            }
-          if (touchEnd - touchStart < -5) {
-            topNav.style.display = "none";
-            touchStart = touchEnd;
-            return;
-          }
-          if (touchEnd - touchStart > 5) {
-            topNav.style.display = "block";
-            touchStart = touchEnd;
-          }
-        },false);
-    },
-    scrollEvent() {
-      window.addEventListener("scroll",function() {
-       
-         if(!document.getElementById('topNav')){
-          return
-        }
-          if(vm.touchY<-5){
-                topNav.style.display = "none";
-             
-                return
-          }
-          if(vm.touchY<5){
-              topNav.style.display = "block";
-             
-              return
-          } 
-       },false
-      );
-    }
+
+    // touchEvent() {
+    //   var touchStart = 0;
+    //   document.body.addEventListener( "touchstart", function(e) {
+
+    //     //  e.preventDefault();
+    //       touchStart = e.changedTouches[0].pageY;
+    //       startX= e.changedTouches[0].pageX;
+
+    //     });
+    //      document.body.addEventListener( "touchmove", function(e) {
+
+    //     });
+    //   document.body.addEventListener("touchend",function(e) {
+
+    //     if(!document.getElementById('topNav')){
+    //       return
+    //     }
+    //       var touchEnd = e.changedTouches[0].pageY;
+    //           vm.touchY=touchEnd - touchStart;//test
+    //           vm.touchX=e.changedTouches[0].pageX-startX;
+    //         // if(Math.abs(vm.touchX-vm.touchY)>0){
+    //         //     startX=e.changedTouches[0].pageX;
+    //         //   return
+    //         // }
+    //         console.log(touchEnd - touchStart,'toucheY');
+    //       if (touchEnd - touchStart < -5) {
+    //         topNav.style.display = "none";
+    //         touchStart = touchEnd;
+    //         return;
+    //       }
+    //       if (touchEnd - touchStart > 5) {
+    //         topNav.style.display = "block";
+    //         touchStart = touchEnd;
+    //       }
+    //     });
+    // },
+    // scrollEvent() {
+    //   window.addEventListener("scroll",function(e) {
+    //    var scrollTop=document.documentElement.scrollTop ;
+
+    //    //scrollY
+    //      if(!document.getElementById('topNav')){
+    //       return
+    //     }
+    //     console.log(scrollTop-vm.scrollY,'scrollY');
+    //       if(scrollTop-vm.scrollY<-5){
+    //             topNav.style.display = "none";
+    //             vm.scrollY=scrollTop;
+    //             return
+    //       }
+    //       if(scrollTop-vm.scrollY>5){
+    //           topNav.style.display = "block";
+    //           vm.scrollY=scrollTop;
+    //           return
+    //       }
+    //    }
+    //   );
+    // }
   }
 };
 </script>
@@ -137,10 +147,10 @@ export default {
 .test {
   width: 100%;
   position: fixed;
-  bottom: .2rem;
+  bottom: 0.2rem;
   z-index: 99999999;
-  height: .2rem;
-  line-height: .2rem;
+  height: 0.2rem;
+  line-height: 0.2rem;
   background: #fff;
   color: #000;
   font-size: 16px;

@@ -36,6 +36,7 @@
 <script>
 import headNav from "@/components/headNav";
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import { getCaseMes } from '@/api/caseList';
 // import store from "@/store";
 export default {
   components: {
@@ -60,19 +61,15 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "caseList" //设置左菜单栏高亮
     });
-    this.$store
-      .dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
+    // this.$store
+    //   .dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
+    this.getList({ page_size: 6, page_no: 1 })
       .then(json => {
         _self.page_count = json.data.data.page_count;
         _self.dataJson = json.data.data.list;
-        localStorage.setItem(
-          "GetCaseList",
-          JSON.stringify(json.data.data.list)
-        );
+        // localStorage.setItem( "GetCaseList", JSON.stringify(json.data.data.list));
       })
-      .catch(err => {
-
-      });
+      .catch(err => {});
     /**@augments
      * document.body.clientHeight  网页可见区域高
      * document.body.scrollHeight  文档高度 
@@ -102,11 +99,7 @@ export default {
     getMoreData() {
       //接口数据
       var _self = this;
-      this.$store
-        .dispatch("GetCaseMes", {
-          page_no: _self.page_no,
-          page_size: _self.page_size
-        })
+       this.getList({   page_no: _self.page_no,  page_size: _self.page_size })
         .then(json => {
           var data = json.data.data.list;
           if (data.length < _self.page_size) {
@@ -120,6 +113,18 @@ export default {
     },
     linkTo(url) {
       window.location.href = url;
+    },
+    getList(params) {
+      var _self = this;
+      return new Promise((resolve, reject) => {
+             getCaseMes(params)
+          .then(response => {
+            resolve(response);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   }
 };
@@ -159,7 +164,6 @@ p {
 }
 .caseListContainer .detail {
   margin-left: 1.5rem;
-  
 }
 .caseListContainer .detail .title {
   font-size: 14px;
