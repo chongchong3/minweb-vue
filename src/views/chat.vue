@@ -49,13 +49,15 @@ export default {
   },
 };
 </script>
-<script>(function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10166389/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();</script>
 <style>
 .imgClick{
   margin:auto;
   position: absolute;
   top: 0;bottom: 0;
   left: 0; right: 0;
+  /* top:50%; */
+  /* left:50%; */
+/* 　transform: translate(-50%, -50%); */
   border-radius: 50%;
   width: 1rem;
   height: 1rem;
