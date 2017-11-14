@@ -21,6 +21,7 @@
 <script>
 
 import {sendMsg}  from "../api/login"
+import {getUserInfo}  from "../api/login"
 const reg = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
 const regNum = /^([0-9]{4})$/;
 export default {
@@ -30,15 +31,34 @@ export default {
 			isDisable:true,
 			validEnable:false,
 			loginEnable:false,
-			loginBtnDisable:true
+			loginBtnDisable:true,
+			user_id:null,
 		}
 	},
   mounted(){
   	document.getElementById("app").style.paddingTop = 0;
   },
   methods:{
+	//登陆
   	doLogin:function(){
-  		console.log(1)
+		  let _self = this;
+		//   phone_num 
+		//   authorization_id
+		//   message_code
+		getUserInfo({"phone_num":document.getElementById("phone").value,
+				'message_code':document.getElementById("validCode").value,
+				'authorization_id':'121212' //微信授权ID
+			})
+			.then(function(data){
+				console.log('返回数据')
+				console.log(data)
+				if(data.code !== 200){
+					console.log('登陆失败')
+				}
+				_self.user_id=data.data.user_id
+			},function(err){
+				console.log(err)
+			});
   	},
   	validLogin:function(){
   		if(this.validPhone() && this.validValidcode()){
@@ -57,7 +77,8 @@ export default {
 			this.isDisable = !result;
 			this.validEnable = result;
 			this.validLogin();
-  	},
+	  },
+	// 清除手机号码
   	clearPhone:function(){
   		document.getElementById("phone").value="";
   	},
@@ -76,7 +97,7 @@ export default {
   		
   	},
   	resend:(element,vue)=>{
-			  let num = 10;
+			  let num = 60;
 			  let timer = setInterval(function () {
 			    num--
 			    element.value = num + 'S';
