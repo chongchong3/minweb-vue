@@ -84,7 +84,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueVideoPlayer from 'vue-video-player'
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
-
 import caseList from "../components/desiner/caseList";
 Vue.use(VueVideoPlayer)
 Vue.use(VueAwesomeSwiper)
@@ -113,9 +112,7 @@ export default {
           } else {
             document.title = "设计师详情";
           }
-          if (swiper.activeIndex != 1) {
-            vm.$refs.childMethod.videoHide();
-          }
+       
           if (swiper.activeIndex == 3) {
             window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
           }
@@ -183,7 +180,7 @@ export default {
         return;
       }
       document.title = "设计师详情";
-    }
+    },
   }
 };
 </script>

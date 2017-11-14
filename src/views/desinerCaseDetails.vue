@@ -1,11 +1,18 @@
 <template>
-<div>
+<div class="desinerCaseDetails">
 <div v-html="caseDetails" class="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
     </div>
     <appointment :desinerMes="desinerMes"></appointment> 
 </div>
     
 </template>
+<style>
+.desinerCaseDetails img {
+  max-width:100%;
+  height:auto !important;;
+}
+</style>
+
 <script>
 var vm = {};
 

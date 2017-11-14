@@ -8,7 +8,7 @@
              </div>
                 <div class="aside">
                   <p class="name">{{desinerMes.designer_name}}</p>
-                    <p class="level">高级设计师</p>
+                    <!-- <p class="level">高级设计师</p> -->
               </div>
           </div>
           <div class="orderDesiner" @click="appoinmnet">预约设计师</div>
@@ -17,50 +17,84 @@
   </div>
 </template>
 <script>
+import { MessageBox } from 'mint-ui'
+import 'mint-ui/lib/style.css'
 export default {
-  props: ["desinerMes"],
-  created(){
-     var userInfo=this.$store.commit("SELECT_USRINFO", {
-      "phone_num":"18733198805",  //手机号
-      "authorization_id":"1123123123",  //授权id  比如微信的OpenID
-      "message_code":"8888"   //验证码
-    });
-    localStorage.setItem("userInfo",JSON.stringify(userInfo));
+  // props: ["desinerMes"],
+  data() {
+    return {};
   },
+  created() {
+    this.mockLogin();
+    this.getDesinerMes();
+  },
+
   methods: {
     appoinmnet() {
       var userInfo = this.$store.getters.userInfo;
-      var data = userInfo.authorization_id? userInfo: JSON.parse(localStorage.userInfo); //
+      var data = userInfo.authorization_id
+        ? userInfo
+        : JSON.parse(localStorage.userInfo); //
       if (!data.authorization_id) {
-        this.$router.push({ path: './login'});
-        return
+        this.$router.push({ path: "./login" });
+        return;
       }
       this.lookFor(data);
     },
     lookFor(data) {
-      var _self=this;
+      var _self = this;
       //预约查询
-           return new Promise((resolve, reject) => {
-             _self.$http.post('/Designer/checkAppointsStatus', {params:{user_id:data.authorization_id}})
-            .then(response=>{
-                if(!response.data.message){
-                      _self.$http.post('/Designer/miniSiteAppoints', {params:{user_id:data.authorization_id}})
+      return new Promise((resolve, reject) => {
+        _self.$http
+          .post("/Designer/checkAppointsStatus", {
+            params: { user_id: data.authorization_id }
+          })
+          .then(response => {
+            if (!response.data.message) {
+              _self.$http.post("/Designer/miniSiteAppoints", {
+                params: {
+                  designer_uid: "43207696962329537",
+                  user_id: "43320788568244268"
                 }
-              resolve(response);
-            }).then(response=>{
-                if(response.data.code!=200){
-                  alert('预约失败')
+              });
 
-                }
-                 alert('预约成功');
-            })
-            .catch(error => {
-              reject(error);
-            });
-          });
+            }
+            resolve(response);
+          })
+          .then(response => {
+            if (response.data.code != 200) {
+              MessageBox('提示', '预约失败');
+            
+            }
+             MessageBox('提示', '预约成功');
+            setTimeout(function(){
 
-    },
+            },3000)
+           
+         
+          })
+          .catch(error => {
     
+              MessageBox('提示', '请求失败');
+         
+            reject(error);
+          });
+      });
+    },
+    mockLogin() {
+      var userInfo = this.$store.commit("SELECT_USRINFO", {
+        phone_num: "18733198805", //手机号
+        authorization_id: "1123123123", //授权id  比如微信的OpenID
+        message_code: "8888" //验证码
+      });
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    },
+    getDesinerMes() {
+      
+      this.desinerMes = this.$store.getters.appointment;
+      console.log(this.desinerMes ,'test');
+  
+    }
   }
 };
 </script>
@@ -73,7 +107,6 @@ export default {
   position: fixed;
   bottom: 0;
   z-index: 99;
-
   width: 100%;
 }
 .appoinmnet .main {
@@ -99,7 +132,7 @@ export default {
 }
 .appoinmnet .aside {
   display: inline-block;
-  margin-top: 0.1rem;
+  margin-top: 0.18rem;
 }
 .appoinmnet .aside .name {
   font-size: 0.16rem;

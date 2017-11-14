@@ -1,16 +1,10 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player id="video-player-box" x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)">
-        </video-player>
+
 
         <div class="slef-background hasTips" id="slef-background">
-            <img :src="selfMes.bodyImg" @click="videoPlay">
-            <div class="playerButton">
-                <div class="playerBtn" @click="videoPlay">
-                    <!-- <img src="../../static/images/video.png"> -->
-                </div>
-
-            </div>
+            <img :src="selfMes.bodyImg" >
+       
 
             <div class="memo">
                 <div class="cont">
@@ -131,47 +125,14 @@ export default {
         return {
             case_id: 1,
 
-            playerOptions: {
-                // videojs options
-                muted: true,
-                sources: [{
-                    type: "video/mp4",
-                    src: 'http://os5lxzkas.bkt.clouddn.com/long15.m4v',
-                }],
-                poster: this.selfMes.full_body_shot_url,
-            }
-
-
-
         }
     },
 
   
     computed: {
 
-        player() {
-            return this.$refs.videoPlayer.player
-        }
     },
     methods: {
-
-        videoPlay: function(event) {
-             document.getElementById('slef-background').style.display="none";
-            document.getElementById('video-player-box').style.display="block";
-            this.player.show();
-            this.player.play();
-        },
-        onPlayerEnded(playerCurrentState) {
-            this.videoHide();
-        },
-        
-        videoHide(){
-            document.getElementById('slef-background').style.display="block";
-            document.getElementById('video-player-box').style.display="none";
-          
-            this.player.pause();
-        }
-
 
 
     }

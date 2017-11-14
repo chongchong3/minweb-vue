@@ -3,28 +3,28 @@
     <left-nav></left-nav>
     <head-nav></head-nav>
     <ul class="caseListContainer">
-      <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-        <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+      <li class="singleCase" v-for="(single, index) in dataJson">
+        <div @click="linkTo(single)">
           <img :src="single.widescreen_image" class="headPic">
-        </router-link>
+        </div>
         <div class="detail">
-          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+          <div @click="linkTo(single)">
             <p class="title">{{single.title}}</p>
-          </router-link>
-          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+          </div>
+          <div  @click="linkTo(single)">
             <p class="houseType">{{single.house_type}}</p>
-          </router-link>
+          </div>
           <div class="desiner">
-            <router-link :to="'desinerDetails/'+single.designer_uid">
+            <div :to="'desinerDetails/'+single.designer_uid">
             <img class="headImg" :src="single.head_image_url" alt="">
-            </router-link>
+            </div>
             <div class="nameLev">
-              <router-link :to="'desinerDetails/'+single.designer_uid">
+              <div :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerName">{{single.designer_name}}</p>
-              </router-link>
-              <router-link :to="'desinerDetails/'+single.designer_uid">
+              </div>
+              <div :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerRank">{{single.designer_level}}</p>
-              </router-link>
+              </div>
             </div>   
           </div>
         </div>
@@ -36,6 +36,7 @@
 <script>
 import headNav from "@/components/headNav";
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import { getCaseMes } from '@/api/caseList';
 // import store from "@/store";
 export default {
   components: {
@@ -60,19 +61,15 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "caseList" //设置左菜单栏高亮
     });
-    this.$store
-      .dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
+    // this.$store
+    //   .dispatch("GetCaseMes", { page_size: 6, page_no: 1 })
+    this.getList({ page_size: 6, page_no: 1 })
       .then(json => {
         _self.page_count = json.data.data.page_count;
         _self.dataJson = json.data.data.list;
-        localStorage.setItem(
-          "GetCaseList",
-          JSON.stringify(json.data.data.list)
-        );
+        // localStorage.setItem( "GetCaseList", JSON.stringify(json.data.data.list));
       })
-      .catch(err => {
-
-      });
+      .catch(err => {});
     /**@augments
      * document.body.clientHeight  网页可见区域高
      * document.body.scrollHeight  文档高度 
@@ -102,11 +99,7 @@ export default {
     getMoreData() {
       //接口数据
       var _self = this;
-      this.$store
-        .dispatch("GetCaseMes", {
-          page_no: _self.page_no,
-          page_size: _self.page_size
-        })
+       this.getList({   page_no: _self.page_no,  page_size: _self.page_size })
         .then(json => {
           var data = json.data.data.list;
           if (data.length < _self.page_size) {
@@ -118,8 +111,25 @@ export default {
         })
         .catch(err => {});
     },
-    linkTo(url) {
-      window.location.href = url;
+    linkTo(single) {
+       this.$store.commit("setAppointment", {
+       head_image_url:single.head_image_url,
+       designer_name:single.designer_name,
+       desiner_id:single.designer_uid
+      });
+      this.$router.push({path:'./caseDetails/'+single.id});
+    },
+    getList(params) {
+      var _self = this;
+      return new Promise((resolve, reject) => {
+             getCaseMes(params)
+          .then(response => {
+            resolve(response);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   }
 };
@@ -159,7 +169,6 @@ p {
 }
 .caseListContainer .detail {
   margin-left: 1.5rem;
-  
 }
 .caseListContainer .detail .title {
   font-size: 14px;
