@@ -3,7 +3,7 @@
 	<left-nav></left-nav>
 	<head-nav></head-nav>
 	<ul class="desinerList">
-		<li class="singDesiner" v-for="(single, index) in dataJson" @click="choice($event,index)">
+		<li class="singDesiner" v-for="(single, index) in dataJson" >
 			<div class="topDesc">
         <router-link :to="'desinerDetails/'+single.designer_uid">
 				<img :src="single.head_image_url" class="headImg">
@@ -23,18 +23,11 @@
         </div>
 			</div>
 			<div class="imgList">
-        <div class="imgSingle" @click="linkTo(single.designer_case_list[0].detail_file_path)">
-          <img v-if="single.designer_case_list.length < 1 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[0].wide_screen_image" class="imgH">
+        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single)" v-if="item<3">
+          <img :src="list.wide_screen_image"  v-if="list.wide_screen_image" class="imgH">
+            <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
         </div>
-				<div class="imgSingle" @click="linkTo(single.designer_case_list[1].detail_file_path)">
-          <img v-if="single.designer_case_list.length <2 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[1].wide_screen_image" class="imgH">
-        </div>
-        <div class="imgSingle" @click="linkTo(single.designer_case_list[2].detail_file_path)">
-          <img v-if="single.designer_case_list.length <3 " src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
-          <img v-else :src="single.designer_case_list[2].wide_screen_image" class="imgH">
-        </div>
+		
 			</div>
 		</li>
 	</ul>
@@ -110,7 +103,6 @@ export default {
         })
         .catch(err => {});
     },
-    choice(e, index) {},
     linkTo(url) {
       window.location.href = url;
     },
