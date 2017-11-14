@@ -84,7 +84,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueVideoPlayer from 'vue-video-player'
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
-
 import caseList from "../components/desiner/caseList";
 Vue.use(VueVideoPlayer)
 Vue.use(VueAwesomeSwiper)
@@ -183,7 +182,7 @@ export default {
         return;
       }
       document.title = "设计师详情";
-    }
+    },
   }
 };
 </script>
