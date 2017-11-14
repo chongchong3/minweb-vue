@@ -104,7 +104,7 @@ export default {
         { link: "index", icon: "home", name: "首页" },
         { link: "caseList", icon: "trash", name: "查看案例" },
         { link: "desinerList", icon: "person", name: "找设计师" },
-        { link: "", icon: "call", name: "在线咨询" },
+        { link: "chat", icon: "call", name: "在线咨询" },
         { link: "aboutUs", icon: "warn", name: "关于" }
       ]
     };

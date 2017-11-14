@@ -6,7 +6,7 @@
        
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
           <span class="btnChat btn">
-                <router-link  to="" >
+                <router-link  to="chat" >
                     <img src="static/images/call.png" >
                 </router-link>
             </span>
