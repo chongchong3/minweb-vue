@@ -2,9 +2,9 @@
   <div>
       <div v-html="caseDetails" >
        
-    </div>
+      </div>
      <p>案例详情</p>
-      <appointment :desinerMes="desinerCaseMes"></appointment> 
+      <appointment ></appointment> 
   </div>
 </template>
 <script>
