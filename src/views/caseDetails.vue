@@ -5,7 +5,7 @@
       <appointment ></appointment> 
   </div>
 </template>
-<style >
+<style scoped>
 .page_caseDetails {
   margin-top:-.52rem;
   overflow: scroll;

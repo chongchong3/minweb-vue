@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+import { MessageBox } from 'mint-ui'
+import 'mint-ui/lib/style.css'
 export default {
   // props: ["desinerMes"],
   data() {
@@ -57,17 +59,25 @@ export default {
                 }
               });
 
-              // _self.$http.post('/sendMessage',{params:{"phone_num":"18733198805"}})
             }
             resolve(response);
           })
           .then(response => {
             if (response.data.code != 200) {
-              alert("预约失败");
+              MessageBox('提示', '预约失败');
+            
             }
-            alert("预约成功");
+             MessageBox('提示', '预约成功');
+            setTimeout(function(){
+
+            },3000)
+           
+         
           })
           .catch(error => {
+    
+              MessageBox('提示', '请求失败');
+         
             reject(error);
           });
       });
