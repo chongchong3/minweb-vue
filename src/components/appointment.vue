@@ -17,6 +17,8 @@
   </div>
 </template>
 <script>
+
+
 import { MessageBox } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 export default {
@@ -27,6 +29,13 @@ export default {
   created() {
     this.mockLogin();
     this.getDesinerMes();
+  },
+  mounted(){
+    this.$nextTick(function(){
+      console.log(this.$store.getters.appointment);
+      document.title=this.$store.getters.appointment.title;
+    })
+  
   },
 
   methods: {

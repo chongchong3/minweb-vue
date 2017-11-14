@@ -30,6 +30,7 @@ export default {
   },
   mounted(){
     this.getData();
+ 
   },
   created() {
     vm = this;
