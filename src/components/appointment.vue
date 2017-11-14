@@ -43,6 +43,7 @@ export default {
       var _self = this;
       //预约查询
       return new Promise((resolve, reject) => {
+        debugger
         _self.$http
           .post("/Designer/checkAppointsStatus", {
             params: { user_id: data.authorization_id }
@@ -97,7 +98,6 @@ export default {
   position: fixed;
   bottom: 0;
   z-index: 99;
-
   width: 100%;
 }
 .appoinmnet .main {

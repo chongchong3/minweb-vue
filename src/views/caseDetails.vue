@@ -1,12 +1,22 @@
 <template>
   <div>
-      <div v-html="caseDetails" >
-       
+      <div v-html="caseDetails" class="page_caseDetails">
       </div>
-     <p>案例详情</p>
       <appointment ></appointment> 
   </div>
 </template>
+<style >
+.page_caseDetails {
+  margin-top:-.52rem;
+  overflow: scroll;
+
+}
+.page_caseDetails img {
+  max-width:100%;
+  height:auto !important;;
+}
+</style>
+
 <script>
 var vm = {};
 import appointment from "../components/appointment";
@@ -28,7 +38,7 @@ export default {
     getData(){
       var _self=this;
           return new Promise((resolve, reject) => {
-            _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.params.caseId}})
+            _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.params.case_id}})
             .then(response=>{
               if(response.data.code!=200){
                 console.log('请求出错');
@@ -45,6 +55,7 @@ export default {
   }
 };
 </script>
+
 
 
 
