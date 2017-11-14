@@ -23,7 +23,7 @@
         </div>
 			</div>
 			<div class="imgList">
-        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,list.designer_case_uid)" v-if="item<3">
+        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<3">
           <img :src="list.wide_screen_image"  v-if="list.wide_screen_image" class="imgH">
             <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
         </div>
@@ -103,13 +103,15 @@ export default {
         })
         .catch(err => {});
     },
-    linkTo(sing,caseId) {
+    linkTo(sing,item) {
       this.$store.commit("setAppointment", {
        head_image_url:sing.head_image_url,
        designer_name:sing.designer_name,
-       desiner_id:sing.designer_uid
+       desiner_id:sing.designer_case_list[item].designer_case_uid,
+       title:sing.designer_case_list[item].title
+       
       });
-      this.$router.push({path:'./caseDetails/'+caseId});
+      this.$router.push({path:'./caseDetails/'+sing.designer_case_list[item].designer_case_uid,});
     },
     getList(params) {
        var _self = this;

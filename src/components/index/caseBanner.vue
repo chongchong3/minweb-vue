@@ -85,6 +85,7 @@ export default {
        head_image_url:onecase.head_image_url,
        designer_name:onecase.designer_name,
        desiner_id:onecase.designer_uid,
+       title:onecase.title
     
       });
       this.$router.push({path:'./caseDetails/'+onecase.id});
