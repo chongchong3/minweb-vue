@@ -41,24 +41,21 @@ export default {
   methods:{
 	//登陆
   	doLogin:function(){
-		  let _self = this;
-		//   phone_num 
-		//   authorization_id
-		//   message_code
-		getUserInfo({"phone_num":document.getElementById("phone").value,
-				'message_code':document.getElementById("validCode").value,
-				'authorization_id':'121212' //微信授权ID
-			})
-			.then(function(data){
+		let _self = this;
+		this.$store
+			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':'121212' })
+			.then((data) => {
 				console.log('返回数据')
 				console.log(data)
 				if(data.code !== 200){
 					console.log('登陆失败')
 				}
 				_self.user_id=data.data.user_id
-			},function(err){
+			})
+			.catch(err => {
 				console.log(err)
-			});
+        });
+		
   	},
   	validLogin:function(){
   		if(this.validPhone() && this.validValidcode()){
@@ -83,7 +80,11 @@ export default {
   		document.getElementById("phone").value="";
   	},
   	getValidCode:function(){
+<<<<<<< HEAD
 		  var _self=this;
+=======
+		let _self = this;
+>>>>>>> 6a6db758f2c079308a74719a33e78c3e99b2a983
   		this.isDisable = true;
 			this.validEnable = false;
 			this.resend(document.getElementById("validBtn"),this);
@@ -112,7 +113,7 @@ export default {
 			    }
 			  }, 1000)
   	},
-  	validPhone:()=> reg.test(document.getElementById("phone").value),
+  	validPhone:()=> reg.test(document.getElementById("phone").value.trim()),
     validValidcode:()=> regNum.test(document.getElementById("validCode").value),
  
   	
