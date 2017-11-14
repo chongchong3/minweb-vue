@@ -64,7 +64,10 @@ export default {
                   return MessageBox('提示', '查询异常');
               }
               if(response.data.message){
-                     return MessageBox('您已经在预约状态');
+                      MessageBox('您已经在预约状态');
+                    return setTimeout(function(){
+                        history.go(-1);
+                     })
                    
               }
               miniSiteAppoints({"designer_uid":this.$store.getters.appointment.desiner_id,"user_id":_self.authorization_id} ) //预约设计师

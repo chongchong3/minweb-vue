@@ -80,11 +80,7 @@ export default {
   		document.getElementById("phone").value="";
   	},
   	getValidCode:function(){
-<<<<<<< HEAD
-		  var _self=this;
-=======
-		let _self = this;
->>>>>>> 6a6db758f2c079308a74719a33e78c3e99b2a983
+		 var _self=this;
   		this.isDisable = true;
 			this.validEnable = false;
 			this.resend(document.getElementById("validBtn"),this);
