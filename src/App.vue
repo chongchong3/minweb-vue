@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getAuthorize } from '@/api/wxAuthorize';
+
 export default {
   data(){
     return {
@@ -13,13 +13,20 @@ export default {
     }
   },
    created() {
-     getAuthorize().then(response => {
-          console.log(response);
+    
+  },
+  author(){
+      this.$store.dispatch("GetAuthorize")
+        .then((response) => {
+          localStorage.setItem("WxAuthorize",response.data);
+       
         })
         .catch(error => {
-          console.log(error,'authorize')
+          console.log(error);
+           localStorage.setItem("WxAuthorize",'testAuthorId111111');
         });
   }
+
 }
 </script>
 

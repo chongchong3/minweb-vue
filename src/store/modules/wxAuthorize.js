@@ -1,17 +1,33 @@
-const wxAuthorize = {
-    state: {
-      authData: {},
-    },
-  
-    mutations: {
-      setNav: (state, json) => {
-        state.authData = json;
-        
-      },
-  
-    },
-  
+import { getAuthorize } from '@/api/wxAuthorize';
+const Authorize = {
+  state: {
+    data: {},
+  },
 
-  };
-  
-  export default wxAuthorize;
+  mutations: {
+    SELECT_AUTHOR: (state, data) => {
+      state.authorizeId = data;
+    },
+
+  },
+
+  actions: {
+    // 获取
+    getAuthorize({ commit },params) {
+      return new Promise((resolve, reject) => {
+        getAuthorize(params)
+      .then(response=>{
+        
+        commit("SELECT_AUTHOR",response.data);
+        resolve(response);
+      })
+      .catch(error => {
+        reject(error);
+      });
+    });
+    },
+
+  }
+};
+
+export default Authorize;

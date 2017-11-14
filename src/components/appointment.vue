@@ -21,87 +21,82 @@
 
 import { MessageBox } from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
+import { getAuthorize } from '@/api/wxAuthorize';//微信授权
 export default {
   // props: ["desinerMes"],
   data() {
-    return {};
+    return {
+      authorization_id:'',
+    };
   },
   created() {
-    this.mockLogin();
-    this.getDesinerMes();
+    // this.mockLogin();
+    this.getState();
+ 
   },
   mounted(){
     this.$nextTick(function(){
-      console.log(this.$store.getters.appointment);
-      document.title=this.$store.getters.appointment.title;
+      console.log(this.$store.getters);
+        document.title=this.$store.getters.appointment.title;
+        
     })
   
   },
 
   methods: {
     appoinmnet() {
-      var userInfo = this.$store.getters.userInfo;
-      var data = userInfo.authorization_id
-        ? userInfo
-        : JSON.parse(localStorage.userInfo); //
-      if (!data.authorization_id) {
-        this.$router.push({ path: "./login" });
-        return;
-      }
-      this.lookFor(data);
-    },
-    lookFor(data) {
-      var _self = this;
-      //预约查询
-      return new Promise((resolve, reject) => {
-        _self.$http
-          .post("/Designer/checkAppointsStatus", {
-            params: { user_id: data.authorization_id }
-          })
-          .then(response => {
-            if (!response.data.message) {
-              _self.$http.post("/Designer/miniSiteAppoints", {
-                params: {
-                  designer_uid: "43207696962329537",
-                  user_id: "43320788568244268"
-                }
-              });
+      var _self=this;
+      //查询是否授权绑定用户
+        getAuthorize({authorization_id:this.authorization_id})
+        .then(function(response){
+            // if(response.data.code!=200){
+            //        return MessageBox('提示', '授权失败');
+            // }
+            if(!response.data.userId){ //如果没有绑定跳转登录页面
+              return _self.$router.push({path:'./login'})
+
 
             }
-            resolve(response);
-          })
-          .then(response => {
-            if (response.data.code != 200) {
-              MessageBox('提示', '预约失败');
-            
-            }
-             MessageBox('提示', '预约成功');
-            setTimeout(function(){
+            checkAppointsStatus({user_id:_self.authorization_id}) //查询是否已经预约
+            .then(function(response){
+              if(response.data.code!=200){
+                  return MessageBox('提示', '查询异常');
+              }
+              if(response.data.message){
+                     return MessageBox('您已经在预约状态');
+                   
+              }
+              miniSiteAppoints({"designer_uid":this.$store.getters.appointment.desiner_id,"user_id":_self.authorization_id} ) //预约设计师
+              .then(function(response){
+                     if(response.data.code!=200){
+                        return MessageBox('提示', '查询异常');
+                    } 
+                     MessageBox('提示', '预约成功');
+                    return setTimeout(function(){
+                        history.go(-1);
+                     })
+              })
+              .fail(function(error){
+                     return MessageBox('提示', '请求失败');
+              })
 
-            },3000)
-           
-         
-          })
-          .catch(error => {
-    
-              MessageBox('提示', '请求失败');
-         
-            reject(error);
-          });
-      });
+
+
+            }).fail(function(error){
+                    return MessageBox('提示', '查询失败');
+            }) 
+
+
+        })
+        .fail(function(error){
+
+        })
     },
-    mockLogin() {
-      var userInfo = this.$store.commit("SELECT_USRINFO", {
-        phone_num: "18733198805", //手机号
-        authorization_id: "1123123123", //授权id  比如微信的OpenID
-        message_code: "8888" //验证码
-      });
-      localStorage.setItem("userInfo", JSON.stringify(userInfo));
-    },
-    getDesinerMes() {
-      
+    getState() {
+
       this.desinerMes = this.$store.getters.appointment;
-      console.log(this.desinerMes ,'test');
+      this.authorization_id=this.$store.getters.wxAuthorize;
   
     }
   }

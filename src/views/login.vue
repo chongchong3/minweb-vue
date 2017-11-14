@@ -83,13 +83,14 @@ export default {
   		document.getElementById("phone").value="";
   	},
   	getValidCode:function(){
+		  var _self=this;
   		this.isDisable = true;
 			this.validEnable = false;
 			this.resend(document.getElementById("validBtn"),this);
   		sendMsg({"phone_num":document.getElementById("phone").value})
   		.then(function(data){
   			if(data.body.code == 200){
-  				this.isSend = true;
+  				_self.isSend = true;
   			}
   		},function(err){
   			//
