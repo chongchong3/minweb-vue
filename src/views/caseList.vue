@@ -3,28 +3,28 @@
     <left-nav></left-nav>
     <head-nav></head-nav>
     <ul class="caseListContainer">
-      <li class="singleCase" v-for="(single, index) in dataJson" @click="choice($event,index)">
-        <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+      <li class="singleCase" v-for="(single, index) in dataJson">
+        <div @click="linkTo(single)">
           <img :src="single.widescreen_image" class="headPic">
-        </router-link>
+        </div>
         <div class="detail">
-          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+          <div @click="linkTo(single)">
             <p class="title">{{single.title}}</p>
-          </router-link>
-          <router-link :to="'caseDetails/'+single.id+'?case_id='+ index ">
+          </div>
+          <div  @click="linkTo(single)">
             <p class="houseType">{{single.house_type}}</p>
-          </router-link>
+          </div>
           <div class="desiner">
-            <router-link :to="'desinerDetails/'+single.designer_uid">
+            <div :to="'desinerDetails/'+single.designer_uid">
             <img class="headImg" :src="single.head_image_url" alt="">
-            </router-link>
+            </div>
             <div class="nameLev">
-              <router-link :to="'desinerDetails/'+single.designer_uid">
+              <div :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerName">{{single.designer_name}}</p>
-              </router-link>
-              <router-link :to="'desinerDetails/'+single.designer_uid">
+              </div>
+              <div :to="'desinerDetails/'+single.designer_uid">
               <p class="desinerRank">{{single.designer_level}}</p>
-              </router-link>
+              </div>
             </div>   
           </div>
         </div>
@@ -111,8 +111,13 @@ export default {
         })
         .catch(err => {});
     },
-    linkTo(url) {
-      window.location.href = url;
+    linkTo(single) {
+       this.$store.commit("setAppointment", {
+       head_image_url:single.head_image_url,
+       designer_name:single.designer_name,
+       desiner_id:single.designer_uid
+      });
+      this.$router.push({path:'./caseDetails/'+single.id});
     },
     getList(params) {
       var _self = this;
