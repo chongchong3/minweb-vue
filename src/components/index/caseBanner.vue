@@ -16,7 +16,7 @@
 			    <!-- slides -->
 				    <swiper-slide class="case-item" v-for="(onecase,index) in caseList" :key="index">
 			    		<div class="detail-case">
-			    				<div class="img-c"  @click="jumpTo(onecase.case_h5_url)">
+			    				<div class="img-c"  @click="jumpTo(onecase)">
 									<img :src="onecase.head_image_url" />
 								</div>
 								<div class="des-c">
@@ -27,7 +27,7 @@
 										<img  :src="onecase.head_image_url" />
 									</div>-->
 									<div class="name-theme-c">
-										<p class="theme"  @click="jumpTo(onecase.case_h5_url)">{{onecase.title}}</p>
+										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
 											{{onecase.designer_name}}
 										</router-link>
@@ -80,8 +80,14 @@ export default {
       .catch(err => {});
   },
   methods: {
-    jumpTo(url) {
-      window.location.href = url;
+    jumpTo(onecase) {
+      this.$store.commit("setAppointment", {
+       head_image_url:onecase.head_image_url,
+       designer_name:onecase.designer_name,
+       desiner_id:onecase.designer_uid
+      });
+      this.$router.push({path:'./caseDetails/'+onecase.id});
+     
     },
     getList(params) {
       var _self = this;

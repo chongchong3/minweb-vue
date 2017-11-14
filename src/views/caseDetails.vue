@@ -4,7 +4,7 @@
        
     </div>
      <p>案例详情</p>
-      <!-- <appointment :desinerMes="desinerCaseMes"></appointment>  -->
+      <appointment :desinerMes="desinerCaseMes"></appointment> 
   </div>
 </template>
 <script>

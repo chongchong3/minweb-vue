@@ -1,14 +1,10 @@
 const appointment = {
     state: {
-      data: {
-       desiner_head_img:'',
-       desiner_name:'',
-       desiner_id:''
-      },
+      data:{}
     },
   
     mutations: {
-      setData: (state, json) => {
+      setAppointment: (state, json) => {
         state.data = json;
         
       },
