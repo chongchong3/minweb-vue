@@ -34,7 +34,8 @@ export default {
     this.$nextTick(function(){
       console.log(this.$store.getters.appointment);
       document.title=this.$store.getters.appointment.title;
-    })  
+    })
+  
   },
 
   methods: {

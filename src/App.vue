@@ -5,7 +5,22 @@
 </template>
 
 <script>
+import { getAuthorize } from '@/api/wxAuthorize';
+export default {
+  data(){
+    return {
 
+    }
+  },
+   created() {
+     getAuthorize().then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error,'authorize')
+        });
+  }
+}
 </script>
 
 <style>
