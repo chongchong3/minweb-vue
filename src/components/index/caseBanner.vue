@@ -84,7 +84,8 @@ export default {
       this.$store.commit("setAppointment", {
        head_image_url:onecase.head_image_url,
        designer_name:onecase.designer_name,
-       desiner_id:onecase.designer_uid
+       desiner_id:onecase.designer_uid,
+    
       });
       this.$router.push({path:'./caseDetails/'+onecase.id});
      

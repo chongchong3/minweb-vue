@@ -28,7 +28,7 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: Index,
-      meta: {title: '首页'}
+      meta: {title: '设计IN-设计师严选平台'}
     },
     {
       path: '/guide',
