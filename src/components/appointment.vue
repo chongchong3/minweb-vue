@@ -50,7 +50,7 @@ export default {
             //        return MessageBox('提示', '授权失败');
             // }
             console.log(response);
-            if(response.data.userId===null || response.data.userId =='' || response.data.userId == undefined){ //如果没有绑定跳转登录页面
+            if(response.body.data.userId===null || response.body.data.userId =='' || response.body.data.userId == undefined){ //如果没有绑定跳转登录页面
             
               return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
 
