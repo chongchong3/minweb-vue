@@ -42,7 +42,8 @@ export default {
   updated() {},
   methods: {
     link() {
-      location.href = ysf.url();
+      // location.href = ysf.url();
+      window.location.replace(ysf.url());
     }
   }
 };
