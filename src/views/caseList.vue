@@ -167,11 +167,10 @@ p {
   padding: 0.14rem 0;
 }
 .headPic {
-  /* width: 100%; */
-  height: 1.08rem;
+  border-radius:.2rem;
+  height: .95em;
   width: 1.4rem;
   float: left;
-  /* display: block; */
 }
 .caseListContainer .detail {
   margin-left: 1.5rem;
@@ -188,7 +187,7 @@ p {
   color: #9e9e9e;
 }
 .caseListContainer .desiner {
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 .headImg {
   float: left;

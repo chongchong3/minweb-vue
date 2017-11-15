@@ -159,18 +159,22 @@ p {
 .desinerList .headImg {
   float: left;
   border-radius: 50%;
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 .desinerList .rightText {
   margin-left: 0.1rem;
-  margin-left: 0.7rem;
+  margin-left: 0.6rem;
   text-decoration: none;
 }
+ .rightText  p {
+   line-height: .16rem;
+ }
 .desinerList .textUnder {
   text-decoration-style: none;
 }
 .desinerList .plantform_descript {
+  margin-top:.02rem;
   color: #9e9e9e;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -180,7 +184,7 @@ p {
   color: #9e9e9e;
 }
 .desinerList .desinerName {
-  font-size: 16px;
+  font-size: 14px;
   color: black;
   text-decoration: none;
   /* font-weight: bold; */
@@ -196,8 +200,8 @@ p {
   justify-content: space-between;
 }
 .desinerList .imgSingle {
-  width: 32%;
-  height: 1rem;
+  width: .94rem;
+  height:.54rem;
 }
 .imgH {
   width: 100%;
