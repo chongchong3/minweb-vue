@@ -60,6 +60,7 @@ export default {
 				console.log(_self.designer_uid);
 				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
 				.then(function(response){
+					console.log(response);
 						if(response.data.code!=200){
 							return MessageBox('提示', '查询异常');
 						} 
