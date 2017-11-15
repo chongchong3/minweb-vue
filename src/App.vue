@@ -10,7 +10,7 @@ export default {
     return {};
   },
   created() {
-    this.author();
+    // this.author();
   },
 
   methods: {
