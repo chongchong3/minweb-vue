@@ -19,214 +19,213 @@
   </div>
 </template>
 <script>
-
-import {sendMsg}  from "../api/login"
-import {getUserInfo}  from "../api/login"
+import { sendMsg } from "../api/login";
+import { getUserInfo } from "../api/login";
 const reg = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
 const regNum = /^([0-9]{4})$/;
 export default {
-	data(){
-		return {
-			isSend:false,
-			isDisable:true,
-			validEnable:false,
-			loginEnable:false,
-			loginBtnDisable:true,
-			user_id:null,
-		}
-	},
-  mounted(){
-  	document.getElementById("app").style.paddingTop = 0;
+  data() {
+    return {
+      isSend: false,
+      isDisable: true,
+      validEnable: false,
+      loginEnable: false,
+      loginBtnDisable: true,
+      user_id: null
+    };
   },
-  methods:{
-	//登陆
-  	doLogin:function(){
-		let _self = this;
-		this.$store
-			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':'121212' })
-			.then((data) => {
-				console.log('返回数据')
-				console.log(data)
-				if(data.code !== 200){
-					console.log('登陆失败')
-				}
-				_self.user_id=data.data.user_id
-			})
-			.catch(err => {
-				console.log(err)
+  mounted() {
+    document.getElementById("app").style.paddingTop = 0;
+  },
+  methods: {
+    //登陆
+    doLogin: function() {
+      let _self = this;
+      this.$store
+        .dispatch("GetUserInfo", {
+          phone_num: document.getElementById("phone").value,
+          message_code: document.getElementById("validCode").value,
+          authorization_id: "121212"
+        })
+        .then(data => {
+          console.log("返回数据");
+          console.log(data);
+          if (data.code !== 200) {
+            console.log("登陆失败");
+          }
+          _self.user_id = data.data.user_id;
+        })
+        .catch(err => {
+          console.log(err);
         });
-		
-  	},
-  	validLogin:function(){
-  		if(this.validPhone() && this.validValidcode()){
-  			this.loginBtnDisable = false;
-  			this.loginEnable = true;
-  		}else{
-  			this.loginBtnDisable = true;
-  			this.loginEnable = false;
-  		}
-  	},
-  	validCode:function(){
-  		this.validLogin();
-  	},
-  	validatePhone:function(el,e){
-  		let result = this.validPhone();
-			this.isDisable = !result;
-			this.validEnable = result;
-			this.validLogin();
-	  },
-	// 清除手机号码
-  	clearPhone:function(){
-  		document.getElementById("phone").value="";
-  	},
-  	getValidCode:function(){
-		 var _self=this;
-  		this.isDisable = true;
-			this.validEnable = false;
-			this.resend(document.getElementById("validBtn"),this);
-  		sendMsg({"phone_num":document.getElementById("phone").value})
-  		.then(function(data){
-  			if(data.body.code == 200){
-  				_self.isSend = true;
-  			}
-  		},function(err){
-  			//
-  		});
-  		
-  	},
-  	resend:(element,vue)=>{
-			  let num = 60;
-			  let timer = setInterval(function () {
-			    num--
-			    element.value = num + 'S';
-			    if (num === 0) {
-			    	if(vue.validPhone()){
-				      vue.isDisable = false;
-							vue.validEnable = true;
-			    	}
-			      element.value = '获取验证码';
-			      clearInterval(timer)
-			    }
-			  }, 1000)
-  	},
-  	validPhone:()=> reg.test(document.getElementById("phone").value.trim()),
-    validValidcode:()=> regNum.test(document.getElementById("validCode").value),
- 
-  	
+    },
+    validLogin: function() {
+      if (this.validPhone() && this.validValidcode()) {
+        this.loginBtnDisable = false;
+        this.loginEnable = true;
+      } else {
+        this.loginBtnDisable = true;
+        this.loginEnable = false;
+      }
+    },
+    validCode: function() {
+      this.validLogin();
+    },
+    validatePhone: function(el, e) {
+      let result = this.validPhone();
+      this.isDisable = !result;
+      this.validEnable = result;
+      this.validLogin();
+    },
+    // 清除手机号码
+    clearPhone: function() {
+      document.getElementById("phone").value = "";
+    },
+    getValidCode: function() {
+      var _self = this;
+      this.isDisable = true;
+      this.validEnable = false;
+      this.resend(document.getElementById("validBtn"), this);
+      sendMsg({ phone_num: document.getElementById("phone").value }).then(
+        function(data) {
+          if (data.body.code == 200) {
+            _self.isSend = true;
+          }
+        },
+        function(err) {
+          //
+        }
+      );
+    },
+    resend: (element, vue) => {
+      let num = 60;
+      let timer = setInterval(function() {
+        num--;
+        element.value = num + "S";
+        if (num === 0) {
+          if (vue.validPhone()) {
+            vue.isDisable = false;
+            vue.validEnable = true;
+          }
+          element.value = "获取验证码";
+          clearInterval(timer);
+        }
+      }, 1000);
+    },
+    validPhone: () => reg.test(document.getElementById("phone").value.trim()),
+    validValidcode: () =>
+      regNum.test(document.getElementById("validCode").value)
   }
-}
+};
 </script>
 <style scoped="scoped">
-	
-	.login-c{
-		width:100%;
-		height:100%;
-		background:url(../../static/images/login_bg@2x.png);
-		background-size: 100%;
-		
-	}
-	.login-title{
-		font-size:.26rem;
-		color:#8d8d8d;
-		text-align: center;
-		margin:0;
-		padding-top:0.5rem;
-		margin-bottom:.23rem;
-		letter-spacing: .02rem;
-	}
-	.valid-send-des-c{
-		height:.29rem;
-		margin-bottom:1rem;
-	}
-	.valid-send-des{
-		font-size:.26rem;
-		color:#82dd46;
-		text-align: center;
-		margin-top:0;
-	}
-	.input-c{
-		text-align: center;
-		padding: 0 .6rem;
-		
-	}
-	.valid-c,.phone-num-c{
-		position: relative;
-		width:100%;
-		border-bottom: .01rem #c6c6c6 solid;
-		text-align: left;
-	}
-	.phone-num-c{
-		margin-bottom: 0.5rem;
-	}
-	.phone-num-c .phone-num,.valid-c .valid-code{
-		font-size: .22rem;
-		display: inline-block;
-		border: none;
-		outline: none;
-		background: transparent;
-		border-radius: 0;
-		line-height: 0.34rem;
-		letter-spacing: 0.01rem;
-		color:#555555;
-		z-index: 1;
-		width:85%;
-	}
-	.valid-c .valid-code{
-		width:60%;
-	}
-	.phone-remove-icon{
-		display: inline-block;
-		position: absolute;
-		right:0.1rem;
-		top:.1rem;
-		background:url(../../static/images/revoke2.png);
-		background-size:100%;
-		width:.18rem;
-		height:.18rem;
-		z-index: 99;
-	}
-	.valid-btn{
-		width:.7rem;
-		font-size:.12rem;
-		position: absolute;
-		border-radius:.04rem;
-		display: inline-block;
-		line-height: .2rem;;
-		height:.2rem;
-		right:.1rem;
-		bottom:.1rem;
-		z-index: 99;
-		padding:0px;
-		margin:0px;
-		border:1px solid #9c9c9c;
-		color:#5e5e5e;
-	}
-	.valid-enable{
-		border: 1px solid #82dd46;
-		background-color: #82dd46;
-		color:#fff;
-	}
-	.login-btn-c{
-		padding:0;
-		margin:0;
-		width:2.47rem;
-		margin:0 auto;
-		margin-top:.34rem; 
-		height:.36rem;
-		border-radius: .08rem;
-		color: #fff;
-		box-shadow: 0px 0px 30px  #999 ;
-		text-align: center;
-		line-height: .36rem;
-		font-size: .18rem;
-		display: block;
-		border: 1px solid #9c9c9c;
-		background-color: #9c9c9c;
-	}
-	.login-btn-enable{
-		border: 1px solid #82dd46;
-		background-color: #82dd46;
-		
-	}
-	
+.login-c {
+  width: 100%;
+  height: 100%;
+  background: url(../../static/images/login_bg@2x.png);
+  background-size: 100%;
+}
+.login-title {
+  font-size: 0.26rem;
+  color: #8d8d8d;
+  text-align: center;
+  margin: 0;
+  padding-top: 0.5rem;
+  margin-bottom: 0.23rem;
+  letter-spacing: 0.02rem;
+}
+.valid-send-des-c {
+  height: 0.29rem;
+  margin-bottom: 1rem;
+}
+.valid-send-des {
+  font-size: 0.26rem;
+  color: #82dd46;
+  text-align: center;
+  margin-top: 0;
+}
+.input-c {
+  text-align: center;
+  padding: 0 0.6rem;
+}
+.valid-c,
+.phone-num-c {
+  position: relative;
+  width: 100%;
+  border-bottom: 0.01rem #c6c6c6 solid;
+  text-align: left;
+}
+.phone-num-c {
+  margin-bottom: 0.5rem;
+}
+.phone-num-c .phone-num,
+.valid-c .valid-code {
+  font-size: 0.22rem;
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+  line-height: 0.34rem;
+  letter-spacing: 0.01rem;
+  color: #555555;
+  z-index: 1;
+  width: 85%;
+}
+.valid-c .valid-code {
+  width: 60%;
+}
+.phone-remove-icon {
+  display: inline-block;
+  position: absolute;
+  right: 0.1rem;
+  top: 0.1rem;
+  background: url(../../static/images/revoke2.png);
+  background-size: 100%;
+  width: 0.18rem;
+  height: 0.18rem;
+  z-index: 99;
+}
+.valid-btn {
+  width: 0.7rem;
+  font-size: 0.12rem;
+  position: absolute;
+  border-radius: 0.04rem;
+  display: inline-block;
+  line-height: 0.2rem;
+  height: 0.2rem;
+  right: 0.1rem;
+  bottom: 0.1rem;
+  z-index: 99;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #9c9c9c;
+  color: #5e5e5e;
+}
+.valid-enable {
+  border: 1px solid #82dd46;
+  background-color: #82dd46;
+  color: #fff;
+}
+.login-btn-c {
+  padding: 0;
+  margin: 0;
+  width: 2.47rem;
+  margin: 0 auto;
+  margin-top: 0.34rem;
+  height: 0.36rem;
+  border-radius: 0.08rem;
+  color: #fff;
+  box-shadow: 0px 0px 30px #999;
+  text-align: center;
+  line-height: 0.36rem;
+  font-size: 0.18rem;
+  display: block;
+  border: 1px solid #9c9c9c;
+  background-color: #9c9c9c;
+}
+.login-btn-enable {
+  border: 1px solid #82dd46;
+  background-color: #82dd46;
+}
 </style>
