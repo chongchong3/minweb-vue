@@ -2,6 +2,7 @@
  <div >
     <!-- <left-nav></left-nav>
     <head-nav></head-nav> -->
+	<p class="test" @click="goLink">点击授权</p>
    <div id="mescroll" class="mescroll">
 			<!--展示上拉加载的数据列表-->
 			<ul id="dataList" class="data-list">
@@ -31,7 +32,7 @@ export default {
   },
   created() {
 	/*微信朋友圈分享*/
-	window.location.href='https://www.shejiin.net/minisite/login';
+	
     this.$store
       .dispatch("GetUserInfo", { "phone_num":"18733198805", "authorization_id":"1123123123",  "message_code":"8888"   })
       .then(json => {})
@@ -39,10 +40,14 @@ export default {
 
   },
   mounted(){
-
+	  
 				
   },
-methods:{}
+methods:{
+	goLink(){
+		window.location.href='https://www.shejiin.net/minisite/login';
+	}
+}
 };
 
 
