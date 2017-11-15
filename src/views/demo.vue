@@ -1,48 +1,25 @@
 <template>
  <div >
-    <!-- <left-nav></left-nav>
-    <head-nav></head-nav> -->
 	<p class="test" @click="goLink">点击授权</p>
-   <div id="mescroll" class="mescroll">
-			<!--展示上拉加载的数据列表-->
-			<ul id="dataList" class="data-list">
-				<li v-for="pd in pdlist">
-					<img class="pd-img" :src="pd.pdImg"/>
-					<p class="pd-name">{{pd.pdName}}</p>
-					<p class="pd-price">{{pd.pdPrice}} 元</p>
-					<p class="pd-sold">已售{{pd.pdSold}}件</p>
-				</li>
-			</ul>
-		</div>
+  
  </div>
 </template>
 
 <script>
 
-import store from "@/store";
-import leftNav from "../components/leftNav"; //引用左侧菜单栏
-import headNav from "../components/headNav"; //引用顶部菜单栏
+
 export default {
-  components: { leftNav, headNav },
+
   data() {
     return {
-      mescroll: null,
-				pdlist: []
+   
     };
   },
   created() {
-	/*微信朋友圈分享*/
-	
-    this.$store
-      .dispatch("GetUserInfo", { "phone_num":"18733198805", "authorization_id":"1123123123",  "message_code":"8888"   })
-      .then(json => {})
-      .catch(err => {});
+
 
   },
-  mounted(){
-	  
-				
-  },
+
 methods:{
 	goLink(){
 		window.location.href='https://www.shejiin.net/minisite/login';
