@@ -166,6 +166,7 @@ export default {
         name: data.designer_name,
         score: data.designer_level,
         headImg: data.full_body_shot_url,
+        head_image_url: data.head_image_url,
         price: data.designer_price,
         brief: data.plantform_descript,
         designer_level: data.designer_level

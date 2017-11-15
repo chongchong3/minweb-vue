@@ -11,7 +11,7 @@
                 <div class="cont">
                     <p class="name">{{zoomMes.name}}</p>
                     <div class="score">
-                        <img :src="zoomMes.designer_level" >
+                        <img :src="zoomMes.head_image_url" >
                     </div>
                     <p class="price">报价:{{zoomMes.price}}/平米</p>
                     <p class="brief">{{zoomMes.brief}}</p>
@@ -57,6 +57,9 @@ export default {
 
         }
     },
+    created(){
+        
+    }
 
 
 }
