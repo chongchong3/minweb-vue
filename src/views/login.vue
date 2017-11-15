@@ -19,9 +19,8 @@
   </div>
 </template>
 <script>
-
-import {sendMsg}  from "../api/login"
-import {getUserInfo}  from "../api/login"
+import { sendMsg } from "../api/login";
+import { getUserInfo } from "../api/login";
 const reg = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
 const regNum = /^([0-9]{4})$/;
 export default {
@@ -120,122 +119,117 @@ export default {
   	},
   	validPhone:()=> reg.test(document.getElementById("phone").value.trim()),
     validValidcode:()=> regNum.test(document.getElementById("validCode").value),
- 
-  	
   }
-}
+};
 </script>
 <style scoped="scoped">
-	
-	.login-c{
-		width:100%;
-		height:100%;
-		background:url(../../static/images/login_bg@2x.png);
-		background-size: 100%;
-		
-	}
-	.login-title{
-		font-size:.26rem;
-		color:#8d8d8d;
-		text-align: center;
-		margin:0;
-		padding-top:0.5rem;
-		margin-bottom:.23rem;
-		letter-spacing: .02rem;
-	}
-	.valid-send-des-c{
-		height:.29rem;
-		margin-bottom:1rem;
-	}
-	.valid-send-des{
-		font-size:.26rem;
-		color:#82dd46;
-		text-align: center;
-		margin-top:0;
-	}
-	.input-c{
-		text-align: center;
-		padding: 0 .6rem;
-		
-	}
-	.valid-c,.phone-num-c{
-		position: relative;
-		width:100%;
-		border-bottom: .01rem #c6c6c6 solid;
-		text-align: left;
-	}
-	.phone-num-c{
-		margin-bottom: 0.5rem;
-	}
-	.phone-num-c .phone-num,.valid-c .valid-code{
-		font-size: .22rem;
-		display: inline-block;
-		border: none;
-		outline: none;
-		background: transparent;
-		border-radius: 0;
-		line-height: 0.34rem;
-		letter-spacing: 0.01rem;
-		color:#555555;
-		z-index: 1;
-		width:85%;
-	}
-	.valid-c .valid-code{
-		width:60%;
-	}
-	.phone-remove-icon{
-		display: inline-block;
-		position: absolute;
-		right:0.1rem;
-		top:.1rem;
-		background:url(../../static/images/revoke2.png);
-		background-size:100%;
-		width:.18rem;
-		height:.18rem;
-		z-index: 99;
-	}
-	.valid-btn{
-		width:.7rem;
-		font-size:.12rem;
-		position: absolute;
-		border-radius:.04rem;
-		display: inline-block;
-		line-height: .2rem;;
-		height:.2rem;
-		right:.1rem;
-		bottom:.1rem;
-		z-index: 99;
-		padding:0px;
-		margin:0px;
-		border:1px solid #9c9c9c;
-		color:#5e5e5e;
-	}
-	.valid-enable{
-		border: 1px solid #82dd46;
-		background-color: #82dd46;
-		color:#fff;
-	}
-	.login-btn-c{
-		padding:0;
-		margin:0;
-		width:2.47rem;
-		margin:0 auto;
-		margin-top:.34rem; 
-		height:.36rem;
-		border-radius: .08rem;
-		color: #fff;
-		box-shadow: 0px 0px 30px  #999 ;
-		text-align: center;
-		line-height: .36rem;
-		font-size: .18rem;
-		display: block;
-		border: 1px solid #9c9c9c;
-		background-color: #9c9c9c;
-	}
-	.login-btn-enable{
-		border: 1px solid #82dd46;
-		background-color: #82dd46;
-		
-	}
-	
+.login-c {
+  width: 100%;
+  height: 100%;
+  background: url(../../static/images/login_bg@2x.png);
+  background-size: 100%;
+}
+.login-title {
+  font-size: 0.26rem;
+  color: #8d8d8d;
+  text-align: center;
+  margin: 0;
+  padding-top: 0.5rem;
+  margin-bottom: 0.23rem;
+  letter-spacing: 0.02rem;
+}
+.valid-send-des-c {
+  height: 0.29rem;
+  margin-bottom: 1rem;
+}
+.valid-send-des {
+  font-size: 0.26rem;
+  color: #82dd46;
+  text-align: center;
+  margin-top: 0;
+}
+.input-c {
+  text-align: center;
+  padding: 0 0.6rem;
+}
+.valid-c,
+.phone-num-c {
+  position: relative;
+  width: 100%;
+  border-bottom: 0.01rem #c6c6c6 solid;
+  text-align: left;
+}
+.phone-num-c {
+  margin-bottom: 0.5rem;
+}
+.phone-num-c .phone-num,
+.valid-c .valid-code {
+  font-size: 0.22rem;
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+  line-height: 0.34rem;
+  letter-spacing: 0.01rem;
+  color: #555555;
+  z-index: 1;
+  width: 85%;
+}
+.valid-c .valid-code {
+  width: 60%;
+}
+.phone-remove-icon {
+  display: inline-block;
+  position: absolute;
+  right: 0.1rem;
+  top: 0.1rem;
+  background: url(../../static/images/revoke2.png);
+  background-size: 100%;
+  width: 0.18rem;
+  height: 0.18rem;
+  z-index: 99;
+}
+.valid-btn {
+  width: 0.7rem;
+  font-size: 0.12rem;
+  position: absolute;
+  border-radius: 0.04rem;
+  display: inline-block;
+  line-height: 0.2rem;
+  height: 0.2rem;
+  right: 0.1rem;
+  bottom: 0.1rem;
+  z-index: 99;
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #9c9c9c;
+  color: #5e5e5e;
+}
+.valid-enable {
+  border: 1px solid #82dd46;
+  background-color: #82dd46;
+  color: #fff;
+}
+.login-btn-c {
+  padding: 0;
+  margin: 0;
+  width: 2.47rem;
+  margin: 0 auto;
+  margin-top: 0.34rem;
+  height: 0.36rem;
+  border-radius: 0.08rem;
+  color: #fff;
+  box-shadow: 0px 0px 30px #999;
+  text-align: center;
+  line-height: 0.36rem;
+  font-size: 0.18rem;
+  display: block;
+  border: 1px solid #9c9c9c;
+  background-color: #9c9c9c;
+}
+.login-btn-enable {
+  border: 1px solid #82dd46;
+  background-color: #82dd46;
+}
 </style>

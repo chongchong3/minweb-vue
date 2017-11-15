@@ -13,7 +13,7 @@ const Authorize = {
 
   actions: {
     // 获取
-    getAuthorize({ commit },params) {
+    GetAuthorize({ commit },params) {
       return new Promise((resolve, reject) => {
         getAuthorize(params)
       .then(response=>{

@@ -5,52 +5,47 @@
 </template>
 
 <script>
-
 export default {
-  data(){
-    return {
+  data() {
+    return {};
+  },
+  created() {
+    this.author();
+  },
 
-    }
-  },
-   created() {
-    
-  },
-  author(){
-      this.$store.dispatch("GetAuthorize")
-        .then((response) => {
-          localStorage.setItem("WxAuthorize",response.data);
-       
+  methods: {
+    author() {
+      this.$store
+        .dispatch("GetAuthorize")
+        .then(response => {
+          localStorage.setItem("WxAuthorize", response.data);
         })
         .catch(error => {
           console.log(error);
-           localStorage.setItem("WxAuthorize",'testAuthorId111111');
+          localStorage.setItem("WxAuthorize", "testAuthorId111111");
         });
+    }
   }
-
-}
+};
 </script>
 
 <style>
 html {
-  font-size:100px;
+  font-size: 100px;
   height: 100%;
 }
 body {
-  font-size:12px;
-   height: 100%;
-
-  
-   
+  font-size: 12px;
+  height: 100%;
 }
 .container {
-  padding-top:.52rem;
+  padding-top: 0.52rem;
   height: 100%;
-
 }
-.more{
-	color:#999;
-	font-size: 0.11rem;
-	line-height: 14px;
-	margin-bottom: 0.09rem;
+.more {
+  color: #999;
+  font-size: 0.11rem;
+  line-height: 14px;
+  margin-bottom: 0.09rem;
 }
 </style>
