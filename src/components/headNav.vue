@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     // this.touchDir();
-    // this.scrollEvent();
+    this.scrollEvent();
   },
 
   created() {
@@ -49,6 +49,33 @@ export default {
       });
       return false;
     },
+    scrollEvent() {
+      var domNav=document.getElementById('topNav');
+      var _self=this;
+      window.addEventListener("scroll", function(e) {
+        if(!domNav){
+          return
+        }
+        var scrollTop=_self.getScrollTop();
+        var screnHt=document.body.clientHeight;
+        console.log(scrollTop);
+        if(scrollTop>screnHt/3){
+            domNav.style.display="none";
+            return
+        }
+        domNav.style.display="block";
+        return
+      });
+    },
+     getScrollTop(){   
+        var scrollTop=0;   
+        if(document.documentElement&&document.documentElement.scrollTop){   
+            scrollTop=document.documentElement.scrollTop;   
+        }else if(document.body){   
+            scrollTop=document.body.scrollTop;   
+        }   
+        return scrollTop;   
+    }   
 
     // touchEvent() {
     //   var touchStart = 0;

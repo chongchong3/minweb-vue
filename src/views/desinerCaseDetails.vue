@@ -2,14 +2,14 @@
 <div class="desinerCaseDetails">
 <div v-html="caseDetails" class="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
     </div>
-    <appointment :desinerMes="desinerMes"></appointment> 
+    <appointment :desiner="desinerMes"></appointment> 
 </div>
     
 </template>
 <style>
 .desinerCaseDetails img {
-  max-width:100%;
-  height:auto !important;;
+  max-width:100% !important;
+  height:auto !important;
 }
 </style>
 
@@ -24,7 +24,7 @@ export default {
     return {
       startY: 0,
       caseDetails: "",
-      caseId: 0,
+      caseSlideIndex: 0,
       desinerMes:{}
     };
   },
@@ -34,20 +34,30 @@ export default {
   },
   
   methods: {
-    getData() {
-        
-      var desinerDetails=this.$store.getters.desinerDetails;
-      var data =desinerDetails.designer_uid?desinerDetails:JSON.parse(localStorage.GetDesinerDetails);// 
-     this.desinerMes={
-        designer_level:data.designer_level,
-        designer_name:data.designer_name,
-        designer_uid:data.designer_uid,
-        designer_name:data.designer_name,
-        head_image_url:data.head_image_url,
-      }
-      this.caseDetails = data.designer_case_list[this.$route.query.caseId].case_detail;
-      document.title = data.designer_case_list[this.$route.query.caseId].title;
+    getData() { 
+          var _self=this;
+          return new Promise((resolve, reject) => {
+            _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.query.caseId}})
+            .then(response=>{
+              if(response.data.code!=200){
+                console.log('请求出错');
+                return
+              } 
+              document.title=response.data.data.title;
+              _self.caseDetails=response.data.data.caseDetail;
+              _self.desinerMes={
+                designer_uid:response.data.data.designerId,
+                head_image_url:response.data.data.image,
+                designer_name:response.data.data.name
+              }
+          
 
+              resolve(response);
+            })
+            .catch(error => {
+              reject(error);
+            });
+        });
     },
     touchstart(event) {
       this.startY = event.changedTouches[0].pageY;
@@ -56,7 +66,7 @@ export default {
       var endY = event.changedTouches[0].pageY;
       var offsetTop = event.target.offsetTop;
       if (this.startY - endY < -30 && offsetTop < document.body.clientWidth) {
-        var url = "./#/desinerDetails/" +this.$route.params.desiner_id +"?caseId=" + this.$route.query.caseId +
+        var url = "./#/desinerDetails/" +this.$route.params.desiner_id +"?caseSlideIndex=" + this.$route.query.caseSlideIndex +
           "&startIndex=1";
         window.location.href = url;
       }

@@ -4,10 +4,10 @@
     
           <div class="fl">
               <div class="head">
-                 <img :src="desiner.head_image_url" >
+                 <img :src="desinerMes.head_image_url" >
              </div>
                 <div class="aside">
-                  <p class="name">{{desiner.designer_name}}</p>
+                  <p class="name">{{desinerMes.designer_name}}</p>
                     <!-- <p class="level">高级设计师</p> -->
               </div>
           </div>
@@ -24,7 +24,7 @@ import 'mint-ui/lib/style.css'
 import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
 import { getAuthorize } from '@/api/wxAuthorize';//微信授权
 export default {
-  props: ["desiner"],
+  // props: ["desinerMes"],
   data() {
     return {
       authorization_id:'',
@@ -70,7 +70,7 @@ export default {
                      })
                    
               }
-              miniSiteAppoints({"designer_uid":this.desiner.designer_uid,"user_id":_self.authorization_id} ) //预约设计师
+              miniSiteAppoints({"designer_uid":this.$store.getters.appointment.desiner_id,"user_id":_self.authorization_id} ) //预约设计师
               .then(function(response){
                      if(response.data.code!=200){
                         return MessageBox('提示', '查询异常');
@@ -129,7 +129,7 @@ export default {
   display: inline-block;
   margin-right: 0.1rem;
   float: left;
-  margin-top: 0.16rem;
+  margin-top: 0.1rem;
   /* margin-top:.1rem; */
 }
 .appoinmnet .head img {

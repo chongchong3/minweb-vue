@@ -2,18 +2,16 @@
   <div>
       <div v-html="caseDetails" class="page_caseDetails">
       </div>
-      <appointment ></appointment> 
+      <appointment :desiner="desienrMes"></appointment> 
   </div>
 </template>
 <style scoped>
 .page_caseDetails {
-  margin-top:-.52rem;
   overflow: scroll;
-
 }
 .page_caseDetails img {
-  max-width:100%;
-  height:auto !important;;
+  max-width:100%  !important;
+  height:auto !important;
 }
 </style>
 
@@ -25,6 +23,7 @@ export default {
   data() {
     return {
       caseDetails: "",
+      desienrMes:{}
   
     };
   },
@@ -45,7 +44,16 @@ export default {
                 console.log('请求出错');
                 return
               }
-              _self.caseDetails=response.data.data.message;
+              
+              document.title=response.data.data.title;
+              _self.caseDetails=response.data.data.caseDetail;
+              _self.desienrMes={
+                designer_uid:response.data.data.designerId,
+                head_image_url:response.data.data.image,
+                designer_name:response.data.data.name
+              }
+          
+
               resolve(response);
             })
             .catch(error => {

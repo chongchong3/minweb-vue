@@ -94,7 +94,8 @@ export default {
   components: { zoom, self, caseList },
   data() {
     return {
-      caseId: 0,
+      caseSlideIndex: 0,
+      caseId:0,
       _initia: 0,
       swiper: {},
       zoomData: {},
@@ -114,7 +115,7 @@ export default {
           }
        
           if (swiper.activeIndex == 3) {
-            window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id + "?caseId=" + vm.caseId ;
+            window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
           }
         },
         onTouchEnd(swiper) {}
@@ -135,8 +136,9 @@ export default {
   methods: {
     goDetails(swiper) {
       this.swiper = swiper;
-      this.caseId = swiper.activeIndex;
+      this.caseSlideIndex = swiper.activeIndex;
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
+      this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
     getData() { 
       var _designer_uid = this.$route.params.desiner_id;
