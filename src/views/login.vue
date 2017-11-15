@@ -45,11 +45,12 @@ export default {
   methods:{
 	//登陆
   	doLogin:function(){
+		var _self = this;
 		this.designer_uid = this.$route.query.designer_uid;
-		let _self = this;
-		this.authorization_id=this.$store.getters.wxAuthorize
+	
+		this.authorization_id=this.getCookie("wechat_id");
 		this.$store
-			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':'121212' })
+			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':this.authorization_id })
 			.then((data) => {
 				console.log(data.body);
 				if(data.body.code !== 200){
@@ -162,7 +163,14 @@ export default {
 			  }, 1000)
   	},
   	validPhone:()=> reg.test(document.getElementById("phone").value.trim()),
-    validValidcode:()=> regNum.test(document.getElementById("validCode").value),
+		validValidcode:()=> regNum.test(document.getElementById("validCode").value),
+		 getCookie(name) {
+      var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+      if(arr=document.cookie.match(reg))
+      return unescape(arr[2]);
+      else
+      return null;
+      }
   }
 };
 </script>
