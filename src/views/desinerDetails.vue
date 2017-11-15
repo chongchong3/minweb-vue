@@ -105,7 +105,8 @@ export default {
       swiperOptionPae: {
         scrollbarHide: false,
         direction: "vertical",
-        initialSlide: _initia,
+        // initialSlide: _initia,
+        initialSlide:0,
         onSlideChangeStart(swiper) {
           _initia = swiper.activeIndex;
           if (_initia == 2 && vm.zoomData.name) {
@@ -117,6 +118,7 @@ export default {
           if (swiper.activeIndex == 3) {
            window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
           //  window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
+          
           }
         },
         onTouchEnd(swiper) {}
