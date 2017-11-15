@@ -57,7 +57,9 @@ export default {
 
 
             }
-            checkAppointsStatus({user_id:_self.desiner.authorId}) //查询是否已经预约
+            var user_id = response.body.data.userId;
+            // checkAppointsStatus({user_id:_self.desiner.authorId}) //查询是否已经预约 response.body.data.userId
+            checkAppointsStatus({user_id: user_id})
             .then(function(response){
               if(response.data.code!=200){
                   return MessageBox('提示', '查询异常');
