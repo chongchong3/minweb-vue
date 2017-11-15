@@ -49,7 +49,8 @@ export default {
             // if(response.data.code!=200){
             //        return MessageBox('提示', '授权失败');
             // }
-            if(!response.data.userId){ //如果没有绑定跳转登录页面
+            console.log(response);
+            if(response.data.userId===null || response.data.userId =='' || response.data.userId == undefined){ //如果没有绑定跳转登录页面
             
               return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
 
