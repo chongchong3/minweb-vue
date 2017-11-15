@@ -22,7 +22,7 @@
     data() {
       return {
       	banner:[
-      		{link:"../../../static/images/banner_P1.jpg",src:"http://g.eqxiu.com/s/JSiNdILo"}//,
+      		{link:"https://img.wesetup.cn/banner_P1.jpg",src:"http://g.eqxiu.com/s/JSiNdILo"}//,
 //    		{link:"../../../static/images/banner.jpg",src:"http://www.bbboo.com"},
 //    		{link:"../../../static/images/banner.jpg",src:"https://www.toutiao.com"},
 //    		{link:"../../../static/images/banner.jpg",src:"http://www.baidu.com"}
