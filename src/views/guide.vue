@@ -1,12 +1,12 @@
 <template>
     <swiper :options="swiperOption" ref="mySwiper">
-    <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1110.jpg" alt=""></div>
-    <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1128.jpg" alt=""></div>
-    <div class="swiper-slide"><img class="scrollImg" src="http://owxa0vmjl.bkt.clouddn.com/all_animation_1186.jpg" alt=""></div>
+    <div class="swiper-slide"><img class="scrollImg" src="https://img.wesetup.cn/minguide1.png" alt=""></div>
+    <div class="swiper-slide"><img class="scrollImg" src="https://img.wesetup.cn/minguide2.png" alt=""></div>
+    <div class="swiper-slide"><img class="scrollImg" src="https://img.wesetup.cn/minguide3.png" alt=""></div>
     <div class="swiper-pagination"  slot="pagination"></div>
     <!-- <div class="swiper-scrollbar"   slot="scrollbar"></div> -->
       <div class="button" @click="goHome">
-      	进入设计IN
+      	<img src="https://img.wesetup.cn/minguidebutton.png" alt="" class="imgSize">
       </div>
   <!-- </div> -->
     </swiper>
@@ -25,6 +25,7 @@ export default {
      swiperOption: {
        // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
        //  notNextTick: true,
+       autoplay: 2000,
        direction : 'vertical',
        // swiper configs 所有的配置同swiper官方api配置
        effect:"coverflow",  //fade   cube   coverflow  flip
@@ -83,17 +84,22 @@ export default {
     height: 100%;
 }
 .button{
+    margin:auto;
 	position: absolute;
     bottom: .56rem;
-    left:50%;
-　　transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
 	height: .36rem;
 	width: 1rem;
-    background: #93D36A;
+    /* background: #93D36A; */
     color: #fff;
 	line-height: .36rem;
     text-align: center;
     z-index: 999;
+}
+.button .imgSize{
+    width: 100%;
+    height: 100%;
 }
 </style>
 
