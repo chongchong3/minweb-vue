@@ -42,6 +42,7 @@ export default {
   methods: {
     appoinmnet() {
       var _self=this;
+      console.log(this.desiner);
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
