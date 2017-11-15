@@ -30,8 +30,8 @@ export default {
     };
   },
   created() {
-    /*微信朋友圈分享*/
-
+	/*微信朋友圈分享*/
+	window.location.href='https://www.shejiin.net/minisite/login';
     this.$store
       .dispatch("GetUserInfo", { "phone_num":"18733198805", "authorization_id":"1123123123",  "message_code":"8888"   })
       .then(json => {})
