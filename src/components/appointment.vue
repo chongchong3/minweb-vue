@@ -71,7 +71,7 @@ export default {
                      })
                    
               }
-              miniSiteAppoints({"designer_uid":this.desiner.designer_uid,"user_id":_self.desiner.authorId} ) //预约设计师
+              miniSiteAppoints({"designer_uid":this.desiner.designer_uid,"user_id":user_id} ) //预约设计师
               .then(function(response){
                      if(response.data.code!=200){
                         return MessageBox('提示', '查询异常');
