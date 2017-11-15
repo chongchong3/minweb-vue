@@ -115,7 +115,8 @@ export default {
           }
        
           if (swiper.activeIndex == 3) {
-            window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
+           window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
+          //  window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
           }
         },
         onTouchEnd(swiper) {}
