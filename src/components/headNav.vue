@@ -58,7 +58,6 @@ export default {
         }
         var scrollTop=_self.getScrollTop();
         var screnHt=document.body.clientHeight;
-        console.log(scrollTop);
         if(scrollTop>screnHt/3){
             domNav.style.display="none";
             return

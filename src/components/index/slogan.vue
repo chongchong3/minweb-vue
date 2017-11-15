@@ -34,8 +34,7 @@
 	}
 	.slogan-title{
 		color:#000;
-		font-size:0.21rem;
-		line-height: 0.28rem;
+		font-size:0.18rem;
 		text-align: center;
 		margin-bottom: 0.09rem;
 		font-weight:bold ;

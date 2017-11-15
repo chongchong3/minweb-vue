@@ -141,8 +141,8 @@ export default {
   clear: both;
 }
 .list-title {
-  font-size: 0.12rem;
-  line-height: 0.12rem;
+  font-size: 0.14rem;
+  /* line-height: 0.12rem; */
   color: #000;
   float: left;
   font-weight: bold;
@@ -199,7 +199,8 @@ export default {
 }
 .portrait img {
   width: 100%;
-  border-radius: 16px;
+  border-radius:50%;
+  height: .32rem;
   border: none;
   display: inline-block;
   margin-top: 0.02rem;

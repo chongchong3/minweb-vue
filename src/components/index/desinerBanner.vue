@@ -23,7 +23,7 @@
 							<div class="design-des-c">
 								<p class="name">{{designer.designer_name}}</p>
 								<p class="profession" >{{designer.city}} | {{designer.plantform_descript}}</p>
-								<p class="level">{{designer.designer_level}}</p>
+								<!-- <p class="level">{{designer.designer_level}}</p> -->
 							</div>
 						<!--</div>-->
 			    	</router-link>
@@ -117,8 +117,8 @@ export default {
   clear: both;
 }
 .list-title {
-  font-size: 0.12rem;
-  line-height: 0.12rem;
+  font-size: 0.14rem;
+  /* line-height: 0.12rem; */
   color: #000;
   float: left;
   font-weight: bold;
