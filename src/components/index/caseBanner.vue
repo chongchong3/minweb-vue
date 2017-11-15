@@ -177,6 +177,7 @@ export default {
 .img-c img {
   width: 100%;
   display: block;
+  height: .96rem;
 }
 /*.swiper-slide{
 	 flex-shrink: unset;

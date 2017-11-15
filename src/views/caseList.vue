@@ -209,6 +209,7 @@ p {
 }
 .info {
   text-align: center;
+  color:#666;
 }
 </style>
 

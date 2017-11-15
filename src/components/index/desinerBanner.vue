@@ -157,6 +157,7 @@ export default {
 .img-c img {
   width: 100%;
   display: block;
+  height: 2.38rem;
 }
 .design-des-c p {
   text-align: left;
