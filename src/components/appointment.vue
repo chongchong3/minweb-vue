@@ -63,10 +63,10 @@ export default {
             .then(function(response){
               
               if( response.data.code==200 && (response.data.message !==null || response.data.message !=='')){
-                  MessageBox('你已经预约过了');
-                  return setTimeout(function(){
-                        history.go(-1);
-                     })  
+                  return MessageBox('你已经预约过了');
+                  // return setTimeout(function(){
+                  //       history.go(-1);
+                  //    })  
               }
 
               miniSiteAppoints({"designer_uid":_self.desiner.designer_uid,"user_id":user_id} ) //预约设计师
@@ -75,10 +75,10 @@ export default {
                         return MessageBox('提示', '你已经预约过了');
                     } 
                     if(response.data.code==200){
-                       MessageBox('提示', '预约成功');
-                      return setTimeout(function(){
-                        history.go(-1);
-                     })
+                      return MessageBox('提示', '预约成功');
+                    //    setTimeout(function(){
+                    //     history.go(-1);
+                    //  })
                     }
                     return MessageBox('提示', '查询异常')
               })
