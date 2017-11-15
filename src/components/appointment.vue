@@ -42,7 +42,7 @@ export default {
   methods: {
     appoinmnet() {
       var _self=this;
-      console.log(this.desiner);
+      console.log(this.desiner.designer_uid);
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
@@ -51,7 +51,7 @@ export default {
             // }
             if(!response.data.userId){ //如果没有绑定跳转登录页面
             
-              return _self.$router.push({path:'/login'})
+              return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
 
 
             }
