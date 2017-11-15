@@ -19,8 +19,11 @@
   </div>
 </template>
 <script>
+import { MessageBox } from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import { sendMsg } from "../api/login";
 import { getUserInfo } from "../api/login";
+import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
 const reg = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
 const regNum = /^([0-9]{4})$/;
 export default {
@@ -33,6 +36,7 @@ export default {
 			loginBtnDisable:true,
 			user_id:null,
 			authorization_id:null,
+			designer_uid:null,
 		}
 	},
   mounted(){
@@ -41,19 +45,32 @@ export default {
   methods:{
 	//登陆
   	doLogin:function(){
+		this.designer_uid = this.$route.query.designer_uid;
 		let _self = this;
 		this.authorization_id=this.$store.getters.wxAuthorize
 		this.$store
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':'121212' })
 			.then((data) => {
-				console.log('返回数据')
-				console.log(data)
-				if(data.code !== 200){
+				console.log(data.body);
+				if(data.body.code !== 200){
 					console.log('登陆失败')
 				}
-				_self.user_id=data.data.user_id
-				// _self.searchInfo(user_id)
-				_self.reserveDesiner(designer_uid,user_id)
+				_self.user_id=data.body.data.user_id
+				console.log(_self.user_id);
+				console.log(_self.designer_uid);
+				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
+				.then(function(response){
+						if(response.data.code!=200){
+							return MessageBox('提示', '查询异常');
+						} 
+						MessageBox('提示', '预约成功');
+						return setTimeout(function(){
+							history.go(-1);
+						})
+				})
+				.fail(function(error){
+						return MessageBox('提示', '请求失败');
+				})
 			})
 			.catch(err => {
 				console.log(err)
@@ -64,7 +81,7 @@ export default {
 	/**@augments
 	 * 查询预约记录接口
 	 * url : /Designer/checkAppointsStatus
-	 * param  {"user_id":"43320788568244268"}
+	 * @param  {"user_id":"43320788568244268"}
 	 * 如果有预约记录 返回设计师id
 	 * success
 	 * "code": 200,
@@ -79,7 +96,7 @@ export default {
 	/**@augments
 	 * 预约设计师接口
 	 * url : /Designer/miniSiteAppoints
-	 * param {"designer_uid":"43207696962329537","user_id":"43320788568244268"} 
+	 * @param {"designer_uid":"43207696962329537","user_id":"43320788568244268"} 
 	 * success 
 	 * {
 		"code": 200,
@@ -88,7 +105,7 @@ export default {
 		},
 	*/
 	reserveDesiner(designer_uid,user_id){
-
+		
 	},
 
   	validLogin:function(){
@@ -223,7 +240,7 @@ export default {
   border-radius: 0.04rem;
   display: inline-block;
   line-height: 0.2rem;
-  height: 0.2rem;
+  height: 0.3rem;
   right: 0.1rem;
   bottom: 0.1rem;
   z-index: 99;
