@@ -22,7 +22,7 @@
 import { MessageBox } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
-import { getAuthorize } from '@/api/wxAuthorize';//微信授权
+import { checkLoginStatus } from '@/api/CheckLoginStatus';//查询是否绑定
 export default {
   props: ["desiner"],
   data() {
@@ -43,7 +43,7 @@ export default {
     appoinmnet() {
       var _self=this;
       //查询是否授权绑定用户
-        getAuthorize({authorization_id:this.desiner.authorId})
+        checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
             // if(response.data.code!=200){
             //        return MessageBox('提示', '授权失败');
