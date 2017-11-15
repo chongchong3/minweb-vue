@@ -43,7 +43,7 @@ export default {
     appoinmnet() {
       var _self=this;
       //查询是否授权绑定用户
-        getAuthorize({authorization_id:desiner.authorId})
+        getAuthorize({authorization_id:this.desiner.authorId})
         .then(function(response){
             // if(response.data.code!=200){
             //        return MessageBox('提示', '授权失败');
@@ -53,7 +53,7 @@ export default {
 
 
             }
-            checkAppointsStatus({user_id:_self.authorization_id}) //查询是否已经预约
+            checkAppointsStatus({user_id:_self.desiner.authorId}) //查询是否已经预约
             .then(function(response){
               if(response.data.code!=200){
                   return MessageBox('提示', '查询异常');
@@ -65,7 +65,7 @@ export default {
                      })
                    
               }
-              miniSiteAppoints({"designer_uid":this.desiner.designer_uid,"user_id":_self.authorization_id} ) //预约设计师
+              miniSiteAppoints({"designer_uid":this.desiner.designer_uid,"user_id":_self.desiner.authorId} ) //预约设计师
               .then(function(response){
                      if(response.data.code!=200){
                         return MessageBox('提示', '查询异常');
