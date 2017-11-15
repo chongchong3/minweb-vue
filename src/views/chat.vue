@@ -32,9 +32,10 @@ export default {
     document.body.appendChild(s);
   },
   mounted() {
+
     setTimeout(function(){
       document.getElementById("online-service").click();
-    },1000);
+    },200);
   },
   updated() {},
   methods: {
