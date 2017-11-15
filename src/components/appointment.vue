@@ -50,7 +50,7 @@ export default {
             // }
             if(!response.data.userId){ //如果没有绑定跳转登录页面
             
-              return _self.$router.push({path:'./login'})
+              return _self.$router.push({path:'/login'})
 
 
             }
