@@ -20,11 +20,12 @@
             </div>
             <div class="nameLev">
               <div :to="'desinerDetails/'+single.designer_uid">
-              <p class="desinerName">{{single.designer_name}}</p>
+                <p class="desinerName">{{single.designer_name}}</p>
               </div>
-              <div :to="'desinerDetails/'+single.designer_uid">
-              <p class="desinerRank">{{single.designer_level}}</p>
-              </div>
+              <!--{{single.designer_level}}设计师级别-->
+              <!-- <div :to="'desinerDetails/'+single.designer_uid">
+                <p class="desinerRank">{{single.designer_level}}</p>
+              </div> -->
             </div>   
           </div>
         </div>

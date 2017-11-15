@@ -12,7 +12,7 @@
           <router-link :to="'desinerDetails/'+single.designer_uid">
 					<p class="textUnder">
             <span class="desinerName">{{single.designer_name}}</span>&nbsp;
-            <span class="desinerRank">{{single.designer_level}}</span></p>
+            <span class="desinerRank"></span></p><!--{{single.designer_level}}设计师级别-->
 					</router-link>
           <router-link :to="'desinerDetails/'+single.designer_uid">
           <p class="plantform_descript"><span class="city">{{single.city}}</span>&nbsp;|&nbsp;<span>{{single.plantform_descript}}</span></p>
