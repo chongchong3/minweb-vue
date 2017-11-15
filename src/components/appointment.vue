@@ -31,16 +31,11 @@ export default {
     };
   },
   created() {
-    // this.mockLogin();
     this.getState();
  
   },
   mounted(){
-    this.$nextTick(function(){
-      console.log(this.$store.getters);
-        document.title=this.$store.getters.appointment.title;
-        
-    })
+   
   
   },
 
@@ -48,7 +43,7 @@ export default {
     appoinmnet() {
       var _self=this;
       //查询是否授权绑定用户
-        getAuthorize({authorization_id:this.authorization_id})
+        getAuthorize({authorization_id:desiner.authorId})
         .then(function(response){
             // if(response.data.code!=200){
             //        return MessageBox('提示', '授权失败');

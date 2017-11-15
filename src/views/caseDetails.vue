@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       caseDetails: "",
-      desienrMes:{}
+      desienrMes:{},
+      authorId:''
   
     };
   },
@@ -33,6 +34,11 @@ export default {
   },
   created() {
     vm = this;
+     this.authorId=this.getCookie("wechat_id");
+    if(!this.authorId){
+         window.location.href = "https://www.shejiin.net/minisite/login?originUrl="+this.$route.fullPath;
+         return
+    }
   },
   methods: {
     getData(){
@@ -50,7 +56,8 @@ export default {
               _self.desienrMes={
                 designer_uid:response.data.data.designerId,
                 head_image_url:response.data.data.image,
-                designer_name:response.data.data.name
+                designer_name:response.data.data.name,
+                authorId:_self.authorId
               }
           
 
@@ -60,7 +67,14 @@ export default {
               reject(error);
             });
         });
-    }
+    },
+     getCookie(name) {
+      var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+      if(arr=document.cookie.match(reg))
+      return unescape(arr[2]);
+      else
+      return null;
+      }
   }
 };
 </script>

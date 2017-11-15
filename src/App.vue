@@ -10,21 +10,11 @@ export default {
     return {};
   },
   created() {
-    // this.author();
+  
   },
 
   methods: {
-    // author() {
-    //   this.$store
-    //     .dispatch("GetAuthorize")
-    //     .then(response => {
-    //       localStorage.setItem("WxAuthorize", response.data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //       localStorage.setItem("WxAuthorize", "testAuthorId111111");
-    //     });
-    // }
+
   }
 };
 </script>
