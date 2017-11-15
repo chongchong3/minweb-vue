@@ -61,25 +61,26 @@ export default {
             // checkAppointsStatus({user_id:_self.desiner.authorId}) //查询是否已经预约 response.body.data.userId
             checkAppointsStatus({user_id: user_id})
             .then(function(response){
-              if(response.data.code!=200){
-                  return MessageBox('提示', '查询异常');
-              }
-              if(response.data.message){
-                      MessageBox('您已经在预约状态');
-                    return setTimeout(function(){
+              
+              if( response.data.code==200 && (response.data.message !==null || response.data.message !=='')){
+                  MessageBox('你已经预约过了');
+                  return setTimeout(function(){
                         history.go(-1);
-                     })
-                   
+                     })  
               }
+
               miniSiteAppoints({"designer_uid":_self.desiner.designer_uid,"user_id":user_id} ) //预约设计师
               .then(function(response){
-                     if(response.data.code!=200){
-                        return MessageBox('提示', '查询异常');
+                    if(response.data.code==500){
+                        return MessageBox('提示', '你已经预约过了');
                     } 
-                     MessageBox('提示', '预约成功');
-                    return setTimeout(function(){
+                    if(response.data.code==200){
+                       MessageBox('提示', '预约成功');
+                      return setTimeout(function(){
                         history.go(-1);
                      })
+                    }
+                    return MessageBox('提示', '查询异常')
               })
               .fail(function(error){
                      return MessageBox('提示', '请求失败');
