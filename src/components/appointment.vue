@@ -22,6 +22,7 @@
 import { MessageBox } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
+import { checkAppointsStatus } from '@/api/checkAppointsStatus';
 import { checkLoginStatus } from '@/api/CheckLoginStatus';//查询是否绑定
 export default {
   props: ["desiner"],
