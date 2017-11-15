@@ -39,7 +39,6 @@ body {
   height: 100%;
 }
 .container {
-  padding-top: 0.52rem;
   height: 100%;
 }
 .more {

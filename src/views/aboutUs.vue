@@ -1,7 +1,5 @@
 <template>
-	<div>
-		
-	
+	<div class="page-aboutUs">
 	<left-nav></left-nav>
 		<head-nav></head-nav>
 	<div class="aboutus-c">
@@ -97,6 +95,9 @@
 	</div>
 </template>
 <style scoped="scoped">
+.page-aboutUs {
+  padding-top: 0.52rem;
+}
 .aboutus-c {
   padding: 0 0.2rem;
   text-align: center;
