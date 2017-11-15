@@ -13,6 +13,7 @@
 
 </template>
 <script>
+var vm=this;
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
  name: 'carrousel',
@@ -23,36 +24,29 @@ export default {
  data() {
    return {
      swiperOption: {
-       // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
-       //  notNextTick: true,
-       autoplay: 2000,
-       autoplayStopOnLast : true,
+        loop : false,
+        autoplay: 3500,
        direction : 'vertical',
-       // swiper configs 所有的配置同swiper官方api配置
-       effect:"coverflow",  //fade   cube   coverflow  flip
-       coverflow: {
-            rotate: 0,
-            stretch: 0,
-            depth: 0,
-            modifier: 1,
-            slideShadows : true
-        },
        grabCursor : true, //手掌形状，拖动时指针会变成抓手形状
        setWrapperSize :true,
-    //    autoHeight: true,
        pagination : '.swiper-pagination',
        paginationClickable :true,
-    //    hashnav:true,
-    //    prevButton:'.swiper-button-prev',
-    //    nextButton:'.swiper-button-next',
-    //    scrollbar:'.swiper-scrollbar',
-       mousewheelControl : true,
-       observeParents:true,
+        onSlideChangeEnd: swiper => {
+            if(swiper.realIndex==2){
+                setTimeout(() => {
+                    vm.$router.push({path:'./index'});
+                    
+                }, 3000);
+            }
+          }
      }
    }
  },
  mounted(){
     document.getElementById('app').style.paddingTop = 0;
+  },
+  created(){
+      vm=this;
   },
  computed: {
    swiper() {

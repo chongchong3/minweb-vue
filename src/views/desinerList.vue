@@ -1,5 +1,5 @@
 <template>
-<div >
+<div class="page-desinerList">
 	<left-nav></left-nav>
 	<head-nav></head-nav>
 	<ul class="desinerList">
@@ -130,6 +130,9 @@ export default {
 </script>
 
 <style scoped>
+.page-desinerList {
+  padding-top: 0.52rem;
+}
 ul,
 li,
 p {

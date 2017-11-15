@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="page-caseList">
     <left-nav></left-nav>
     <head-nav></head-nav>
     <ul class="caseListContainer">
@@ -138,6 +138,9 @@ export default {
 };
 </script>
 <style scoped>
+.page-caseList {
+  padding-top: 0.52rem;
+}
 ul,
 li,
 p {

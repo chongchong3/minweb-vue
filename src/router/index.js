@@ -20,8 +20,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index,
+      name: 'guide',
+      component: guide,
       meta: {title: '设计IN-设计师严选平台'}
     },
     {

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="page-index">
 		<left-nav></left-nav>
 		<head-nav></head-nav>
 		<banner-content></banner-content>
@@ -9,11 +9,15 @@
 	</div>
 
 </template>
-<style>
+<style scoped>
 .imgWrap {
   width: 100%;
   overflow: hidden;
   height: 2rem;
+  
+}
+.page-index {
+  padding-top: 0.52rem;
 }
 </style>
 
