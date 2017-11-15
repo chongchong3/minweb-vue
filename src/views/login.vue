@@ -33,6 +33,7 @@ export default {
 			loginEnable:false,
 			loginBtnDisable:true,
 			user_id:null,
+			authorization_id:null,
 		}
 	},
   mounted(){
@@ -42,6 +43,7 @@ export default {
 	//登陆
   	doLogin:function(){
 		let _self = this;
+		this.authorization_id=this.$store.getters.wxAuthorize
 		this.$store
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':'121212' })
 			.then((data) => {
@@ -51,12 +53,19 @@ export default {
 					console.log('登陆失败')
 				}
 				_self.user_id=data.data.user_id
+				// _self.searchInfo()
 			})
 			.catch(err => {
 				console.log(err)
         });
 		
-  	},
+	  },
+	//   查询是否预约
+	  searchInfo(){
+
+	  },
+	  //预约设计师
+
   	validLogin:function(){
   		if(this.validPhone() && this.validValidcode()){
   			this.loginBtnDisable = false;

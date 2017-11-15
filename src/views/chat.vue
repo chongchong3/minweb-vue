@@ -32,13 +32,15 @@ export default {
     document.body.appendChild(s);
   },
   mounted() {
-    document.getElementById("online-service").onclick = function() {
-      location.href = ysf.url();
-    };
+    setTimeout(function(){
+      document.getElementById("online-service").click();
+    },1000);
   },
   updated() {},
   methods: {
-    link() {}
+    link() {
+      location.href = ysf.url();
+    }
   }
 };
 </script>
