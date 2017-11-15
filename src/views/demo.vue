@@ -1,6 +1,6 @@
 <template>
  <div >
-	<p class="test" @click="goLink">点击授权</p>
+	<p class="test" @click="goLink" style="font-size:20px">点击授权</p>
   
  </div>
 </template>
