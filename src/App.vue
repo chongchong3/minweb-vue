@@ -14,17 +14,17 @@ export default {
   },
 
   methods: {
-    author() {
-      this.$store
-        .dispatch("GetAuthorize")
-        .then(response => {
-          localStorage.setItem("WxAuthorize", response.data);
-        })
-        .catch(error => {
-          console.log(error);
-          localStorage.setItem("WxAuthorize", "testAuthorId111111");
-        });
-    }
+    // author() {
+    //   this.$store
+    //     .dispatch("GetAuthorize")
+    //     .then(response => {
+    //       localStorage.setItem("WxAuthorize", response.data);
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //       localStorage.setItem("WxAuthorize", "testAuthorId111111");
+    //     });
+    // }
   }
 };
 </script>

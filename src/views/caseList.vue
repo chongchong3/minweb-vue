@@ -168,7 +168,7 @@ p {
 }
 .headPic {
   border-radius:.2rem;
-  height: .95em;
+  height: .95rem;
   width: 1.4rem;
   float: left;
 }
