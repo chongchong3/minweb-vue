@@ -29,6 +29,9 @@ export default {
       authorId:''
     };
   },
+  beforeCreate(){
+
+  },
   created() {
     vm = this;
     this.authorId=this.getCookie("wechat_id");
@@ -36,10 +39,12 @@ export default {
          window.location.href = "https://www.shejiin.net/minisite/login?originUrl="+this.$route.fullPath;
          return
     }
-    this.getData();
+    
   
   },
-  
+  mounted(){
+    this.getData();
+  },
   methods: {
     getData() { 
           var _self=this;

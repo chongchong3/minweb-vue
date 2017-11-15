@@ -146,11 +146,11 @@ export default {
     getData() { 
       var _designer_uid = this.$route.params.desiner_id;
       
-      if(this.$store.getters.desinerDetails.designer_uid){
-         this.setData(this.$store.getters.desinerDetails);
-        return
+      // if(this.$store.getters.desinerDetails.designer_uid){
+      //    this.setData(this.$store.getters.desinerDetails);
+      //   return
 
-      }
+      // }
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
