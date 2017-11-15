@@ -22,7 +22,7 @@ export default {
 
 methods:{
 	goLink(){
-		window.location.href='https://www.shejiin.net/minisite/login';
+		window.location.href='https://www.shejiin.net/minisite/login?originUrl=test?caseId=1&desinerIndex=2';
 	}
 }
 };
