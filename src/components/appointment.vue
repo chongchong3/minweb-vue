@@ -49,6 +49,7 @@ export default {
             //        return MessageBox('提示', '授权失败');
             // }
             if(!response.data.userId){ //如果没有绑定跳转登录页面
+            
               return _self.$router.push({path:'./login'})
 
 
@@ -88,6 +89,7 @@ export default {
 
         })
         .fail(function(error){
+          console.log(error)
 
         })
     },
