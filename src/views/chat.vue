@@ -16,7 +16,7 @@ export default {
   data() {
     return {};
   },
-   components: {
+  components: {
     headNav,
     leftNav
   },
@@ -32,9 +32,12 @@ export default {
     document.body.appendChild(s);
   },
   mounted() {
-    setTimeout(function(){
-      document.getElementById("online-service").click();
-    },1000);
+    var chatDom = document.getElementById("online-service");
+    if (chatDom) {
+      setTimeout(function() {
+        document.getElementById("online-service").click();
+      }, 200);
+    }
   },
   updated() {},
   methods: {
