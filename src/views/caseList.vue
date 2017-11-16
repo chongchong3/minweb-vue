@@ -176,8 +176,8 @@ p {
   margin-left: 1.5rem;
 }
 .caseListContainer .detail .title {
-  font-size: 14px;
-  margin-bottom: 0.1rem;
+  font-size: 16px;
+  margin-bottom: 0.06rem;
   color: #000;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -185,6 +185,7 @@ p {
 }
 .houseType {
   color: #9e9e9e;
+  font-size:14px;
 }
 .caseListContainer .desiner {
   margin-top: 0.15rem;
