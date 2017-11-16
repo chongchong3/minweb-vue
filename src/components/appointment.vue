@@ -62,7 +62,7 @@ export default {
             checkAppointsStatus({user_id: user_id})
             .then(function(response){
               
-              if( response.data.code==200 && response.data.message.length == 17 ){ //设计师ID长度为17
+              if( response.data.code==200 && response.data.data.message.length == 17 ){ //设计师ID长度为17
                   return MessageBox('你已经预约过了');
                   // return setTimeout(function(){
                   //       history.go(-1);
