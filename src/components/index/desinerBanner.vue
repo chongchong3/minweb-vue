@@ -139,11 +139,10 @@ export default {
   clear: both;
 }
 .designer-item {
-  width: 45% !important;
   text-align: center;
   font-size: 18px;
   background: #fff;
-  width: 80%;
+  width: 1.5rem;
 
   margin-right: 0.09rem;
 }
