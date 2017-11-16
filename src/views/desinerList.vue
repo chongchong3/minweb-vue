@@ -200,8 +200,8 @@ p {
   justify-content: space-between;
 }
 .desinerList .imgSingle {
-  width: .94rem;
-  height:.54rem;
+  width: 1rem;
+
 }
 .imgH {
   width: 100%;
