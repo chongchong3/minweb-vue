@@ -152,12 +152,13 @@ export default {
   float: left;
 }
 .img-c {
-  margin-bottom: 0.07rem;
+  width:1.4rem;
 }
 .img-c img {
   width: 100%;
   display: block;
-  height: 2.38rem;
+  height: 2rem;
+
 }
 .design-des-c p {
   text-align: left;
