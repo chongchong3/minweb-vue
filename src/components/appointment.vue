@@ -86,7 +86,7 @@ export default {
 
 
         })
-        .fail(function(error){
+        .catch(function(error){
         
             return MessageBox('提示', '请求失败');
         })
