@@ -116,7 +116,6 @@
 </style>
 <script>
 
-import 'video.js/dist/video-js.css'
 
 export default {
     props: ['selfMes'],
