@@ -57,10 +57,10 @@ export default {
 					
 				
 				}
-				_selfis.loginBtnDisable = true;
+				_self.loginBtnDisable = true;
 				_self.loginEnable = false;
 				setTimeout(function(){
-					_selfis.loginBtnDisable = false;
+					_self.loginBtnDisable = false;
 					_self.loginEnable = true;
 				},60000)
 				_self.user_id=data.body.data.user_id
