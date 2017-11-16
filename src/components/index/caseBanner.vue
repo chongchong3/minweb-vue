@@ -194,20 +194,19 @@ export default {
   clear: both;
 }
 .portrait {
-  width: 0.32rem;
+  width: 0.4rem;
   float: left;
 }
 .portrait img {
   width: 100%;
+  height:.4rem;
   border-radius:50%;
-  height: .32rem;
   border: none;
   display: inline-block;
   margin-top: 0.02rem;
 }
 .name-theme-c {
-  margin-left: 0.36rem;
-  margin-right: 0.09rem;
+  margin-left: 0.34rem;
 }
 .name-theme-c p {
   padding: 0;
@@ -215,8 +214,9 @@ export default {
   text-align: left;
 }
 .name-theme-c p.name {
-  font-size: 0.11rem;
+  font-size: 0.12rem;
   color: #999;
+  margin-top:.44rem;
 }
 .name-theme-c p.theme {
   font-size: 0.14rem;

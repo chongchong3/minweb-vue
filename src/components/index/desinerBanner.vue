@@ -177,6 +177,7 @@ export default {
   font-size: 0.14rem;
   line-height: 0.18rem;
   margin-bottom: 0.04rem;
+  margin-top:.06rem;
 }
 .design-des-c .profession {
   font-size: 0.11rem;

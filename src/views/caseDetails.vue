@@ -47,7 +47,7 @@ export default {
             _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.params.case_id}})
             .then(response=>{
               if(response.data.code!=200){
-                console.log('请求出错');
+
                 return
               }
               

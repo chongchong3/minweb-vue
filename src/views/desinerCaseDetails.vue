@@ -52,7 +52,7 @@ export default {
             _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.query.caseId}})
             .then(response=>{
               if(response.data.code!=200){
-                console.log('请求出错');
+               
                 return
               } 
               document.title=response.data.data.title;

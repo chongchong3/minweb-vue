@@ -35,7 +35,7 @@ var api= '/weixin/getWXUrl';
       });
     })
     .catch(err => {
-      console.log(err);
+    
     });
 }
 
@@ -50,7 +50,7 @@ const  shareReady=function(title,desc,link,imgUrl){
           desc: desc, // 分享描述
           imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
           success: function(success) {
-              console.log(success,'sharesuccess');
+            
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
@@ -63,7 +63,7 @@ const  shareReady=function(title,desc,link,imgUrl){
             desc: desc, // 分享描述
             imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
           success: function(success) {
-             console.log(success);
+          
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
@@ -71,7 +71,7 @@ const  shareReady=function(title,desc,link,imgUrl){
           }
         });
         wx.error(function(res) {
-          console.log(res,'error');
+        
         });
       });
 }

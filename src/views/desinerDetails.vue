@@ -157,7 +157,7 @@ export default {
           this.setData(response.data.data);
         })
         .catch(error => {
-          console.log(error);
+        
         });
     },
     setData(data) {

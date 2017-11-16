@@ -52,16 +52,12 @@ export default {
 		this.$store
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':this.authorization_id })
 			.then((data) => {
-				console.log(data.body);
 				if(data.body.code !== 200){
-					console.log('登陆失败')
+				
 				}
 				_self.user_id=data.body.data.user_id
-				console.log(_self.user_id);
-				console.log(_self.designer_uid);
 				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
 				.then(function(response){
-					console.log(response);
 						if(response.data.code!=200){
 							return MessageBox('提示', '查询异常');
 						} 
@@ -75,7 +71,7 @@ export default {
 				})
 			})
 			.catch(err => {
-				console.log(err)
+					 MessageBox('提示', '连接失败');
         });
 		
 	  },
