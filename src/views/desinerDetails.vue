@@ -169,7 +169,8 @@ export default {
         head_image_url: data.head_image_url,
         price: data.designer_price,
         brief: data.plantform_descript,
-        designer_level: data.designer_level
+        designer_level: data.designer_level,
+        designer_high_price:data.designer_high_price
       };
       this.selfData = {
         brief: data.descript,

@@ -9,11 +9,10 @@
                 <div class="explain">
                     <p class="tit">{{item.title}}</p>
                     <p class="houseName">{{item.house_type_name}}</p>
-                    <div class="degree">
+                    <!-- <div class="degree">
                         <label>设计师级别</label>
                         <span class="level">{{level}}</span>
-                        
-                    </div>
+                    </div> -->
 
                 </div>
             </swiper-slide>
@@ -47,11 +46,11 @@
     border-radius: .06rem;
     color: #000;
     text-align: center;
+    padding-bottom: .3rem;
 }
 
 .swiper-picList .explain .degree {
 
-    padding-bottom: .3rem;
 }
 
 .swiper-picList .explain .degree label {
