@@ -74,9 +74,6 @@ export default {
 							history.go(-1);
 						})
 				})
-				.fail(function(error){
-						return MessageBox('提示', '请求失败');
-				})
 			})
 			.fail(err => {
 					 MessageBox('提示', '连接失败');
