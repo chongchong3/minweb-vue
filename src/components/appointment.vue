@@ -62,7 +62,7 @@ export default {
             checkAppointsStatus({user_id: user_id})
             .then(function(response){
               
-              if( response.data.code==200 && (response.data.message !==null || response.data.message !=='')){
+              if( response.data.code==200 && (response.data.message !==null && response.data.message !=='')){
                   return MessageBox('你已经预约过了');
                   // return setTimeout(function(){
                   //       history.go(-1);
