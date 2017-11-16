@@ -32,8 +32,8 @@ export default {
 			isSend:false,
 			isDisable:true,
 			validEnable:false,
-			loginEnable:false,
-			loginBtnDisable:true,
+			loginEnable:false, // 登陆样式
+			loginBtnDisable:true, // 登陆是否可以点击
 			user_id:null,
 			authorization_id:null,
 			designer_uid:null,
@@ -52,9 +52,16 @@ export default {
 		this.$store
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':this.authorization_id })
 			.then((data) => {
+
 				if(data.body.code !== 200){
 				
 				}
+				_selfis.loginBtnDisable = true;
+				_self.loginEnable = false;
+				setTimeout(function(){
+					_selfis.loginBtnDisable = false;
+					_self.loginEnable = true;
+				},60000)
 				_self.user_id=data.body.data.user_id
 				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
 				.then(function(response){
