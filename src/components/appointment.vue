@@ -50,7 +50,7 @@ export default {
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
-            console.log(response);
+           
             if(response.body.data.userId===null || response.body.data.userId =='' || response.body.data.userId == undefined){ //如果没有绑定跳转登录页面
             
               return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})

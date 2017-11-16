@@ -5,6 +5,8 @@
       <div class="cont">
        
           <span class="btnNav btn" @click="showMenu"><img src="static/images/menu.png" ></span>
+       <router-link  to="index" class="goHome">
+       </router-link>
           <span class="btnChat btn">
                 <router-link  to="chat" >
                     <img src="static/images/call.png" >
@@ -169,6 +171,14 @@ export default {
 }
 .topNav .btn img {
   width: 100%;
+}
+.goHome {
+     display: inline-block;
+    position: absolute;
+    width: .4rem;
+    height: 0.5rem;
+    left: 50%;
+    margin-left: -.2rem;
 }
 .test {
   width: 100%;

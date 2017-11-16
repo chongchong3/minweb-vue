@@ -169,6 +169,7 @@ p {
 .headPic {
   border-radius:.02rem;
   width: 1.4rem;
+  height: .95rem;
   float: left;
 }
 .caseListContainer .detail {

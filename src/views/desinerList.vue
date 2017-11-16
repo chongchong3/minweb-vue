@@ -23,7 +23,7 @@
         </div>
 			</div>
 			<div class="imgList">
-        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<3">
+        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<4">
           <img :src="list.wide_screen_image"  v-if="list.wide_screen_image" class="imgH">
             <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
         </div>
@@ -200,7 +200,7 @@ p {
   justify-content: space-between;
 }
 .desinerList .imgSingle {
-  width: 1rem;
+  width: 1.1rem;
 
 }
 .imgH {
