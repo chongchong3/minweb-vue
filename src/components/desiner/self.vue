@@ -8,7 +8,7 @@
 
             <div class="memo">
                 <div class="cont">
-                    <p class="name">个人信息</p>
+                    <p class="name">设计理念</p>
 
                     <p class="brief">{{selfMes.brief}}</p>
                 </div>
@@ -92,7 +92,7 @@
 }
 
 .hasTips .memo .name {
-    font-size: 30px;
+    font-size: 26px;
 }
 
 .hasTips {

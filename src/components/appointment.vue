@@ -58,7 +58,6 @@ export default {
 
             }
             var user_id = response.body.data.userId;
-            // checkAppointsStatus({user_id:_self.desiner.authorId}) //查询是否已经预约 response.body.data.userId
             checkAppointsStatus({user_id: user_id})
             .then(function(response){
               

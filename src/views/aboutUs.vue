@@ -308,7 +308,7 @@ export default {
   },
   created() {
      this.shareWx.getId();
-    this.shareWx.shareReady("关于 | 设计IN-设计师严选平台");
+      this.shareWx.shareReady("关于 | 设计IN-设计师严选平台");
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "aboutUs" //设置左菜单栏高亮
