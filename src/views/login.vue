@@ -54,6 +54,7 @@ export default {
 			.then((data) => {
 
 				if(data.body.code !== 200){
+					
 				
 				}
 				_selfis.loginBtnDisable = true;
@@ -77,7 +78,7 @@ export default {
 						return MessageBox('提示', '请求失败');
 				})
 			})
-			.catch(err => {
+			.fail(err => {
 					 MessageBox('提示', '连接失败');
         });
 		
