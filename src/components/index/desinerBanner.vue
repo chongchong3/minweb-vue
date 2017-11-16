@@ -158,7 +158,6 @@ export default {
   width: 100%;
   display: block;
   height: 2rem;
-
 }
 .design-des-c p {
   text-align: left;
