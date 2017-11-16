@@ -206,7 +206,7 @@ export default {
   margin-top: 0.02rem;
 }
 .name-theme-c {
-  margin-left: 0.34rem;
+  margin-left: 0.44rem;
 }
 .name-theme-c p {
   padding: 0;
