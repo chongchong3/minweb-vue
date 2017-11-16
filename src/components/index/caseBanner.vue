@@ -81,14 +81,14 @@ export default {
   },
   methods: {
     jumpTo(onecase) {
-      this.$store.commit("setAppointment", {
-       head_image_url:onecase.head_image_url,
-       designer_name:onecase.designer_name,
-       desiner_id:onecase.designer_uid,
-       title:onecase.title
+      // this.$store.commit("setAppointment", {
+      //  head_image_url:onecase.head_image_url,
+      //  designer_name:onecase.designer_name,
+      //  desiner_id:onecase.designer_uid,
+      //  title:onecase.title
     
-      });
-      this.$router.push({path:'./caseDetails/'+onecase.id});
+      // });
+      this.$router.push({path:'./caseDetails/'+onecase.id+'?designer_uid='+onecase.designer_uid});
      
     },
     getList(params) {
