@@ -149,8 +149,8 @@ p {
   list-style-type: none;
 }
 .caseListContainer {
-  margin: 0 auto;
-  width: 96%;
+  margin: 0  .13rem;
+
 }
 .singleCase {
   overflow: hidden;
@@ -188,6 +188,7 @@ p {
 }
 .caseListContainer .desiner {
   margin-top: 0.15rem;
+  overflow: hidden;
 }
 .headImg {
   float: left;
@@ -202,6 +203,7 @@ p {
 .desinerName {
   line-height: 0.2rem;
   color: black;
+  margin-top:.1rem;
 }
 .desinerRank {
   color: #93d36a;
