@@ -141,10 +141,10 @@ export default {
 </script>
 <style >
 .topNav {
-  height: 0.52rem;
+  height: 0.5rem;
   background: #f5f5f5;
   overflow: hidden;
-  line-height: 0.52rem;
+  line-height: 0.5rem;
   position: fixed;
   width: 100%;
   top: 0;
@@ -171,6 +171,8 @@ export default {
 }
 .topNav .btn img {
   width: 100%;
+  display: block;
+  margin-top: .16rem;
 }
 .goHome {
      display: inline-block;
