@@ -44,6 +44,7 @@ export default {
     getData(){
       var _self=this;
           return new Promise((resolve, reject) => {
+            console.log(typeof(_self.$route.params.case_id),'typeOfTest')
             _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.params.case_id}})
             .then(response=>{
               if(response.data.code!=200){

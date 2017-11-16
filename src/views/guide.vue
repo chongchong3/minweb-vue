@@ -47,6 +47,8 @@ export default {
   },
   created(){
       vm=this;
+      this.shareWx.getId();
+      this.shareWx.shareReady("关于 | 设计IN-设计师严选平台",'',);
   },
  computed: {
    swiper() {
