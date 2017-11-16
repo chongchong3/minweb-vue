@@ -18,7 +18,7 @@
 			    	<router-link :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
 			    		<!--<div  class="detail-designer">-->
 							<div class="img-c" >
-								<img :src="designer.head_image_url" />
+								<img :src="designer.full_body_shot_url" />
 							</div>
 							<div class="design-des-c">
 								<p class="name">{{designer.designer_name}}</p>

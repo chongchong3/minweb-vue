@@ -47,9 +47,9 @@ export default {
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
-            // if(response.data.code!=200){
-            //        return MessageBox('提示', '授权失败');
-            // }
+            if(response.data.code!=200){
+                   return MessageBox('提示', '查询失败');
+            }
             console.log(response);
             if(response.body.data.userId===null || response.body.data.userId =='' || response.body.data.userId == undefined){ //如果没有绑定跳转登录页面
             

@@ -167,7 +167,7 @@ p {
   padding: 0.14rem 0;
 }
 .headPic {
-  border-radius:.2rem;
+  border-radius:.02rem;
   height: .95rem;
   width: 1.4rem;
   float: left;

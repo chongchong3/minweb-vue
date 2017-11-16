@@ -17,7 +17,7 @@
 				    <swiper-slide class="case-item" v-for="(onecase,index) in caseList" :key="index">
 			    		<div class="detail-case">
 			    				<div class="img-c"  @click="jumpTo(onecase)">
-									<img :src="onecase.head_image_url" />
+									<img :src="onecase.widescreen_image" />
 								</div>
 								<div class="des-c">
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
