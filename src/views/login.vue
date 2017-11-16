@@ -65,9 +65,7 @@ export default {
 				},60000)
 				_self.user_id=data.body.data.user_id
 				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
-			
-			})
-				.then(function(response){
+					.then(function(response){
 						if(response.data.code!=200){
 							return MessageBox('提示', '查询异常');
 						} 
@@ -76,6 +74,9 @@ export default {
 							history.go(-1);
 						})
 				})
+			
+			})
+			
 			.fail(err => {
 					 MessageBox('提示', '连接失败');
         });

@@ -50,30 +50,42 @@ export default {
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
+           
             if(!response.body.data.userId){ //如果没有绑定跳转登录页面
+            
               return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
+
+
             }
             var user_id = response.body.data.userId;
             checkAppointsStatus({user_id: user_id})
-
-        })
-        .then(function(response){
+            .then(function(response){
+              
               if( response.data.code==200 && response.data.data.message.length == 17 ){ //设计师ID长度为17
                   return MessageBox('你已经预约过了');
+                  // return setTimeout(function(){
+                  //       history.go(-1);
+                  //    })  
               }
 
               miniSiteAppoints({"designer_uid":_self.desiner.designer_uid,"user_id":user_id} ) //预约设计师
+              .then(function(response){
+                    if(response.data.code==500){
+                        return MessageBox('提示', '你已经预约过了');
+                    } 
+                    if(response.data.code==200){
+                      return MessageBox('提示', '预约成功');
+                    //    setTimeout(function(){
+                    //     history.go(-1);
+                    //  })
+                    }
+                    return MessageBox('提示', '查询异常')
+              })
+
+            })
+
+
         })
-         .then(function(response){
-                if(response.data.code==500){
-                    return MessageBox('提示', '你已经预约过了');
-                } 
-                if(response.data.code==200){
-                  return MessageBox('提示', '预约成功');
-                }
-                return MessageBox('提示', '查询异常')
-          })
-        
         .fail(function(error){
         
             return MessageBox('提示', '请求失败');
