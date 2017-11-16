@@ -75,7 +75,7 @@ export default {
 						})
 				})
 			})
-			.fail(err => {
+			.catch(err => {
 					 MessageBox('提示', '连接失败');
         });
 		
