@@ -117,7 +117,7 @@ export default {
        
           if (swiper.activeIndex == 3) {
               var designer_uid = vm.$route.params.designer_uid;
-              window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id+'&caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
+              window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id+'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
           //  window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
           
           }
