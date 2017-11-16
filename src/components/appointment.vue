@@ -51,7 +51,7 @@ export default {
                    return MessageBox('提示', '查询失败');
             }
            
-            if(response.body.data.userId===null || response.body.data.userId =='' || response.body.data.userId == undefined){ //如果没有绑定跳转登录页面
+            if(!response.body.data.userId){ //如果没有绑定跳转登录页面
             
               return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
 
@@ -84,19 +84,11 @@ export default {
               .fail(function(error){
                      return MessageBox('提示', '请求失败');
               })
-
-
-
-            }).fail(function(error){
-                    return MessageBox('提示', '查询失败');
-            }) 
+            })
 
 
         })
-        .fail(function(error){
-        
-
-        })
+       
     },
     getState() {
 
