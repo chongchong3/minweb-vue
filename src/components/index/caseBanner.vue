@@ -216,7 +216,7 @@ export default {
 .name-theme-c p.name {
   font-size: 0.12rem;
   color: #999;
-  margin-top:.44rem;
+  margin-top:.08rem;
 }
 .name-theme-c p.theme {
   font-size: 0.14rem;
