@@ -17,7 +17,7 @@
           <div class="desiner">
             <router-link :to="'desinerDetails/'+single.designer_uid">
             <img class="headImg" :src="single.head_image_url" alt="">
-            </<router-link>
+            </router-link>
             <div class="nameLev">
               <div :to="'desinerDetails/'+single.designer_uid">
                 <p class="desinerName">{{single.designer_name}}</p>
