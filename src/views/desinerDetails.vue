@@ -162,7 +162,8 @@ mounted(){
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           _self.designer_name = response.data.data.designer_name;
-          localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
+          console.log(response,'tjTest');
+          // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           this.setData(response.data.data);
         })
         .catch(error => {
