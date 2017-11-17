@@ -15,9 +15,7 @@
 
 <script>
 var vm = {};
-
 import appointment from "../components/appointment";
-
 export default {
     components: { appointment },
   data() {
@@ -38,8 +36,7 @@ export default {
     if(!this.authorId){
          window.location.href = "https://www.shejiin.net/minisite/login?originUrl="+this.$route.fullPath;
          return
-    }
-    
+    }  
   
   },
   mounted(){
@@ -52,7 +49,6 @@ export default {
             _self.$http.get('/minisite/getDesignerCaseDetail', {params:{case_id:_self.$route.query.caseId}})
             .then(response=>{
               if(response.data.code!=200){
-               
                 return
               } 
               document.title=response.data.data.title;
@@ -64,8 +60,6 @@ export default {
                 authorId:_self.authorId
                
               }
-          
-
               resolve(response);
             })
             .catch(error => {
@@ -80,8 +74,7 @@ export default {
       var endY = event.changedTouches[0].pageY;
       var offsetTop = event.target.offsetTop;
       if (this.startY - endY < -30 && offsetTop < document.body.clientWidth) {
-        var url = "./#/desinerDetails/" +this.$route.params.desiner_id +"?caseSlideIndex=" + this.$route.query.caseSlideIndex +
-          "&startIndex=1";
+        var url = "./#/desinerDetails/" +this.$route.params.desiner_id +"?caseSlideIndex=" + this.$route.query.caseSlideIndex +"&startIndex=1";
         window.location.href = url;
       }
     },

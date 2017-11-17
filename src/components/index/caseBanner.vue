@@ -23,9 +23,6 @@
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
 										<img  :src="onecase.head_image_url" />
 									</router-link>
-									<!--<div class="portrait">
-										<img  :src="onecase.head_image_url" />
-									</div>-->
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
@@ -42,15 +39,12 @@
 	</div>
 </template>
 <script>
-// swiper options example:
 import { getCaseMes } from '@/api/caseList';
 export default {
   name: "carrousel",
   data() {
     return {
       caseList: [],
-      // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
-      // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
       notNextTick: true,
       caseOption: {
         pagination: "null",
@@ -58,13 +52,10 @@ export default {
         paginationClickable: true,
         onTransitionStart(swiper) {},
         onClick(swiper) {}
-        // more Swiper configs and callbacks...
-        // ...
+
       }
     };
   },
-  // you can find current swiper instance object like this, while the notNextTick property value must be true
-  // 如果你需要得到当前的swiper对象来做一些事情，你可以像下面这样定义一个方法属性来获取当前的swiper对象，同时notNextTick必须为true
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
@@ -81,15 +72,7 @@ export default {
   },
   methods: {
     jumpTo(onecase) {
-      // this.$store.commit("setAppointment", {
-      //  head_image_url:onecase.head_image_url,
-      //  designer_name:onecase.designer_name,
-      //  desiner_id:onecase.designer_uid,
-      //  title:onecase.title
-    
-      // });
       this.$router.push({path:'./caseDetails/'+onecase.id+'?designer_uid='+onecase.designer_uid});
-     
     },
     getList(params) {
       var _self = this;

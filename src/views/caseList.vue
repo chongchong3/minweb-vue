@@ -54,8 +54,7 @@ export default {
     };
   },
   created() {
-    this.shareWx.getId();
-    this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+  
 
     var _self = this;
     this.$store.commit("setNav", {
@@ -95,7 +94,12 @@ export default {
       }
     });
   },
+  mounted(){
+    this.shareWx.getId();
+    this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+  },
   updated() {},
+  
   methods: {
     getMoreData() {
       //接口数据

@@ -47,15 +47,12 @@ export default {
   	doLogin:function(){
 		var _self = this;
 		this.designer_uid = this.$route.query.designer_uid;
-	
 		this.authorization_id=this.getCookie("wechat_id");
 		this.$store
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':this.authorization_id })
 			.then((data) => {
-
-				if(data.body.code !== 200){
-					
-				
+				if(data.body.code != 200){
+					return
 				}
 				_self.loginBtnDisable = true;
 				_self.loginEnable = false;

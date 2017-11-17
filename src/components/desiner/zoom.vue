@@ -40,17 +40,12 @@
 }
 </style>
 <script>
-
-import 'video.js/dist/video-js.css'
 var vm = null;
 export default {
     props: ['zoomMes'],
     data() {
 
         return {
-
-
-
 
         }
     },

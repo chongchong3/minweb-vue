@@ -50,7 +50,6 @@ export default {
 
                 return
               }
-              
               document.title=response.data.data.title;
               _self.caseDetails=response.data.data.caseDetail;
               _self.desienrMes={
@@ -59,8 +58,6 @@ export default {
                 designer_name:response.data.data.name,
                 authorId:_self.authorId
               }
-          
-
               resolve(response);
             })
             .catch(error => {

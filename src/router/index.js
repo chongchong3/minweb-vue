@@ -13,7 +13,7 @@ const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
 const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
-const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
+// const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 
 export default new Router({
@@ -93,12 +93,12 @@ export default new Router({
       component: test,
       meta: {title: '测试页面'} 
     },
-    {
-      path: '/scroll',
-      name: 'scroll',
-      component: scroll,
-      meta: {title: '测试导航'}     
-    },
+    // {
+    //   path: '/scroll',
+    //   name: 'scroll',
+    //   component: scroll,
+    //   meta: {title: '测试导航'}     
+    // },
     
   ]
 })
