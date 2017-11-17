@@ -8,7 +8,7 @@
 
             <div class="memo">
                 <div class="cont">
-                    <p class="name">设计理念</p>
+                    <p class="name">设计师说</p>
 
                     <p class="brief">{{selfMes.brief}}</p>
                 </div>
