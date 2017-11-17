@@ -9,11 +9,14 @@ import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
 import  '@/config.js'
 import shareWx from '@/common/js/shareWx'
+import VueWechatTitle from 'vue-wechat-title'; 
+
 Vue.config.productionTip = false
 Vue.prototype.shareWx=shareWx;
 Vue.use(vueRsource)
 Vue.use(VueJsonp)
-
+ 
+Vue.use(VueWechatTitle)
 
 
 /* eslint-disable no-new */

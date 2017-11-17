@@ -34,7 +34,7 @@ export default {
     this.$nextTick(function(){
        this.shareWx.getId();
       //  title,desc,link,imgUrl
-      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",);
+      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',);
     });
   },
   created() {
