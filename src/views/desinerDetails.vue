@@ -133,8 +133,12 @@ export default {
     if (this.$route.query.startIndex - 0) {
       _initia = 2;
     }
-     this.getData();
+  
   },
+  created(){
+       this.getData();
+  },
+
   beforeMount() {
    
   },
