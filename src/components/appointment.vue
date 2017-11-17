@@ -52,9 +52,7 @@ export default {
             }
            
             if(!response.body.data.userId){ //如果没有绑定跳转登录页面
-            debugger
-            
-              return _self.$router.push({path:process.env.BASE_API+'/#/login?designer_uid='+_self.desiner.designer_uid})
+                 return _self.$router.push({path:'./login?designer_uid='+_self.desiner.designer_uid})
 
 
             }
