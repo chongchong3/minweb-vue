@@ -181,6 +181,7 @@ mounted(){
         designer_level: data.designer_level,
         designer_high_price:data.designer_high_price
       };
+      console.log(data.personality_photo_url,'test');
       this.selfData = {
         brief: data.descript,
         bodyImg: data.personality_photo_url,
