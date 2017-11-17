@@ -46,13 +46,16 @@ export default {
   data() {
     return {};
   },
-  created() {
-    if(!this.getCookie("isFirstLoad")){
-      this.setCookie('isFirstLoad',true,60*24*30*12);
-      this.$router.push({path:'./guide'});
+  beforeCreate(){
+     if(!getCookie("isFirstLoad")){
+        setCookie('isFirstLoad',true,60*24*30*12);
+      window.location.href="/#/guide";
       return
 
     }
+  },
+  created() {
+   
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "index" //设置左菜单栏高亮
@@ -69,7 +72,11 @@ export default {
    
   },
   methods:{
-    setCookie(name, value, seconds) {
+ 
+  }
+};
+
+  function setCookie(name, value, seconds) {
     seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。
     var expires = "";
     if (seconds != 0 ) { //设置cookie生存时间
@@ -78,15 +85,12 @@ export default {
     expires = "; expires="+date.toGMTString();
     }
     document.cookie = name+"="+escape(value)+expires+"; path=/"; //转码并赋值
-    },
-    getCookie(name) {
+    }
+  function  getCookie(name) {
       var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
       if(arr=document.cookie.match(reg))
       return unescape(arr[2]);
       else
       return null;
       }
-
-  }
-};
 </script>
