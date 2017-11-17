@@ -133,17 +133,17 @@ export default {
     if (this.$route.query.startIndex - 0) {
       _initia = 2;
     }
+     this.getData();
   },
   beforeMount() {
-    this.getData();
-    console.log('aaa');
+   
   },
 mounted(){
-  this.$nextTick(function(){
-       this.shareWx.getId();
-      //  title,desc,link,imgUrl
-      this.shareWx.shareReady(this.designer_name+"| 设计IN-设计师严选平台" ,'',);
-    });
+  // this.$nextTick(function(){
+  //      this.shareWx.getId();
+  //     //  title,desc,link,imgUrl
+  //     this.shareWx.shareReady(this.designer_name+"| 设计IN-设计师严选平台" ,'',);
+  //   });
 },
   methods: {
     goDetails(swiper) {
@@ -163,7 +163,8 @@ mounted(){
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           _self.designer_name = response.data.data.designer_name;
-          localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
+          console.log(response,'tjTest');
+          // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           this.setData(response.data.data);
         })
         .catch(error => {
@@ -182,6 +183,7 @@ mounted(){
         designer_level: data.designer_level,
         designer_high_price:data.designer_high_price
       };
+      console.log(data.personality_photo_url,'test');
       this.selfData = {
         brief: data.descript,
         bodyImg: data.personality_photo_url,
@@ -201,3 +203,4 @@ mounted(){
   }
 };
 </script>
+
