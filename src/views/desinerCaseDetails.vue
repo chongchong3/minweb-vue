@@ -34,7 +34,7 @@ export default {
     vm = this;
     this.authorId=this.getCookie("wechat_id");
     if(!this.authorId){
-      console.log( window.location.href = "/minisite/login?originUrl="+encodeURI(process.env.BASE_API+'/#'+this.$route.fullPath),'pathTest')
+      alert( window.location.href = "/minisite/login?originUrl="+encodeURI(process.env.BASE_API+'/#'+this.$route.fullPath),'pathTest')
             window.location.href = "/minisite/login?originUrl="+encodeURI(process.env.BASE_API+'/#'+this.$route.fullPath);
          return
     }  
