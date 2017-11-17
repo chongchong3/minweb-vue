@@ -97,7 +97,7 @@ export default {
   mounted(){
      this.$nextTick(function(){
         this.shareWx.getId();
-        this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+        this.shareWx.shareReady("看设计案例 | 设计IN-设计师严选平台");
 
     })
    

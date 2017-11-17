@@ -46,7 +46,7 @@ export default new Router({
       path: '/desinerList',
       name: 'desinerList',
       component: desinerList,
-      meta: {title: '设计IN-设计师严选平台'}
+      meta: {title: '找设计师 | 设计IN-设计师严选平台'}
     },
     {
       path: '/desinerDetails/:desiner_id',
@@ -64,7 +64,7 @@ export default new Router({
       path: '/caseList',
       name: 'caseList',
       component: caseList,
-      meta: {title: '设计IN-设计师严选平台'}
+      meta: {title: '看设计案例 | 设计IN-设计师严选平台'}
     },
     {
       path: '/caseDetails/:case_id',
@@ -77,7 +77,7 @@ export default new Router({
       path: '/aboutUs',
       name: 'aboutUs',
       component: aboutUs,
-      meta: {title: '设计IN-设计师严选平台'}
+      meta: {title: '关于 | 设计IN-设计师严选平台'}
       
     },
     {
