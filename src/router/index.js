@@ -87,12 +87,12 @@ export default new Router({
       meta: {title: '在线客服'}
       
     },
-    {
-      path: '/test',
-      name: 'test',
-      component: test,
-      meta: {title: '测试页面'} 
-    },
+    // {
+    //   path: '/test',
+    //   name: 'test',
+    //   component: test,
+    //   meta: {title: '测试页面'} 
+    // },
     // {
     //   path: '/scroll',
     //   name: 'scroll',
