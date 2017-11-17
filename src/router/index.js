@@ -15,13 +15,14 @@ const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs
 const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
 // const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
+const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index,
+      name: 'start',
+      component: start,
       meta: {title: '设计IN-设计师严选平台'}
     },
     {
@@ -85,6 +86,13 @@ export default new Router({
       name: 'chat',
       component: chat,
       meta: {title: '在线客服'}
+      
+    },
+    {
+      path: '/start',
+      name: 'start',
+      component: start,
+      meta: {title: '设计IN-设计师严选平台'}
       
     },
     // {
