@@ -141,7 +141,7 @@ mounted(){
   this.$nextTick(function(){
        this.shareWx.getId();
       //  title,desc,link,imgUrl
-      this.shareWx.shareReady( _self.designer_name+"| 设计IN-设计师严选平台" ,'',);
+      this.shareWx.shareReady(this.designer_name+"| 设计IN-设计师严选平台" ,'',);
     });
 },
   methods: {
