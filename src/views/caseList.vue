@@ -95,8 +95,12 @@ export default {
     });
   },
   mounted(){
-    this.shareWx.getId();
-    this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+     this.$nextTick(function(){
+        this.shareWx.getId();
+        this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+
+    })
+   
   },
   updated() {},
   

@@ -44,8 +44,12 @@ export default {
  },
  mounted(){
     document.getElementById('app').style.paddingTop = 0;
-     this.shareWx.getId();
+      this.$nextTick(function(){
+       this.shareWx.getId();
       this.shareWx.shareReady("关于 | 设计IN-设计师严选平台",'',);
+    })
+    
+     
   },
   created(){
       vm=this;
