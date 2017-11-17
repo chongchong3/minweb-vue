@@ -49,7 +49,7 @@ export default {
   created() {
     if(!this.getCookie("isFirstLoad")){
       this.setCookie('isFirstLoad',true,60*24*30*12);
-      this.router.pus({path:'./guide'});
+      this.router.push({path:'./guide'});
       return
 
     }
