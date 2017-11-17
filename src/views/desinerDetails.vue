@@ -136,6 +136,7 @@ export default {
   },
   beforeMount() {
     this.getData();
+    console.log('aaa');
   },
 mounted(){
   this.$nextTick(function(){
