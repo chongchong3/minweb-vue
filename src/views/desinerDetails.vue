@@ -94,6 +94,7 @@ export default {
   components: { zoom, self, caseList },
   data() {
     return {
+      designer_name:'',
       caseSlideIndex: 0,
       caseId:0,
       _initia: 0,
@@ -136,7 +137,13 @@ export default {
   beforeMount() {
     this.getData();
   },
-
+mounted(){
+  this.$nextTick(function(){
+       this.shareWx.getId();
+      //  title,desc,link,imgUrl
+      this.shareWx.shareReady( _self.designer_name+"| 设计IN-设计师严选平台" ,'',);
+    });
+},
   methods: {
     goDetails(swiper) {
       this.swiper = swiper;
@@ -154,6 +161,7 @@ export default {
       // }
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
+          _self.designer_name = response.data.data.designer_name;
           localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           this.setData(response.data.data);
         })

@@ -20,6 +20,7 @@ export default {
     components: { appointment },
   data() {
     return {
+      case_title:'',
       startY: 0,
       caseDetails: "",
       caseSlideIndex: 0,
@@ -41,6 +42,12 @@ export default {
   },
   mounted(){
     this.getData();
+    var _self = this;
+    this.$nextTick(function(){
+       this.shareWx.getId();
+      //  title,desc,link,imgUrl
+      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台" ,);
+    });
   },
   methods: {
     getData() { 
@@ -52,6 +59,7 @@ export default {
                 return
               } 
               document.title=response.data.data.title;
+              _self.case_title = response.data.data.title;
               _self.caseDetails=response.data.data.caseDetail;
               _self.desinerMes={
                 designer_uid:response.data.data.designerId,

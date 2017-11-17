@@ -34,7 +34,7 @@ export default new Router({
       path: '/guide',
       name: 'guide',
       component: guide,
-      meta: {title: '引导页面'}
+      meta: {title: '设计IN-设计师严选平台'}
     },
     {
       path: '/login',
