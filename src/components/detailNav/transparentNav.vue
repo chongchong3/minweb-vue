@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="topNav" id="topNav">
+    <div class="topNav" id="transparentNav">
      
       <div class="cont">
        
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoed>
+<style scoped>
 .topNav {
   height: 0.5rem;
   /* background: #f5f5f5; */

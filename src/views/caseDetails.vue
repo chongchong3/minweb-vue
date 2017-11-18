@@ -33,19 +33,20 @@ export default {
   },
   mounted(){
     var _self =this;
-    this.getData();
     this.$nextTick(function(){
        this.shareWx.getId();
       this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
     });
   },
   created() {
+    
     vm = this;
      this.authorId=this.getCookie("wechat_id");
     if(!this.authorId){
          window.location.href = "/minisite/login?originUrl="+this.$route.fullPath;
          return
     }
+    this.getData();
   },
   methods: {
     getData(){
