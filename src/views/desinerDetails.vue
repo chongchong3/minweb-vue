@@ -1,5 +1,5 @@
 <template>
-    <div class="page-swiper ">
+    <div class="page-swiper desinerDetails">
         <swiper :options="swiperOptionPae">
             <swiper-slide>
                 <zoom :zoomMes="zoomData"></zoom>
@@ -28,6 +28,7 @@ body {
   font-size: 14px;
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 .hide {
@@ -43,6 +44,7 @@ video,
     padding-top:0;
     height: 100%;
 }
+
 html,
 body {
   position: relative;
@@ -50,15 +52,11 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
-.page-swiper {
-  width:100%;
-    height:100%;
+.desinerDetails ,.desinerDetails  .swiper-slide,.desinerDetails  .swiper-container{
+  height:100%;
+ 
 }
-.page-swiper .swiper-container {
-    width:100%;
-  height: 100%;
 
-}
 img,video{
   max-width:100%;
 }
@@ -81,11 +79,9 @@ img,video{
 import Vue from 'vue'
 import '@/common/css/swiper.min.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import VueVideoPlayer from 'vue-video-player'
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 import caseList from "../components/desiner/caseList";
-Vue.use(VueVideoPlayer)
 Vue.use(VueAwesomeSwiper)
 
 var vm = {},
@@ -135,16 +131,19 @@ export default {
     }
      
   },
+  created(){
+        this.getData();
+  },
   beforeMount() {
-    this.getData();
+
    
   },
 mounted(){
-  // this.$nextTick(function(){
-  //      this.shareWx.getId();
-  //     //  title,desc,link,imgUrl
-  //     this.shareWx.shareReady(this.designer_name+"| 设计IN-设计师严选平台" ,'',);
-  //   });
+  this.$nextTick(function(){
+       this.shareWx.getId();
+      //  title,desc,link,imgUrl
+      this.shareWx.shareReady(this.designer_name+"| 设计IN-设计师严选平台" ,'',);
+    });
 },
   methods: {
     goDetails(swiper) {
@@ -154,19 +153,12 @@ mounted(){
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
     getData() { 
+      var _self=this;
       var _designer_uid = this.$route.params.desiner_id;
-      
-      // if(this.$store.getters.desinerDetails.designer_uid){
-      //    this.setData(this.$store.getters.desinerDetails);
-      //   return
-
-      // }
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           _self.designer_name = response.data.data.designer_name;
-          console.log(response,'tjTest');
-          // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
-          this.setData(response.data.data);
+          _self.setData(response.data.data);
         })
         .catch(error => {
         
@@ -184,7 +176,6 @@ mounted(){
         designer_level: data.designer_level,
         designer_high_price:data.designer_high_price
       };
-      console.log(data.personality_photo_url,'test');
       this.selfData = {
         brief: data.descript,
         bodyImg: data.personality_photo_url,

@@ -38,10 +38,11 @@ export default {
             window.location.href = "/minisite/login?originUrl="+this.$route.fullPath;
          return
     }  
+     this.getData();
   
   },
   mounted(){
-    this.getData();
+   
     var _self = this;
     this.$nextTick(function(){
        this.shareWx.getId();
