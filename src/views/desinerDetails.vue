@@ -136,10 +136,12 @@ export default {
      
   },
   beforeMount() {
-    this.getData();
+    // this.getData();
    
   },
 mounted(){
+  debugger
+  this.getData();
   // this.$nextTick(function(){
   //      this.shareWx.getId();
   //     //  title,desc,link,imgUrl
@@ -154,6 +156,7 @@ mounted(){
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
     getData() { 
+      debugger
       var _designer_uid = this.$route.params.desiner_id;
       
       // if(this.$store.getters.desinerDetails.designer_uid){
@@ -164,7 +167,11 @@ mounted(){
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           _self.designer_name = response.data.data.designer_name;
-          console.log(response,'tjTest');
+          // console.log(response,'tjTest');
+          debugger
+          console.log('12222222222222211112121212')
+          console.log(response);
+          debugger
           // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           this.setData(response.data.data);
         })
@@ -173,6 +180,7 @@ mounted(){
         });
     },
     setData(data) {
+      debugger
       this.caseDetails = data.designer_case_list[0].case_detail;
       this.zoomData = {
         name: data.designer_name,
