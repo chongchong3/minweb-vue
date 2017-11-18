@@ -40,8 +40,11 @@
 }
 </style>
 <script>
+// import whiteNav from "../components/detailNav/whiteNav";
+// import transparentNav from "../components/detailNav/transparentNav";
 var vm = null;
 export default {
+    // components: {  whiteNav, transparentNav },
     props: ['zoomMes'],
     data() {
 

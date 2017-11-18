@@ -2,12 +2,15 @@
     <div class="page-swiper desinerDetails">
         <swiper :options="swiperOptionPae">
             <swiper-slide>
+                <!-- <white-nav></white-nav> -->
                 <zoom :zoomMes="zoomData"></zoom>
             </swiper-slide>
             <swiper-slide>
+                <transparent-nav></transparent-nav>
                 <self :selfMes="selfData" ref="childMethod"></self>
             </swiper-slide>
             <swiper-slide v-if="zoomData.designer_level">
+              <!-- <white-nav></white-nav> -->
                 <caseList  :caseList="caseData" v-on:goDetails="goDetails" :level="zoomData.designer_level"></caseList>
             </swiper-slide>
             <swiper-slide class="caseDetilas" id="caseDetilas">
@@ -82,12 +85,14 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 import caseList from "../components/desiner/caseList";
+import whiteNav from "../components/detailNav/whiteNav";
+import transparentNav from "../components/detailNav/transparentNav";
 Vue.use(VueAwesomeSwiper)
 
 var vm = {},
   _initia = 0;
 export default {
-  components: { zoom, self, caseList },
+  components: { zoom, self, caseList, whiteNav, transparentNav },
   data() {
     return {
       designer_name:null,
