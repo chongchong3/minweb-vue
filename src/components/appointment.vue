@@ -52,7 +52,7 @@ export default {
           //  response.data.data.userId===null || response.data.data.userId =='' || response.data.data.userId == undefined
             if(response.data.data.userId == null || response.data.data.userId =='' || response.data.data.userId == undefined){ //如果没有绑定跳转登录页面
                  console.log('你妹');
-                 return _self.$router.push({path:'./login?designer_uid='+_self.desiner.designer_uid})
+                 return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
             }
             var user_id = response.data.data.userId;
             checkAppointsStatus({user_id: user_id})
