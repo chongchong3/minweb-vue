@@ -4,12 +4,12 @@
      
       <div class="cont">
        
-          <span class="btnNav btnLeft" @click="showMenu"><img src="static/images/chevron left.png" class="imgSize" ></span>
-       <router-link  to="index" class="goHome">
+          <span class="btnNav btnLeft" @click="goBack1"><img src="static/images/chevron left.png" class="imgSize" ></span>
+       <router-link  to="/index" class="goHome">
            <img src="static/images/in.png" class="imgLogoSize">
        </router-link>
         <span class="btnChat btn">
-            <router-link  to="chat" >
+            <router-link  to="/chat" >
                 <img src="static/images/callicon.png" >
             </router-link>
         </span>
@@ -17,6 +17,21 @@
   </div>
 </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+
+    }
+  },
+  methods:{
+    goBack1(){
+      window.history.back(); 
+    }
+  }
+}
+</script>
+
 <style scoed>
 .topNav {
   height: 0.5rem;

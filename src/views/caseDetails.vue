@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       case_title:'',
+      image:'',
       caseDetails: "",
       desienrMes:{},
       authorId:''
@@ -35,7 +36,7 @@ export default {
     this.getData();
     this.$nextTick(function(){
        this.shareWx.getId();
-      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',);
+      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
     });
   },
   created() {
@@ -60,6 +61,7 @@ export default {
               console.log(response.data.data)
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
+              _self.image = response.data.data.image;
               _self.caseDetails=response.data.data.caseDetail;
               _self.desienrMes={
                 designer_uid:response.data.data.designerId,

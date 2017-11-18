@@ -135,14 +135,14 @@ export default {
      
   },
   created(){
-        // this.getData();
+        this.getData();
   },
   beforeMount() {
     // this.getData();
    
   },
 mounted(){
-  this.getData();
+  // this.getData();
   var _self = this;
   this.$nextTick(function(){
        this.shareWx.getId();
