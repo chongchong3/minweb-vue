@@ -1,6 +1,6 @@
 <template>
     <div id="zoom-wrap" class="zoom-wrap">
-
+        <white-nav></white-nav>
         <div class="zoomBg  hasTips">
             
             <div class="wrap">
@@ -40,11 +40,11 @@
 }
 </style>
 <script>
-// import whiteNav from "../components/detailNav/whiteNav";
+import whiteNav from "../detailNav/whiteNav";
 // import transparentNav from "../components/detailNav/transparentNav";
 var vm = null;
 export default {
-    // components: {  whiteNav, transparentNav },
+    components: {  whiteNav },
     props: ['zoomMes'],
     data() {
 

@@ -15,71 +15,7 @@
       </div>
   </div>
 </div>
-
 </template>
-<script>
-var start = 0;
-var startX = 0;
-var vm = {};
-export default {
-  data() {
-    return {
-      scrollY: 0,
-      touchY: 0
-    };
-  },
-  mounted() {
-    // this.touchDir();
-    this.scrollEvent();
-  },
-
-  created() {
-    vm = this;
-  },
-
-  methods: {
-    showMenu() {
-      this.$store.commit("setNav", {
-        isShow: true,
-        current: this.$store.getters.nav.current
-      });
-    },
-    hideMenu() {
-      this.$store.commit("setNav", {
-        isShow: false,
-        current: this.$store.getters.nav.current
-      });
-      return false;
-    },
-    scrollEvent() {
-      var domNav=document.getElementById('topNav');
-      var _self=this;
-      window.addEventListener("scroll", function(e) {
-        if(!domNav){
-          return
-        }
-        var scrollTop=_self.getScrollTop();
-        var screnHt=document.body.clientHeight;
-        if(scrollTop>screnHt/3){
-            domNav.style.display="none";
-            return
-        }
-        domNav.style.display="block";
-        return
-      });
-    },
-     getScrollTop(){   
-        var scrollTop=0;   
-        if(document.documentElement&&document.documentElement.scrollTop){   
-            scrollTop=document.documentElement.scrollTop;   
-        }else if(document.body){   
-            scrollTop=document.body.scrollTop;   
-        }   
-        return scrollTop;   
-    }   
-  }
-};
-</script>
 <style scoed>
 .topNav {
   height: 0.5rem;

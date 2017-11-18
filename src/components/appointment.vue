@@ -49,8 +49,8 @@ export default {
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
-           
-            if(!response.data.data.userId){ //如果没有绑定跳转登录页面
+          //  response.data.data.userId===null || response.data.data.userId =='' || response.data.data.userId == undefined
+            if(response.data.data.userId===null || response.data.data.userId =='' || response.data.data.userId == undefined){ //如果没有绑定跳转登录页面
                  return _self.$router.push({path:'./login?designer_uid='+_self.desiner.designer_uid})
 
 

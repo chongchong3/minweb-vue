@@ -2,15 +2,12 @@
     <div class="page-swiper desinerDetails">
         <swiper :options="swiperOptionPae">
             <swiper-slide>
-                <!-- <white-nav></white-nav> -->
                 <zoom :zoomMes="zoomData"></zoom>
             </swiper-slide>
             <swiper-slide>
-                <transparent-nav></transparent-nav>
                 <self :selfMes="selfData" ref="childMethod"></self>
             </swiper-slide>
             <swiper-slide v-if="zoomData.designer_level">
-              <!-- <white-nav></white-nav> -->
                 <caseList  :caseList="caseData" v-on:goDetails="goDetails" :level="zoomData.designer_level"></caseList>
             </swiper-slide>
             <swiper-slide class="caseDetilas" id="caseDetilas">
