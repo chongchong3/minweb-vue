@@ -113,7 +113,7 @@
 }
 </style>
 <script>
-import transparentNav from "../components/detailNav/transparentNav";
+import transparentNav from "../detailNav/transparentNav";
 var vm = {},
     _initia = 0;
 export default {

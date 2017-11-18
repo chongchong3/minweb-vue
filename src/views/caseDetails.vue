@@ -56,6 +56,8 @@ export default {
 
                 return
               }
+              console/log('案例详情');
+              console.log(response.data.data)
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
               _self.caseDetails=response.data.data.caseDetail;

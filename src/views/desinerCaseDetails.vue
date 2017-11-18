@@ -59,6 +59,8 @@ export default {
               if(response.data.code!=200){
                 return
               } 
+              console/log('设计师案例详情');
+              console.log(response.data.data)
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
               _self.caseDetails=response.data.data.caseDetail;
