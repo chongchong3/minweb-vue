@@ -1,5 +1,6 @@
 <template>
   <div>
+      <transparent-nav></transparent-nav>
       <div v-html="caseDetails" class="page_caseDetails">
       </div>
       <appointment :desiner="desienrMes"></appointment> 
@@ -17,8 +18,9 @@
 <script>
 var vm = {};
 import appointment from "../components/appointment";
+import transparentNav from "../components/detailNav/transparentNav";
 export default {
-    components: { appointment },
+    components: { appointment, transparentNav },
   data() {
     return {
       case_title:'',
