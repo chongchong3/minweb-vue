@@ -45,16 +45,17 @@ export default {
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
+          console.log(response.data);
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
            
-            if(!response.body.data.userId){ //如果没有绑定跳转登录页面
+            if(!response.data.data.userId){ //如果没有绑定跳转登录页面
                  return _self.$router.push({path:'./login?designer_uid='+_self.desiner.designer_uid})
 
 
             }
-            var user_id = response.body.data.userId;
+            var user_id = response.data.data.userId;
             checkAppointsStatus({user_id: user_id})
             .then(function(response){
               
