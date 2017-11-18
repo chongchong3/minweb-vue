@@ -39,7 +39,7 @@ var api= '/weixin/getWXUrl';
     });
 }
 
-const  shareReady=function(title,desc,link,imgUrl){
+const  shareReady=function(title,desc,imgUrl,link){
   var qiniuImg=process.env.QINIU_IMG;
   var BASE_API=window.location.href;
     wx.ready(function() {

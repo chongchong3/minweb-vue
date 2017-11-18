@@ -38,15 +38,16 @@ export default {
             window.location.href = "/minisite/login?originUrl="+this.$route.fullPath;
          return
     }  
+     this.getData();
   
   },
   mounted(){
-    this.getData();
+   
     var _self = this;
     this.$nextTick(function(){
        this.shareWx.getId();
       //  title,desc,link,imgUrl
-      this.shareWx.shareReady(this.case_title+"| 设计IN-设计师严选平台" ,);
+      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台" ,);
     });
   },
   methods: {

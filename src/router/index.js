@@ -101,12 +101,12 @@ export default new Router({
     //   component: test,
     //   meta: {title: '测试页面'} 
     // },
-    // {
-    //   path: '/scroll',
-    //   name: 'scroll',
-    //   component: scroll,
-    //   meta: {title: '测试导航'}     
-    // },
+    {
+      path: '/scroll',
+      name: 'scroll',
+      component: scroll,
+      meta: {title: '测试导航'}     
+    },
     
   ]
 })
