@@ -166,7 +166,7 @@ mounted(){
       var _designer_uid = this.$route.params.desiner_id;
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
-          console/log('设计师详情');
+          console.log('设计师详情');
           console.log(response.data.data)
           _self.designer_name = response.data.data.designer_name;
           _self.head_image_url = response.data.data.head_image_url
