@@ -41,13 +41,15 @@ export default {
     //    console.log( '案例详情' + _self.case_title + '=====' + _self.image);
     //   this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
     // });
+
+  
   },
   created() {
     
     vm = this;
      this.authorId=this.getCookie("wechat_id");
     if(!this.authorId){
-         window.location.href = "/minisite/login?originUrl="+this.$route.fullPath;
+         window.location.href = "/minisite/login?originUrl="+encodeURIComponent(window.location.host+'/#'+this.$route.fullPath);
          return
     }
     this.getData();

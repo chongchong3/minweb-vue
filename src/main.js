@@ -7,7 +7,6 @@ import '@/common/css/normalize.css'
 import store from './store'
 import vueRsource from 'vue-resource'
 import VueJsonp from 'vue-jsonp'
-import  '@/config.js'
 import shareWx from '@/common/js/shareWx'
 import VueWechatTitle from 'vue-wechat-title'; 
 
