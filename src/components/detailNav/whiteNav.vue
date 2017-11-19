@@ -63,23 +63,28 @@ export default {
 }
 .topNav .btnChat {
   float: right;
+  width: .3rem;
+  height: .5rem;
 }
 .topNav .btn {
   display: inline-block;
-  width: 0.17rem;
+  
 }
 .topNav .btnLeft {
-  display: inline-block;
-  width: 0.11rem;
+    display: inline-block;
+    width: 0.3rem;
+    height: .5rem;
 }
 .topNav .btnLeft img {
-  width: 100%;
+  width: .12rem;
+  margin-left:.09rem;
   display: block;
   margin-top: .16rem;
 }
-.topNav .btn img {
-  width: 100%;
+.topNav .btnChat img {
+  width: .16rem;
   display: block;
+  margin-left:.09rem;
   margin-top: .16rem;
 }
 .goHome {
