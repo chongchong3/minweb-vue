@@ -14,6 +14,7 @@
 }
 .caseDetails{
   padding-top:.5rem;
+  padding-bottom:.62rem;
 }
 </style>
 

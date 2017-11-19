@@ -5,7 +5,7 @@
 		<div class="slogan-title">
 			设计师严选平台
 		</div>
-		<router-link to="/aboutUs/" tag="span" class="more">
+		<router-link to="/aboutUs" tag="span" class="more">
 			了解更多
 		</router-link>
 		

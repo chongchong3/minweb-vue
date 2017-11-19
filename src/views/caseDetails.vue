@@ -9,6 +9,7 @@
 <style scoped>
 .page_caseDetails {
   padding-top:.5rem;
+  padding-bottom:.62rem;
   overflow: scroll;
 }
 .page_caseDetails img {
