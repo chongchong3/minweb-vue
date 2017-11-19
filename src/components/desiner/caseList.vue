@@ -1,6 +1,6 @@
 <template>
     <div class="swiper-picList">
-        <transparent-nav></transparent-nav>
+        <white-nav></white-nav>
         <swiper :options="swiperOptionCase">
 
             <swiper-slide v-if="caseList.list.length>0" v-for="(item,index) in caseList.list" :key="index">
@@ -114,11 +114,11 @@
 }
 </style>
 <script>
-import transparentNav from "../detailNav/transparentNav";
+import whiteNav from "../detailNav/whiteNav";
 var vm = {},
     _initia = 0;
 export default {
-    components: {  transparentNav },
+    components: {  whiteNav },
     props: ['caseList', 'level'],
     name: 'caseName',
     data() {
