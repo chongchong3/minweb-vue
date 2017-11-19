@@ -12,6 +12,9 @@
   max-width:100% !important;
   height:auto !important;
 }
+.caseDetails{
+  padding-top:.5rem;
+}
 </style>
 
 <script>
@@ -50,6 +53,7 @@ export default {
     this.$nextTick(function(){
        this.shareWx.getId();
       //  title,desc,link,imgUrl
+      console.log( '设计师案例详情' + _self.case_title + '=====' + _self.image);
       this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
     });
   },

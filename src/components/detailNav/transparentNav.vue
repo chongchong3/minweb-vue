@@ -44,7 +44,7 @@ export default {
   top: 0;
   z-index: 2;
   transition: width 1s;
-  margin-bottom: .5rem;
+  /* margin-bottom: .5rem; */
   /* box-shadow: 0px 2px 1px #ccc; */
 }
 .topNav .cont {

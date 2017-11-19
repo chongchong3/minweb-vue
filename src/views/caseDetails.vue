@@ -8,6 +8,7 @@
 </template>
 <style scoped>
 .page_caseDetails {
+  padding-top:.5rem;
   overflow: scroll;
 }
 .page_caseDetails img {
@@ -35,6 +36,7 @@ export default {
     var _self =this;
     this.$nextTick(function(){
        this.shareWx.getId();
+       console.log( '案例详情' + _self.case_title + '=====' + _self.image);
       this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
     });
   },

@@ -43,7 +43,7 @@ export default {
   z-index: 2;
   transition: width 1s;
   box-shadow: 0px 2px 1px #ccc;
-  margin-bottom: .5rem;
+  /* margin-bottom: .5rem; */
 }
 .topNav .cont {
   margin: 0 0.16rem;

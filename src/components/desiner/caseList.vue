@@ -28,6 +28,7 @@
 }
 
 .swiper-picList .imgWrap {
+    padding-top:.5rem;
     height: 100%;
     background: #f4f4f4;
 }

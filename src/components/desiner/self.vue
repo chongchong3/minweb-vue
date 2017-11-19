@@ -19,6 +19,7 @@
 </template>
 <style >
 .hasTips {
+    padding-top:.5rem;
     height: 100%;;
 }
 .imgWrap img {

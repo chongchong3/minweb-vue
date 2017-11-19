@@ -146,7 +146,7 @@ mounted(){
   var _self = this;
   this.$nextTick(function(){
        this.shareWx.getId();
-      //  title,desc,link,imgUrl
+      console.log('设计师详情'+_self.designer_name +'==' + _self.head_image_url);
       this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
     });
 

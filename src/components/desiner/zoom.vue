@@ -20,6 +20,7 @@
 </template>
 <style scoped>
 .hasTips {
+    padding-top:.5rem; 
     height: 100%;;
 }
 .hasTips .score img {
