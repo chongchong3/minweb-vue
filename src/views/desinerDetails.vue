@@ -167,9 +167,9 @@ mounted(){
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
           console.log('设计师详情');
-          console.log(response.data.data)
           _self.designer_name = response.data.data.designer_name;
-          _self.head_image_url = response.data.data.head_image_url
+          _self.head_image_url = response.data.data.head_image_url;
+          console.log(_self.designer_name +'==' + _self.head_image_url);
           // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           // this.setData(response.data.data);
           _self.setData(response.data.data);

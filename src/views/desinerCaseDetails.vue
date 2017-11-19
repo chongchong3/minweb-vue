@@ -63,11 +63,11 @@ export default {
                 return
               } 
               console.log('设计师案例详情');
-              console.log(response.data.data)
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
               _self.image = response.data.data.image;
               _self.caseDetails=response.data.data.caseDetail;
+              console.log(_self.case_title + '=====' + _self.image);
               _self.desinerMes={
                 designer_uid:response.data.data.designerId,
                 head_image_url:response.data.data.image,
