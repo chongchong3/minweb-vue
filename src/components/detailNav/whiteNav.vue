@@ -44,6 +44,7 @@ export default {
   top: 0;
   z-index: 2;
   transition: width 1s;
+  box-shadow: 0 2px 1px #ccc;
   /* box-shadow: 0px 2px 1px #ccc; */
   /* margin-bottom: .5rem; */
 }
