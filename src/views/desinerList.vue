@@ -150,12 +150,11 @@ p {
   line-height: 0.2rem;
 }
 .desinerList {
-  margin: 0 auto;
-  width: 96%;
+  margin:0 .1rem;
+
 }
 .desinerList .singDesiner {
-  margin-top: 0.1rem;
-  padding: 0.1rem 0;
+  padding: 0.12rem 0;
   border-bottom: 1px solid #ccc;
 }
 .desinerList .topDesc {
@@ -165,12 +164,12 @@ p {
 .desinerList .headImg {
   float: left;
   border-radius: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.55rem;
+  height: 0.55rem;
 }
 .desinerList .rightText {
   margin-left: 0.1rem;
-  margin-left: 0.6rem;
+  margin-left: 0.66rem;
   text-decoration: none;
 }
  .rightText  p {
@@ -206,12 +205,12 @@ p {
   justify-content: space-between;
 }
 .desinerList .imgSingle {
-  width: 1.1rem;
+  width: 1.06rem;
 
 }
 .imgH {
   width: 100%;
-  height: 100%;
+  height: .66rem;
 }
 .info {
   text-align: center;

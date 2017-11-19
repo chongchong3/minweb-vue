@@ -23,6 +23,7 @@ export default {
 html {
   font-size: 100px;
   height: 100%;
+  font-family: "Helvetica Neue',Helvetica,Arial,sans-serif"
 }
 body {
   font-size: 12px;
