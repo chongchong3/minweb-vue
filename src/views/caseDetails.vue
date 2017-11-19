@@ -60,7 +60,6 @@ export default {
 
                 return
               }
-              console.log('案例详情');
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
               _self.image = response.data.data.image;
@@ -68,8 +67,7 @@ export default {
               console.log(_self.case_title + '=====' + _self.image);
               this.$nextTick(function(){
                 this.shareWx.getId();
-                console.log( '案例详情' + _self.case_title + '=====' + _self.image);
-                this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
+                this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
               });
               _self.desienrMes={
                 designer_uid:response.data.data.designerId,

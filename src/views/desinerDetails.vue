@@ -168,10 +168,10 @@ mounted(){
         .then((response) => {
           _self.designer_name = response.data.data.designer_name;
           _self.head_image_url = response.data.data.head_image_url;
-          // this.$nextTick(function(){
-          //   this.shareWx.getId();
-          //   this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
-          // });
+          this.$nextTick(function(){
+            this.shareWx.getId();
+            this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url+'?imageView2/5/w/50');
+          });
           _self.setData(response.data.data);
         })
         .catch(error => {
