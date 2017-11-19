@@ -20,7 +20,7 @@
 <script>
 var vm = {};
 import appointment from "../components/appointment";
-import whiteNav from "../detailNav/whiteNav";
+import whiteNav from "../components/detailNav/whiteNav";
 
 export default {
     components: { appointment, whiteNav },

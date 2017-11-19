@@ -1,6 +1,6 @@
 <template>
 <div class="desinerCaseDetails">
-  <white-nav></ white-nav>
+  <white-nav></white-nav>
 <div v-html="caseDetails" class="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
     </div>
     <appointment :desiner="desinerMes"></appointment> 
@@ -21,7 +21,7 @@
 <script>
 var vm = {};
 import appointment from "../components/appointment";
-import whiteNav from "../detailNav/whiteNav";
+import whiteNav from "../components/detailNav/whiteNav";
 export default {
     components: { appointment, whiteNav },
   data() {

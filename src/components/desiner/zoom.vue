@@ -41,9 +41,8 @@
 }
 </style>
 <script>
-import transparentNav from "../components/detailNav/transparentNav";
-// import transparentNav from "../components/detailNav/transparentNav";
 var vm = null;
+import transparentNav from "../detailNav/transparentNav";
 export default {
     components: {  transparentNav },
     props: ['zoomMes'],
