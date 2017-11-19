@@ -92,8 +92,8 @@ export default {
   components: { zoom, self, caseList, whiteNav, transparentNav },
   data() {
     return {
-      designer_name:null,
-      head_image_url:null,
+      designer_name:'',
+      head_image_url:'',
       caseSlideIndex: 0,
       caseId:0,
       _initia: 0,
@@ -144,11 +144,11 @@ export default {
 mounted(){
   // this.getData();
   var _self = this;
-  this.$nextTick(function(){
-       this.shareWx.getId();
-      console.log('设计师详情'+_self.designer_name +'==' + _self.head_image_url);
-      this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
-    });
+  // this.$nextTick(function(){
+  //      this.shareWx.getId();
+  //     console.log('设计师详情'+_self.designer_name +'==' + _self.head_image_url);
+  //     this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
+  //   });
 
 
    
@@ -172,6 +172,11 @@ mounted(){
           console.log(_self.designer_name +'==' + _self.head_image_url);
           // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
           // this.setData(response.data.data);
+          this.$nextTick(function(){
+            this.shareWx.getId();
+            console.log('设计师详情'+_self.designer_name +'==' + _self.head_image_url);
+            this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
+          });
           _self.setData(response.data.data);
         })
         .catch(error => {

@@ -50,12 +50,12 @@ export default {
   mounted(){
    
     var _self = this;
-    this.$nextTick(function(){
-       this.shareWx.getId();
-      //  title,desc,link,imgUrl
-      console.log( '设计师案例详情' + _self.case_title + '=====' + _self.image);
-      this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
-    });
+    // this.$nextTick(function(){
+    //    this.shareWx.getId();
+    //   //  title,desc,link,imgUrl
+    //   console.log( '设计师案例详情' + _self.case_title + '=====' + _self.image);
+    //   this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
+    // });
   },
   methods: {
     getData() { 
@@ -72,6 +72,12 @@ export default {
               _self.image = response.data.data.image;
               _self.caseDetails=response.data.data.caseDetail;
               console.log(_self.case_title + '=====' + _self.image);
+              this.$nextTick(function(){
+                this.shareWx.getId();
+                //  title,desc,link,imgUrl
+                console.log( '设计师案例详情' + _self.case_title + '=====' + _self.image);
+                this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
+              });
               _self.desinerMes={
                 designer_uid:response.data.data.designerId,
                 head_image_url:response.data.data.image,
