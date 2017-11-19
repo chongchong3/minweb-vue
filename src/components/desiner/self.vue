@@ -1,6 +1,6 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <white-nav></white-nav>
+        <transparen-nav></transparen-nav>
 
         <div class="slef-background hasTips" id="slef-background">
             <img :src="selfMes.bodyImg" >
@@ -116,10 +116,10 @@
 }
 </style>
 <script>
-import whiteNav from "../detailNav/whiteNav";
+import transparentNav from "../components/detailNav/transparentNav";
 
 export default {
-    components: {  whiteNav },
+    components: {  transparentNav },
     props: ['selfMes'],
     data() {
 

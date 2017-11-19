@@ -1,6 +1,6 @@
 <template>
 <div class="desinerCaseDetails">
-  <transparent-nav></transparent-nav>
+  <white-nav></ white-nav>
 <div v-html="caseDetails" class="caseDetails" @touchstart="touchstart($event)" @touchend="touchend($event)">
     </div>
     <appointment :desiner="desinerMes"></appointment> 
@@ -21,9 +21,9 @@
 <script>
 var vm = {};
 import appointment from "../components/appointment";
-import transparentNav from "../components/detailNav/transparentNav";
+import whiteNav from "../detailNav/whiteNav";
 export default {
-    components: { appointment, transparentNav },
+    components: { appointment, whiteNav },
   data() {
     return {
       case_title:'',
