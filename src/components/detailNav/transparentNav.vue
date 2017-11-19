@@ -43,6 +43,7 @@ export default {
   top: 0;
   z-index: 2;
   transition: width 1s;
+  box-shadow: 0px 2px 1px #969595;
 
 }
 .topNav .cont {
