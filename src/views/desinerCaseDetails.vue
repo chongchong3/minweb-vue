@@ -73,8 +73,8 @@ export default {
               _self.caseDetails=response.data.data.caseDetail;
               console.log(_self.case_title + '=====' + _self.image);
               this.$nextTick(function(){
-                // this.shareWx.getId();
-                // this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
+               this.shareWx.getId();
+                this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
               });
               _self.desinerMes={
                 designer_uid:response.data.data.designerId,
