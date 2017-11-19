@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .topNav {
   height: 0.5rem;
-  background: url(http://ovfllimsi.bkt.clouddn.com/Rectangle.png) no-repeat center;
+  background: url(https://img.wesetup.cn/Rectangle.png) no-repeat center;
   overflow: hidden;
   position: absolute;
   z-index:9;
