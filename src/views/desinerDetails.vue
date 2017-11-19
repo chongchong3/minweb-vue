@@ -166,17 +166,12 @@ mounted(){
       var _designer_uid = this.$route.params.desiner_id;
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
-          console.log('设计师详情');
           _self.designer_name = response.data.data.designer_name;
           _self.head_image_url = response.data.data.head_image_url;
-          console.log(_self.designer_name +'==' + _self.head_image_url);
-          // localStorage.setItem("GetDesinerDetails",JSON.stringify(response.data.data));
-          // this.setData(response.data.data);
-          this.$nextTick(function(){
-            this.shareWx.getId();
-            console.log('设计师详情'+_self.designer_name +'==' + _self.head_image_url);
-            this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
-          });
+          // this.$nextTick(function(){
+          //   this.shareWx.getId();
+          //   this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url);
+          // });
           _self.setData(response.data.data);
         })
         .catch(error => {
