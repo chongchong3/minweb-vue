@@ -30,7 +30,8 @@ module.exports = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      favicon: path.resolve('favicon.ico')   // 加上这个
+      favicon: './favicon.ico'
+    
     }),
     new FriendlyErrorsPlugin()
   ]
