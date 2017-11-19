@@ -157,7 +157,7 @@ p {
   list-style-type: none;
 }
 .caseListContainer {
-  margin: 0  .13rem;
+  margin: 0  .15rem;
 
 }
 .singleCase {
@@ -177,7 +177,7 @@ p {
 .headPic {
   border-radius:.02rem;
   width: 1.4rem;
-  height: .95rem;
+  height: .97rem;
   float: left;
 }
 .caseListContainer .detail {
@@ -193,17 +193,17 @@ p {
 }
 .houseType {
   color: #9e9e9e;
-  font-size:14px;
+  font-size:12px;
 }
 .caseListContainer .desiner {
-  margin-top: 0.15rem;
+  margin-top: 0.17rem;
   overflow: hidden;
 }
 .headImg {
   float: left;
   border-radius: 50%;
-  width: 0.4rem;
-  height: 0.4rem;
+  width: 0.38rem;
+  height: 0.38rem;
 }
 .nameLev {
   margin-left: 0.1rem;
