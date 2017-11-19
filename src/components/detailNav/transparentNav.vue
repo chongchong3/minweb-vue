@@ -35,22 +35,18 @@ export default {
 <style scoped>
 .topNav {
   height: 0.5rem;
-  /* background: #f5f5f5; */
   background: url(http://ovfllimsi.bkt.clouddn.com/Rectangle.png) no-repeat center;
   overflow: hidden;
-  /* line-height: 0.5rem; */
-  position: fixed;
+  position: absolute;
+  z-index:9;
   width: 100%;
   top: 0;
   z-index: 2;
   transition: width 1s;
-  /* margin-bottom: .5rem; */
-  /* box-shadow: 0px 2px 1px #ccc; */
+
 }
 .topNav .cont {
   margin: 0 0.16rem;
-  /* background: url(http://ovfllimsi.bkt.clouddn.com/Rectangle.png?imageView2/2/w/80)
-    no-repeat center; */
   height: 100%;
   background-size: 0.17rem;
 }

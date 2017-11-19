@@ -37,7 +37,9 @@ export default {
   background: #f5f5f5;
   overflow: hidden;
   line-height: 0.5rem;
-  position: fixed;
+  position: absolute;
+  width:100%;
+  z-index:9;
   width: 100%;
   top: 0;
   z-index: 2;
