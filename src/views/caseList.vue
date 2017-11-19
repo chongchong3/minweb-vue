@@ -166,9 +166,9 @@ p {
 }
 .caseListContainer .leftPic {
   /* margin:.1rem 0; */
-  width: 1.4rem;
+  width: 1.61rem;
+  height: 1.15rem;
   float: left;
-  height: 1.08rem;
 }
 .caseListContainer li {
   overflow: hidden;
@@ -181,7 +181,7 @@ p {
   float: left;
 }
 .caseListContainer .detail {
-  margin-left: 1.5rem;
+  margin-left: 1.7rem;
 }
 .caseListContainer .detail .title {
   font-size: 16px;
@@ -193,10 +193,11 @@ p {
 }
 .houseType {
   color: #9e9e9e;
-  font-size:12px;
+  font-size:14px;
+  margin-top:.08rem;
 }
 .caseListContainer .desiner {
-  margin-top: 0.17rem;
+  margin-top: 0.27rem;
   overflow: hidden;
 }
 .headImg {
