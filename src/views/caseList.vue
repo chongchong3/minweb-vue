@@ -176,12 +176,12 @@ p {
 }
 .headPic {
   border-radius:.02rem;
-  width: 1.4rem;
-  height: .97rem;
+  width: 1.62em;
+  height: 1.15rem;
   float: left;
 }
 .caseListContainer .detail {
-  margin-left: 1.7rem;
+  margin-left: 1.75rem;
 }
 .caseListContainer .detail .title {
   font-size: 16px;
@@ -194,7 +194,7 @@ p {
 .houseType {
   color: #9e9e9e;
   font-size:14px;
-  margin-top:.08rem;
+  margin-top:.1rem;
 }
 .caseListContainer .desiner {
   margin-top: 0.27rem;
@@ -203,8 +203,8 @@ p {
 .headImg {
   float: left;
   border-radius: 50%;
-  width: 0.38rem;
-  height: 0.38rem;
+  width: 0.45rem;
+  height: 0.45rem;
 }
 .nameLev {
   margin-left: 0.1rem;
