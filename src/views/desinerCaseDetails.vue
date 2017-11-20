@@ -50,14 +50,6 @@ export default {
   
   },
   mounted(){
-   
-    var _self = this;
-    // this.$nextTick(function(){
-    //    this.shareWx.getId();
-    //   //  title,desc,link,imgUrl
-    //   console.log( '设计师案例详情' + _self.case_title + '=====' + _self.image);
-    //   this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image);
-    // });
   },
   methods: {
     getData() { 
@@ -68,12 +60,10 @@ export default {
               if(response.data.code!=200){
                 return
               } 
-              console.log('设计师案例详情');
               document.title=response.data.data.title;
               _self.case_title = response.data.data.title;
               _self.image = response.data.data.image;
               _self.caseDetails=response.data.data.caseDetail;
-              console.log(_self.case_title + '=====' + _self.image);
               this.$nextTick(function(){
                this.shareWx.getId();
                 this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');

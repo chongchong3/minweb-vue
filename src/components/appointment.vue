@@ -45,7 +45,7 @@ export default {
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
-          console.log(response.data.data.userId);
+          // console.log(response.data.data.userId);
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
