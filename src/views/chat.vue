@@ -28,7 +28,7 @@ export default {
     });
     const s = document.createElement("script");
     s.type = "text/javascript";
-    s.src ='https://qiyukf.com/script/'+process.prod.qiyukf;
+    s.src ='https://qiyukf.com/script/'+process.env.qiyukf;
     console.log(s.src);
     document.body.appendChild(s);
   },
