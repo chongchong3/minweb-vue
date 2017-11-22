@@ -143,8 +143,6 @@ export default {
             onTouchStart: swiper => {
               
                 // onTouchStart onTouchEnd
-                console.log("滑动s============="+swiper);
-
                 this.$emit('goDetails', swiper);
             },
 
