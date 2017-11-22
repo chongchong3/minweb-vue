@@ -96,9 +96,11 @@
 .swiper-picList .swiper-slide {
     background-position: center;
     background-size: cover;
-    width:88%;
-    margin:.1rem 2%;
-    height: 100%;
+    width:3.2rem;
+   margin-right:.15rem;
+   margin-top:.15rem;
+    height: 95%;
+    box-sizing: content-box;
 }
 
 .swiper-picList .swiper-inner {
