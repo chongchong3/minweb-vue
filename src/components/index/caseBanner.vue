@@ -21,7 +21,7 @@
 								</div>
 								<div class="des-c">
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
-										<img  :src="onecase.head_image_url+'?imageView2/2/w/55'" />
+										<img  :src="onecase.head_image_url+'?imageView2/2/w/100'" />
 									</router-link>
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>

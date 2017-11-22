@@ -27,7 +27,7 @@
 <style>
 .swiper-picList {
   
-    margin-top:.7rem;
+    margin-top:.63rem;
     height: 95%;
 }
 .swiper-picList  .wrap {
@@ -37,12 +37,13 @@
 .swiper-picList .imgWrap {
     height: 100%;
     padding:0 .1rem;
-    background: #f4f4f4;
+   
 }
 
 .swiper-picList .imgWrap img {
     width: 100%;
     height: 90%;
+    border-radius: .1rem;
     ;
 }
 
@@ -76,10 +77,11 @@
 }
 
 .swiper-picList .explain .houseName {
-    margin-top: .23rem;
-    font-size: 16px;
-    opacity: .9;
-    ;
+    margin-top: .2rem;
+    font-size: 14px;
+    opacity: .45;
+    font-weight: bold;
+    margin-bottom: .2rem;
 }
 
 .swiper-picList .explain .score {
@@ -108,7 +110,7 @@
 
 .swiper-picList .swiper-slide {
    
-    width:86% !important; 
+   width:100%;
  
 
 }
@@ -139,8 +141,9 @@ export default {
             slidesPerView: 'auto',
     
             onTouchEnd: swiper => {
+              
                 // debugger
-                console.log("滑动s============="+swiper.activeIndex);
+                console.log("滑动s============="+swiper);
 
                 this.$emit('goDetails', swiper);
             },

@@ -42,6 +42,7 @@ export default {
   z-index:9;
   width: 100%;
   top: 0;
+  left:0;
   z-index: 2;
   transition: width 1s;
   box-shadow: 0 2px 1px #ccc;
