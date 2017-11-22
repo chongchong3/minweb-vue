@@ -148,7 +148,7 @@ mounted(){
     goDetails(swiper) {
       this.swiper = swiper;
       this.caseSlideIndex = swiper.activeIndex;
-      console.log("滑动============="+swiper.activeIndex);
+      // console.log("滑动============="+swiper.activeIndex);
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },

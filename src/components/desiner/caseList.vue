@@ -25,18 +25,32 @@
     </div>
 </template>
 <style>
+  html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
 .swiper-picList {
-  
+    margin-left:20px;
     margin-top:.63rem;
     height: 95%;
 }
 .swiper-picList  .wrap {
-      margin-left:.05rem;
+  
       height: 100%;
 }
 .swiper-picList .imgWrap {
     height: 100%;
-    padding:0 .1rem;
+    margin-right:40px;
+
+
    
 }
 
@@ -51,7 +65,6 @@
     position: absolute;
     width: 90%;
     bottom: 0;
-    left: 5%;
     background: #fff;
     border-radius: .06rem;
     color: #000;
@@ -109,8 +122,9 @@
 }
 
 .swiper-picList .swiper-slide {
-   
-   width:100%;
+    position: relative;
+     width: 100%;
+  
  
 
 }
@@ -138,14 +152,11 @@ export default {
         vm = this;
         this.swiperOptionCase = {
             initialSlide: vm.$route.query.caseId,
-            slidesPerView: 'auto',
-    
-            onTouchEnd: swiper => {
-              
-                // debugger
-                console.log("滑动s============="+swiper);
+             slidesPerView: 'auto',
+            spaceBetween: -20,
+            onSlideChangeStart: swiper => {
+                  this.$emit('goDetails', swiper,false);
 
-                this.$emit('goDetails', swiper);
             },
 
         }
