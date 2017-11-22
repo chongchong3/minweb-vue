@@ -11,7 +11,7 @@
                 <caseList  :caseList="caseData" v-on:goDetails="goDetails" :level="zoomData.designer_level"></caseList>
             </swiper-slide>
             <swiper-slide class="caseDetilas" id="caseDetilas">
-                <div v-html="caseDetails">{{caseDetails}}</div>
+                <div>{{caseDetails}}</div>
             </swiper-slide>
             <div class="swiper-scrollbar"></div>
         </swiper>
@@ -150,6 +150,7 @@ mounted(){
       this.caseSlideIndex = swiper.activeIndex;
       console.log("滑动============="+swiper.activeIndex);
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
+      // console.log(this.caseData.list[swiper.activeIndex].case_detail)
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
     getData() { 

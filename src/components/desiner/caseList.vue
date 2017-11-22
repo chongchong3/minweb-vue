@@ -140,9 +140,9 @@ export default {
             initialSlide: vm.$route.query.caseId,
             slidesPerView: 'auto',
     
-            onTouchEnd: swiper => {
+            onTouchStart: swiper => {
               
-                // debugger
+                // onTouchStart onTouchEnd
                 console.log("滑动s============="+swiper);
 
                 this.$emit('goDetails', swiper);
