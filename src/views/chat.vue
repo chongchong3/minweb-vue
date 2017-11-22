@@ -62,7 +62,7 @@ export default {
   border-radius: 50%;
   width: 1rem;
   height: 1rem;
-  background: #f96868;
+  background: green;
 }
 .mesbox {
   position: fixed;
