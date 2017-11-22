@@ -3,7 +3,7 @@
         <transparent-nav></transparent-nav>
 
         <div class="slef-background hasTips" id="slef-background">
-            <img :src="selfMes.bodyImg+'?imageView2/5/w/640'" >
+            <img :src="selfMes.bodyImg" >
        
 
             <div class="memo">

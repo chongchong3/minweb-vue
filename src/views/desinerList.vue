@@ -6,7 +6,7 @@
 		<li class="singDesiner" v-for="(single, index) in dataJson" >
 			<div class="topDesc">
         <router-link :to="'desinerDetails/'+single.designer_uid">
-				<img :src="single.head_image_url+'?imageView2/5/w/55/h/55'" class="headImg">
+				<img :src="single.head_image_url" class="headImg">
         </router-link>
 				<div class="rightText">
           <router-link :to="'desinerDetails/'+single.designer_uid">

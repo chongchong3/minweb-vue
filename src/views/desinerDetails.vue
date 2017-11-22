@@ -29,6 +29,7 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
+   background: #f4f4f4;
 }
 
 .hide {

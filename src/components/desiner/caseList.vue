@@ -1,6 +1,7 @@
 <template>
     <div class="swiper-picList">
-        <white-nav></white-nav>
+      <div class="wrap">
+            <white-nav></white-nav>
         <swiper :options="swiperOptionCase">
 
             <swiper-slide v-if="caseList.list.length>0" v-for="(item,index) in caseList.list" :key="index">
@@ -19,23 +20,30 @@
             </swiper-slide>
 
         </swiper>
+      </div>
 
     </div>
 </template>
 <style>
 .swiper-picList {
-    height: 100%;
+  
+    margin-top:.63rem;
+    height: 95%;
 }
-
+.swiper-picList  .wrap {
+      margin-left:.05rem;
+      height: 100%;
+}
 .swiper-picList .imgWrap {
-    padding-top:.5rem;
     height: 100%;
-    background: #f4f4f4;
+    padding:0 .1rem;
+   
 }
 
 .swiper-picList .imgWrap img {
     width: 100%;
-    height: 96%;
+    height: 90%;
+    border-radius: .1rem;
     ;
 }
 
@@ -69,10 +77,11 @@
 }
 
 .swiper-picList .explain .houseName {
-    margin-top: .23rem;
-    font-size: 16px;
-    opacity: .9;
-    ;
+    margin-top: .2rem;
+    font-size: 14px;
+    opacity: .45;
+    font-weight: bold;
+    margin-bottom: .2rem;
 }
 
 .swiper-picList .explain .score {
@@ -93,21 +102,17 @@
     width: 100%;
 }
 
-.swiper-picList .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width:88%;
-    margin:.1rem 2%;
-    height: 100%;
-}
+
 
 .swiper-picList .swiper-inner {
     width: 100%;
 }
 
 .swiper-picList .swiper-slide {
-    background-position: center;
-    background-size: cover;
+   
+   width:100%;
+ 
+
 }
 .level {
     color: #5fa333;
@@ -133,11 +138,12 @@ export default {
         vm = this;
         this.swiperOptionCase = {
             initialSlide: vm.$route.query.caseId,
-            // slidesPerView: 'auto',
+            slidesPerView: 'auto',
     
-            onSlideChangeStart: swiper => {
+            onTouchEnd: swiper => {
+              
                 // debugger
-                console.log("滑动s============="+swiper.activeIndex);
+                console.log("滑动s============="+swiper);
 
                 this.$emit('goDetails', swiper);
             },
