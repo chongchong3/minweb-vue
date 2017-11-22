@@ -11,7 +11,7 @@
                 <caseList  :caseList="caseData" v-on:goDetails="goDetails" :level="zoomData.designer_level"></caseList>
             </swiper-slide>
             <swiper-slide class="caseDetilas" id="caseDetilas">
-                <div v-html="caseDetails"></div>
+                <div v-html="caseDetails">{{caseDetails}}</div>
             </swiper-slide>
             <div class="swiper-scrollbar"></div>
         </swiper>
