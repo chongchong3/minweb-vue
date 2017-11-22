@@ -157,6 +157,7 @@ export default {
             onSlideChangeStart: swiper => {
                   this.$emit('goDetails', swiper,false);
 
+
             },
 
         }

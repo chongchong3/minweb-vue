@@ -4,7 +4,7 @@
         <div class="zoomBg  hasTips">
             
             <div class="wrap">
-                <img :src="zoomMes.headIm">
+                <img :src="zoomMes.headImg">
             </div>
             <div class="memo">
     
