@@ -170,8 +170,8 @@ mounted(){
         });
     },
     setData(data) {
-      this.caseDetails = data.designer_case_list[0].case_detail;
-      // this.caseDetails = data.designer_case_list[this.caseSlideIndex].case_detail;
+      // this.caseDetails = data.designer_case_list[0].case_detail;
+      this.caseDetails = data.designer_case_list[this.caseSlideIndex].case_detail;
       this.zoomData = {
         name: data.designer_name,
         score: data.designer_level,
