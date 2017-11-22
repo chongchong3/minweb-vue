@@ -136,7 +136,7 @@ export default {
         vm = this;
         this.swiperOptionCase = {
             initialSlide: vm.$route.query.caseId,
-            // slidesPerView: 'auto',
+            slidesPerView: 'auto',
     
             onSlideChangeStart: swiper => {
                 // debugger
