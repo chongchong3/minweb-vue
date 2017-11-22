@@ -55,7 +55,7 @@ body {
 }
 .desinerDetails ,.desinerDetails  .swiper-slide,.desinerDetails  .swiper-container{
   height:100%;
- 
+
 }
 
 img,video{
@@ -115,12 +115,12 @@ export default {
           } else {
             document.title = "设计师详情";
           }
-       
+
           if (swiper.activeIndex == 3) {
               var designer_uid = vm.$route.params.designer_uid;
               window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id+'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
           //  window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
-          
+
           }
         },
         onTouchEnd(swiper) {}
@@ -133,14 +133,14 @@ export default {
     if (this.$route.query.startIndex - 0) {
       _initia = 2;
     }
-     
+
   },
   created(){
         this.getData();
   },
   beforeMount() {
     // this.getData();
-   
+
   },
 mounted(){
   },
@@ -152,14 +152,16 @@ mounted(){
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
-    getData() { 
+    getData() {
 
       var _self=this;
       var _designer_uid = this.$route.params.desiner_id;
       this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
         .then((response) => {
+          _self.caseId=response.data.data.designer_case_list[0].designer_case_uid;
           _self.designer_name = response.data.data.designer_name;
           _self.head_image_url = response.data.data.head_image_url;
+
           this.$nextTick(function(){
             this.shareWx.getId();
             this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url+'?imageView2/5/w/50');
@@ -167,7 +169,7 @@ mounted(){
           _self.setData(response.data.data);
         })
         .catch(error => {
-        
+
         });
     },
     setData(data) {
