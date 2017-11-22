@@ -6,7 +6,7 @@
 			    		<img :src="item.link"  :loc="item.src"/>
 			    </swiper-slide>-->
 			    <swiper-slide class="swiper-item" v-for="(item,index) in banner" :key="index">
-			    	<img :src="item.link" :loc="item.src" />
+			    	<img :src="item.link" :loc="item.src+'?imageView2/2/w/750'" />
 			    </swiper-slide>
 			    <!-- Optional controls -->
 			    <div class="swiper-pagination"  slot="pagination"></div>

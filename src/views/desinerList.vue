@@ -6,7 +6,7 @@
 		<li class="singDesiner" v-for="(single, index) in dataJson" >
 			<div class="topDesc">
         <router-link :to="'desinerDetails/'+single.designer_uid">
-				<img :src="single.head_image_url" class="headImg">
+				<img :src="single.head_image_url+'?imageView2/5/w/55/h/55'" class="headImg">
         </router-link>
 				<div class="rightText">
           <router-link :to="'desinerDetails/'+single.designer_uid">
@@ -24,7 +24,7 @@
 			</div>
 			<div class="imgList">
         <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<3">
-          <img :src="list.wide_screen_image"  v-if="list.wide_screen_image" class="imgH">
+          <img :src="list.wide_screen_image+'?imageView2/5/w/200'"  v-if="list.wide_screen_image" class="imgH">
             <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
         </div>
 		

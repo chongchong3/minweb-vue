@@ -5,7 +5,7 @@
     <ul class="caseListContainer">
       <li class="singleCase" v-for="(single, index) in dataJson">
         <div @click="linkTo(single)">
-          <img :src="single.widescreen_image" class="headPic">
+          <img :src="single.widescreen_image+'?imageView2/2/w/400'" class="headPic">
         </div>
         <div class="detail">
           <div @click="linkTo(single)">
@@ -16,7 +16,7 @@
           </div>
           <div class="desiner">
             <router-link :to="'desinerDetails/'+single.designer_uid">
-            <img class="headImg" :src="single.head_image_url" alt="">
+            <img class="headImg" :src="single.head_image_url+'?imageView2/2/w/100/h/100'" alt="">
             </router-link>
             <div class="nameLev">
               <div :to="'desinerDetails/'+single.designer_uid">

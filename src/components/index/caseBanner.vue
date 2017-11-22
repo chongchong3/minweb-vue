@@ -17,11 +17,11 @@
 				    <swiper-slide class="case-item" v-for="(onecase,index) in caseList" :key="index">
 			    		<div class="detail-case">
 			    				<div class="img-c"  @click="jumpTo(onecase)">
-									<img :src="onecase.widescreen_image" />
+									<img :src="onecase.widescreen_image+'?imageView2/2/w/300'" />
 								</div>
 								<div class="des-c">
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
-										<img  :src="onecase.head_image_url" />
+										<img  :src="onecase.head_image_url+'?imageView2/2/w/55'" />
 									</router-link>
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
