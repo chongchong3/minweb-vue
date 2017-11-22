@@ -147,6 +147,7 @@ mounted(){
     goDetails(swiper) {
       this.swiper = swiper;
       this.caseSlideIndex = swiper.activeIndex;
+      console.log("滑动============="+swiper.activeIndex);
       this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
       this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
     },
@@ -170,6 +171,7 @@ mounted(){
     },
     setData(data) {
       this.caseDetails = data.designer_case_list[0].case_detail;
+      // this.caseDetails = data.designer_case_list[this.caseSlideIndex].case_detail;
       this.zoomData = {
         name: data.designer_name,
         score: data.designer_level,
