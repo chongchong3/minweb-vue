@@ -1,6 +1,7 @@
 <template>
     <div class="swiper-picList">
-        <white-nav></white-nav>
+      <div class="wrap">
+            <white-nav></white-nav>
         <swiper :options="swiperOptionCase">
 
             <swiper-slide v-if="caseList.list.length>0" v-for="(item,index) in caseList.list" :key="index">
@@ -19,23 +20,29 @@
             </swiper-slide>
 
         </swiper>
+      </div>
 
     </div>
 </template>
 <style>
 .swiper-picList {
-    height: 100%;
+  
+    margin-top:.7rem;
+    height: 95%;
 }
-
+.swiper-picList  .wrap {
+      margin-left:.05rem;
+      height: 100%;
+}
 .swiper-picList .imgWrap {
-    padding-top:.5rem;
     height: 100%;
+    padding:0 .1rem;
     background: #f4f4f4;
 }
 
 .swiper-picList .imgWrap img {
     width: 100%;
-    height: 96%;
+    height: 90%;
     ;
 }
 
@@ -93,23 +100,17 @@
     width: 100%;
 }
 
-.swiper-picList .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width:3.2rem;
-   margin-right:.15rem;
-   margin-top:.15rem;
-    height: 95%;
-    box-sizing: content-box;
-}
+
 
 .swiper-picList .swiper-inner {
     width: 100%;
 }
 
 .swiper-picList .swiper-slide {
-    background-position: center;
-    background-size: cover;
+   
+    width:86% !important; 
+ 
+
 }
 .level {
     color: #5fa333;
