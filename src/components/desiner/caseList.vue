@@ -133,9 +133,10 @@ export default {
         vm = this;
         this.swiperOptionCase = {
             initialSlide: vm.$route.query.caseId,
-            slidesPerView: 'auto',
+            // slidesPerView: 'auto',
     
-            onSlideChangeEnd: swiper => {
+            onSlideChangeStart: swiper => {
+                // debugger
                 console.log("滑动s============="+swiper.activeIndex);
 
                 this.$emit('goDetails', swiper);
