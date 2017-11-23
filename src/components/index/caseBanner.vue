@@ -106,8 +106,8 @@ export default {
   margin-left: 0.17rem;
 }
 .list-title-c {
-  padding-top: 20px;
-  padding-bottom: 16px;
+    padding-top: .23rem;
+    padding-bottom: .2rem;
 }
 .vertical-bar {
   height: 0.15rem;
@@ -146,7 +146,8 @@ export default {
   clear: both;
 }
 .case-item {
-  width: 45% !important;
+  width: 1.69rem !important;
+
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -166,7 +167,7 @@ export default {
  }*/
 .des-c {
   width: auto;
-  margin-bottom: 0.16rem;
+  margin-bottom: 0.23rem;
   overflow: hidden;
 }
 .des-c:after {
@@ -182,14 +183,15 @@ export default {
 }
 .portrait img {
   width: 100%;
-  height:.4rem;
+  height:.43rem;
+  width:.43rem;
   border-radius:50%;
   border: none;
   display: inline-block;
-  margin-top: 0.02rem;
+
 }
 .name-theme-c {
-  margin-left: 0.44rem;
+  margin-left: 0.47rem;
 }
 .name-theme-c p {
   padding: 0;
@@ -199,14 +201,13 @@ export default {
 .name-theme-c p.name {
   font-size: 0.12rem;
   color: #999;
-  margin-top:.08rem;
+  margin-top:.04rem;
 }
 .name-theme-c p.theme {
   font-size: 0.14rem;
-  line-height: 0.18rem;
+  line-height: 0.2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 0.04rem;
 }
 </style>
