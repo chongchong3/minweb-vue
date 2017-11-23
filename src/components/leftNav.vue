@@ -1,8 +1,8 @@
 <template>
 
   <div class="lefBar" id="leftBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
-      <div class="shadow" @click="hideLeftBar"></div>
-      <div class="nav">
+      <div class="shadow" @click="hideLeftBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }"></div>
+      <div class="nav" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
           <ul>
               <li v-for="item in menu" v-bind:class="{ 'active': $store.state.leftBar.nav.current==item.link }" @click="goLink(item.link)">
                       <i><img :src="'static/images/'+item.icon+'.png'"></i>
@@ -22,17 +22,26 @@
   z-index: 22;
   display: none;
 }
-.show {
+.lefBar.show{
   display: block;
-  animation: animateLeft 0.5s;
+    
 }
-@keyframes animateLeft {
+.nav{
+  display: none;
+  left:-50%;
+
+  
+}
+.nav.show {
+  display: block;
+  animation:animateLeftNav 1s;
+}
+@keyframes animateLeftNav {
   from {
-    opacity: 0;
     left: -50%;
   }
   to {
-    opacity: 1;
+
     left: 0;
   }
 }
@@ -40,9 +49,26 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
+  opacity: .5;
   z-index: 2;
   background-color: #000;
+  animation:animateShadow 1s;
+  
+}
+@keyframes animateShadow {
+  from {
+    display: none;
+    opacity: .4;
+  }
+  to {
+
+    display:block;
+      opacity: .5;
+  }
+}
+.shadow.show {
+    display: block;
+
 }
 .lefBar ul {
   margin: 0;
@@ -57,6 +83,7 @@
 }
 .lefBar .nav {
   position: relative;
+  left:0;
   z-index: 55;
   width: 66.718%;
   position: relative;

@@ -1,5 +1,6 @@
 <template>
     <div class="page-swiper desinerDetails">
+       <white-nav></white-nav>
         <swiper :options="swiperOptionPae">
             <swiper-slide>
                 <zoom :zoomMes="zoomData"></zoom>
@@ -84,13 +85,12 @@ import zoom from "../components/desiner/zoom";
 import self from "../components/desiner/self";
 import caseList from "../components/desiner/caseList";
 import whiteNav from "../components/detailNav/whiteNav";
-import transparentNav from "../components/detailNav/transparentNav";
 Vue.use(VueAwesomeSwiper)
 
 var vm = {},
   _initia = 0;
 export default {
-  components: { zoom, self, caseList, whiteNav, transparentNav },
+  components: { zoom, self, caseList, whiteNav },
   data() {
     return {
       designer_name:'',

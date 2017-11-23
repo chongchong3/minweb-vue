@@ -4,11 +4,11 @@
      
       <div class="cont">
        
-          <span class="btnNav btnLeft" @click="goBack1"><img src="static/images/chevronleft black.png" class="imgSize" ></span>
-       <router-link  to="/index" class="goHome">
+          <span class="btnNav btnLeft cursor" @click="goBack1"><img src="static/images/chevronleft black.png" class="imgSize" ></span>
+       <router-link  to="/index" class="goHome cursor">
        </router-link>
           <span class="btnChat btn">
-                <router-link  to="/chat" >
+                <router-link class="cursor" to="/chat" >
                     <img src="static/images/call.png" >
                 </router-link>
             </span>
@@ -89,11 +89,15 @@ export default {
   margin-left:.09rem;
   margin-top: .16rem;
 }
-.goHome {
-     display: inline-block;
-    position: absolute;
+.cursor {
+   display: inline-block;
     width: .4rem;
     height: 0.5rem;
+}
+.goHome {
+    
+    position: absolute;
+   
     left: 50%;
     margin-left: -.2rem;
 }
