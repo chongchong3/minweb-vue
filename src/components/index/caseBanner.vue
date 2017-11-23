@@ -146,8 +146,7 @@ export default {
   clear: both;
 }
 .case-item {
-  width: 1.69rem !important;
-
+  width: 1.65rem !important;
   text-align: center;
   font-size: 18px;
   background: #fff;

@@ -141,16 +141,14 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
-  width: 1.69rem;
+  width: 1.65rem;
   margin-right:.1rem;
 }
 .detail-designer {
   width: 100%;
   float: left;
 }
-.img-c {
-  width:1.4rem;
-}
+
 .img-c img {
   width: 100%;
   display: block;
@@ -173,13 +171,13 @@ export default {
 }
 .design-des-c .name {
   font-size: 0.14rem;
-  line-height: 0.18rem;
+  line-height: 0.2rem;
   margin-bottom: 0.04rem;
-  margin-top:.06rem;
+  margin-top:.08rem;
 }
 .design-des-c .profession {
-  font-size: 0.11rem;
-  line-height: 0.14rem;
+  font-size: 0.12rem;
+  line-height: 0.16rem;
   color: #999;
   overflow: hidden;
   text-overflow: ellipsis;
