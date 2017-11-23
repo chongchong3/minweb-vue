@@ -150,11 +150,11 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
+    margin-right: 0.1rem;
 }
 
 .img-c {
   display: block;
-  margin-right: 0.1rem;
   margin-bottom: 0.07rem;
 }
 .img-c img {
