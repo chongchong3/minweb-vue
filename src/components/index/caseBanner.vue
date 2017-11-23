@@ -103,17 +103,17 @@ export default {
   height: auto;
 }
 .case-horize-list-c .case-c {
-  margin-left: 0.14rem;
+  margin-left: 0.17rem;
 }
 .list-title-c {
   padding-top: 20px;
   padding-bottom: 16px;
 }
 .vertical-bar {
-  height: 0.12rem;
-  width: 0.04rem;
+  height: 0.15rem;
+  width: 0.045rem;
   background: #b2dd47;
-  margin-right: 0.08rem;
+  margin-right: 0.05rem;
   float: left;
 }
 .list-title-c:after {
@@ -132,7 +132,7 @@ export default {
 }
 .list-title-c .more {
   float: right;
-  margin-right: 14px;
+  margin-right: .17rem;
   margin-bottom: 0px;
 }
 .case-detail-list-c {

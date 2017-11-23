@@ -147,7 +147,7 @@ export default {
 </script>
 <style scoped>
 .page-caseList {
-  padding-top: 0.52rem;
+  padding-top: 0.56rem;
 }
 ul,
 li,

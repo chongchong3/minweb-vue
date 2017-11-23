@@ -9,7 +9,7 @@
        </router-link>
           <span class="btnChat btn btnNav">
                 <router-link class="cursor" to="chat" >
-                    <img src="static/images/call.png" >
+                    <img src="static/images/call.png" style="margin-top: 0.185rem;margin-left:.095rem;">
                 </router-link>
             </span>
       </div>
@@ -84,10 +84,10 @@ export default {
 </script>
 <style scoped >
 .topNav {
-  height: 0.5rem;
+  height: 0.56rem;
   background: #f5f5f5;
   overflow: hidden;
-  line-height: 0.5rem;
+  line-height: 0.56rem;
   position: fixed;
   width: 100%;
   top: 0;
@@ -100,7 +100,7 @@ export default {
   background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
     no-repeat center;
   height: 100%;
-  background-size: 0.2rem;
+  background-size: 0.215rem;
 }
 .topNav .btnNav {
   float: left;
@@ -112,10 +112,11 @@ export default {
 
 .topNav .btn img {
   width: .2rem;
-  margin-top: 0.15rem;
+  margin-top: 0.22rem;
   float:left;
-  margin-left:.1rem;
+  margin-left:.095rem;
 }
+
 
 .goHome {
   position: absolute;
@@ -126,7 +127,7 @@ export default {
 .cursor {
   display: inline-block;
   width: 0.4rem;
-  height: 0.5rem;
+  height: 0.55rem;
   text-align: center;
 }
 .test {

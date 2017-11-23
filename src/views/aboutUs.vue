@@ -96,7 +96,7 @@
 </template>
 <style scoped="scoped">
 .page-aboutUs {
-  padding-top: 0.52rem;
+  padding-top: 0.56rem;
 }
 .aboutus-c {
   padding: 0 0.2rem;

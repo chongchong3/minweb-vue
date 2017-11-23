@@ -29,19 +29,19 @@
 		background-repeat:no-repeat;
 		background-position: center;
 		background-size:.44rem;
-		margin-top: 0.19rem;
-		margin-bottom: 0.16rem;
+		margin-top: 0.23rem;
+		margin-bottom: 0.24rem;
 	}
 	.slogan-title{
 		color:#000;
-		font-size:0.18rem;
+		font-size:0.24rem;
 		text-align: center;
-		margin-bottom: 0.09rem;
+		margin-bottom: 0.16rem;
 		font-weight:bold ;
 	}
 	 .more{
 		display: block;
 		text-align: center;
-		margin-bottom:.2rem;
+		margin-bottom:.36rem;
 	}
 </style>

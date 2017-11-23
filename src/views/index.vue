@@ -17,7 +17,10 @@
   
 }
 .page-index {
-  padding-top: 0.52rem;
+  padding-top: 0.56rem;
+}
+.page-index .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  margin-bottom:.16rem;
 }
 </style>
 
