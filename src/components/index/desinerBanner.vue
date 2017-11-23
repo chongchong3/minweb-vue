@@ -99,14 +99,14 @@ export default {
   margin-left: 0.14rem;
 }
 .list-title-c {
-  padding-top: 20px;
-  padding-bottom: 16px;
+    padding-top: .23rem;
+    padding-bottom: .2rem;
 }
 .vertical-bar {
-  height: 0.12rem;
-  width: 0.04rem;
-  background: #b2dd47;
-  margin-right: 0.08rem;
+  height: .15rem;
+    width: .045rem;
+    background: #b2dd47;
+    margin-right: .05rem;
   float: left;
 }
 .list-title-c:after {
@@ -117,15 +117,14 @@ export default {
   clear: both;
 }
 .list-title {
-  font-size: 0.14rem;
-  /* line-height: 0.12rem; */
-  color: #000;
-  float: left;
-  font-weight: bold;
+     font-size: .14rem;
+    color: #000;
+    float: left;
+    font-weight: 700;
 }
 .list-title-c .more {
-  float: right;
-  margin-right: 14px;
+   float: right;
+  margin-right: .17rem;
   margin-bottom: 0px;
 }
 .designer-detail-list-c {
