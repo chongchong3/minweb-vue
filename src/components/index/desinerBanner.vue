@@ -141,9 +141,8 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
-  width: 1.5rem;
-
-  margin-right: 0.09rem;
+  width: 1.69rem;
+  margin-right:.1rem;
 }
 .detail-designer {
   width: 100%;

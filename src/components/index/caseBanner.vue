@@ -155,7 +155,7 @@ export default {
 
 .img-c {
   display: block;
-  margin-right: 0.09rem;
+  margin-right: 0.1rem;
   margin-bottom: 0.07rem;
 }
 .img-c img {
