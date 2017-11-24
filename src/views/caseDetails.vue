@@ -6,7 +6,7 @@
       <appointment :desiner="desienrMes"></appointment> 
   </div>
 </template>
-<style scoped>
+<style>
 .page_caseDetails {
   padding-top:.5rem;
   padding-bottom:.62rem;
