@@ -23,7 +23,7 @@
         </div>
 			</div>
 			<div class="imgList">
-        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<3">
+        <div class="imgSingle"  v-for="(list,item) in single.designer_case_list"  @click="linkTo(single,item)" v-if="item<3" >
           <img :src="list.wide_screen_image+'?imageView2/5/w/200'"  v-if="list.wide_screen_image" class="imgH">
             <img v-else src="http://img01.tooopen.com/Downs/images/2010/4/8/sy_20100408112256193519.jpg" class="imgH">
         </div>
@@ -202,7 +202,7 @@ p {
   overflow: hidden;
 }
 .desinerList .imgSingle {
-  width: 1.09rem;
+  width: 1rem;
   margin-right:.12rem;
   float:left;
 
