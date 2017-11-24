@@ -48,9 +48,13 @@ export default {
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
-       
-            if(!response.data.data.userId||!this.isWeiXin()){ //如果没有绑定跳转登录页面
-                 return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
+         
+            if(!response.data.data.userId){ //如果没有绑定跳转登录页面
+              var userId=_self.desiner.designer_uid;
+              if(!userId){
+                return _self.$router.push({path:'/login'})
+              }
+                 return _self.$router.push({path:'/login?designer_uid='+userId })
             }
             var user_id = response.data.data.userId;
             checkAppointsStatus({user_id: user_id})
@@ -80,16 +84,7 @@ export default {
             return MessageBox('提示', '请求失败');
         })
     },
-     isWeiXin() {
-      var ua = window.navigator.userAgent.toLowerCase();
-      console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
-      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-        return true;
-      }  
-      return false;
-      
-    },
-
+ 
     getState() {
 
       this.desinerMes = this.$store.getters.appointment;

@@ -78,7 +78,13 @@ export default {
 					 MessageBox('提示', '连接失败');
         });
 		
-	  },
+		},
+		isWxLogin(){
+
+		},
+		notWxLogin(){
+
+		},
 	//   查询是否预约
 	/**@augments
 	 * 查询预约记录接口

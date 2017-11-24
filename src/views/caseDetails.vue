@@ -40,7 +40,7 @@ export default {
     
     vm = this;
      this.authorId=this.getCookie("wechat_id");
-    if(!this.authorId){
+    if(this.isWeiXin()&&!this.authorId){
          window.location.href = "/minisite/login?originUrl="+encodeURIComponent(window.location.host+'/#'+this.$route.fullPath);
          return
     }
@@ -83,7 +83,16 @@ export default {
       return unescape(arr[2]);
       else
       return null;
-      }
+      },
+      isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+          return true;
+        }  
+        return false;
+      
+    },
   }
 };
 </script>
