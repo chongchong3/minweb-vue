@@ -45,12 +45,11 @@ export default {
       //查询是否授权绑定用户
         checkLoginStatus({authorization_id:this.desiner.authorId})
         .then(function(response){
-          // console.log(response.data.data.userId);
             if(response.data.code!=200){
                    return MessageBox('提示', '查询失败');
             }
-          //  response.data.data.userId===null || response.data.data.userId =='' || response.data.data.userId == undefined
-            if(response.data.data.userId == null || response.data.data.userId =='' || response.data.data.userId == undefined){ //如果没有绑定跳转登录页面
+       
+            if(!response.data.data.userId||!this.isWeiXin()){ //如果没有绑定跳转登录页面
                  return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
             }
             var user_id = response.data.data.userId;
@@ -59,9 +58,6 @@ export default {
               
               if( response.data.code==200 && response.data.data.message.length == 17 ){ //设计师ID长度为17
                   return MessageBox('你已经预约过了');
-                  // return setTimeout(function(){
-                  //       history.go(-1);
-                  //    })  
               }
 
               miniSiteAppoints({"designer_uid":_self.desiner.designer_uid,"user_id":user_id} ) //预约设计师
@@ -71,9 +67,6 @@ export default {
                     } 
                     if(response.data.code==200){
                       return MessageBox('提示', '预约成功');
-                    //    setTimeout(function(){
-                    //     history.go(-1);
-                    //  })
                     }
                     return MessageBox('提示', '查询异常')
               })
@@ -87,6 +80,16 @@ export default {
             return MessageBox('提示', '请求失败');
         })
     },
+     isWeiXin() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        return true;
+      }  
+      return false;
+      
+    },
+
     getState() {
 
       this.desinerMes = this.$store.getters.appointment;
