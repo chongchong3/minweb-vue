@@ -50,11 +50,7 @@ export default {
             }
          
             if(!response.data.data.userId){ //如果没有绑定跳转登录页面
-              var userId=_self.desiner.designer_uid;
-              if(!userId){
-                return _self.$router.push({path:'/login'})
-              }
-                 return _self.$router.push({path:'/login?designer_uid='+userId })
+                 return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
             }
             var user_id = response.data.data.userId;
             checkAppointsStatus({user_id: user_id})
