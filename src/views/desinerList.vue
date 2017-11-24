@@ -202,7 +202,7 @@ p {
   overflow: hidden;
 }
 .desinerList .imgSingle {
-  width: 1rem;
+  width: 1.09rem;
   margin-right:.12rem;
   float:left;
 
