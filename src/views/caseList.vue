@@ -12,7 +12,7 @@
             <p class="title">{{single.title}}</p>
           </div>
           <div  @click="linkTo(single)">
-            <p class="houseType">{{single.house_type}}</p>
+            <p class="houseType">{{single.area}}m2</p>
           </div>
           <div class="desiner">
             <router-link :to="'desinerDetails/'+single.designer_uid">
