@@ -34,7 +34,7 @@
 }
 .nav.show {
   display: block;
-  animation:animateLeftNav 1s;
+  animation:animateLeftNav .5s;
 }
 @keyframes animateLeftNav {
   from {

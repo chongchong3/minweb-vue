@@ -213,7 +213,7 @@ p {
 .desinerName {
   line-height: 0.2rem;
   color: black;
-  margin-top:.1rem;
+  margin-top:.12rem;
 }
 .desinerRank {
   color: #93d36a;

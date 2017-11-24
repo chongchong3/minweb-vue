@@ -150,7 +150,7 @@ p {
   line-height: 0.2rem;
 }
 .desinerList {
-  margin:0 .12rem;
+  margin:0 .11rem;
 
 }
 .desinerList .singDesiner {
@@ -176,6 +176,7 @@ p {
    line-height: .16rem;
  }
 .desinerList .textUnder {
+  margin-top:.04rem;
   text-decoration-style: none;
 }
 .desinerList .plantform_descript {

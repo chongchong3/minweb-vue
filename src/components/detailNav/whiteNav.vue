@@ -33,10 +33,10 @@ export default {
 
 <style scoped>
 .topNav {
-  height: 0.5rem;
+  height: 0.56rem;
   background: #f5f5f5;
   overflow: hidden;
-  line-height: 0.5rem;
+  line-height: 0.56rem;
   position: absolute;
   width:100%;
   z-index:9;
