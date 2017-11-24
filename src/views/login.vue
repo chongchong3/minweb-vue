@@ -64,6 +64,9 @@ export default {
 				miniSiteAppoints({"designer_uid":_self.designer_uid,"user_id":_self.user_id} ) //预约设计师
 					.then(function(response){
 						if(response.data.code!=200){
+							if(response.data.code==500){
+										return MessageBox('提示', '你已经预约过了');
+								} 
 							return MessageBox('提示', '查询异常');
 						} 
 						MessageBox('提示', '预约成功');

@@ -150,7 +150,7 @@ p {
   line-height: 0.2rem;
 }
 .desinerList {
-  margin:0 .1rem;
+  margin:0 .12rem;
 
 }
 .desinerList .singDesiner {
@@ -198,14 +198,15 @@ p {
   color: #93d36a;
 }
 .desinerList .imgList {
-  /* height: 1rem; */
-  display: flex; /*设置为flex布局*/
-  /* justify-content: space-around;
-   */
-  justify-content: space-between;
+  overflow: hidden;
 }
 .desinerList .imgSingle {
-  width: 1.06rem;
+  width: 1.09rem;
+  margin-right:.12rem;
+
+}
+.desinerList .imgSingle:last-child{
+   margin-right:0;
 
 }
 .imgH {
