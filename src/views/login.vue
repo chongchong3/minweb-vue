@@ -1,25 +1,32 @@
 <template>
   <div class="login-c">
-      <p class="login-title">手机号验证登录</p>
-      <div class="valid-send-des-c">
-      	<p class="valid-send-des" v-show="isSend">验证码已发送</p>
-      </div>
+      <div class="login-title">
+				<div class="aside">
+					<img src="static/images/login_hd.png">
+				</div>
+				<div class="cont">
+					<p class="tit">手机登录</p>
+					<p class="brief">帮助您快速的预约设计师</p>
+				</div>
+				<span class="close">	<img src="static/images/loginClose.png"></span>
+			</div>
       <div class="input-c">
-      	<div class="phone-num-c">
+      	<div class="input-box">
 	      	<input class="phone-num" @keyup="validatePhone($el,$event)"  maxlength="11"   id="phone" placeholder="输入手机号" type="tel"/>
-	      	<span @click="clearPhone"  class="phone-remove-icon"></span> 
       	</div>
-      	<div class="valid-c">
+      	<div class="input-box code">
 	      	<input class="valid-code" @keyup="validCode" id="validCode" maxlength="4" placeholder="输入验证码" type="number"/>
 	      	<input type="button" id="validBtn" v-bind:class="['valid-btn',{'valid-enable':validEnable}]"  @click="getValidCode" :disabled="isDisable" value="获取验证码"/>
       	</div>
       </div>
-  
-      <input type="button" @click="doLogin" v-bind:class="['login-btn-c',{'login-btn-enable':loginEnable}]" :disabled="loginBtnDisable" value="验证登录"/>
+		<div class="submit">
+  		<input type="button" @click="doLogin" v-bind:class="['login-btn-c',{'login-btn-enable':loginEnable}]" :disabled="loginBtnDisable" value="验证登录"/>
+		</div>
+    
   </div>
 </template>
 <script>
-import { MessageBox } from 'mint-ui'
+import { MessageBox ,Toast} from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import { sendMsg } from "../api/login";
 import { getUserInfo } from "../api/login";
@@ -52,6 +59,9 @@ export default {
 			.dispatch("GetUserInfo", { "phone_num":document.getElementById("phone").value, 'message_code':document.getElementById("validCode").value, 'authorization_id':this.authorization_id })
 			.then((data) => {
 				if(data.body.code != 200){
+					if(data.body.code == 500){
+						Toast('验证码错误!');
+					}
 					return
 				}
 				_self.loginBtnDisable = true;
@@ -149,7 +159,7 @@ export default {
   		sendMsg({"phone_num":document.getElementById("phone").value})
   		.then(function(data){
   			if(data.body.code == 200){
-  				_self.isSend = true;
+  				Toast('验证码发送成功!');
   			}
   		},function(err){
   			//
@@ -187,21 +197,77 @@ export default {
 .login-c {
   width: 100%;
   height: 100%;
-  background: url(../../static/images/login_bg@2x.png);
   background-size: 100%;
 }
 .login-title {
-  font-size: 0.26rem;
-  color: #8d8d8d;
-  text-align: center;
-  margin: 0;
-  padding-top: 0.5rem;
-  margin-bottom: 0.23rem;
-  letter-spacing: 0.02rem;
+	height: 1.1rem;
+	background: #000018;
+	overflow: hidden;
+	position: relative;
 }
+.login-title .aside {
+	width:.85rem;
+	float:left;
+}
+.login-title .aside img {
+	width:100%;
+}
+.login-title .cont {
+	margin-left:.85rem;
+	color:#fff;
+}
+.login-title .cont .tit{
+	margin-left:.65rem;
+	margin-top:.25rem;
+	font-size:.18rem;
+	margin-bottom:.14rem;
+	padding:0;
+}
+.login-title .cont .brief{
+	font-size:.13rem;
+	margin-left:.24rem;
+
+}
+.login-title .close{
+	display: inline-block;
+	position: absolute;
+	right: .15rem;
+	top:.1rem;
+	width:.15rem;
+	padding:.05rem;
+	
+}
+.login-title .close img{
+	width:100%;
+
+}
+.input-c {
+	margin:0 .15rem;
+}
+.input-c .input-box {
+	width:100%;
+	padding:.22rem 0;
+	position: relative;
+	border-bottom:#eee 1px solid;
+	outline: none;
+}
+.input-c .input-box  input {
+	outline: none;
+}
+.input-c .input-box.code {
+	width:2.35rem;
+}
+.input-box  input {
+	font-size:.14rem;
+	color:#333;
+	line-height: .25REM;
+}
+input::-webkit-input-placeholder {color:#A2ACC5;}
+input::-moz-input-placeholder {color:#A2ACC5;}
+input::-ms-input-placeholder {color:#A2ACC5;}
+
 .valid-send-des-c {
-  height: 0.29rem;
-  margin-bottom: 1rem;
+	margin-top:.33rem;
 }
 .valid-send-des {
   font-size: 0.26rem;
@@ -209,88 +275,59 @@ export default {
   text-align: center;
   margin-top: 0;
 }
-.input-c {
-  text-align: center;
-  padding: 0 0.6rem;
+
+
+.input-box  input.valid-btn {
+	line-height: .3rem;
+	width:1rem;
+	border-radius: .02rem;
+	color:#888;
+	font-size:.12rem;
+	text-align: center;	
+	border: #888 1px solid;
+	background-color: #fff;
+	position: absolute;
+	right: -1rem;
+	top: .2rem;
 }
-.valid-c,
-.phone-num-c {
-  position: relative;
-  width: 100%;
-  border-bottom: 0.01rem #c6c6c6 solid;
-  text-align: left;
+.input-box  input:disabled{
+	border:1px solid #ccc;
+	background-color:#fff;
+	color:#ccc;
 }
-.phone-num-c {
-  margin-bottom: 0.5rem;
-}
-.phone-num-c .phone-num,
-.valid-c .valid-code {
-  font-size: 0.22rem;
-  display: inline-block;
-  border: none;
-  outline: none;
-  background: transparent;
-  border-radius: 0;
-  line-height: 0.34rem;
-  letter-spacing: 0.01rem;
-  color: #555555;
-  z-index: 1;
-  width: 85%;
-}
-.valid-c .valid-code {
-  width: 60%;
-}
+
+/* .input-box  input.valid-enable {
+	color:#888;
+	border:#888 1px solid;
+
+} */
 .phone-remove-icon {
   display: inline-block;
   position: absolute;
-  right: 0.1rem;
-  top: 0.1rem;
+  left: 1.3rem;
+  top: .25rem;
   background: url(../../static/images/revoke2.png);
   background-size: 100%;
   width: 0.18rem;
   height: 0.18rem;
   z-index: 99;
 }
-.valid-btn {
-  width: 0.7rem;
-  font-size: 0.12rem;
-  position: absolute;
-  border-radius: 0.04rem;
-  display: inline-block;
-  line-height: 0.2rem;
-  height: 0.3rem;
-  right: 0.1rem;
-  bottom: 0.1rem;
-  z-index: 99;
-  padding: 0px;
-  margin: 0px;
-  border: 1px solid #9c9c9c;
-  color: #5e5e5e;
+.submit {
+	margin:.5rem .15rem;
 }
-.valid-enable {
-  border: 1px solid #82dd46;
-  background-color: #82dd46;
-  color: #fff;
+.submit .login-btn-c {
+	width:100%;
+	line-height: .44rem;
+	font-size:.18rem;
+	color:#C3C7D2;
+	outline: none;
+	background: #eeeeee;
+	border:none;
 }
-.login-btn-c {
-  padding: 0;
-  margin: 0;
-  width: 2.47rem;
-  margin: 0 auto;
-  margin-top: 0.34rem;
-  height: 0.36rem;
-  border-radius: 0.08rem;
-  color: #fff;
-  box-shadow: 0px 0px 30px #999;
-  text-align: center;
-  line-height: 0.36rem;
-  font-size: 0.18rem;
-  display: block;
-  border: 1px solid #9c9c9c;
-  background-color: #9c9c9c;
+.submit .login-btn-enable{
+	color:#fff;	
+	background-color: #82dd47;
+
 }
-.login-btn-enable {
-  border: 1px solid #82dd46;
-  background-color: #82dd46;
-}
+
 </style>
