@@ -203,6 +203,7 @@ p {
 .desinerList .imgSingle {
   width: 1.09rem;
   margin-right:.12rem;
+  float:left;
 
 }
 .desinerList .imgSingle:last-child{
