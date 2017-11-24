@@ -8,7 +8,7 @@
 					<p class="tit">手机登录</p>
 					<p class="brief">帮助您快速的预约设计师</p>
 				</div>
-				<span class="close">	<img src="static/images/loginClose.png"></span>
+				<span class="close" @click="goBack()">	<img src="static/images/loginClose.png"></span>
 			</div>
       <div class="input-c">
       	<div class="input-box">
@@ -189,7 +189,10 @@ export default {
       return unescape(arr[2]);
       else
       return null;
-      }
+			},
+			goBack(){
+				window.history.back(); 
+			}
   }
 };
 </script>
@@ -253,6 +256,7 @@ export default {
 }
 .input-c .input-box  input {
 	outline: none;
+	border:none;
 }
 .input-c .input-box.code {
 	width:2.35rem;
