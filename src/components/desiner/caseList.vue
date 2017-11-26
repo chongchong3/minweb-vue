@@ -59,7 +59,7 @@ body {
   position: absolute;
   width: 92%;
   left: 4%;
-  bottom: -.3rem;
+  bottom: .5rem;
   background: #fff;
   border-radius: 0.06rem;
   color: #000;
