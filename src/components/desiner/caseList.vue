@@ -53,14 +53,13 @@ body {
 .swiper-picList .imgWrap img {
   width: 100%;
   border-radius: 0.1rem;
-  height: 4.11rem;
 }
 
 .swiper-picList .explain {
   position: absolute;
   width: 92%;
   left: 4%;
-  bottom: 1.2rem;
+  bottom: -.3rem;
   background: #fff;
   border-radius: 0.06rem;
   color: #000;
