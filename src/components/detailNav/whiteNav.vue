@@ -54,7 +54,7 @@ export default {
   background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
     no-repeat center;
   height: 100%;
-  background-size: 0.17rem;
+  background-size: 0.215rem;
 }
 .topNav .btnNav {
   float: left;
