@@ -48,7 +48,7 @@ const  shareReady=function(title,desc,imgUrl,link){
           link:link||window.location.href,
           title: title||'设计IN-设计师严选平台', // 分享标题
           desc: desc, // 分享描述
-          imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
+          imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
             
             // 用户确认分享后执行的回调函数
@@ -61,7 +61,7 @@ const  shareReady=function(title,desc,imgUrl,link){
             link:link||window.location.href,
             title: title||'设计IN-设计师严选平台', // 分享标题
             desc: desc, // 分享描述
-            imgUrl: imgUrl||qiniuImg+'logo.png', // 分享图标
+            imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
           
             // 用户确认分享后执行的回调函数

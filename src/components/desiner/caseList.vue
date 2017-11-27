@@ -6,7 +6,7 @@
 
             <swiper-slide v-if="caseList.list.length>0" v-for="(item,index) in caseList.list" :key="index">
                 <div class="imgWrap caseImgWrap">
-                    <img :src="item.cover_image+'?imageView2/5/w/640/h/1136'">
+                    <img :src="item.cover_image+'?imageView2/5'">
                      <div class="explain">
                     <p class="tit">{{item.title}}</p>
                     <p class="houseName">{{item.house_type_name}}</p>

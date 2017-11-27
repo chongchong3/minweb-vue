@@ -48,7 +48,7 @@ export default {
       this.$nextTick(function(){
        this.shareWx.getId();
     //    title,desc,link,imgUrl
-      this.shareWx.shareReady("设计IN-设计师严选平台",'','https://m.shejiin.net/#/index');
+      this.shareWx.shareReady("设计IN-设计师严选平台",'','','https://m.shejiin.net/#/index');
     })
     
      
