@@ -10,7 +10,7 @@
 </template>
 <style  scoped>
 .main-404{
-    margin-top: 1.4rem;
+    margin-top: .9rem;
 }
 .error-text{   
     margin: 0 auto;
@@ -46,6 +46,9 @@
 
 <script>
 export default {
+    created(){
+        document.body.style.overflow="hidden";
+    },
     methods:{
         back(){
             this.$router.back();
