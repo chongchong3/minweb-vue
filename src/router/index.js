@@ -16,6 +16,7 @@ const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
 // const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
+const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
 
 export default new Router({
   routes: [
@@ -102,10 +103,10 @@ export default new Router({
     //   meta: {title: '测试页面'} 
     // },
     {
-      path: '/scroll',
-      name: 'scroll',
-      component: scroll,
-      meta: {title: '测试导航'}     
+      path: '/404',
+      name: 'error',
+      component: error,
+      meta: {title: '404错误'}     
     },
     
   ]
