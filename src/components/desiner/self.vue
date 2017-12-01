@@ -10,7 +10,7 @@
                 <div class="cont">
                     <p class="name">设计师说</p>
 
-                    <p class="brief">{{selfMes.brief}}</p>
+                    <p class="brief" v-html="selfMes.brief"></p>
                 </div>
             </div>
         </div>
