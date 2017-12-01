@@ -11,7 +11,7 @@
                 <div class="cont">
                     <p class="name">{{zoomMes.name}}</p>
                     <p class="price">报价:{{zoomMes.price}}-{{zoomMes.designer_high_price}}/平米</p>
-                    <p class="brief">{{zoomMes.brief}}</p>
+                    <p class="brief" v-html="zoomMes.brief"></p>
                 </div>
             </div>
         </div>
