@@ -4,12 +4,12 @@
      
       <div class="cont">
        
-          <span class="btnNav btn cursor" @click="showMenu"><img src="static/images/menu.png" ></span>
+          <span class="btnNav btn cursor" @click="showMenu"><img id="menuImg" src="static/images/menuicon.png" ></span>
        <router-link  to="index" class="goHome cursor">
        </router-link>
           <span class="btnChat btn btnNav">
                 <router-link class="cursor" to="chat" >
-                    <img src="static/images/call.png" style="margin-top: 0.185rem;margin-left:.095rem;">
+                    <img  id="callImg" src="static/images/callicon.png" style="margin-top: 0.185rem;margin-left:.095rem;">
                 </router-link>
             </span>
       </div>
@@ -53,6 +53,8 @@ export default {
     },
     scrollEvent() {
       var domNav = document.getElementById("topNav");
+      var callImg = document.getElementById("callImg");
+      var menuImg = document.getElementById("menuImg");
       var _self = this;
       window.addEventListener("scroll", function(e) {
         if (!domNav) {
@@ -62,10 +64,14 @@ export default {
         var screnHt = document.body.clientHeight;
         if (scrollTop > screnHt / 3) {
         	domNav.classList.add("show-bg");
+        	menuImg.setAttribute("src","../../static/images/menu.png");
+        	callImg.setAttribute("src","../../static/images/call.png");
 //        domNav.style.display = "none";
           return;
         }
         domNav.classList.remove("show-bg");
+        menuImg.setAttribute("src","../../static/images/menuicon.png");
+        callImg.setAttribute("src","../../static/images/callicon.png");
         return;
       });
     },
