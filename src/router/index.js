@@ -18,6 +18,10 @@ const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
 const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetailsNew')
 
+// 微网站1.1
+const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
+const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/designer_list')
+
 export default new Router({
   routes: [
     {
@@ -107,6 +111,19 @@ export default new Router({
       name: 'error',
       component: error,
       meta: {title: '404错误'}     
+    },
+    // 微网站1.1
+    {
+      path: '/designer_list',
+      name: 'designer_list',
+      component: designer_list,
+      meta: {title: '设计师列表'}     
+    },
+    {
+      path: '/case_list',
+      name: 'case_list',
+      component: case_list,
+      meta: {title: '案例列表'}     
     },
     
   ]
