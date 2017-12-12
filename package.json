@@ -18,6 +18,7 @@
     "install": "^0.10.1",
     "mint-ui": "^2.2.10",
     "npm": "^5.5.1",
+    "semver": "^5.4.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-drapload": "^0.1.14",
