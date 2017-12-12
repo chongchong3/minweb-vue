@@ -49,7 +49,7 @@ export default {
       page_count: 1,
       moreData: true,
       dataJson: null,
-      page_size: 6
+      page_size: 4
     };
   },
   created() {
