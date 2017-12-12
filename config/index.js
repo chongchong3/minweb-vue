@@ -37,32 +37,32 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/minisite/getDesignerCase': {
-        target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       },
       '/designer/listDesigners': {
-        target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       },
       '/designerCase/showAllWithOutDelete': {
-        target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       },
       '/sendMessage': {
-        target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       },
       '/login/miniSiteRegister': {
-        target: 'http://192.168.14.175:8080/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       },
       '/Designer/miniSiteAppoints': {
-        target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
       }},

@@ -1,19 +1,22 @@
 <template>
+	<div>
 	<div class="banner-c">
-			  <swiper :options="swiperOption" >
-			    <!-- slides -->
-			    <!--<swiper-slide class="swiper-item" v-for="(item,index) in banner" :key="index">
-			    		<img :src="item.link"  :loc="item.src"/>
-			    </swiper-slide>-->
-			    <swiper-slide class="swiper-item" v-for="(item,index) in banner" :key="index">
-			    	<img :src="item.link" :loc="item.src+'?imageView2/2/w/750'" />
-			    </swiper-slide>
-			    <!-- Optional controls -->
-			    <div class="swiper-pagination"  slot="pagination"></div>
-			  </swiper>
-		
+		  <swiper :options="swiperOption" class="contain-visible">
+		    <!-- slides -->
+		    <!--<swiper-slide class="swiper-item" v-for="(item,index) in banner" :key="index">
+		    		<img :src="item.link"  :loc="item.src"/>
+		    </swiper-slide>-->
+		    <swiper-slide class="swiper-item" v-for="(item,index) in banner" :key="index">
+		    	<img :src="item.link" :loc="item.src+'?imageView2/2/w/750'" />
+		    </swiper-slide>
+		    <!-- Optional controls -->
+		    <div class="swiper-pagination"  slot="pagination"></div>
+		  </swiper>
 	</div>
-
+	<div class="banner-hor-c">
+		  	
+	</div>
+	</div>
 </template>
 <script>
   // swiper options example:
@@ -22,8 +25,8 @@
     data() {
       return {
       	banner:[
-      		{link:"https://img.wesetup.cn/banner_P1.jpg",src:"http://g.eqxiu.com/s/JSiNdILo"}//,
-
+      		{link:"../../static/images/banner.png",src:""},
+			{link:"../../static/images/banner.png",src:""}//,
       	],
 
         swiperOption: {
@@ -40,7 +43,7 @@
           onTransitionStart (swiper) {
           },
           onClick(swiper){
-          	window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
+          	//window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
           }
         }
       }
@@ -60,19 +63,29 @@
 		background:#fff;
 	}
 	.banner-c:after{
-		height: 0.09rem;
-		background: #f4f4f4;
+		height: 0rem;
+		background: #fff;
 		display: block;
 		content: " ";
+	}
+	.banner-hor-c{
+		background:#F4F4F4;
+		height:.1rem;
 	}
 	.swiper-container {
 		overflow: hidden;
 		position: relative;
 	}
-	
+	.contain-visible{
+		overflow: visible;
+		overflow-x: hidden;
+	}
 	.banner-c .swiper-wrapper{
 		height:100%;
 		overflow: hidden;
+	}
+	.swiper-pagination-bullet-active{
+		background:#8AE251 !important;
 	}
   .swiper-item {
     height: 100%;
@@ -83,20 +96,20 @@
   	width: 100%;
   }
   .swiper-pagination{
+  	padding-top: .02rem;
   	height:0.2rem;
-  	position:absolute;
+  	position:static;
   	width:100%;
-  	bottom:0px;
-  	left:0px;
   	text-align: center;
   }
   .swiper-pagination-bullet{
-  	width:0.2rem;
-  	height:0.02rem;
+  	width:0.4rem;
+  	height:0.04rem;
   	opacity: .6;
-  	background:#fff;
+  	background:#e4e4e4;
   	display: inline-block;
   	margin: 0px 0.04rem;
+  	border-radius: 0;
   }
   .swiper-pagination-bullet-active{
   	background:#fff;

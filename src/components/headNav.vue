@@ -61,10 +61,11 @@ export default {
         var scrollTop = _self.getScrollTop();
         var screnHt = document.body.clientHeight;
         if (scrollTop > screnHt / 3) {
-          domNav.style.display = "none";
+        	domNav.classList.add("show-bg");
+//        domNav.style.display = "none";
           return;
         }
-        domNav.style.display = "block";
+        domNav.classList.remove("show-bg");
         return;
       });
     },
@@ -84,8 +85,9 @@ export default {
 </script>
 <style scoped >
 .topNav {
-  height: 0.56rem;
-  background: #f5f5f5;
+  height: 0.54rem;
+  /*background: #f5f5f5;*/
+ background: transparent;
   overflow: hidden;
   line-height: 0.56rem;
   position: fixed;
@@ -93,7 +95,10 @@ export default {
   top: 0;
   z-index: 2;
   transition: width 1s;
-  box-shadow: 0px 2px 1px #ccc;
+  /*box-shadow: 0px 2px 1px #ccc;*/
+}
+.show-bg{
+	background: #f5f5f5;
 }
 .topNav .cont {
   margin: 0 0.16rem;
