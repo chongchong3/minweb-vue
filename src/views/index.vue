@@ -17,7 +17,7 @@
   
 }
 .page-index {
-  padding-top: 0.56rem;
+  /*padding-top: 0.56rem;*/
 }
 .page-index .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
   margin-bottom:.16rem;
@@ -61,8 +61,8 @@ export default {
   }
   ,mounted(){
       this.$nextTick(function(){
-        this.shareWx.getId();
-       this.shareWx.shareReady("设计IN-设计师严选平台");
+//     this.shareWx.getId();
+//     this.shareWx.shareReady("设计IN-设计师严选平台");
 
     })
    

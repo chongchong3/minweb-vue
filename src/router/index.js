@@ -13,10 +13,10 @@ const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
 const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
-// const test = () => import(/* webpackChunkName: "mint-case */ '@/views/demo')
 const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
+const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetailsNew')
 
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
@@ -100,12 +100,12 @@ export default new Router({
       meta: {title: '设计IN-设计师严选平台'}
       
     },
-    // {
-    //   path: '/test',
-    //   name: 'test',
-    //   component: test,
-    //   meta: {title: '测试页面'} 
-    // },
+    {
+      path: '/caseDetailsNew',
+      name: 'caseDetailsNew',
+      component: caseDetailsNew,
+      meta: {title: '新案例详情'} 
+    },
     {
       path: '/404',
       name: 'error',
