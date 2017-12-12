@@ -79,19 +79,20 @@
   padding-left: 0.2rem;
 }
 .descript .cont .tit {
-  padding-top: 0.1rem;
-  font-size: 0.14rem;
+  padding-top: 0;
+  font-size: 0.16rem;
 }
 .descript .cont .memo {
-  padding-top: 0.1rem;
+  padding-top: 0.08rem;
   font-size: 0.12rem;
+
 }
 .caseDetails .descript .cont p {
   margin: 0;
 }
 .caseDetails .descript {
   position: absolute;
-  bottom: 0.6rem;
+  bottom: 0.5rem;
   width: 100%;
   z-index: 2;
 }
@@ -99,8 +100,7 @@
   position: absolute;
   width: 100%;
   height: 0.5rem;
-  opacity: 0.3;
-  background-color: #000;
+ background: url('https://img.wesetup.cn/shadowBg.png');
 }
 .caseDetails .desiner {
   margin-top: 0.15rem;
@@ -187,7 +187,9 @@ background-color: #eee;
     text-align: center;
     color:#fff;
     font-size:.16rem;
-        height: .4rem;;
+        height: .4rem;
+        line-height: .4rem;
+
 }
 .appoint .icon {
     width:.2rem;
