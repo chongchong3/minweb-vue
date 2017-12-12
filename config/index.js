@@ -37,12 +37,14 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/minisite/getDesignerCase': {
-        target: 'http://120.27.215.62:8420/',
+        // target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/', //赵玉
         changeOrigin: true,
       
       },
       '/designer/listDesigners': {
-        target: 'http://120.27.215.62:8420/',
+        // target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/', //赵玉
         changeOrigin: true,
       
       },

@@ -10,7 +10,7 @@
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
             <div class="case-text">
               <p class="case-title">{{single.title}}</p>
-              <p class="case-detail">200平米&nbsp;&nbsp;现代</p>
+              <p class="case-detail">{{single.area}}平米&nbsp;&nbsp;现代</p>
             </div>
           </div>
           <div class="clear"></div> 
@@ -107,10 +107,10 @@ export default {
           var data = response.data.data.list;
           if (data.length < _self.page_size) {
             _self.moreData = false;
+            _self.loading = false;
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
-            _self.loading = false;;
           }
         })
         .catch(err => {});
