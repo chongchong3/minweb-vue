@@ -48,12 +48,12 @@ export default new Router({
       component: login,
       meta: {title: '登录页'}
     },
-    {
-      path: '/desinerList',
-      name: 'desinerList',
-      component: desinerList,
-      meta: {title: '找设计师 | 设计IN-设计师严选平台'}
-    },
+    // {
+    //   path: '/desinerList',
+    //   name: 'desinerList',
+    //   component: desinerList,
+    //   meta: {title: '找设计师 | 设计IN-设计师严选平台'}
+    // },
     {
       path: '/desinerDetails/:desiner_id',
       name: 'desinerDetails',
@@ -66,12 +66,12 @@ export default new Router({
       component: desinerCaseDetails,
       meta: {title: '设计师案例详情'}
     },
-    {
-      path: '/caseList',
-      name: 'caseList',
-      component: caseList,
-      meta: {title: '看设计案例 | 设计IN-设计师严选平台'}
-    },
+    // {
+    //   path: '/caseList',
+    //   name: 'caseList',
+    //   component: caseList,
+    //   meta: {title: '看设计案例 | 设计IN-设计师严选平台'}
+    // },
     {
       path: '/caseDetails/:case_id',
       name: 'caseDetails',
