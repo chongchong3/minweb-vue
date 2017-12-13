@@ -1,207 +1,169 @@
 <template>
-    <div class="page-swiper desinerDetails">
-       <white-nav></white-nav>
-        <swiper :options="swiperOptionPae">
-            <swiper-slide>
-                <zoom :zoomMes="zoomData"></zoom>
-            </swiper-slide>
-            <swiper-slide>
-                <self :selfMes="selfData" ref="childMethod"></self>
-            </swiper-slide>
-            <swiper-slide v-if="zoomData.designer_level">
-                <caseList  :caseList="caseData" v-on:goDetails="goDetails" :level="zoomData.designer_level"></caseList>
-            </swiper-slide>
-            <swiper-slide class="caseDetilas" id="caseDetilas">
-                <div v-html="caseDetails">{{caseDetails}}</div>
-            </swiper-slide>
-            <div class="swiper-scrollbar"></div>
-        </swiper>
+    <div class="page-swiper desinerDetails" v-touch:swipeup="animateFun" v-touch:swipedown="animateDown">
+        <div class="por-des-c" style="background:url(../../static/images/demo-bg.png)">
+	        <div id="portrait" class="portrait-c" style="background:url(../../static/images/demo-designer.png) no-repeat;background-size:cover" >
+	        	<!--<img src="../../static/images/demo-designer.png" />-->
+	        </div>
+	        <div class="designer-info-c">
+	        	<p class="name">马丁西科赛斯</p><br>
+	        	<p class="price">报价：200/平米</p>
+	        </div>
+        </div>
+        <div class="up-icon"></div>
+        <div class="detail-describe-c">
+        	<div class="detail-describe-sub-c">
+        		<p class="title">奖项</p>
+        		<p class="content">西湖设计节银奖，银川设计大赛金奖，草莓设计师邀请赛金奖，柏林设计节特别奖</p>
+        		<p class="title">设计理念</p>
+        		<p class="content">实拍电影导演、企业家、剧本作家。出生于山口县宇部</p>
+        		<p class="title">个人简介</p>
+        		<p class="content">实拍电影导演、企业家、剧本作家。出生于山口县宇部市，毕业于山口县立宇部高等学校、大阪艺术大学艺术学部映像计划学科。代表作为《新世纪福音战士》、《不思议之海的娜迪娅》等</p>
+        	</div>
+        </div>
+        <div class="caselist-c">
+        	
+        </div>
     </div>
 </template>
-<style  >
-html {
-  font-size: 100px;
-  position: relative;
-  height: 100%;
-}
-
-body {
-  font-size: 14px;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-   background: #f4f4f4;
-}
-
-.hide {
-  display: none;
-}
-
-.video-js,
-video,
-.vjs-tech {
-  width: 100%;
-}
-.container {
-    padding-top:0;
-    height: 100%;
-}
-
-html,
-body {
-  position: relative;
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-.desinerDetails ,.desinerDetails  .swiper-slide,.desinerDetails  .swiper-container{
-  height:100%;
-
-}
-
-img,video{
-  max-width:100%;
-}
-.hasTips {
-  position: relative;
-}
-
-.zoom-wrap .hasTips .memo {
-  height: 2.4rem;
-}
-
-.caseDetilas {
-  width: 100%;
-  overflow: scroll;
-}
+<style  scoped="scoped">
+	.por-des-c{
+		width:100%;
+		height:100%;
+		position: relative;
+	}
+	.desinerDetails{
+		width:100%;
+		height:100%;
+		position: relative;
+	}
+	.portrait-c{
+		width:100%;
+		height:100%;
+		margin:0px auto;
+	}
+	.portrait-c img{
+		width:100%;
+	}
+	.designer-info-c{
+		width:100%;
+		position:absolute;
+		bottom:.4rem;;
+		left:0px;
+	}
+	.designer-info-c p{
+		color:#fff;
+		/*width:100%;*/
+		padding:0;
+		margin:0px;
+		padding-left:3.2%;
+		display: inline-block;
+	}
+	.text-center{
+		text-align: center;
+	}
+	.designer-info-c .name{
+		font-size:.2rem;
+		line-height:.28rem;
+		
+	}
+	.designer-info-c .price{
+		font-size:.12rem;
+		line-height:.17rem;
+	}
+	
+	.up-icon{
+		position:absolute;
+		bottom:0px;
+		left:0px;
+		height: .4rem;
+		width:100%;
+		background:url(../../static/images/uparrow.png) center no-repeat;
+		z-index: 10;
+	}
+	.detail-describe-c{
+		background:#fff;
+		width:100%;
+		position:absolute;
+		bottom:-100%;
+		left:0px;
+		z-index: 9;
+	}
+	.detail-describe-sub-c{
+		margin:0 4% .4rem;
+	}
+	.detail-describe-sub-c .title{
+		font-size:.18rem;
+		line-height:.25rem;
+	}
+	.detail-describe-sub-c .content{
+		font-size:.12rem;
+		line-height: .17rem;
+		opacity: .54;
+		color:#000;
+	}
 </style>
 
 <script>
-
-import Vue from 'vue'
-import '@/common/css/swiper.min.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import zoom from "../components/desiner/zoom";
-import self from "../components/desiner/self";
-import caseList from "../components/desiner/caseList";
-import whiteNav from "../components/detailNav/whiteNav";
-Vue.use(VueAwesomeSwiper)
-
-var vm = {},
-  _initia = 0;
-export default {
-  components: { zoom, self, caseList, whiteNav },
-  data() {
-    return {
-      designer_name:'',
-      head_image_url:'',
-      caseSlideIndex: 0,
-      caseId:0,
-      _initia: 0,
-      swiper: {},
-      zoomData: {},
-      selfData: {},
-      caseData: [],
-      caseDetails: "",
-      swiperOptionPae: {
-        scrollbarHide: false,
-        direction: "vertical",
-        // initialSlide: _initia,
-        initialSlide:0,
-        onSlideChangeStart(swiper) {
-          _initia = swiper.activeIndex;
-          if (_initia == 2 && vm.zoomData.name) {
-            document.title = vm.zoomData.name + "的案例";
-          } else {
-            document.title = "设计师详情";
-          }
-
-          if (swiper.activeIndex == 3) {
-              var designer_uid = vm.$route.params.designer_uid;
-              window.location.replace("./#/desinerCaseDetails/" +vm.$route.params.desiner_id+'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex)
-          //  window.location.href ="./#/desinerCaseDetails/" +vm.$route.params.desiner_id +'?caseId='+vm.caseId+ "&caseSlideIndex=" + vm.caseSlideIndex ;
-
-          }
-        },
-        onTouchEnd(swiper) {}
-      }
-    };
-  },
-
-  beforeCreate() {
-    vm = this;
-    if (this.$route.query.startIndex - 0) {
-      _initia = 2;
-    }
-
-  },
-  created(){
-        this.getData();
-  },
-  beforeMount() {
-    // this.getData();
-
-  },
-mounted(){
-  },
-  methods: {
-    goDetails(swiper) {
-      this.swiper = swiper;
-      this.caseSlideIndex = swiper.activeIndex;
-      // console.log("滑动============="+swiper.activeIndex);
-      this.caseDetails = this.caseData.list[swiper.activeIndex].case_detail;
-      this.caseId=this.caseData.list[swiper.activeIndex].designer_case_uid;
-    },
-    getData() {
-
-      var _self=this;
-      var _designer_uid = this.$route.params.desiner_id;
-      this.$store.dispatch("GetDesinerDetails",{designer_uid:_designer_uid})
-        .then((response) => {
-          _self.caseId=response.data.data.designer_case_list[0].designer_case_uid;
-          _self.designer_name = response.data.data.designer_name;
-          _self.head_image_url = response.data.data.head_image_url;
-
-          this.$nextTick(function(){
-            this.shareWx.getId();
-            this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url+'?imageView2/5/w/50');
-          });
-          _self.setData(response.data.data);
-        })
-        .catch(error => {
-
-        });
-    },
-    setData(data) {
-      // this.caseDetails = data.designer_case_list[0].case_detail;
-      this.caseDetails = data.designer_case_list[this.caseSlideIndex].case_detail;
-      this.zoomData = {
-        name: data.designer_name,
-        score: data.designer_level,
-        headImg: data.full_body_shot_url,
-        head_image_url: data.head_image_url,
-        price: data.designer_price,
-        brief: data.plantform_descript,
-        designer_level: data.designer_level,
-        designer_high_price:data.designer_high_price
-      };
-      this.selfData = {
-        brief: data.descript,
-        bodyImg: data.personality_photo_url,
-        brief: data.descript,
-        video: data.self_introduction_video_url
-      };
-      this.caseData = {
-        list: data.designer_case_list,
-        score:data.designer_level,
-      };
-      if (_initia == 2) {
-        document.title = data.designer_name + "的案例";
-        return;
-      }
-      document.title = "设计师详情";
-    },
-  }
-};
+	import Vue from "vue";
+	import touchdirective from "../components/touchdirective";
+	import $ from 'jquery';
+	touchdirective(Vue);
+	export default{
+		data(){
+			return{
+				
+			}
+		},
+		created(){
+			document.addEventListener('touchmove', function(e){e.preventDefault()}, false);
+		},
+		methods:{
+			animateDown:function(){
+				$(".por-des-c").animate({
+					'height':"100%",
+					"padding-top":"0%"
+				})
+				$("#portrait").animate({
+					'width':'100%',
+					'height':'100%',
+					'border-radius':'0'
+				})
+				$(".designer-info-c p").animate({
+					"padding-left":"3.2%"
+				})
+				$(".price").animate({
+					'font-size':'.12rem'
+				})
+				$(".detail-describe-c").animate({
+					"bottom":"-100%"
+				})
+			},
+			animateFun:function(){
+				$(".por-des-c").animate({
+					'height':"30%",
+					"padding-top":"15%"
+					
+				})
+				$("#portrait").animate({
+					'width':'1rem',
+					'height':'1rem',
+					'border-radius':'50%'
+				})
+				
+				var wth = $($(".designer-info-c p")[0]).width();
+				$(".price").animate({
+					"padding-left":($(window).width()-wth)/2,
+					'font-size':'.16rem'
+				})
+				$(".designer-info-c .name").animate({
+					"padding-left":($(window).width()-wth)/2
+				})
+				
+				$(".detail-describe-c").animate({
+					"bottom":"0",
+					"height":"60%"
+				})
+			}
+		}
+	}
 </script>
-

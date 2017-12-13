@@ -1,21 +1,17 @@
 <template>
 	<div class="case-horize-list-c">
+		<div class="list-title-c">
+			<router-link to="/caselist" tag="div" class="list-title">
+					设计案例
+			</router-link>
+			
+		</div>
 		<div class="case-c">
-			<div class="list-title-c">
-				<div class="vertical-bar">
-				</div>
-				<span class="list-title">
-					看设计案例
-				</span>
-				<router-link to="/caseList" tag="span" class="more">
-					查看更多
-				</router-link>
-			</div>
 			<div class="case-detail-list-c">
 				<swiper :options="caseOption" >
-			    <!-- slides -->
-				    <swiper-slide class="case-item" v-for="(onecase,index) in caseList" :key="index">
-			    		<div class="detail-case">
+				    <swiper-slide class="case-item" v-for="(list,index) in caseList" :key="index">
+			    		<div class="" v-bind:class="['detail-case',{'detail-case-border-rgt':index != caseList.length-1}] ">
+			    			<div v-for="(onecase,idx) in list" class="onecase-c"  v-bind:class="['',{'onecase-c-bottom':idx != list.length-1}] ">
 			    				<div class="img-c"  @click="jumpTo(onecase)">
 									<img :src="onecase.widescreen_image+'?imageView2/2/w/300'" />
 								</div>
@@ -26,14 +22,15 @@
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
-											{{onecase.designer_name}}
+											{{onecase.area}}平米 /<span v-for="style in onecase.style_list">{{style.style_name}} </span>
 										</router-link>
 										
 									</div>
 								</div>
+			    			</div>
 						</div>
 				    </swiper-slide>
-			  </swiper>
+			  	</swiper>
 			</div>
 		</div>
 	</div>
@@ -62,10 +59,21 @@ export default {
     }
   },
   mounted() {
-	  this.getList({ page_size: 6, page_no: 1})
+	  this.getList({ page_size: 9, page_no: 1})
       .then(json => {
         if (json.body.code == "200") {
-          this.caseList = json.body.data.list;
+        	let arr = json.body.data.list;
+        	let i =0;
+        	let temp = [];
+        	let result = [];
+        	for(;i<arr.length;i++){
+        		temp.push(arr[i]);
+        		if(temp.length == 3 || (arr.length<3 && temp.length == arr.length )){
+        			this.caseList.push(temp);
+        			temp = [];
+        		}
+        		
+        	}
         }
       })
       .catch(err => {});
@@ -103,11 +111,13 @@ export default {
   height: auto;
 }
 .case-horize-list-c .case-c {
-  margin-left: 0.17rem;
+  /*margin-left: 0.17rem;*/
 }
 .list-title-c {
-    padding-top: .23rem;
-    padding-bottom: .2rem;
+    padding-top: .14rem;
+    height:.36rem;
+    text-align: center;
+    border-bottom: 1px solid #c9c9c9;
 }
 .vertical-bar {
   height: 0.15rem;
@@ -124,11 +134,13 @@ export default {
   clear: both;
 }
 .list-title {
-  font-size: 0.14rem;
-  /* line-height: 0.12rem; */
-  color: #000;
-  float: left;
-  font-weight: bold;
+  font-size: 0.16rem;
+  line-height: 0.22rem; 
+  display: inline-block;
+  text-align: left;
+  background: url(../../../static/images/more.png) right no-repeat;
+  background-size: .14rem;
+  width:.84rem;
 }
 .list-title-c .more {
   float: right;
@@ -146,13 +158,23 @@ export default {
   clear: both;
 }
 .case-item {
-  width: 1.65rem !important;
+  width: 91% !important;
   text-align: center;
   font-size: 18px;
   background: #fff;
-    margin-right: 0.1rem;
 }
-
+.detail-case{
+}
+.detail-case-border-rgt{
+	border-right: 1px solid #C9C9C9;
+}
+.onecase-c{
+	margin:4%;
+	
+}
+.onecase-c-bottom{
+	border-bottom:1px solid #C9C9C9;
+}
 .img-c {
   display: block;
   margin-bottom: 0.07rem;
@@ -166,7 +188,7 @@ export default {
  }*/
 .des-c {
   width: auto;
-  margin-bottom: 0.23rem;
+  margin-bottom: 0.12rem;
   overflow: hidden;
 }
 .des-c:after {
@@ -182,8 +204,8 @@ export default {
 }
 .portrait img {
   width: 100%;
-  height:.43rem;
-  width:.43rem;
+  height:.4rem;
+  width:.4rem;
   border-radius:50%;
   border: none;
   display: inline-block;
@@ -199,12 +221,12 @@ export default {
 }
 .name-theme-c p.name {
   font-size: 0.12rem;
+  line-height: .17rem;
   color: #999;
-  margin-top:.04rem;
 }
 .name-theme-c p.theme {
-  font-size: 0.14rem;
-  line-height: 0.2rem;
+  font-size: 0.16rem;
+  line-height: 0.22rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

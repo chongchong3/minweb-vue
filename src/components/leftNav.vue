@@ -3,6 +3,7 @@
   <div class="lefBar" id="leftBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
       <div class="shadow" @click="hideLeftBar" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }"></div>
       <div class="nav" v-bind:class="{ 'show': $store.state.leftBar.nav.isShow }">
+      		<div class="nav-logo-c"></div>
           <ul>
               <li v-for="item in menu" v-bind:class="{ 'active': $store.state.leftBar.nav.current==item.link }" @click="goLink(item.link)">
                       <i><img :src="'static/images/'+item.icon+'.png'"></i>
@@ -31,6 +32,11 @@
   left:-50%;
 
   
+}
+.nav .nav-logo-c{
+	height: .8rem;
+	background: url(../../static/images/nav-log.png) no-repeat center;
+	background-size: 50%;
 }
 .nav.show {
   display: block;
@@ -104,8 +110,8 @@
   border-top: #eee 1px solid;
 }
 .lefBar li {
-  line-height: 0.33rem;
-  margin: 0.14rem 0;
+  line-height: 0.5rem;
+  /*margin: 0.14rem 0;*/
 }
 .lefBar ul li i img {
   width: 100%;
@@ -129,9 +135,9 @@ export default {
     return {
       menu: [
         { link: "index", icon: "home", name: "首页" },
-        { link: "caseList", icon: "trash", name: "查看案例" },
+        { link: "caseList", icon: "view", name: "查看案例" },
         { link: "desinerList", icon: "person", name: "找设计师" },
-        { link: "chat", icon: "call", name: "在线咨询" },
+        { link: "chat", icon: "onchat", name: "在线咨询" },
         { link: "aboutUs", icon: "warn", name: "关于" }
       ]
     };

@@ -1,11 +1,11 @@
 <template>
   <div class="designer">
       <ul>
-          <li class="designer-li" v-for="(single, index) in dataJson" :style="{ 'background': 'url('+single.designer_case_list[0].cover_image+')'}" >
+          <li class="designer-li" v-for="(single, index) in dataJson" :style="{ 'background': 'no-repeat url('+single.background_img +')','background-size': '100%'}" >
                 <img :src="single.head_image_url"  alt="" class="designer-head">
                 <p class="designer-name">{{single.designer_name}}</p>
-                <p class="designer-detail">{{single.city}}/软装/12年</p>
-                <p class="designer-company">冰岛工作室</p>                  
+                <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
+                <p class="designer-company">{{single.studio}}</p>                  
           </li> 
       </ul>
       <h4 v-if="!moreData" class="info">没有更多了...</h4>
@@ -99,7 +99,8 @@ ul, li, p{
     margin-bottom: .1rem;
     /* background: url(http://iph.href.lu/350x260?bg=000) no-repeat; */
     width:100%;
-    height:2.60rem;
+    /* height:2.60rem; */
+    height:auto;
     text-align: center;
     color: #fff;
 }
@@ -110,6 +111,7 @@ ul, li, p{
     top:.4rem;
     width: 1rem;
     height: 1rem;
+    border:1px solid #d0d0d0;
     border-radius: 50%;
     display: block;
 }

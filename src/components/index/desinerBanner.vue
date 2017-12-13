@@ -1,16 +1,11 @@
 <template>
 	<div id="designHorizeList" class="designer-horize-list-c" ref="designHorizeList">
-		<div class="designer-c">
-			<div class="list-title-c">
-				<div class="vertical-bar">
-				</div>
-				<span class="list-title">
+		<div class="list-title-c">
+			<router-link to="/desinerList" tag="div" class="list-title">
 					找设计师
-				</span>
-				<router-link to="/desinerList" tag="span" class="more">
-					查看更多
-				</router-link>
-			</div>
+			</router-link>
+		</div>
+		<div class="designer-c">
 			<div  class="designer-detail-list-c">
 				<swiper :options="designerOption" >
 			    <!-- slides -->
@@ -22,8 +17,8 @@
 							</div>
 							<div class="design-des-c">
 								<p class="name">{{designer.designer_name}}</p>
-								<p class="profession" >{{designer.city}} | {{designer.plantform_descript}}</p>
-								<!-- <p class="level">{{designer.designer_level}}</p> -->
+								<p class="profession" >{{designer.city}} / {{designer.decoration_type}} / {{designer.service_years}}年</p>
+								<p class="profession">{{designer.studio}}</p> 
 							</div>
 						<!--</div>-->
 			    	</router-link>
@@ -96,11 +91,23 @@ export default {
   height: auto;
 }
 .designer-horize-list-c .designer-c {
-  margin-left: 0.14rem;
+  /*margin-left: 0.14rem;*/
 }
 .list-title-c {
-    padding-top: .23rem;
-    padding-bottom: .2rem;
+    padding-top: .14rem;
+    height:.36rem;
+    text-align: center;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.list-title {
+  font-size: 0.16rem;
+  line-height: 0.22rem; 
+  display: inline-block;
+  text-align: left;
+  background: url(../../../static/images/more.png) right no-repeat;
+  background-size: .14rem;
+  width:.84rem;
 }
 .vertical-bar {
   height: .15rem;
@@ -109,24 +116,7 @@ export default {
     margin-right: .05rem;
   float: left;
 }
-.list-title-c:after {
-  content: "";
-  display: block;
-  height: 0;
-  visibility: hidden;
-  clear: both;
-}
-.list-title {
-     font-size: .14rem;
-    color: #000;
-    float: left;
-    font-weight: 700;
-}
-.list-title-c .more {
-   float: right;
-  margin-right: .17rem;
-  margin-bottom: 0px;
-}
+
 .designer-detail-list-c {
   width: auto;
 }
@@ -141,8 +131,9 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
-  width: 1.65rem;
-  margin-right:.1rem;
+  width: 57.6%;
+  margin-left:4.5%;
+  margin-top:4.5%;
 }
 .detail-designer {
   width: 100%;
@@ -170,8 +161,8 @@ export default {
   clear: both;
 }
 .design-des-c .name {
-  font-size: 0.14rem;
-  line-height: 0.2rem;
+  font-size: 0.16rem;
+  line-height: 0.22rem;
   margin-bottom: 0.04rem;
   margin-top:.08rem;
 }
