@@ -21,7 +21,7 @@
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
-											{{onecase.designer_name}}
+											{{onecase.area}}平米 /{{onecase.style_list}} <span v-for="style in onecase.style_list">{{style.style_name}}</span>
 										</router-link>
 										
 									</div>
@@ -67,7 +67,7 @@ export default {
         	let result = [];
         	for(;i<arr.length;i++){
         		temp.push(arr[i]);
-        		if(temp.length == 3){
+        		if(temp.length == 3 || (arr.length<3 && temp.length == arr.length )){
         			this.caseList.push(temp);
         			temp = [];
         		}
