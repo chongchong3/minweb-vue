@@ -1,9 +1,9 @@
 <template>
 	<div id="designHorizeList" class="designer-horize-list-c" ref="designHorizeList">
 		<div class="list-title-c">
-			<div class="list-title">
-				找设计师
-			</div>
+			<router-link to="/desinerList" tag="div" class="list-title">
+					找设计师
+			</router-link>
 		</div>
 		<div class="designer-c">
 			<div  class="designer-detail-list-c">
