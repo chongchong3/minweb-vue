@@ -1,9 +1,10 @@
 <template>
 	<div class="case-horize-list-c">
 		<div class="list-title-c">
-			<div class="list-title">
-				设计案例
-			</div>
+			<router-link to="/caselist" tag="div" class="list-title">
+					设计案例
+			</router-link>
+			
 		</div>
 		<div class="case-c">
 			<div class="case-detail-list-c">
@@ -21,7 +22,7 @@
 									<div class="name-theme-c">
 										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
-											{{onecase.area}}平米 /{{onecase.style_list}} <span v-for="style in onecase.style_list">{{style.style_name}}</span>
+											{{onecase.area}}平米 /<span v-for="style in onecase.style_list">{{style.style_name}} </span>
 										</router-link>
 										
 									</div>
