@@ -1,27 +1,34 @@
 <template>
   <div class="designer">
       <ul>
-          <li class="designer-li" v-for="(single, index) in dataJson" :style="{ 'background': 'no-repeat url('+single.background_img +')','background-size': '100%'}" >
+          <li class="designer-li" v-for="(single, index) in dataJson">
+            <div class="designer-single" v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                 <img :src="single.head_image_url"  alt="" class="designer-head">
                 <p class="designer-name">{{single.designer_name}}</p>
                 <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
-                <p class="designer-company">{{single.studio}}</p>                  
+                <p class="designer-company">{{single.studio}}</p> 
+            </div>                        
           </li> 
       </ul>
+      <h3 ref="scroll">测试</h3>
+      <loading-animation v-if="loading" ></loading-animation>
       <h4 v-if="!moreData" class="info">没有更多了...</h4>
   </div>
 </template>
 <script>
-// import { getDesinerMes } from '@/api/desinerList';
 import axios from 'axios';
+import loadingAnimation from '@/components/loadingAnimation';
 export default {
+    components:{loadingAnimation},
     data(){
         return{
             page_no: 1,
             page_count: 1,
             moreData: true,
             dataJson: null,
-            page_size: 6
+            loading:false,
+            addClass:false,
+            page_size: 4
         }
   },
   beforeCreate(){
@@ -29,6 +36,23 @@ export default {
   },
   created(){
     var _self = this;
+    /**@augments
+     * 监听滚动， 滑动事件
+     * @params scrollHeight - scrollTop = clientHeight：当这两个条件成立时，也就代表垂直滚动条走到底了
+     * 获取元素距离屏幕的高度
+     */
+    window.addEventListener('scroll',function(e){
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        // console.log(scrollTop,clientHeight,scrollTop + clientHeight,scrollHeight);
+        // console.log(_self.$refs.scroll.offsetTop-scrollTop, scrollHeight);
+        _self.animation()
+    });
+    /**@augments
+     * 循环遍历 li
+     */    
+    // 首次加载数据
     axios.get('/designer/listDesigners', {
         params: {
             page_size: this.page_size, 
@@ -73,16 +97,38 @@ export default {
                 page_size: _self.page_size 
             }
         })
-        .then(json => {
-          var data = json.data.data.result;
+        .then(response => {
+          _self.loading = true;
+          var data = response.data.data.result;
           if (data.length < _self.page_size) {
             _self.moreData = false;
+            _self.loading = false;
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
           }
         })
         .catch(err => {});
+    },
+    animation(){
+        var _self = this;
+        var allLi = document.getElementsByTagName("li");
+        for(var i=0; i<allLi.length; i++){
+            // console.log(allLi[i].offsetTop);
+            // var liPostionsHeight = _self.$refs.scroll.offsetTop;
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+            if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+                //添加动画效果
+                // console.log('我要动了');
+                _self.addClass = true;
+                // allLi[i].style.width = '100%';
+                // allLi[i].style.height = '100%';
+                // allLi[i].style.animation = 'changeBiger 1s linear forwards'
+                // let addClass = allLi[i].setAttribute('class');
+                // addClass = addClass.concat('cursor');
+                // allLi[i].setAttribute('class', addClass);
+            }
+        }       
     },
   }
 }
@@ -99,10 +145,16 @@ ul, li, p{
     margin-bottom: .1rem;
     /* background: url(http://iph.href.lu/350x260?bg=000) no-repeat; */
     width:100%;
-    /* height:2.60rem; */
-    height:auto;
+    height:2.60rem;
+    /* height:auto; */
     text-align: center;
     color: #fff;
+    overflow: hidden;
+}
+.designer-single{
+    width:100%;
+    /* height:2.60rem; */
+    height:100%;
 }
 .designer-head{
     position: relative;
@@ -126,6 +178,21 @@ ul, li, p{
 .designer-company{
     margin-top:.12rem;
     font-size: .12rem;
+}
+/* 图片动画 */
+.cursor{
+  width: 100%;
+  height: 100%;
+  animation: changeBiger 1s linear forwards;
+  animation-iteration-count:1;
+}
+@keyframes changeBiger{
+  0% {
+      transform: scale(1.3);
+  }
+  100% {
+      transform: scale(1);
+  }
 }
 .info {
   text-align: center;
