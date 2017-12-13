@@ -63,22 +63,22 @@
 </template>
 <style scoped>
 .caseDetails {
-    padding-bottom:.6rem;
+  padding-bottom: 0.6rem;
 }
 .caseDetails .head {
   position: relative;
 }
 .caseDetails .head .icon {
   position: absolute;
-  z-index:22;
+  z-index: 22;
   left: 0.08rem;
-  top:.17rem;
-  width:.1rem;
-  height: .21rem;
+  top: 0.17rem;
+  width: 0.1rem;
+  height: 0.21rem;
   display: inline-block;
 }
-.caseDetails .head .icon  img {
-  width:100%;
+.caseDetails .head .icon img {
+  width: 100%;
 }
 .caseDetails .caseBg {
   width: 100%;
@@ -97,7 +97,6 @@
 .descript .cont .memo {
   padding-top: 0.08rem;
   font-size: 0.12rem;
-
 }
 .caseDetails .descript .cont p {
   margin: 0;
@@ -112,7 +111,7 @@
   position: absolute;
   width: 100%;
   height: 0.5rem;
- background: url('https://img.wesetup.cn/shadowBg.png');
+  background: url("https://img.wesetup.cn/shadowBg.png");
 }
 .caseDetails .desiner {
   margin-top: 0.15rem;
@@ -147,17 +146,13 @@
   margin: 0;
 }
 .caseDetails .caseList {
-
-background-color: #F2F2F2;
-
+  background-color: #f2f2f2;
 }
-.caseDetails .caseList  .wp{
-    padding:.15rem 0;
-    margin: 0 0.05rem;
-
+.caseDetails .caseList .wp {
+  padding: 0.15rem 0;
+  margin: 0 0.05rem;
 }
-.caseDetails .caseList .designer-item{
-
+.caseDetails .caseList .designer-item {
   width: 1rem;
   padding: 0 0.05rem;
 }
@@ -166,85 +161,79 @@ background-color: #F2F2F2;
   display: block;
 }
 .caseBigList {
-    background-color: #eee;
-
+  background-color: #eee;
 }
 .caseBigList li {
-    padding:.15rem 0 .1rem 0;
-    margin:0 0 .1rem 0;
-    background-color: #fff;
+  padding: 0.15rem 0 0.1rem 0;
+  margin: 0 0 0.1rem 0;
+  background-color: #fff;
 }
 .caseBigList li img {
-    display: block;
-    margin-bottom:.1rem;
-    width:100%;
+  display: block;
+  margin-bottom: 0.1rem;
+  width: 100%;
 }
 .caseBigList li p {
-    margin:0;
-    line-height: .16rem;
-    font-size:.12rem;
-    padding:0 .2rem;
+  margin: 0;
+  line-height: 0.16rem;
+  font-size: 0.12rem;
+  padding: 0 0.2rem;
 }
 .caseDetails .footer {
-    position: fixed;
-    bottom:0;
-    width:100%;
-    height: .6rem;
-    border-top:#C9C9C9 1px solid;
-    background: #fff;;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 0.6rem;
+  border-top: #c9c9c9 1px solid;
+  background: #fff;
 }
 .appoint {
-  margin:.1rem .38rem;
-  background: #88C462;
-  border-radius: .2rem;
+  margin: 0.1rem 0.38rem;
+  background: #88c462;
+  border-radius: 0.2rem;
   text-align: center;
-  color:#fff;
-  font-size:.16rem;
-  height: .4rem;
-  line-height: .4rem;
-
+  color: #fff;
+  font-size: 0.16rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
 }
 .appoint .icon {
-    width:.2rem;
-    height: .21rem;
-    display: inline-block;
-
+  width: 0.2rem;
+  height: 0.21rem;
+  display: inline-block;
 }
 .appoint .icon img {
-    width: 100%;
-    display: block;
-    margin-top: .05rem;
+  width: 100%;
+  display: block;
+  margin-top: 0.05rem;
 }
 .appoint .tit {
-    display: inline-block;
+  display: inline-block;
 }
-
 </style>
 
 <script>
 import Vue from "vue";
 import "@/common/css/swiper.min.css";
 import VueAwesomeSwiper from "vue-awesome-swiper";
-import { MessageBox } from 'mint-ui'
-import 'mint-ui/lib/style.css'
-import { miniSiteAppoints } from '@/api/appoints'; //预约设计师
-import { checkAppointsStatus } from '@/api/checkAppointsStatus';
-import { checkLoginStatus } from '@/api/CheckLoginStatus';//查询是否绑定
-
+import { MessageBox } from "mint-ui";
+import "mint-ui/lib/style.css";
+import { miniSiteAppoints } from "@/api/appoints"; //预约设计师
+import { checkAppointsStatus } from "@/api/checkAppointsStatus";
+import { checkLoginStatus } from "@/api/CheckLoginStatus"; //查询是否绑定
 
 Vue.use(VueAwesomeSwiper);
 
 export default {
   data() {
     return {
-       authorization_id:'',
+      authorId: "",
       designerOption: {
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
         onTransitionStart(swiper) {},
         onClick(swiper) {}
-     
       }
     };
   },
@@ -253,52 +242,83 @@ export default {
       return this.$refs.mySwiper.swiper;
     }
   },
-  methods:{
-    goBack(){
-      window.history.back(); 
+  created() {
+    this.goAuthor();
+  },
+  methods: {
+    goBack() {
+      window.history.back();
     },
-     appoinmnet() {
-      var _self=this;
-    
+    appoinmnet() {
+      var _self = this;
+
       //查询是否授权绑定用户
-        checkLoginStatus({authorization_id:this.desiner.authorId})
-        .then(function(response){
-            if(response.data.code!=200){
-                   return MessageBox('提示', '查询失败');
+      checkLoginStatus({ authorization_id: this.authorId })
+        .then(function(response) {
+          if (response.data.code != 200) {
+            return MessageBox("提示", "查询失败");
+          }
+          debugger
+          if (!response.data.userId) {
+            //如果没有绑定跳转登录页面
+            return _self.$router.push({
+              path: "/login?designer_uid=" + '0sssl'//
+            });
+          }
+          var user_id = response.data.userId;
+          checkAppointsStatus({ user_id: user_id }).then(function(response) {
+            if (
+              response.data.code == 200 &&
+              response.data.message.length == 17
+            ) {
+              //设计师ID长度为17
+              return MessageBox("你已经预约过了");
             }
-         
-            if(!response.data.data.userId){ //如果没有绑定跳转登录页面
-                 return _self.$router.push({path:'/login?designer_uid='+_self.desiner.designer_uid})
-            }
-            var user_id = response.data.data.userId;
-            checkAppointsStatus({user_id: user_id})
-            .then(function(response){
-              
-              if( response.data.code==200 && response.data.data.message.length == 17 ){ //设计师ID长度为17
-                  return MessageBox('你已经预约过了');
-              }
 
-              miniSiteAppoints({"designer_uid":_self.desiner.designer_uid,"user_id":user_id} ) //预约设计师
-              .then(function(response){
-                    if(response.data.code==500){
-                        return MessageBox('提示', '你已经预约过了');
-                    } 
-                    if(response.data.code==200){
-                      return MessageBox('提示', '预约成功');
-                    }
-                    return MessageBox('提示', '查询异常')
-              })
-
-            })
-
-
+            miniSiteAppoints({
+              designer_uid: _self.desiner.designer_uid,
+              user_id: user_id
+            }) //预约设计师
+              .then(function(response) {
+                if (response.data.code == 500) {
+                  return MessageBox("提示", "你已经预约过了");
+                }
+                if (response.data.code == 200) {
+                  return MessageBox("提示", "预约成功");
+                }
+                return MessageBox("提示", "查询异常");
+              });
+          });
         })
-        .catch(function(error){
-        
-            return MessageBox('提示', '请求失败');
-        })
+        .catch(function(error) {
+          return MessageBox("提示", "请求失败");
+        });
     },
- 
+    goAuthor() {
+      this.authorId = this.getCookie("wechat_id");
+      if (this.isWeiXin() && !this.authorId) {
+        window.location.href =
+          "/minisite/login?originUrl=" +
+          encodeURIComponent(
+            window.location.host + "/#" + this.$route.fullPath
+          );
+        return;
+      }
+    },
+    getCookie(name) {
+      var arr,
+        reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+      if ((arr = document.cookie.match(reg))) return unescape(arr[2]);
+      else return null;
+    },
+    isWeiXin() {
+      var ua = window.navigator.userAgent.toLowerCase();
+      console.log(ua); //mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+      if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+      }
+      return false;
+    }
   }
 };
 </script>
