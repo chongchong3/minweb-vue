@@ -239,7 +239,7 @@ export default {
       //查询是否授权绑定用户
       checkLoginStatus({ authorization_id: this.authorId })
         .then(function(response) {
-          if (response.data.data.code != 200) {
+          if (response.data.code != 200) {
             return MessageBox("提示", "查询失败");
           }
         
