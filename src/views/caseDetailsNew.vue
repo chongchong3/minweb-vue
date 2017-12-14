@@ -239,17 +239,17 @@ export default {
       //查询是否授权绑定用户
       checkLoginStatus({ authorization_id: this.authorId })
         .then(function(response) {
-          if (response.body.code != 200) {
+          if (response.data.data.code != 200) {
             return MessageBox("提示", "查询失败");
           }
         
-          if (!response.body.userId) {
+          if (!response.data.data.userId) {
             //如果没有绑定跳转登录页面
             return _self.$router.push({
               path: "/login?designer_uid=" +_self.caseData.designerId //
             });
           }
-          var user_id = response.body.userId;
+          var user_id = response.data.data.userId;
           checkAppointsStatus({ user_id: user_id }).then(function(response) {
             if (
               response.data.code == 200 &&
