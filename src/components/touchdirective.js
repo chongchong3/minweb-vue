@@ -37,8 +37,12 @@ export default(Vue) => {
                 return result;
             }
 
-
+			var _isScroll = el.getAttribute("isScroll");
             el.addEventListener('touchstart', function (ev) {
+            	if(!_isScroll){
+            		ev.preventDefault();
+            	}
+//          	ev.preventDefault();
                 startX = ev.touches[0].pageX;
                 startY = ev.touches[0].pageY;
 
@@ -53,11 +57,16 @@ export default(Vue) => {
             }, false);
 
             el.addEventListener('touchmove' , function (ev) {
+            	if(!_isScroll){
+            		ev.preventDefault();
+            	}
+//          	ev.preventDefault();
                 clearTimeout(timeOutEvent)
                 timeOutEvent = 0;
             });
 
             el.addEventListener('touchend', function (ev) {
+//          	ev.preventDefault();
                 var endX, endY;
                 endX = ev.changedTouches[0].pageX;
                 endY = ev.changedTouches[0].pageY;

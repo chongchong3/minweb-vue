@@ -36,6 +36,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+    	 '/designer/getDesignerByUid': {
+        // target: 'http://120.27.215.62:8420/',
+        target: 'http://192.168.14.175:8420/', //赵玉
+        changeOrigin: true,
+      
+      },
       '/minisite/getDesignerCase': {
         // target: 'http://120.27.215.62:8420/',
         target: 'http://192.168.14.175:8420/', //赵玉
@@ -69,6 +75,11 @@ module.exports = {
       
       }, //
       '/login/miniSiteCheckLoginStatus': {
+        target: 'http://192.168.14.175:8420/',
+        changeOrigin: true,
+      
+      },
+      '/minisite/getDesignerCaseDetail': {
         target: 'http://192.168.14.175:8420/',
         changeOrigin: true,
       
