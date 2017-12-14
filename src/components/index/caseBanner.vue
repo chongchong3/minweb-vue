@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     jumpTo(onecase) {
-      this.$router.push({path:'./caseDetails/'+onecase.id+'?designer_uid='+onecase.designer_uid});
+      this.$router.push({path:'./caseDetailsNew?caseId='+onecase.id});
     },
     getList(params) {
       var _self = this;
