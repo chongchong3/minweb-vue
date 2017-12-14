@@ -60,9 +60,12 @@ export default {
         }
     })
     .then(function (response) {
-      console.log(response.data.data.list);
       _self.dataJson = response.data.data.list;
       _self.page_count = response.data.page_count;
+      for (var i = 0; i < _self.dataJson.length; i++) {
+            _self.addClass.push(_self.dataJson[i].id);
+            console.log(_self.addClass);
+      }
       
     })
     .catch(function (error) {
@@ -124,6 +127,8 @@ export default {
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
+             _self.addClass.push(_self.dataJson[i].id);
+            console.log(_self.addClass);
           }
         })
         .catch(err => {});
@@ -133,16 +138,13 @@ export default {
         var allLi = document.getElementsByTagName("li");
         for(var i=0; i<allLi.length; i++){
             // console.log(allLi[i]);
-            _self.addClass.push(i);
-            _self.addClass[i] = false;
+            // _self.addClass.push(i);
+            // _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
                 //添加动画效果
-                console.log('我要动了');
-                 _self.addClass[i] = true;
-                // let addClass = allLi[i].setAttribute('class');
-                // addClass = addClass.concat('cursor');
-                // allLi[i].setAttribute('class', addClass);
+                // console.log('我要动了');
+                //  _self.addClass[i] = true;
 
             }
         }   

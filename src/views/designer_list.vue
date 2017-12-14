@@ -53,6 +53,10 @@ export default {
     .then(function (response) {
         _self.dataJson = response.data.data.result;
         _self.page_count = response.data.data.total;
+        for (var i = 0; i < _self.dataJson.length; i++) {
+            _self.addClass.push(_self.dataJson[i].designer_uid);
+            console.log(_self.addClass);
+        }
     })
     .catch(function (error) {
         console.log(error);
@@ -119,6 +123,8 @@ export default {
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
+            _self.addClass.push(_self.dataJson[i].designer_uid);
+            console.log(_self.addClass);
           }
         })
         .catch(err => {});
@@ -128,13 +134,14 @@ export default {
         var allLi = document.getElementsByTagName("li");
         for(var i=0; i<allLi.length; i++){
             // console.log(allLi[i].offsetTop);
-            _self.addClass.push(i);
-            _self.addClass[i] = false;
+            // _self.addClass.push(i);
+            // console.log(_self.addClass);
+            // _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
                 //添加动画效果
                 // console.log('我要动了');
-                _self.addClass[i] = true;
+                // _self.addClass[i] = true;
                 // allLi[i].style.width = '100%';
                 // allLi[i].style.height = '100%';
                 // allLi[i].style.animation = 'changeBiger 1s linear forwards'
