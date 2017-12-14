@@ -1,7 +1,9 @@
 <template>
   <div class="case">
     <left-nav></left-nav>
-		<head-nav></head-nav>
+    <!-- <div class="header-height"> -->
+      <head-nav></head-nav>
+    <!-- </div> -->
       <ul>
         <li class="case-li" v-for="(single, index) in dataJson" v-bind:data-caseid="single.id" :id="'imgAnimate'+index">
           <router-link :to="'/caseDetailsNew?caseId='+single.id">
@@ -165,10 +167,13 @@ export default {
 
 <style scoped>
 .case{
-
   /* margin-top:.54rem;
    */
    padding-top:.54rem;
+}
+.header-height{
+  height: 0.56rem;
+  background:#fff;
 }
 ul, li{
   margin:0;
@@ -227,7 +232,8 @@ ul, li{
 /* 图片动画 */
 .img-partent{
   width: 100%;
-  height:1.54rem;
+  height: auto;
+  /* height:1.54rem; */
   overflow: hidden;
 }
 .cursor{
