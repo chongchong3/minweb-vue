@@ -82,27 +82,6 @@ export default {
     /**@augments
      * 循环遍历 li
      */    
-    
-    //加载更多
-    // document.body.addEventListener("touchend", function(e) {
-    //   var clientHeight =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.clientHeight
-    //       : document.documentElement.clientHeight;
-    //   var scrollTop =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.scrollTop
-    //       : document.documentElement.scrollTop;
-    //   var scrollHeight =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.scrollHeight
-    //       : document.documentElement.scrollHeight;
-
-    //   if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
-    //     _self.page_no++;
-    //     _self.getMoreData();
-    //   }
-    // });
   },
   methods:{
     getMoreData() {
