@@ -35,7 +35,7 @@ import Vue from "vue";
 import "@/common/css/swiper.min.css";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
-import headNav from "../components/headNav"; //引用顶部菜单栏
+import headNav from "../components/indexheadNav"; //引用顶部菜单栏
 import slogan from "../components/index/slogan";
 import bannerContent from "../components/index/banner";
 import caseBanner from "../components/index/caseBanner";
