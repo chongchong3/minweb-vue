@@ -55,7 +55,7 @@ export default {
         _self.page_count = response.data.data.total;
         for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].designer_uid);
-            console.log(_self.addClass);
+            // console.log(_self.addClass);
         }
     })
     .catch(function (error) {
@@ -124,7 +124,7 @@ export default {
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
             _self.addClass.push(_self.dataJson[i].designer_uid);
-            console.log(_self.addClass);
+            // console.log(_self.addClass);
           }
         })
         .catch(err => {});
