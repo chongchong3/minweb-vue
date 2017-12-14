@@ -20,7 +20,7 @@
       </div>
       <div class="caseList">
           	<swiper :options="designerOption" class="wp">
-              <swiper-slide class="designer-item" v-for="item in caseData.caseDetailsList">
+              <swiper-slide class="designer-item" v-for="(item,index) in caseData.caseDetailsList" :key="index">
                     <li>
                         <img :src="item.image+'?imageView2/2/w/200'" >
                     </li>

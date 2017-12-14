@@ -28,7 +28,7 @@
 	    </div>
 		 <div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c" v-for="item in result.designer_case_list" :to="'/caseDetailsNew/'+item.designer_case_uid">
+		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew/'+item.designer_case_uid" :key='index'>
         		<img :src="item.cover_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -63,6 +63,7 @@
 		height:100%;
 		position: absolute;
 		z-index: 999;
+		/*filter: blur(1px);*/
 	}
 	.desinerDetails{
 		width:100%;
