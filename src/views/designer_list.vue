@@ -216,7 +216,7 @@ ul, li, p{
 }
 @keyframes changeBiger{
   0% {
-      transform: scale(1.3);
+      transform: scale(1.03);
   }
   100% {
       transform: scale(1);

@@ -25,8 +25,8 @@
     data() {
       return {
       	banner:[
-      		{link:"../../static/images/banner.png",src:""},
-			{link:"../../static/images/banner.png",src:""}//,
+//    		{link:"../../static/images/banner.png",src:""},
+			{link:"../../static/images/banner.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//,
       	],
 
         swiperOption: {
