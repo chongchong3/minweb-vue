@@ -8,7 +8,7 @@ const guide = () => import(/* webpackChunkName: "mint-guide" */ '@/views/guide')
 const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerList')
 const desinerDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerDetails')
 const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
-const desinerCaseDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerCaseDetails')
+// const desinerCaseDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerCaseDetails')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
 const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
@@ -17,7 +17,7 @@ const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
 const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetailsNew')
-const casePrev = () => import(/* webpackChunkName: "mint-case */ '@/views/casePrev')
+// const casePrev = () => import(/* webpackChunkName: "mint-case */ '@/views/casePrev')
 
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
@@ -61,24 +61,12 @@ export default new Router({
       component: desinerDetails,
       meta: {title: '设计师详情'}
     },
-    {
-      path: '/desinerCaseDetails/:desiner_id',
-      name: 'desinerCaseDetails',
-      component: desinerCaseDetails,
-      meta: {title: '设计师案例详情'}
-    },
+
     {
       path: '/caseList',
       name: 'caseList',
       component: case_list,
       meta: {title: '看设计案例 | 设计IN-设计师严选平台'}
-    },
-    {
-      path: '/caseDetails/:case_id',
-      name: 'caseDetails',
-      component: caseDetails,
-      meta: {title: '案例详情'}
-      
     },
     {
       path: '/aboutUs',
@@ -107,12 +95,7 @@ export default new Router({
       component: caseDetailsNew,
       meta: {title: '新案例详情'} 
     },
-    {
-      path: '/casePrev',
-      name: 'casePrev',
-      component: casePrev,
-      meta: {title: '新案例预览'} 
-    },
+
     {
       path: '/404',
       name: 'error',

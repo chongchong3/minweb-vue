@@ -1,10 +1,10 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-	        <div class="por-des-c" :style="{background: 'url(' + result.background_img + ') no-repeat'}" >
+	        <div class="por-des-c" :style="{background: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim) no-repeat'}" >
 	        	<!--//v-bind:style="background:url(+result.background_img+)"-->
-	        	<div class="filter-c"></div>
-		        <div id="portrait" :style="{backgroundImage:'url(' + result.personality_photo_url   + ') '}" class="portrait-c" >
+	        	<!--<div class="filter-c"></div>-->
+		        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
 		        	<!--style="background:url(../../static/images/demo-designer.png) no-repeat;background-size:cover"-->
 		        	<!--:style="{background:'url(' + result.full_body_shot_url + ') no-repeat;background-size:cover'}"--> 
 		        </div>
@@ -28,7 +28,7 @@
 	    </div>
 		 <div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew/'+item.designer_case_uid" :key='index'>
+		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.cover_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -151,6 +151,7 @@
 	}
 	.caselist-c{
 		width:100%;
+		display: none;
 	}
 	.case-detail-c{
 		position: relative;
@@ -257,7 +258,7 @@
 				})
 				$(".caselist-c").animate({
 					'bottom':"-100%",
-				})
+				}).hide();
 				this.step = 1;
 			},
 			showList:function(){
@@ -272,7 +273,7 @@
 				})
 				$(".caselist-c").animate({
 					'bottom':"0",
-				})
+				}).show()
 				this.step = 2;
 				setTimeout(function(){
 					$(".desinerDetails").css("overflow","visible");
