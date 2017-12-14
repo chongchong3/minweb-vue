@@ -2,56 +2,38 @@
   <div class="caseDetails">
       <div class="head">
           <span class="icon back" @click="goBack"><img src="static/images/caseDetails/back.png"></span>
-          <img src="static/images/caseDetails/headBg.png" class="caseBg">
+          <img :src="caseData.wideScreenImage+'?imageView2/2/w/100'" class="caseBg">
           <div class="descript">
               <div class="shadow"></div>
               <div class="cont">
-                    <p class="tit">大理知名名宿</p>
+                    <p class="tit">{{caseData.title}}</p>
                     <p class="memo">新中式/300平米</p>
               </div>
           </div>
       </div>
       <div class="desiner">
           <div class="wp">
-              <img src="https://assets.wesetup.cn/2017/11/13/1510563184160-lkc2jpzlsvbotoawbgnv78pvi.jpg?imageView2/2/w/100" class="headImg">
-              <span class="name">唐娟娟</span>
+              <img :src="caseData.image+'?imageView2/2/w/100'"  class="headImg">
+              <span class="name">{{caseData.name}}</span>
           </div>
-          <p class="brief">设计理念:日本动画导演、实拍、企业家日本动画导演、实拍、企业家日本动画导演、实拍、企业家日本动画导演、实拍、企业家日本动画导演、实拍、企业家日本动画导演、实拍、企业家</p>
+          <p class="brief">设计理念:{{caseData.caseIntro}}</p>
       </div>
       <div class="caseList">
           	<swiper :options="designerOption" class="wp">
-			    <swiper-slide class="designer-item" >
+              <swiper-slide class="designer-item" v-for="item in caseData.caseDetailsList">
                     <li>
-                        <img src="static/images/caseDetails/smCase1.png" >
+                        <img :src="item.image+'?imageView2/2/w/200'" >
                     </li>
-			    </swiper-slide>
-                 <swiper-slide class="designer-item" >
-                    <li>
-                        <img src="static/images/caseDetails/smCase2.png" >
-                    </li> 
-			    </swiper-slide>
-                 <swiper-slide class="designer-item" >
-                    <li>
-                        <img src="static/images/caseDetails/smCase1.png" >
-                    </li>
-			    </swiper-slide>
-                  <swiper-slide class="designer-item" >
-                    <li>
-                        <img src="static/images/caseDetails/smCase2.png" >
-                    </li>
-			    </swiper-slide>
-			  </swiper>
+              </swiper-slide>
+            </swiper>
         </div>  
       
       <ul class="caseBigList">
-          <li>
-              <img src="static/images/caseDetails/bgCase1.png" alt="">
-              <p>1980年，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯</p>
+          <li  v-for="item in caseData.caseDetailsList">
+              <img :src="item.image+'?imageView2/2/w/200'">
+              <p>{{item.info}}</p>
           </li>
-            <li>
-              <img src="static/images/caseDetails/bgCase2.png" alt="">
-              <p>1980年，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯，这是案例、首部电视剧、从而开启了他的导演生涯</p>
-          </li>
+           
       </ul>
       <div class="footer">
           <div class="appoint" @click="appoinmnet">
@@ -123,8 +105,8 @@
 .caseDetails .desiner .headImg {
   width: 0.4rem;
   border-radius: 50%;
-  padding-left: 0.2rem;
-  padding-right: 0.06rem;
+  margin-left: 0.2rem;
+  margin-right: 0.06rem;
   display: block;
   float: left;
 }
@@ -227,6 +209,7 @@ Vue.use(VueAwesomeSwiper);
 export default {
   data() {
     return {
+      caseData: {},
       authorId: "",
       designerOption: {
         pagination: "null",
@@ -244,6 +227,7 @@ export default {
   },
   created() {
     this.goAuthor();
+    this.getData();
   },
   methods: {
     goBack() {
@@ -258,11 +242,11 @@ export default {
           if (response.data.code != 200) {
             return MessageBox("提示", "查询失败");
           }
-          debugger
+          debugger;
           if (!response.data.userId) {
             //如果没有绑定跳转登录页面
             return _self.$router.push({
-              path: "/login?designer_uid=" + '0sssl'//
+              path: "/login?designer_uid=" +_self.caseData.designerId //
             });
           }
           var user_id = response.data.userId;
@@ -276,7 +260,7 @@ export default {
             }
 
             miniSiteAppoints({
-              designer_uid: _self.desiner.designer_uid,
+              designer_uid: _self.caseData.designerId,
               user_id: user_id
             }) //预约设计师
               .then(function(response) {
@@ -318,6 +302,26 @@ export default {
         return true;
       }
       return false;
+    },
+    getData() {
+      var _self = this;
+      return new Promise((resolve, reject) => {
+        _self.$http
+          .get("/minisite/getDesignerCaseDetail", {
+            params: { case_id: _self.$route.query.caseId }
+          })
+          .then(response => {
+            if (response.data.code != 200) {
+              return;
+            }
+            _self.caseData = response.data.data;
+
+            resolve(response);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   }
 };

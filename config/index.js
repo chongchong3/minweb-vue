@@ -73,6 +73,11 @@ module.exports = {
         changeOrigin: true,
       
       },
+      '/minisite/getDesignerCaseDetail': {
+        target: 'http://192.168.14.175:8420/',
+        changeOrigin: true,
+      
+      },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
