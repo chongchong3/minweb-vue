@@ -1,7 +1,7 @@
 <template>
-  <div class="data-point">
-      <div class="index-bottom">
-			<div class="no-more">
+  <div class="no-data-point">
+      <div class="no-data-point-bottom">
+			<div class="no-more-data">
 				没有更多了
 			</div>
 			<hr/>
@@ -9,14 +9,14 @@
   </div>
 </template>
 <style scoped>
-.index-bottom{
+.no-data-point-bottom{
     height:.8rem;
     background:#f2f2f2;
     text-align: center;
     position: relative;
     opacity: .6;
 }
-.no-more{
+.no-data-point-bottom .no-more-data{
     color: #aaa;
     font-size:.14rem;
     padding:0px .18rem;
@@ -26,7 +26,7 @@
     position: relative;
     z-index: 10;
 }
-.index-bottom hr{
+.no-data-point-bottom hr{
     position: absolute;
     top:.34rem;
     height:1px;

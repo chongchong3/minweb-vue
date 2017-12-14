@@ -52,17 +52,6 @@ export default {
       current: "case_list" //设置左菜单栏高亮
     });
     var _self = this;
-    /**@augments
-     * 监听滚动， 滑动事件
-     * @params scrollHeight - scrollTop = clientHeight：当这两个条件成立时，也就代表垂直滚动条走到底了
-     * 获取元素距离屏幕的高度
-     */
-    window.addEventListener('scroll',function(e){
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        _self.animation()
-    });
     // 首次加载数据
     axios.get('/minisite/getDesignerCase', {
         params: {
@@ -79,26 +68,42 @@ export default {
     .catch(function (error) {
         console.log(error);
     });
-    //加载更多
-    document.body.addEventListener("touchend", function(e) {
-      var clientHeight =
-        document.documentElement.scrollTop === 0
-          ? document.body.clientHeight
-          : document.documentElement.clientHeight;
-      var scrollTop =
-        document.documentElement.scrollTop === 0
-          ? document.body.scrollTop
-          : document.documentElement.scrollTop;
-      var scrollHeight =
-        document.documentElement.scrollTop === 0
-          ? document.body.scrollHeight
-          : document.documentElement.scrollHeight;
-
-      if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
-        _self.page_no++;
-        _self.getMoreData();
-      }
+    /**@augments
+     * 监听滚动， 滑动事件
+     * @params scrollHeight - scrollTop = clientHeight：当这两个条件成立时，也就代表垂直滚动条走到底了
+     * 获取元素距离屏幕的高度
+     */
+    window.addEventListener('scroll',function(e){
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        _self.animation();
+        //加载更多
+        if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
+          _self.page_no++;
+          _self.getMoreData();
+        }
     });
+    //加载更多
+    // document.body.addEventListener("touchend", function(e) {
+    //   var clientHeight =
+    //     document.documentElement.scrollTop === 0
+    //       ? document.body.clientHeight
+    //       : document.documentElement.clientHeight;
+    //   var scrollTop =
+    //     document.documentElement.scrollTop === 0
+    //       ? document.body.scrollTop
+    //       : document.documentElement.scrollTop;
+    //   var scrollHeight =
+    //     document.documentElement.scrollTop === 0
+    //       ? document.body.scrollHeight
+    //       : document.documentElement.scrollHeight;
+
+    //   if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
+    //     _self.page_no++;
+    //     _self.getMoreData();
+    //   }
+    // });
   },
   methods:{
     getMoreData() {
