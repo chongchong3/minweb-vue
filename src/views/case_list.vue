@@ -163,7 +163,7 @@ export default {
 
 <style scoped>
 .case{
-  margin-top:.54rem;
+  /*margin-top:.54rem;*/
 }
 ul, li{
   margin:0;
