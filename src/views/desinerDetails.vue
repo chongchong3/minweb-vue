@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-	        <div class="por-des-c" :style="{background: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim) no-repeat'}" >
+	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
 	        	<!--//v-bind:style="background:url(+result.background_img+)"-->
 	        	<!--<div class="filter-c"></div>-->
 		        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
@@ -17,7 +17,7 @@
 	        <div class="up-icon"></div>
 	        <div class="detail-describe-c">
 	        	<div class="detail-describe-sub-c">
-	        		<p class="title">奖项</p>awards  
+	        		<p class="title">奖项</p>  
 	        		<p class="content">{{result.awards}}</p>
 	        		<p class="title">设计理念</p>
 	        		<p class="content">{{result.plantform_descript}}</p>
@@ -63,6 +63,8 @@
 		height:100%;
 		position: absolute;
 		z-index: 999;
+		background-size: 100%;
+		background-repeat: no-repeat;
 		/*filter: blur(1px);*/
 	}
 	.desinerDetails{
