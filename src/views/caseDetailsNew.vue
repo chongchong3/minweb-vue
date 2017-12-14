@@ -46,6 +46,7 @@
 <style scoped>
 .caseDetails {
   padding-bottom: 0.6rem;
+  overflow-x: hidden;
 }
 .caseDetails .head {
   position: relative;
