@@ -165,6 +165,7 @@ export default {
 
 <style scoped>
 .case{
+
   /* margin-top:.54rem;
    */
    padding-top:.54rem;

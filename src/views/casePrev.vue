@@ -239,21 +239,21 @@ export default {
       //查询是否授权绑定用户
       checkLoginStatus({ authorization_id: this.authorId })
         .then(function(response) {
-          if (response.data.code != 200) {
+          if (response.body.code != 200) {
             return MessageBox("提示", "查询失败");
           }
         
-          if (!response.data.data.userId) {
+          if (!response.body.userId) {
             //如果没有绑定跳转登录页面
             return _self.$router.push({
               path: "/login?designer_uid=" +_self.caseData.designerId //
             });
           }
-          var user_id = response.data.data.userId;
+          var user_id = response.body.userId;
           checkAppointsStatus({ user_id: user_id }).then(function(response) {
             if (
               response.data.code == 200 &&
-              response.data.data.message.length == 17
+              response.data.message.length == 17
             ) {
               //设计师ID长度为17
               return MessageBox("你已经预约过了");
