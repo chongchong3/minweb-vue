@@ -65,6 +65,7 @@
 }
 .caseDetails .caseBg {
   width: 100%;
+  display: block;
 }
 .caseDetails .descript .cont {
   position: absolute;
