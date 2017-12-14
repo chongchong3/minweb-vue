@@ -1,35 +1,40 @@
 <template>
   <div class="case">
+    <left-nav></left-nav>
+		<head-nav></head-nav>
       <ul>
         <li class="case-li" v-for="(single, index) in dataJson">
+          <router-link :to="'/desinerDetails/'+single.id">
           <div class="img-partent" >
             <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :src="single.head_image_url" v-bind:class="{cursor:addClass}" alt="" class="case-img ">
+            <img :src="single.head_image_url" v-bind:class="{cursor:addClass[index]}" alt="" class="case-img ">
           </div>
-          <!-- src="http://iph.href.lu/350x154" -->
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
             <div class="case-text">
               <p class="case-title">{{single.title}}</p>
-              <p class="case-detail">{{single.area}}平米&nbsp;&nbsp;现代</p>
+              <p class="case-detail">{{single.area}}平米 / <span v-for="style in single.style_list">{{style.style_name}} </span></p>
             </div>
           </div>
-          <!-- <div class="clear"></div>  -->
+          </router-link>
         </li>
         
       </ul>
 
       <loading-animation v-if="loading"></loading-animation>
-
-      <h4 v-if="!moreData" class="info">没有更多了...</h4>
+      <no-more-data-point v-if="!moreData"></no-more-data-point>
+      <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
 
   </div>
 </template>
 <script>
 import axios from 'axios';
-import loadingAnimation from '@/components/loadingAnimation';
+import loadingAnimation from '@/components/loadingAnimation'; //数据加载动画
+import noMoreDataPoint from '@/components/noMoreDataPoint'; //数据加载完提示
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import headNav from "../components/headNav"; //引用顶部菜单栏
 export default {
-  components:{loadingAnimation},
+  components:{loadingAnimation, leftNav, headNav, noMoreDataPoint},
   data(){
       return{
         page_no: 1,
@@ -37,11 +42,15 @@ export default {
         page_count: 1,
         moreData: true,
         loading:true,
-        addClass:false,
+        addClass:[],
         dataJson: null
       }
   },
   created(){
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "case_list" //设置左菜单栏高亮
+    });
     var _self = this;
     /**@augments
      * 监听滚动， 滑动事件
@@ -119,11 +128,13 @@ export default {
         var allLi = document.getElementsByTagName("li");
         for(var i=0; i<allLi.length; i++){
             // console.log(allLi[i]);
+            _self.addClass.push(i);
+            _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
                 //添加动画效果
                 console.log('我要动了');
-                 _self.addClass = true;
+                 _self.addClass[i] = true;
                 // let addClass = allLi[i].setAttribute('class');
                 // addClass = addClass.concat('cursor');
                 // allLi[i].setAttribute('class', addClass);
@@ -137,6 +148,7 @@ export default {
 
 <style scoped>
 .case{
+  margin-top:.54rem;
 }
 ul, li{
   margin:0;
@@ -175,6 +187,7 @@ ul, li{
   margin:0;
   margin-top:4px;
   font-size: .16rem;
+  color:#000;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

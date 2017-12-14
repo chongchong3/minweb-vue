@@ -1,25 +1,32 @@
 <template>
   <div class="designer">
+      <left-nav></left-nav>
+	<head-nav></head-nav>
       <ul>
           <li class="designer-li" v-for="(single, index) in dataJson">
-            <div class="designer-single" v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
-                <img :src="single.head_image_url"  alt="" class="designer-head">
-                <p class="designer-name">{{single.designer_name}}</p>
-                <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
-                <p class="designer-company">{{single.studio}}</p> 
-            </div>                        
+            <router-link :to="'/desinerDetails/'+single.designer_uid">
+                <div class="designer-single" v-bind:class="{cursor:addClass[index]}" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
+                    <img :src="single.head_image_url"  alt="" class="designer-head">
+                    <p class="designer-name">{{single.designer_name}}</p>
+                    <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
+                    <p class="designer-company">{{single.studio}}</p> 
+                </div>  
+            </router-link>                      
           </li> 
       </ul>
-      <h3 ref="scroll">测试</h3>
       <loading-animation v-if="loading" ></loading-animation>
-      <h4 v-if="!moreData" class="info">没有更多了...</h4>
+      <no-more-data-point v-if="!moreData"></no-more-data-point>
+      <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
   </div>
 </template>
 <script>
 import axios from 'axios';
 import loadingAnimation from '@/components/loadingAnimation';
+import noMoreDataPoint from '@/components/noMoreDataPoint'; //数据加载完提示
+import leftNav from "../components/leftNav"; //引用左侧菜单栏
+import headNav from "../components/headNav"; //引用顶部菜单栏
 export default {
-    components:{loadingAnimation},
+    components:{loadingAnimation, leftNav, headNav, noMoreDataPoint},
     data(){
         return{
             page_no: 1,
@@ -27,7 +34,7 @@ export default {
             moreData: true,
             dataJson: null,
             loading:false,
-            addClass:false,
+            addClass:[],
             page_size: 4
         }
   },
@@ -115,12 +122,13 @@ export default {
         var allLi = document.getElementsByTagName("li");
         for(var i=0; i<allLi.length; i++){
             // console.log(allLi[i].offsetTop);
-            // var liPostionsHeight = _self.$refs.scroll.offsetTop;
+            _self.addClass.push(i);
+            _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
                 //添加动画效果
                 // console.log('我要动了');
-                _self.addClass = true;
+                _self.addClass[i] = true;
                 // allLi[i].style.width = '100%';
                 // allLi[i].style.height = '100%';
                 // allLi[i].style.animation = 'changeBiger 1s linear forwards'
@@ -139,6 +147,9 @@ ul, li, p{
   margin:0;
   padding:0;
   list-style-type: none;
+}
+.designer{
+    margin-top:.54rem;
 }
 .designer-li{
     position: relative;
@@ -170,14 +181,17 @@ ul, li, p{
 .designer-name{
     margin-top:.54rem;
     font-size: .2rem;
+    color: #fff;
 }
 .designer-detail{
     margin-top:.12rem;
     font-size: .12rem;
+    color: #fff;
 }
 .designer-company{
     margin-top:.12rem;
     font-size: .12rem;
+    color: #fff;
 }
 /* 图片动画 */
 .cursor{
