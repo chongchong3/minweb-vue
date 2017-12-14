@@ -162,7 +162,8 @@ ul, li, p{
   list-style-type: none;
 }
 .designer{
-    margin-top:.54rem;
+    /* margin-top:.54rem; */
+    padding-top:.54rem;
 }
 .designer-li{
     position: relative;

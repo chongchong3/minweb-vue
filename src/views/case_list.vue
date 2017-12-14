@@ -3,11 +3,12 @@
     <left-nav></left-nav>
 		<head-nav></head-nav>
       <ul>
-        <li class="case-li" v-for="(single, index) in dataJson" v-bind:data-caseid="single.id">
+        <li class="case-li" v-for="(single, index) in dataJson" v-bind:data-caseid="single.id" :id="'imgAnimate'+index">
           <router-link :to="'/caseDetailsNew?caseId='+single.id">
           <div class="img-partent" >
+            <!-- {cursor:addClass[index]} -->
             <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :src="single.widescreen_image" v-bind:class="{cursor:addClass[index]}" alt="" class="case-img ">
+            <img :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? '' : 'cursor']" alt="" class="case-img ">
           </div>
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
@@ -39,9 +40,11 @@ export default {
         page_size: 4,
         page_count: 1,
         moreData: true,
-        loading:true,
+        loading:false,
         addClass:[],
-        dataJson: null
+        dataJson: null,
+        domArry: [],
+        imgAnimate: []
       }
   },
   created(){
@@ -62,6 +65,7 @@ export default {
       _self.page_count = response.data.page_count;
       for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].id);
+            _self.imgAnimate.push({"isFirst":true,"isShow": false});
       }
       
     })
@@ -84,26 +88,11 @@ export default {
           _self.getMoreData();
         }
     });
-    //加载更多
-    // document.body.addEventListener("touchend", function(e) {
-    //   var clientHeight =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.clientHeight
-    //       : document.documentElement.clientHeight;
-    //   var scrollTop =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.scrollTop
-    //       : document.documentElement.scrollTop;
-    //   var scrollHeight =
-    //     document.documentElement.scrollTop === 0
-    //       ? document.body.scrollHeight
-    //       : document.documentElement.scrollHeight;
-
-    //   if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
-    //     _self.page_no++;
-    //     _self.getMoreData();
-    //   }
-    // });
+  },
+  mounted(){
+    this.$nextTick(function(){
+       this.getStartOffset();
+    });
   },
   methods:{
     getMoreData() {
@@ -124,36 +113,51 @@ export default {
           }
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
-             _self.addClass.push(_self.dataJson[i].id);
-            // console.log(_self.addClass);
+            _self.addClass.push(_self.dataJson[i].id);
+            _self.imgAnimate.push({"isFirst":true,"isShow": false});
           }
         })
         .catch(err => {});
     },
-    animation(){
+    getStartOffset() {
+      var _self = this;
+      setTimeout(() => {
+        for (var i = 0; i < _self.dataJson.length; i++) {
+
+          var dom = document.getElementById('imgAnimate' + i);
+          if (!dom) {
+            return
+          }
+          _self.domArry.push(dom.offsetTop);
+          console.log(_self.domArry)
+        }
+      }, 500)},
+      getScrollTop() {     
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        return scrollTop;
+      },
+      animation(){
         var _self = this;
-        var allLi = document.getElementsByTagName("li");
-        // var allLi = this.addClass;
-        // allLi.forEach((value, index)=>{
-        //   console.log(value);
-        //   var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        this.imgAnimate.forEach(function(k, i) {
+          if (!k.isFirst) {
+            return
+          }
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+          if((_self.getScrollTop() - _self.domArry[i]) > -442){
+            k.isShow = true;
+            k.isFirst = false;
+          }
+        });
 
-          // }
-        // });
-        for(var i=0; i<allLi.length; i++){
-            // _self.addClass.push(i); _self.addClass[i]
-            allLi[i].dataset.caseid;
-            // console.log(allLi[i].dataset.caseid);
-            // _self.addClass[i] = false;
-            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-            if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
-                //添加动画效果
-                // console.log('我要动了');
-                 _self.addClass[i] = true;
 
-            }
-        }   
+
+        // var allLi = document.getElementsByTagName("li");
+        // for(var i=0; i<allLi.length; i++){
+        //     var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        //     if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+        //         //添加动画效果
+        //     }
+        // }   
     }
   }
 }
@@ -161,7 +165,9 @@ export default {
 
 <style scoped>
 .case{
-  margin-top:.54rem;
+  /* margin-top:.54rem;
+   */
+   padding-top:.54rem;
 }
 ul, li{
   margin:0;
