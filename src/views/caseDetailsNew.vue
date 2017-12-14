@@ -2,7 +2,7 @@
   <div class="caseDetails">
       <div class="head">
           <span class="icon back" @click="goBack"><img src="static/images/caseDetails/back.png"></span>
-          <img :src="caseData.wideScreenImage+'?imageView2/2/w/100'" class="caseBg">
+          <img :src="caseData.wideScreenImage" class="caseBg">
           <div class="descript">
               <div class="shadow"></div>
               <div class="cont">
@@ -30,7 +30,7 @@
       
       <ul class="caseBigList">
           <li  v-for="item in caseData.caseDetailsList">
-              <img :src="item.image+'?imageView2/2/w/200'">
+              <img :src="item.image">
               <p>{{item.info}}</p>
           </li>
            
