@@ -17,6 +17,7 @@ const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
 const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetailsNew')
+const casePrev = () => import(/* webpackChunkName: "mint-case */ '@/views/casePrev')
 
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
@@ -105,6 +106,12 @@ export default new Router({
       name: 'caseDetailsNew',
       component: caseDetailsNew,
       meta: {title: '新案例详情'} 
+    },
+    {
+      path: '/casePrev',
+      name: 'casePrev',
+      component: casePrev,
+      meta: {title: '新案例预览'} 
     },
     {
       path: '/404',
