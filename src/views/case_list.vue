@@ -3,11 +3,11 @@
     <left-nav></left-nav>
 		<head-nav></head-nav>
       <ul>
-        <li class="case-li" v-for="(single, index) in dataJson">
-          <router-link :to="'/desinerDetails/'+single.id">
+        <li class="case-li" v-for="(single, index) in dataJson" v-bind:data-caseid="single.id">
+          <router-link :to="'/caseDetailsNew?caseId=/'+single.id">
           <div class="img-partent" >
             <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :src="single.head_image_url" v-bind:class="{cursor:addClass[index]}" alt="" class="case-img ">
+            <img :src="single.widescreen_image" v-bind:class="{cursor:addClass[single.id]}" alt="" class="case-img ">
           </div>
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
@@ -64,7 +64,6 @@ export default {
       _self.page_count = response.data.page_count;
       for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].id);
-            console.log(_self.addClass);
       }
       
     })
@@ -128,7 +127,7 @@ export default {
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
              _self.addClass.push(_self.dataJson[i].id);
-            console.log(_self.addClass);
+            // console.log(_self.addClass);
           }
         })
         .catch(err => {});
@@ -136,17 +135,26 @@ export default {
     animation(){
         var _self = this;
         var allLi = document.getElementsByTagName("li");
+        // var allLi = this.addClass;
+        // allLi.forEach((value, index)=>{
+        //   console.log(value);
+        //   var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+          // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+
+          // }
+        // });
         for(var i=0; i<allLi.length; i++){
-            // console.log(allLi[i]);
-            // _self.addClass.push(i);
+            // _self.addClass.push(i); _self.addClass[i]
+            allLi[i].dataset.caseid;
+            console.log(allLi[i].dataset.caseid);
             // _self.addClass[i] = false;
-            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
-            if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
                 //添加动画效果
                 // console.log('我要动了');
                 //  _self.addClass[i] = true;
 
-            }
+            // }
         }   
     }
   }
