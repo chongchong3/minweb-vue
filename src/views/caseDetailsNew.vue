@@ -2,7 +2,7 @@
   <div class="caseDetails">
       <div class="head">
           <span class="icon back" @click="goBack"><img src="static/images/caseDetails/back.png"></span>
-          <img :src="caseData.wideScreenImage+'?imageView2/2/w/100'" class="caseBg">
+          <img :src="caseData.wideScreenImage" class="caseBg">
           <div class="descript">
               <div class="shadow"></div>
               <div class="cont">
@@ -30,7 +30,7 @@
       
       <ul class="caseBigList">
           <li  v-for="item in caseData.caseDetailsList">
-              <img :src="item.image+'?imageView2/2/w/200'">
+              <img :src="item.image">
               <p>{{item.info}}</p>
           </li>
            
@@ -46,6 +46,7 @@
 <style scoped>
 .caseDetails {
   padding-bottom: 0.6rem;
+  overflow-x: hidden;
 }
 .caseDetails .head {
   position: relative;
@@ -314,6 +315,7 @@ export default {
             if (response.data.code != 200) {
               return;
             }
+             document.title=response.data.data.title;
             _self.caseData = response.data.data;
 
             resolve(response);
