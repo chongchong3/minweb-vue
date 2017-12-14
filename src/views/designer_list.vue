@@ -163,6 +163,7 @@ ul, li, p{
 }
 .designer{
     /*margin-top:.54rem;*/
+    padding-top:.54rem;
 }
 .designer-li{
     position: relative;
