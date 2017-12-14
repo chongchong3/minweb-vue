@@ -65,6 +65,7 @@
 }
 .caseDetails .caseBg {
   width: 100%;
+  display: block;
 }
 .caseDetails .descript .cont {
   position: absolute;
@@ -315,6 +316,7 @@ export default {
             if (response.data.code != 200) {
               return;
             }
+             document.title=response.data.data.title;
             _self.caseData = response.data.data;
 
             resolve(response);
