@@ -28,15 +28,16 @@
 	    </div>
 		 <div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
-		 	
-        	<div class="case-detail-c" v-for="item in result.designer_case_list"> 
+		 	<router-link tag="div" class="case-detail-c" v-for="item in result.designer_case_list" :to="'/caseDetailsNew/'+item.designer_case_uid">
         		<img :src="item.cover_image" />
         		<div class="mask"></div>
         		<div class="des">
         			<p class="case-name">{{item.designer_name}}</p>
         			<p class="case-square-style">{{item.house_type_name}}</p>
         		</div>
-        	</div>
+		 	</router-link>
+        	<!--<div class="case-detail-c" v-for="item in result.designer_case_list"> 
+        	</div>-->
         	<!--<div class="case-detail-c">
         		<img src="../../static/images/demo-bg.png" />
         		<div class="mask"></div>
