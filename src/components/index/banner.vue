@@ -26,7 +26,7 @@
       return {
       	banner:[
 //    		{link:"../../static/images/banner.png",src:""},
-			{link:"../../static/images/banner.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//,
+			{link:"https://img.wesetup.cn/banner.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//, ../../static/images/banner.png
       	],
 
         swiperOption: {
