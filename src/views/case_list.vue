@@ -5,7 +5,7 @@
       <head-nav></head-nav>
     <!-- </div> -->
       <ul>
-        <li class="case-li" v-for="(single, index) in dataJson" v-bind:data-caseid="single.id">
+        <li class="case-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
           <router-link :to="'/caseDetailsNew?caseId='+single.id">
           <div class="img-partent" >
             <!-- {cursor:addClass[index]} -->
@@ -247,7 +247,7 @@ ul, li{
   width:100%;
   height:1.54rem;
   background-position: center center;
-  background-size: 200% 200%;
+  background-size: 103% 103%;
 }
 .isShow{
     background-size: 100% 100%;
@@ -256,7 +256,7 @@ ul, li{
 
    @keyframes imgAnimate
    {
-   from { background-size: 200% 200%;}
+   from { background-size: 103% 103%;}
    to { background-size: 100% 100%;}
    }
 

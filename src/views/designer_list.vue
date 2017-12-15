@@ -235,7 +235,7 @@ ul, li, p{
 .imgAnimate {
   width:100%;
   background-position: center center;
-  background-size: 120% 120%;
+  background-size: 103% 103%;
 }
 .isShow{
     background-size: 100% 100%;
@@ -244,7 +244,7 @@ ul, li, p{
 
    @keyframes imgAnimate
    {
-   from { background-size: 120% 120%;}
+   from { background-size: 103% 103%;}
    to { background-size: 100% 100%;}
    }
 
