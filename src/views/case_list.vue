@@ -10,7 +10,7 @@
           <div class="img-partent" >
             <!-- {cursor:addClass[index]} -->
             <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :id="'imgAnimate'+index"  :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" alt="" class="case-img ">
+            <img :id="'imgAnimate'+index"  :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" alt="" class="case-img ">
           </div>
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
@@ -65,6 +65,7 @@ export default {
     .then(function (response) {
       _self.dataJson = response.data.data.list;
       _self.page_count = response.data.page_count;
+      _self.getStartOffset();
       for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].id);
             _self.imgAnimate.push({"isFirst":true,"isShow": false});
@@ -93,7 +94,7 @@ export default {
   },
   mounted(){
     this.$nextTick(function(){
-       this.getStartOffset();
+      //  this.getStartOffset();
         window.addEventListener('scroll', this.scrollEvent);
     });
   },
@@ -119,14 +120,15 @@ export default {
             _self.addClass.push(_self.dataJson[i].id);
             _self.imgAnimate.push({"isFirst":true,"isShow": false});
           }
+          _self.getStartOffset();
         })
         .catch(err => {});
     },
     getStartOffset() {
       var _self = this;
+      _self.domArry=[];
       setTimeout(() => {
         for (var i = 0; i < _self.dataJson.length; i++) {
-
           var dom = document.getElementById('imgAnimate' + i);
           if (!dom) {
             return
@@ -134,7 +136,7 @@ export default {
           _self.domArry.push(dom.offsetTop);
           console.log(_self.domArry)
         }
-      }, 500)},
+      }, 50)},
       getScrollTop() {     
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         return scrollTop;
@@ -145,6 +147,7 @@ export default {
           if (!k.isFirst) {
             return
           }
+          console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
           if((_self.getScrollTop() - _self.domArry[i]) > -442){
             k.isShow = true;
@@ -179,8 +182,7 @@ ul, li{
   width: 100%;
   height:1.54rem;
   /* animation: changeBiger 1s linear forwards; */
-  /* animation-iteration-count:1; */
-  
+  /* animation-iteration-count:1; */  
   display: block;
 }
 .case .case-designer{
@@ -249,7 +251,7 @@ ul, li{
 }
 .isShow{
     background-size: 100% 100%;
-    animation:changeBiger 1s;
+    animation:imgAnimate 1s;
    }
 
    @keyframes imgAnimate

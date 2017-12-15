@@ -3,9 +3,9 @@
       <left-nav></left-nav>
 	<head-nav></head-nav>
       <ul>
-          <li class="designer-li" v-for="(single, index) in dataJson">
+          <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
-                <div :id="'imgAnimate'+index" class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
+                <div  class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                     <img :src="single.head_image_url"  alt="" class="designer-head">
                     <p class="designer-name">{{single.designer_name}}</p>
                     <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
@@ -54,12 +54,12 @@ export default {
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
-        _self.page_count = response.data.data.total;
+        _self.page_count = response.data.data.total;  
         for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].designer_uid);
             _self.imgAnimate.push({"isFirst":true,"isShow": false});
-            // console.log(_self.addClass);
         }
+        _self.getStartOffset();
     })
     .catch(function (error) {
         console.log(error);
@@ -86,7 +86,7 @@ export default {
   },
   mounted(){
     this.$nextTick(function(){
-       this.getStartOffset();
+       
         window.addEventListener('scroll', this.scrollEvent);
     });
   },
@@ -111,24 +111,25 @@ export default {
             _self.dataJson.push(data[i]);
             _self.addClass.push(_self.dataJson[i].designer_uid);
             _self.imgAnimate.push({"isFirst":true,"isShow": false});
-            // console.log(_self.addClass);
           }
+          _self.getStartOffset();
         })
         .catch(err => {});
     },
     getStartOffset() {
       var _self = this;
+      _self.domArry=[];
       setTimeout(() => {
         for (var i = 0; i < _self.dataJson.length; i++) {
 
-          var dom = document.getElementById('imgAnimate' + i);
-          if (!dom) {
+            var dom = document.getElementById('imgAnimate' + i);
+            if (!dom) {
             return
-          }
-          _self.domArry.push(dom.offsetTop);
-          console.log(_self.domArry)
+            }
+            _self.domArry.push(dom.offsetTop);
+            console.log(_self.domArry);
         }
-      }, 500)},
+        }, 500)},
       getScrollTop() {     
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         return scrollTop;
@@ -139,6 +140,7 @@ export default {
           if (!k.isFirst) {
             return
           }
+          console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
           if((_self.getScrollTop() - _self.domArry[i]) > -442){
             k.isShow = true;
@@ -156,15 +158,6 @@ export default {
             // _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
-                //添加动画效果
-                // console.log('我要动了');
-                // _self.addClass[i] = true;
-                // allLi[i].style.width = '100%';
-                // allLi[i].style.height = '100%';
-                // allLi[i].style.animation = 'changeBiger 1s linear forwards'
-                // let addClass = allLi[i].setAttribute('class');
-                // addClass = addClass.concat('cursor');
-                // allLi[i].setAttribute('class', addClass);
             }
         }       
     },
@@ -229,20 +222,32 @@ ul, li, p{
   width: 100%;
   height: 100%;
   animation: changeBiger 1s linear forwards;
-  animation-iteration-count:1;
+  /* animation-iteration-count:1; */
 }
 @keyframes changeBiger{
-  0% {
-      transform: scale(1.1);
+  0% {  
+      transform: scale(1.2);
   }
   100% {
       transform: scale(1);
   }
 }
-.info {
-  text-align: center;
-  color:#666;
+.imgAnimate {
+  width:100%;
+  background-position: center center;
+  background-size: 120% 120%;
 }
+.isShow{
+    background-size: 100% 100%;
+    animation:imgAnimate 1s;
+   }
+
+   @keyframes imgAnimate
+   {
+   from { background-size: 120% 120%;}
+   to { background-size: 100% 100%;}
+   }
+
 </style>
 
 
