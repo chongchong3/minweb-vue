@@ -234,7 +234,7 @@
 			.then((res)=>{
 				if(res.status == 200){
 					this.result = res.body.data;
-					this.hasVideo = !this.result.video_url == ""  ;
+					this.hasVideo = !this.result.self_introduction_video_url == ""  ;
 				}
 			},(err)=>{
 				
@@ -493,7 +493,9 @@
 					"margin-top":"15%",
 					"margin-left":($(window).width()-100)/2
 				})
-				
+				$(".up-icon").animate({
+					'bottom':"0",
+				})
 				var wth = $($(".designer-info-c p")[0]).width();
 				$(".price").animate({
 					'font-size':'.16rem'

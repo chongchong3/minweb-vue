@@ -140,7 +140,7 @@ export default {
                 muted: true,
                 sources: [{
                     type: "video/mp4",
-                    src: this.selfMes.video_url
+                    src: this.selfMes.self_introduction_video_url
                 }],
                 poster: this.selfMes.full_body_shot_url,
                 height:this.ht
