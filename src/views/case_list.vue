@@ -24,7 +24,7 @@
         </li>
         
       </ul>
-
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt=""></div>
       <loading-animation v-if="loading"></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
   </div>
@@ -44,6 +44,7 @@ export default {
         page_count: 1,
         moreData: true,
         loading:false,
+        scrollTopIcon:false,
         addClass:[],
         dataJson: null,
         domArry: [],
@@ -99,10 +100,18 @@ export default {
         window.addEventListener('scroll', this.scrollEvent);
     });
     //下滑出现滚动到顶部
+    var touchStartY=0;
+    var _self = this;
+    document.body.addEventListener("touchstart", function(e) {
+      touchStartY=e.touches[0].clientY; 
+    });
     document.body.addEventListener("touchmove", function(e) {
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-      var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      // console.log(e.touches[0].clientY);
+      if(touchStartY - e.touches[0].clientY > 10) {
+          _self.scrollTopIcon = true;
+      }else{
+        _self.scrollTopIcon = false;;
+      }
     });
   },
   methods:{
@@ -161,6 +170,16 @@ export default {
             k.isFirst = false;
           }
         });
+    },
+    // 滚动到顶部
+    scrollToTop(){
+      console.log('121');
+      scrolldelay=setTimeout(function(){
+          window.scrollBy(0,0)
+      },1000);
+      if(document.documentElement.scrollTop==0){
+        clearTimeout(scrolldelay);
+      }
     }
   }
 }
@@ -279,12 +298,13 @@ ul, li{
 
 
 
-
-
-
-
-.info {
-  text-align: center;
-  color:#666;
+.scroll-to-top{
+  position: fixed;
+  bottom:.4rem;
+  right: 0.1rem;
+  width: .6rem;
+  border-radius: 50%;
+  /* background: #f0f; */
+  height: .6rem;
 }
 </style>
