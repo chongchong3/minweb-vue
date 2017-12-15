@@ -31,7 +31,7 @@
 		<div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
 		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
-        		<img :src="item.cover_image" />
+        		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
         			<p class="case-name">{{item.premises_name}}</p>

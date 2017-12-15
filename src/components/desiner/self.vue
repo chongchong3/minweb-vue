@@ -1,6 +1,6 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline
+        <video-playerx5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline="false" playsinline="true"
         	 class="video-player-box vjs-big-play-centered hide" ref="videoPlayer"
         	  :options="{muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}" >
         	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
@@ -144,7 +144,8 @@ export default {
         sources: [
           {
             type: "video/mp4",
-            src: this.selfMes.self_introduction_video_url
+            src: this.selfMes.self_introduction_video_url,
+            
           }
         ],
         poster: this.selfMes.full_body_shot_url,
