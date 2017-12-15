@@ -493,7 +493,9 @@
 					"margin-top":"15%",
 					"margin-left":($(window).width()-100)/2
 				})
-				
+				$(".up-icon").animate({
+					'bottom':"0",
+				})
 				var wth = $($(".designer-info-c p")[0]).width();
 				$(".price").animate({
 					'font-size':'.16rem'
