@@ -25,10 +25,10 @@
 	        	</div>
 	        </div>
 	    </div>
-	    <div class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
+	    <div v-if="!hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
 	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
 	    </div>
-		 <div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
+		<div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
 		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.cover_image" />
@@ -122,7 +122,7 @@
 		height: .4rem;
 		width:100%;
 		background:url(../../static/images/uparrow.png) center no-repeat;
-		z-index: 10;
+		z-index: 999;
 	}
 	.caselist-down-icon{
 		position:absolute;
@@ -224,7 +224,8 @@
 				step:0,
 				result:{},
 				ht:$(window).height(),
-				player:null
+				player:null,
+				hasVideo:true
 			}
 		},
 		mounted(){
@@ -233,6 +234,7 @@
 			.then((res)=>{
 				if(res.status == 200){
 					this.result = res.body.data;
+					this.hasVideo = !this.result.video_url == ""  ;
 				}
 			},(err)=>{
 				
@@ -252,33 +254,137 @@
 				var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
 				return (scrollTop + clientHeight) >= (scrollHeight)
 			},
+			hideListwithoutVideo:function(){
+				$(".por-des-c").animate({
+					'top':"0",
+				})
+				$(".detail-describe-c").animate({
+					'bottom':"0"
+				})
+				$(".up-icon").animate({
+					'bottom':"0",
+				})
+				$(".caselist-c").animate({
+					'bottom':"-100%",
+				}).hide();
+				this.step = 1;
+			},
+			showListwithoutVideo:function(){
+				$(".por-des-c").animate({
+					'top':"-100%",
+				})
+				$(".detail-describe-c").animate({
+					'bottom':"100%",
+				})
+				$(".up-icon").animate({
+					'bottom':"100%",
+				})
+				$(".caselist-c").animate({
+					'bottom':"0",
+				}).show()
+				this.step = 2;
+				setTimeout(function(){
+					$(".desinerDetails").css("overflow","visible");
+				},100)
+			},
+			animateDownwithoutVideo:function(){
+				$(".por-des-c").animate({
+					'height':"100%",
+					"padding-top":"0%"
+				})
+				$("#portrait").animate({
+					'width':'100%',
+					'height':'100%',
+					'border-radius':'0',
+					"margin-top":"0",
+					"margin-left":"0"
+				})
+				$(".designer-info-c p").animate({
+					"padding-left":"3.2%"
+				}).css("textAlign","left")
+				$(".price").animate({
+					'font-size':'.12rem'
+				})
+				$(".detail-describe-c").animate({
+					"bottom":"-100%"
+				})
+				this.step = 0;
+			},
+			animateUpwithoutVideo:function(){
+				$(".por-des-c").animate({
+					'height':"40%",
+				})
+				$("#portrait").animate({
+					'width':'1rem',
+					'height':'1rem',
+					'border-radius':'50%',
+					"margin-top":"15%",
+					"margin-left":($(window).width()-100)/2
+				})
+				
+				var wth = $($(".designer-info-c p")[0]).width();
+				$(".price").animate({
+					'font-size':'.16rem'
+				})
+				$(".designer-info-c .name").animate({
+					"padding-left":($(window).width()-wth)/2,
+					"text-align":"center"
+				}).css("textAlign","center")
+				
+				$(".detail-describe-c").animate({
+					"bottom":"0",
+					"height":"60%"
+				})
+				this.step = 1;
+			},
+			
+			
 			up:function(){
-				//step 分四个状态，初始状态为0，当手指在屏幕上上划时，由0变为1，转变为圆形头像图界面，再上划时，1变为2，动画至视频播放，2变为3，则是显示案例列表
-				if(this.step == 0){
-					this.animateUp();
-					this.step = 1;
-				}else if(this.step == 1){
-					this.showVideo();
-					this.step = 2;
-				}else if(this.step ==2){
-					this.hideVideo();
-					this.showList();
-					this.step = 3;
+				if(this.hasVideo){
+					
+					//step 分四个状态，初始状态为0，当手指在屏幕上上划时，由0变为1，转变为圆形头像图界面，再上划时，1变为2，动画至视频播放，2变为3，则是显示案例列表
+					if(this.step == 0){
+						this.animateUp();
+						this.step = 1;
+					}else if(this.step == 1){
+						this.showVideo();
+						this.step = 2;
+					}else if(this.step ==2){
+						this.hideVideo();
+						this.showList();
+						this.step = 3;
+					}
+				}else{
+					if(this.step == 0){
+						this.animateUpwithoutVideo();
+					}else if(this.step == 1){
+						this.showListwithoutVideo();
+					}
 				}
 			},
 			down:function(){
-				if(this.step == 1){
-					this.animateDown();
-					this.step = 0;
-				}else if(this.step == 2){//&& $('body').scrollTop() == 0
-					this.hideVideo(1);
-					this.animateUp();
-					this.step = 1;
-				}else if(this.step == 3 && $('body').scrollTop() <50){
-					this.showVideo();
-					this.hideList();
-					$(".desinerDetails").css("overflow","hidden");
-					this.step =2;
+				if(this.hasVideo){
+					if(this.step == 1){
+						this.animateDown();
+						this.step = 0;
+					}else if(this.step == 2){//&& $('body').scrollTop() == 0
+						this.hideVideo(1);
+						this.animateUp();
+						this.step = 1;
+					}else if(this.step == 3 && $('body').scrollTop() <50){
+						this.showVideo();
+						this.hideList();
+						$(".desinerDetails").css("overflow","hidden");
+						this.step =2;
+					}
+				}else{
+					if(this.step == 1){
+						this.animateDownwithoutVideo();
+					}else if(this.step == 2 && $('body').scrollTop() <100){//&& $('body').scrollTop() == 0
+	//					alert($('body').scrollTop())
+						this.hideListwithoutVideo();
+						$(".desinerDetails").css("overflow","hidden");
+					}
 				}
 			},
 			showVideo:function(){
