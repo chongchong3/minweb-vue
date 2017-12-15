@@ -98,6 +98,12 @@ export default {
       //  this.getStartOffset();
         window.addEventListener('scroll', this.scrollEvent);
     });
+    //下滑出现滚动到顶部
+    document.body.addEventListener("touchmove", function(e) {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    });
   },
   methods:{
     getMoreData() {
