@@ -140,7 +140,7 @@ export default {
                 muted: true,
                 sources: [{
                     type: "video/mp4",
-                    src: 'http://os5lxzkas.bkt.clouddn.com/long15.m4v',
+                    src: this.selfMes.video_url
                 }],
                 poster: this.selfMes.full_body_shot_url,
                 height:this.ht
