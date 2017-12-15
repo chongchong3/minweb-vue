@@ -234,7 +234,7 @@
 			.then((res)=>{
 				if(res.status == 200){
 					this.result = res.body.data;
-					this.hasVideo = !this.result.video_url == ""  ;
+					this.hasVideo = !this.result.self_introduction_video_url == ""  ;
 				}
 			},(err)=>{
 				
