@@ -128,10 +128,11 @@ export default {
   data() {
     return {
       case_id: 1,
-      playerOptions: _playerOptions
+      playerOptions: vm._playerOptions
     };
   },
   created() {
+      vm=this;
     _playerOptions = {
       // videojs options
       muted: true,
