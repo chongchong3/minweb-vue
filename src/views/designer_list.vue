@@ -179,8 +179,8 @@ ul, li, p{
   list-style-type: none;
 }
 .designer{
-    /*margin-top:.54rem;*/
-    padding-top:.54rem;
+    /*margin-top:.56rem;*/
+    padding-top:.56rem;
 }
 .designer-li{
     position: relative;
@@ -233,7 +233,7 @@ ul, li, p{
 }
 @keyframes changeBiger{
   0% {
-      transform: scale(1.03);
+      transform: scale(1.1);
   }
   100% {
       transform: scale(1);

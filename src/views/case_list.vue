@@ -158,9 +158,9 @@ export default {
 
 <style scoped>
 .case{
-  /* margin-top:.54rem;
+  /* margin-top:.56rem;
    */
-   padding-top:.54rem;
+   padding-top:.56rem;
 }
 .header-height{
   height: 0.56rem;
@@ -235,7 +235,7 @@ ul, li{
 }
 @keyframes changeBiger{
   0% {
-      transform: scale(1.03);
+      transform: scale(1.1);
   }
   100% {
       transform: scale(1);
