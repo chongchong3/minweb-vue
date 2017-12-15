@@ -128,12 +128,13 @@ export default {
   data() {
     return {
       case_id: 1,
-      _playerOptions:{},
+      _playerOptions: {},
       playerOptions: vm._playerOptions
     };
   },
-  created() {
-      vm=this;
+  created() {},
+  mounted() {
+    vm = this;
     this._playerOptions = {
       // videojs options
       muted: true,
@@ -146,8 +147,6 @@ export default {
       poster: this.selfMes.full_body_shot_url,
       height: this.ht
     };
-  },
-  mounted() {
     this.setPlayer();
   },
   computed: {
