@@ -245,19 +245,25 @@ ul, li{
 }
 .imgAnimate {
   width:100%;
-  height:1.54rem;
-  background-position: center center;
-  background-size: 103% 103%;
+  /* height:1.54rem; */
+  height: auto;
+  /* background-position: center center; */
+  /* background-size: 103% 103%; */
+
 }
 .isShow{
-    background-size: 100% 100%;
+    /* background-size: 100% 100%; */
     animation:imgAnimate 1s;
    }
 
    @keyframes imgAnimate
    {
-   from { background-size: 103% 103%;}
-   to { background-size: 100% 100%;}
+   0% {
+      transform: scale(1.03);
+  }
+  100% {
+      transform: scale(1);
+  }
    }
 
 
