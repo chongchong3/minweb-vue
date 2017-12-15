@@ -3,9 +3,9 @@
       <left-nav></left-nav>
 	<head-nav></head-nav>
       <ul>
-          <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
+          <li class="designer-li" v-for="(single, index) in dataJson">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
-                <div class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
+                <div :id="'imgAnimate'+index" class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                     <img :src="single.head_image_url"  alt="" class="designer-head">
                     <p class="designer-name">{{single.designer_name}}</p>
                     <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
