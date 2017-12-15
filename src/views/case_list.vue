@@ -148,8 +148,8 @@ export default {
             return
           }
           console.log(_self.getScrollTop(),_self.domArry[i]);
-          // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
-          if((_self.getScrollTop() - _self.domArry[i]) > -442){
+          // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){  442
+          if((_self.getScrollTop() - _self.domArry[i]) > -280){
             k.isShow = true;
             k.isFirst = false;
           }

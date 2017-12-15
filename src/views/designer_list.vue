@@ -142,7 +142,7 @@ export default {
           }
           console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
-          if((_self.getScrollTop() - _self.domArry[i]) > -442){
+          if((_self.getScrollTop() - _self.domArry[i]) > -280){
             k.isShow = true;
             k.isFirst = false;
           }
@@ -152,10 +152,6 @@ export default {
         var _self = this;
         var allLi = document.getElementsByTagName("li");
         for(var i=0; i<allLi.length; i++){
-            // console.log(allLi[i].offsetTop);
-            // _self.addClass.push(i);
-            // console.log(_self.addClass);
-            // _self.addClass[i] = false;
             var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
             if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
             }
