@@ -10,7 +10,7 @@
           <div class="img-partent" >
             <!-- {cursor:addClass[index]} -->
             <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? '' : 'cursor']" alt="" class="case-img ">
+            <img :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" alt="" class="case-img ">
           </div>
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">
@@ -83,7 +83,7 @@ export default {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        _self.animation();
+        // _self.animation();
         //加载更多
         if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
           _self.page_no++;
@@ -94,6 +94,7 @@ export default {
   mounted(){
     this.$nextTick(function(){
        this.getStartOffset();
+        window.addEventListener('scroll', this.scrollEvent);
     });
   },
   methods:{
@@ -138,7 +139,7 @@ export default {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         return scrollTop;
       },
-      animation(){
+      scrollEvent(){
         var _self = this;
         this.imgAnimate.forEach(function(k, i) {
           if (!k.isFirst) {
@@ -150,16 +151,6 @@ export default {
             k.isFirst = false;
           }
         });
-
-
-
-        // var allLi = document.getElementsByTagName("li");
-        // for(var i=0; i<allLi.length; i++){
-        //     var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        //     if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
-        //         //添加动画效果
-        //     }
-        // }   
     }
   }
 }
@@ -167,9 +158,9 @@ export default {
 
 <style scoped>
 .case{
-  /* margin-top:.54rem;
+  /* margin-top:.56rem;
    */
-   padding-top:.54rem;
+   padding-top:.56rem;
 }
 .header-height{
   height: 0.56rem;
@@ -244,7 +235,7 @@ ul, li{
 }
 @keyframes changeBiger{
   0% {
-      transform: scale(1.03);
+      transform: scale(1.1);
   }
   100% {
       transform: scale(1);

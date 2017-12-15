@@ -3,9 +3,9 @@
       <left-nav></left-nav>
 	<head-nav></head-nav>
       <ul>
-          <li class="designer-li" v-for="(single, index) in dataJson">
+          <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
-                <div class="designer-single" v-bind:class="{cursor:addClass[index]}" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
+                <div class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'cursor']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                     <img :src="single.head_image_url"  alt="" class="designer-head">
                     <p class="designer-name">{{single.designer_name}}</p>
                     <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
@@ -35,7 +35,9 @@ export default {
             dataJson: null,
             loading:false,
             addClass:[],
-            page_size: 4
+            page_size: 4,
+            domArry: [],
+            imgAnimate: []
         }
   },
   beforeCreate(){
@@ -55,6 +57,7 @@ export default {
         _self.page_count = response.data.data.total;
         for (var i = 0; i < _self.dataJson.length; i++) {
             _self.addClass.push(_self.dataJson[i].designer_uid);
+            _self.imgAnimate.push({"isFirst":true,"isShow": false});
             // console.log(_self.addClass);
         }
     })
@@ -70,9 +73,7 @@ export default {
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        // console.log(scrollTop,clientHeight,scrollTop + clientHeight,scrollHeight);
-        // console.log(_self.$refs.scroll.offsetTop-scrollTop, scrollHeight);
-        _self.animation();
+        // _self.animation();
         //加载更多
         if (scrollTop >= scrollHeight - clientHeight && _self.moreData) {
             _self.page_no++;
@@ -82,6 +83,12 @@ export default {
     /**@augments
      * 循环遍历 li
      */    
+  },
+  mounted(){
+    this.$nextTick(function(){
+       this.getStartOffset();
+        window.addEventListener('scroll', this.scrollEvent);
+    });
   },
   methods:{
     getMoreData() {
@@ -103,10 +110,41 @@ export default {
           for (var i = 0; i < data.length; i++) {
             _self.dataJson.push(data[i]);
             _self.addClass.push(_self.dataJson[i].designer_uid);
+            _self.imgAnimate.push({"isFirst":true,"isShow": false});
             // console.log(_self.addClass);
           }
         })
         .catch(err => {});
+    },
+    getStartOffset() {
+      var _self = this;
+      setTimeout(() => {
+        for (var i = 0; i < _self.dataJson.length; i++) {
+
+          var dom = document.getElementById('imgAnimate' + i);
+          if (!dom) {
+            return
+          }
+          _self.domArry.push(dom.offsetTop);
+          console.log(_self.domArry)
+        }
+      }, 500)},
+      getScrollTop() {     
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        return scrollTop;
+      },
+      scrollEvent(){
+        var _self = this;
+        this.imgAnimate.forEach(function(k, i) {
+          if (!k.isFirst) {
+            return
+          }
+          // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
+          if((_self.getScrollTop() - _self.domArry[i]) > -442){
+            k.isShow = true;
+            k.isFirst = false;
+          }
+        });
     },
     animation(){
         var _self = this;
@@ -141,8 +179,8 @@ ul, li, p{
   list-style-type: none;
 }
 .designer{
-    /*margin-top:.54rem;*/
-    padding-top:.54rem;
+    /*margin-top:.56rem;*/
+    padding-top:.56rem;
 }
 .designer-li{
     position: relative;
@@ -195,7 +233,7 @@ ul, li, p{
 }
 @keyframes changeBiger{
   0% {
-      transform: scale(1.03);
+      transform: scale(1.1);
   }
   100% {
       transform: scale(1);
