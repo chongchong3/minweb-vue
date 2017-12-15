@@ -35,7 +35,7 @@ export default {
             dataJson: null,
             loading:false,
             addClass:[],
-            page_size: 4,
+            page_size: 5,
             domArry: [],
             imgAnimate: []
         }

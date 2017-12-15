@@ -20,6 +20,7 @@
             </div>
           </div>
           </router-link>
+          <div class="width-line"></div>
         </li>
         
       </ul>
@@ -39,7 +40,7 @@ export default {
   data(){
       return{
         page_no: 1,
-        page_size: 4,
+        page_size: 5,
         page_count: 1,
         moreData: true,
         loading:false,
@@ -175,7 +176,7 @@ ul, li{
   list-style-type: none;
 }
 .case-li{
-  margin-bottom:.1rem;
+  /* margin-bottom:.1rem; */
   /* height:2.04rem; */
 }
 .case-img{
@@ -219,6 +220,10 @@ ul, li{
   line-height: .16rem;
   font-size: .12rem;
   color:#ccc;
+}
+.width-line{
+  height: .1rem;
+  background: #F2F2F2;
 }
 .clear{ clear:both}
 
