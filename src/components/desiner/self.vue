@@ -127,7 +127,7 @@ import 'video.js/dist/video-js.css'
 import Vue from 'vue'
 import VueVideoPlayer from 'vue-video-player'
 Vue.use(VueVideoPlayer)
-
+var vm={};
 export default {
     props: ['selfMes','ht'],
     data() {
@@ -140,17 +140,19 @@ export default {
                 muted: true,
                 sources: [{
                     type: "video/mp4",
-                    src: this.selfMes.self_introduction_video_url
+                    src: vm.selfMes.self_introduction_video_url
                 }],
-                poster: this.selfMes.full_body_shot_url,
-                height:this.ht
+                poster: vm.selfMes.full_body_shot_url,
+                height:vm.ht
             }
 
 
 
         }
     },
-
+    created(){
+        vm=this;
+    },
  	mounted(){
  		this.setPlayer();
  	},
