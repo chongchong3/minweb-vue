@@ -136,20 +136,22 @@ export default {
   },
   created() {},
   mounted() {
-    vm = this;
-    this._playerOptions = {
-      // videojs options
-      muted: true,
-      sources: [
-        {
-          type: "video/mp4",
-          src: this.selfMes.self_introduction_video_url
-        }
-      ],
-      poster: this.selfMes.full_body_shot_url,
-      height: this.ht
-    };
-    this.setPlayer();
+    this.$nextTick(function() {
+      vm = this;
+      this._playerOptions = {
+        // videojs options
+        muted: true,
+        sources: [
+          {
+            type: "video/mp4",
+            src: this.selfMes.self_introduction_video_url
+          }
+        ],
+        poster: this.selfMes.full_body_shot_url,
+        height: this.ht
+      };
+      this.setPlayer();
+    });
   },
   computed: {
     player() {
