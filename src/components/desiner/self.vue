@@ -2,7 +2,7 @@
     <div id="self-wrap" class="slef-wrap">
         <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline
         	 class="video-player-box vjs-big-play-centered hide" ref="videoPlayer"
-        	  :options="{muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}" >
+        	  :options="{preload:'auto',muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}" >
         	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
         </video-player>
 
@@ -134,25 +134,7 @@ export default {
       playerOptions: vm._playerOptions
     };
   },
-  created() {},
-  mounted() {
-    this.$nextTick(function() {
-      vm = this;
-      this._playerOptions = {
-        // videojs options
-        muted: true,
-        sources: [
-          {
-            type: "video/mp4",
-            src: this.selfMes.self_introduction_video_url
-          }
-        ],
-        poster: this.selfMes.full_body_shot_url,
-        height: this.ht
-      };
-      this.setPlayer();
-    });
-  },
+  
   computed: {
     player() {
       return this.$refs.videoPlayer.player;
@@ -166,7 +148,7 @@ export default {
       $(".slef-background").addClass("hide");
       $("div[id*='vjs_video_']").width("100%");
       $(".video-player-box").show();
-      this.player.show();
+//    this.player.show();
       this.player.play();
     },
 
