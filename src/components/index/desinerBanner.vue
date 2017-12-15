@@ -13,7 +13,7 @@
 			    	<router-link :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
 			    		<!--<div  class="detail-designer">-->
 							<div class="img-c" >
-								<img :src="designer.full_body_shot_url+'?imageView2/2/w/360'" />
+								<img :src="designer.slide_gif+'?imageView2/2/w/360'" />
 							</div>
 							<div class="design-des-c">
 								<p class="name">{{designer.designer_name}}</p>
