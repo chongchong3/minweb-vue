@@ -1,6 +1,8 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" >
+        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline
+        	 class="video-player-box vjs-big-play-centered hide" ref="videoPlayer"
+        	  :options="{muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}" >
         	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
         </video-player>
 
