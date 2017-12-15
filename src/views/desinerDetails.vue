@@ -25,7 +25,7 @@
 	        	</div>
 	        </div>
 	    </div>
-	    <div v-if="!hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
+	    <div v-if="hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
 	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
 	    </div>
 		<div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
@@ -433,7 +433,7 @@
 						bottom ="-100%";
 					}
 					$(".video-c").animate({
-						'bottom':bottom,
+						'bottom':bottom
 					})
 				}
 				$(".vjs-tech")[0].pause();
