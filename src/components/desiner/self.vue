@@ -1,10 +1,11 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)">
+        <video-player x5-video-player-type="h5" x5-video-player-fullscreen="false" webkit-playsinline playsinline class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" :options="playerOptions" >
+        	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
         </video-player>
 
         <div class="slef-background hasTips" id="slef-background">
-            <img :src="selfMes.bodyImg" @click="videoPlay">
+            <img :src="selfMes.full_body_shot_url" @click="videoPlay">
             <div class="playerButton">
                 <div class="playerBtn" @click="videoPlay">
                     <!-- <img src="../../static/images/video.png"> -->
@@ -12,25 +13,22 @@
 
             </div>
 
-            <div class="memo">
-                <div class="cont">
-                    <p class="name">个人信息</p>
-
-                    <p class="brief">{{selfMes.brief}}</p>
-                </div>
-            </div>
+            
         </div>
 
     </div>
 </template>
 <style >
+
 .hasTips {
     height: 100%;;
 }
 .imgWrap img {
     width: 100%;
 }
-
+.video-player{
+	display: none;
+}
 .slef-wrap {
     position: relative;
     width: 100%;
@@ -44,13 +42,14 @@
     top: 46%;
     left: 0%;
     z-index: 999;
+    margin:0px auto;
 }
 
 .playerButton .playerBtn {
 
     width: .6rem;
-    margin: 0 0 0 .3rem;
-    background: url('../../static/images/video.png');
+    margin: 0 auto;
+    background: url('../../../static/images/video.png');
     background-size: 100% 100%;
     height: .6rem;
 }
@@ -59,7 +58,9 @@
 .slef-wrap .hasTips .brief {
     margin-top: .2rem;
 }
-
+.slef-background{
+	/*background:#000;*/
+}
 .slef-background img {
     width: 100%;
 }
@@ -113,7 +114,7 @@
     text-align: left;
     z-index: 99;
     background: transparent;
-    background: url('../../static/images/videoBg.png');
+    background: url('../../../static/images/videoBg.png');
     background-size: 100% 100%;
 }
 .hasTips .score img {
@@ -125,10 +126,10 @@
 import 'video.js/dist/video-js.css'
 import Vue from 'vue'
 import VueVideoPlayer from 'vue-video-player'
-Vue.use(VueAwesomeSwiper)
+Vue.use(VueVideoPlayer)
 
 export default {
-    props: ['selfMes'],
+    props: ['selfMes','ht'],
     data() {
 
         return {
@@ -142,6 +143,7 @@ export default {
                     src: 'http://os5lxzkas.bkt.clouddn.com/long15.m4v',
                 }],
                 poster: this.selfMes.full_body_shot_url,
+                height:this.ht
             }
 
 
@@ -149,7 +151,9 @@ export default {
         }
     },
 
-  
+ 	mounted(){
+ 		this.setPlayer();
+ 	},
     computed: {
 
         player() {
@@ -157,10 +161,13 @@ export default {
         }
     },
     methods: {
-
+		setPlayer:function(){
+			this.$emit("transPlayer",this.player);
+		},
         videoPlay: function(event) {
             $('.slef-background').addClass('hide');
-            $('.video-player-box').removeClass('hide');
+            $("div[id*='vjs_video_']").width("100%");
+            $('.video-player-box').show();
             this.player.show();
             this.player.play();
         },
