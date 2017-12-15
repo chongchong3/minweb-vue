@@ -2,16 +2,15 @@
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
-	        	<!--//v-bind:style="background:url(+result.background_img+)"-->
-	        	<!--<div class="filter-c"></div>-->
 		        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
-		        	<!--style="background:url(../../static/images/demo-designer.png) no-repeat;background-size:cover"-->
-		        	<!--:style="{background:'url(' + result.full_body_shot_url + ') no-repeat;background-size:cover'}"--> 
 		        </div>
 		        
 		        <div class="designer-info-c">
-		        	<p class="name">{{result.designer_name}}</p><br>
-		        	<p class="price">报价：{{result.designer_price}}-{{result.designer_high_price}}/平米</p>
+		        	<p class="name">{{result.designer_name}}<br>
+		        	<span class="price">
+		        		报价：{{result.designer_price}}-{{result.designer_high_price}}元/平米
+		        	</span></p>
+		        		
 		        </div>
 	        </div>
 	        <div class="up-icon"></div>
@@ -26,16 +25,20 @@
 	        	</div>
 	        </div>
 	    </div>
+	    <div class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
+	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
+	    </div>
 		 <div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
 		 	<div class="caselist-down-icon"></div>
 		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.cover_image" />
         		<div class="mask"></div>
         		<div class="des">
-        			<p class="case-name">{{item.designer_name}}</p>
-        			<p class="case-square-style">{{item.house_type_name}}</p>
+        			<p class="case-name">{{item.premises_name}}</p>
+        			<p class="case-square-style">{{item.house_type_name}} /<span v-for="style in item.style_list">{{style.style_name}} </span></p>
         		</div>
 		 	</router-link>
+        </div>
         	<!--<div class="case-detail-c" v-for="item in result.designer_case_list"> 
         	</div>-->
         	<!--<div class="case-detail-c">
@@ -46,7 +49,6 @@
         			<p class="case-square-style">200平米 / 现代</p>
         		</div>
         	</div>-->
-        </div>
 	</div>
    
 </template>
@@ -65,6 +67,7 @@
 		z-index: 999;
 		background-size: 100%;
 		background-repeat: no-repeat;
+		/*background-color: #000;*/
 		/*filter: blur(1px);*/
 	}
 	.desinerDetails{
@@ -78,7 +81,7 @@
 		height:100%;
 		margin:0px auto;
 		position: absolute;
-		background-size: cover;
+		background-size: 100%;
 		background-repeat: no-repeat;
 	}
 	.portrait-c img{
@@ -136,7 +139,7 @@
 		position:absolute;
 		bottom:-100%;
 		left:0px;
-		z-index: 9;
+		z-index: 998;
 	}
 	.detail-describe-sub-c{
 		margin:0 4% .4rem;
@@ -196,6 +199,13 @@
 		font-size: .12rem;
 		line-height: .17rem;
 	}
+	.video-c{
+		width:100%;
+		height:100%;
+		z-index: 997;
+		position: absolute;
+		bottom:-100%;
+	}
 </style>
 
 <script>
@@ -203,15 +213,22 @@
 	import touchdirective from "../components/touchdirective";
 	import $ from 'jquery';
 	import {getDesinerDetails} from "@/api/desinerDetails";
+	import videoComp from "../components/desiner/self";
 	touchdirective(Vue);
 	export default{
+		 components: {
+		    videoComp
+		 },
 		data(){
 			return{
 				step:0,
-				result:{}
+				result:{},
+				ht:$(window).height(),
+				player:null
 			}
 		},
 		mounted(){
+			
 			getDesinerDetails({designer_uid:this.$route.params.desiner_id})
 			.then((res)=>{
 				if(res.status == 200){
@@ -226,6 +243,9 @@
 			
 		},
 		methods:{
+			getPlayer:function(player){
+				this.player = player;
+			},
 			getScroll:function(){
 				var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
 				var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
@@ -233,50 +253,102 @@
 				return (scrollTop + clientHeight) >= (scrollHeight)
 			},
 			up:function(){
+				//step 分四个状态，初始状态为0，当手指在屏幕上上划时，由0变为1，转变为圆形头像图界面，再上划时，1变为2，动画至视频播放，2变为3，则是显示案例列表
 				if(this.step == 0){
 					this.animateUp();
+					this.step = 1;
 				}else if(this.step == 1){
+					this.showVideo();
+					this.step = 2;
+				}else if(this.step ==2){
+					this.hideVideo();
 					this.showList();
+					this.step = 3;
 				}
 			},
 			down:function(){
 				if(this.step == 1){
 					this.animateDown();
-				}else if(this.step == 2 && $('body').scrollTop() <100){//&& $('body').scrollTop() == 0
-//					alert($('body').scrollTop())
+					this.step = 0;
+				}else if(this.step == 2){//&& $('body').scrollTop() == 0
+					this.hideVideo(1);
+					this.animateUp();
+					this.step = 1;
+				}else if(this.step == 3 && $('body').scrollTop() <50){
+					this.showVideo();
 					this.hideList();
 					$(".desinerDetails").css("overflow","hidden");
+					this.step =2;
 				}
 			},
-			hideList:function(){
-				$(".por-des-c").animate({
+			showVideo:function(){
+				if(this.step == 1){
+					$(".por-des-c").animate({
+						'top':"-100%",
+					})
+					$(".detail-describe-c").animate({
+						'bottom':"100%",
+					})
+					$(".up-icon").animate({
+						'bottom':"100%",
+					})
+
+				}else if(this.step == 3){
+					$(".caselist-c").animate({
+						'bottom':"-100%",
+					}).hide();
+					
+				}
+				$(".video-c").animate({
+					'bottom':"0",
+				})
+				$(".vjs-tech")[0].play();
+//				setTimeout(function(){
+//					$(".desinerDetails").css("overflow","visible");
+//				},100)
+			},
+			hideVideo:function(flag){
+				if(this.step == 1){
+					$(".por-des-c").animate({
 					'top':"0",
-				})
-				$(".detail-describe-c").animate({
-					'bottom':"0"
-				})
-				$(".up-icon").animate({
+					})
+					$(".detail-describe-c").animate({
+						'bottom':"0"
+					})
+					$(".up-icon").animate({
+						'bottom':"0",
+					})
+					$(".video-c").animate({
+						'bottom':"-100%",
+					})
+				}else if(this.step == 2){
+					var bottom ="100%";
+					if(flag){
+						bottom ="-100%";
+					}
+					$(".video-c").animate({
+						'bottom':bottom,
+					})
+				}
+				$(".vjs-tech")[0].pause();
+				
+				
+			},
+			hideList:function(){
+				$(".vide-c").animate({
 					'bottom':"0",
 				})
 				$(".caselist-c").animate({
 					'bottom':"-100%",
 				}).hide();
-				this.step = 1;
 			},
 			showList:function(){
-				$(".por-des-c").animate({
-					'top':"-100%",
-				})
-				$(".detail-describe-c").animate({
-					'bottom':"100%",
-				})
-				$(".up-icon").animate({
+				$(".vide-c").animate({
 					'bottom':"100%",
 				})
 				$(".caselist-c").animate({
 					'bottom':"0",
 				}).show()
-				this.step = 2;
 				setTimeout(function(){
 					$(".desinerDetails").css("overflow","visible");
 				},100)
@@ -295,18 +367,18 @@
 				})
 				$(".designer-info-c p").animate({
 					"padding-left":"3.2%"
-				})
+				}).css("textAlign","left")
 				$(".price").animate({
 					'font-size':'.12rem'
 				})
 				$(".detail-describe-c").animate({
 					"bottom":"-100%"
 				})
-				this.step = 0;
 			},
 			animateUp:function(){
 				$(".por-des-c").animate({
 					'height':"40%",
+					"top":"0"
 				})
 				$("#portrait").animate({
 					'width':'1rem',
@@ -318,18 +390,17 @@
 				
 				var wth = $($(".designer-info-c p")[0]).width();
 				$(".price").animate({
-					"padding-left":($(window).width()-wth)/2,
 					'font-size':'.16rem'
 				})
 				$(".designer-info-c .name").animate({
-					"padding-left":($(window).width()-wth)/2
-				})
+					"padding-left":($(window).width()-wth)/2,
+					"text-align":"center"
+				}).css("textAlign","center")
 				
 				$(".detail-describe-c").animate({
 					"bottom":"0",
 					"height":"60%"
 				})
-				this.step = 1;
 			}
 		}
 	}

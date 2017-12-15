@@ -39,9 +39,7 @@ export default(Vue) => {
 
 			var _isScroll = el.getAttribute("isScroll");
             el.addEventListener('touchstart', function (ev) {
-            	if(!_isScroll){
-            		ev.preventDefault();
-            	}
+            	
 //          	ev.preventDefault();
                 startX = ev.touches[0].pageX;
                 startY = ev.touches[0].pageY;
