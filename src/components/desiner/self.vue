@@ -130,7 +130,6 @@ export default {
   data() {
     return {
       case_id: 1,
-
     };
   },
 
