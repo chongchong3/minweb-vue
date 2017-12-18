@@ -4,8 +4,8 @@
 		<head-nav></head-nav>
 		<banner-content></banner-content>
 		<slogan></slogan>
-		<case-banner></case-banner>
-		<desiner-banner></desiner-banner>
+		<case-banner v-if="caseBannerLoadingFlag"></case-banner>
+		<desiner-banner v-if="designerBannerLoadingFlag" ></desiner-banner>
 		<div class="index-bottom">
 			<div class="no-more">
 				没有更多了
@@ -42,7 +42,6 @@ import caseBanner from "../components/index/caseBanner";
 import desinerBanner from "../components/index/desinerBanner";
 
 Vue.use(VueAwesomeSwiper);
-
 export default {
   components: {
     slogan,
@@ -53,7 +52,10 @@ export default {
     headNav
   },
   data() {
-    return {};
+    return {
+    	designerBannerLoadingFlag:false,
+   		caseBannerLoadingFlag:false
+    };
   },
 
   created() {
@@ -66,15 +68,20 @@ export default {
    
   }
   ,mounted(){
+  	  this.caseBannerLoadingFlag = true;
       this.$nextTick(function(){
 //     this.shareWx.getId();
 //     this.shareWx.shareReady("设计IN-设计师严选平台");
-
-    })
+      })
+ 	  document.addEventListener('scroll',()=>{
+  		this.loadDesigner();
+ 	  })
    
   },
   methods:{
- 
+ 	loadDesigner:function(){
+ 		this.designerBannerLoadingFlag = true;
+ 	}
   }
 };
 
