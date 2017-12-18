@@ -389,7 +389,7 @@
 						this.hideVideo(1);
 						this.animateUp();
 						this.step = 1;
-					}else if(this.step == 3 && $('.caselist-c').scrollTop() ==0){
+					}else if(this.step == 3 && $('.caselist-c').scrollTop() <=0){
 //						alert($('.caselist-c').scrollTop())
 //						alert($($('.case-detail-c')[0]).scrollTop())
 						this.showVideo();
@@ -400,7 +400,7 @@
 				}else{
 					if(this.step == 1){
 						this.animateDownwithoutVideo();
-					}else if(this.step == 2 && $('.caselist-c').scrollTop() ==0){//&& $('body').scrollTop() == 0
+					}else if(this.step == 2 && $('.caselist-c').scrollTop() <=0){//&& $('body').scrollTop() == 0
 					
 	//					alert($('body').scrollTop())
 						this.hideListwithoutVideo();
