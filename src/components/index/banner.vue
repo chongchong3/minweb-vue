@@ -43,7 +43,7 @@
           onTransitionStart (swiper) {
           },
           onClick(swiper){
-          	//window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
+          	window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
           }
         }
       }

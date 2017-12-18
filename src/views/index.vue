@@ -4,7 +4,7 @@
 		<head-nav></head-nav>
 		<banner-content></banner-content>
 		<slogan></slogan>
-		<case-banner v-if="caseBannerLoadingFlag"></case-banner>
+		<case-banner v-show="showFlag" v-if="caseBannerLoadingFlag&&showFlag"></case-banner>
 		<desiner-banner v-if="designerBannerLoadingFlag" ></desiner-banner>
 		<div class="index-bottom">
 			<div class="no-more">
@@ -54,7 +54,8 @@ export default {
   data() {
     return {
     	designerBannerLoadingFlag:false,
-   		caseBannerLoadingFlag:false
+   		caseBannerLoadingFlag:false,
+   		showFlag:false
     };
   },
 
@@ -68,13 +69,14 @@ export default {
    
   }
   ,mounted(){
-  	  this.caseBannerLoadingFlag = true;
+    	  this.caseBannerLoadingFlag = true;
       this.$nextTick(function(){
 //     this.shareWx.getId();
 //     this.shareWx.shareReady("设计IN-设计师严选平台");
       })
  	  document.addEventListener('scroll',()=>{
   		this.loadDesigner();
+  		this.showFlag = true;
  	  })
    
   },
