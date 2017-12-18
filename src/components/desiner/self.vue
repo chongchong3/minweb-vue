@@ -21,6 +21,9 @@
     </div>
 </template>
 <style scoped>
+.video-js .vjs-tech {
+    height: 95%;
+}
 .hasTips {
   height: 100%;
 }
