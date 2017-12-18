@@ -22,7 +22,7 @@
 </template>
 <style scoped>
 .video-js .vjs-tech {
-    height: 95%;
+    height:auto
 }
 .hasTips {
   height: 100%;
