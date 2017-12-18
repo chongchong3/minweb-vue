@@ -7,7 +7,7 @@
               <div class="shadow"></div>
               <div class="cont">
                     <p class="tit">{{caseData.title}}</p>
-                    <p class="memo">{{styleList}}/{{caseData.area}}平米</p>
+                    <p class="memo"><span v-html="styleList"></span>/{{caseData.area}}平米</p>
               </div>
           </div>
       </div>
@@ -321,11 +321,11 @@ export default {
             _self.caseData = response.data.data;
             var _lt=  _self.caseData.styleList.length;
             _self.caseData.styleList.forEach(function(k,i){
-              if(i==0||i==_lt-1){
+              if(i==0){
                   _self.styleList+=k.style_name;
                   return
               }
-               _self.styleList+=k.style_name+','
+               _self.styleList+=k.style_name+';&nbsp'
             });
 
             resolve(response);
