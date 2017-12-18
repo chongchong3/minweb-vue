@@ -129,7 +129,7 @@ export default {
   props: ["selfMes", "ht"],
   data() {
     return {
-      case_id: 1,
+      case_id: 1
     };
   },
 
@@ -146,7 +146,7 @@ export default {
       $(".slef-background").addClass("hide");
       $("div[id*='vjs_video_']").width("100%");
       $(".video-player-box").show();
-//    this.player.show();
+      //    this.player.show();
       this.player.play();
     },
 
