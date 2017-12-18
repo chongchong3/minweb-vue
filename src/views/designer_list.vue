@@ -6,10 +6,13 @@
           <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
                 <div  class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
-                    <img :src="single.head_image_url"  alt="" class="designer-head">
-                    <p class="designer-name">{{single.designer_name}}</p>
-                    <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
-                    <p class="designer-company">{{single.studio}}</p> 
+                    <div class="designer-rgba">
+                        <img :src="single.head_image_url"  alt="" class="designer-head">
+                        <p class="designer-name">{{single.designer_name}}</p>
+                        <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
+                        <p class="designer-company">{{single.studio}}</p> 
+                    </div>
+                    
                 </div>  
             </router-link>                      
           </li> 
@@ -224,6 +227,14 @@ ul, li, p{
     width:100%;
     /* height:2.60rem; */
     height:100%;
+    /* background-color: rgba(#000, #000, #000, alpha); */
+}
+.designer-rgba{
+    /* height: 2.6rem; */
+    width:100%;height:100%;position: absolute;top:0;left:0;
+    /* background-image:linear-gradient(bottom, rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); */
+    background-image:linear-gradient(bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,.4) 100%);
+    z-index: 10;
 }
 .designer-head{
     position: relative;
