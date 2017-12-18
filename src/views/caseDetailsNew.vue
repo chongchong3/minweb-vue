@@ -7,7 +7,7 @@
               <div class="shadow"></div>
               <div class="cont">
                     <p class="tit">{{caseData.title}}</p>
-                    <p class="memo">新中式/300平米</p>
+                    <p class="memo">{{styleList}}/{{caseData.area}}平米</p>
               </div>
           </div>
       </div>
@@ -213,6 +213,7 @@ export default {
     return {
       caseData: {},
       authorId: "",
+      styleList:'',
       designerOption: {
         pagination: "null",
         slidesPerView: "auto",
@@ -318,6 +319,14 @@ export default {
             }
              document.title=response.data.data.title;
             _self.caseData = response.data.data;
+            var _lt=  _self.caseData.styleList.length;
+            _self.caseData.styleList.forEach(function(k,i){
+              if(i==0||i==_lt-1){
+                  _self.styleList+=k.style_name;
+                  return
+              }
+               _self.styleList+=k.style_name+','
+            });
 
             resolve(response);
           })
