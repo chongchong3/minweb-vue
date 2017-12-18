@@ -90,7 +90,7 @@
         }
           var playsinline = this.playsinline
       
-          this.$el.children[0].setAttribute('x5-video-player-type=', 'h5');
+          this.$el.children[0].setAttribute('x5-video-player-type', 'h5');
           this.$el.children[0].setAttribute('x5-video-player-fullscreen', false);
         // emit event
         var emitPlayerState = function(event, value) {
