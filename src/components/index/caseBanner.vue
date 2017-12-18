@@ -13,7 +13,7 @@
 			    		<div class="" v-bind:class="['detail-case',{'detail-case-border-rgt':index != caseList.length-1}] ">
 			    			<div v-for="(onecase,idx) in list" class="onecase-c"  v-bind:class="['',{'onecase-c-bottom':idx != list.length-1}] ">
 			    				<div class="img-c"  @click="jumpTo(onecase)">
-									<img :src="onecase.widescreen_image+'?imageView2/2/w/300'" />
+									<img postpone="postpone" :src="onecase.widescreen_image+'?imageView2/2/w/300'" />
 								</div>
 								<div class="des-c">
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">

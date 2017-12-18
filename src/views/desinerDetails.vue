@@ -29,7 +29,7 @@
 	    <div v-if="hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
 	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
 	    </div>
-		<div class="caselist-c" >
+		<div class="caselist-c" id="caselist-c" v-touch:swipeup="disableScroll" v-touch:swipedown="disableScroll">
 		 	<div class="caselist-down-icon"></div>
 		 	<router-link tag="div" class="case-detail-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
@@ -254,7 +254,13 @@
 			},(err)=>{
 				
 			})
-//			document.addEventListener('touchmove', function(e){e.preventDefault()}, false);
+			var self = this;
+			if(navigator.userAgent.toLowerCase().indexOf("android")>-1){
+				document.getElementById('caselist-c').addEventListener('scroll', function(e){
+					e.preventDefault();
+					self.down();
+					}, false);
+			}
 		},
 		created(){
 			
@@ -262,6 +268,9 @@
 		methods:{
 			back:function(){
 				this.$router.back(-1);
+			},
+			disableScroll:function(){
+				return false;
 			},
 			getPlayer:function(player){
 				this.player = player;
