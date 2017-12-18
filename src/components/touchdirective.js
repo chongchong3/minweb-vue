@@ -58,6 +58,9 @@ export default(Vue) => {
             	if(!_isScroll){
             		ev.preventDefault();
             	}
+            	if(_isScroll){
+            		ev.stopPropagation();
+            	}
 //          	ev.preventDefault();
                 clearTimeout(timeOutEvent)
                 timeOutEvent = 0;
