@@ -1,7 +1,7 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
         <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
-        :options="{preload:true,controls: true,muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
+        :options="{preload:true,controls: false,muted: true,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
   :playsinline="true"  >
         	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
         </video-player>
