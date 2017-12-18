@@ -1,6 +1,6 @@
 <template>
   <div class="video-player">
-    <video class="video-js"></video>
+    <video class="video-js" x5-video-player-type="h5" x5-video-player-fullscreen="false"></video>
   </div>
 </template>
 
