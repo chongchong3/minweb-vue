@@ -1,6 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
+			<div isScroll="true" @click="back" class="goback"></div>
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
 		        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
 		        </div>
@@ -53,6 +54,17 @@
    
 </template>
 <style  scoped="scoped">
+	.goback{
+		width:.13rem;
+		height:.21rem;
+		background:url(../../static/images/chevron left.png) ;
+		display: block;
+		background-size: cover;
+		margin-left: 0.08rem ;
+		margin-top:0.16rem;
+		position: absolute;
+		z-index: 1000;
+	}
 	.filter-c{
 		width:100%;
 		height:100%;
@@ -245,6 +257,9 @@
 			
 		},
 		methods:{
+			back:function(){
+				this.$router.back(-1);
+			},
 			getPlayer:function(player){
 				this.player = player;
 			},
