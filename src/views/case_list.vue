@@ -105,9 +105,8 @@ export default {
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
     });
-    document.body.addEventListener("touchmove", function(e) {
-      // console.log(e.touches[0].clientY);
-      if(touchStartY - e.touches[0].clientY > 10) {
+    document.body.addEventListener("touchmove", function(e) { 
+      if(e.touches[0].clientY - touchStartY > 5) {
           _self.scrollTopIcon = true;
       }else{
         _self.scrollTopIcon = false;;
@@ -150,20 +149,21 @@ export default {
             return
           }
           _self.domArry.push(dom.offsetTop);
-          console.log(_self.domArry)
+          // console.log(_self.domArry)
         }
       }, 50)},
       getScrollTop() {     
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         return scrollTop;
       },
+      // 滚动事件动画
       scrollEvent(){
         var _self = this;
         this.imgAnimate.forEach(function(k, i) {
           if (!k.isFirst) {
             return
           }
-          console.log(_self.getScrollTop(),_self.domArry[i]);
+          // console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){  442
           if((_self.getScrollTop() - _self.domArry[i]) > -280){
             k.isShow = true;
@@ -173,13 +173,23 @@ export default {
     },
     // 滚动到顶部
     scrollToTop(){
-      console.log('121');
-      scrolldelay=setTimeout(function(){
-          window.scrollBy(0,0)
-      },1000);
-      if(document.documentElement.scrollTop==0){
-        clearTimeout(scrolldelay);
-      }
+      var obtn = document.getElementById('btn');  //获取回到顶部按钮的ID
+      var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+      var timer = null; //定义一个定时器
+      var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+      //获取滚动条的滚动高度
+      var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
+      timer = setInterval(function(){
+            //获取滚动条的滚动高度
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //用于设置速度差，产生缓动的效果
+            var speed = Math.floor(-osTop / 6);
+            document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+            isTop =true;  //用于阻止滚动事件清除定时器
+            if(osTop == 0){
+                clearInterval(timer);
+            }
+        },60);
     }
   }
 }
@@ -286,18 +296,18 @@ ul, li{
     animation:imgAnimate 1s;
    }
 
-   @keyframes imgAnimate
-   {
-   0% {
-      transform: scale(1.03);
+  @keyframes imgAnimate
+  {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
   }
-  100% {
-      transform: scale(1);
-  }
-   }
 
 
-
+/* 滚动顶部按钮 */
 .scroll-to-top{
   position: fixed;
   bottom:.4rem;
@@ -306,5 +316,6 @@ ul, li{
   border-radius: 50%;
   /* background: #f0f; */
   height: .6rem;
+  z-index: 999;
 }
 </style>

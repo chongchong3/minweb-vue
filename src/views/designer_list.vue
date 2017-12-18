@@ -6,14 +6,18 @@
           <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
                 <div  class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
-                    <img :src="single.head_image_url"  alt="" class="designer-head">
-                    <p class="designer-name">{{single.designer_name}}</p>
-                    <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
-                    <p class="designer-company">{{single.studio}}</p> 
+                    <div class="designer-rgba">
+                        <img :src="single.head_image_url"  alt="" class="designer-head">
+                        <p class="designer-name">{{single.designer_name}}</p>
+                        <p class="designer-detail">{{single.city}}/{{single.decoration_type}}/{{single.service_years}}年</p>
+                        <p class="designer-company">{{single.studio}}</p> 
+                    </div>
+                    
                 </div>  
             </router-link>                      
           </li> 
       </ul>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt=""></div>
       <loading-animation v-if="loading" ></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
       <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
@@ -21,7 +25,7 @@
 </template>
 <script>
 import axios from 'axios';
-import loadingAnimation from '@/components/loadingAnimation';
+import loadingAnimation from '@/components/loadingAnimation'; //数据加载动画
 import noMoreDataPoint from '@/components/noMoreDataPoint'; //数据加载完提示
 import leftNav from "../components/leftNav"; //引用左侧菜单栏
 import headNav from "../components/headNav"; //引用顶部菜单栏
@@ -34,6 +38,7 @@ export default {
             moreData: true,
             dataJson: null,
             loading:false,
+            scrollTopIcon:false,
             addClass:[],
             page_size: 5,
             domArry: [],
@@ -89,6 +94,21 @@ export default {
        
         window.addEventListener('scroll', this.scrollEvent);
     });
+    //下滑出现滚动到顶部
+    var touchStartY=0;
+    var _self = this;
+    document.body.addEventListener("touchstart", function(e) {
+      touchStartY=e.touches[0].clientY; 
+    });
+    document.body.addEventListener("touchmove", function(e) {
+      // console.log(e.touches[0].clientY);
+    //   开始打结束小 为 下拉 
+      if(e.touches[0].clientY - touchStartY > 5) {
+          _self.scrollTopIcon = true;
+      }else{
+        _self.scrollTopIcon = false;;
+      }
+    });
   },
   methods:{
     getMoreData() {
@@ -127,7 +147,7 @@ export default {
             return
             }
             _self.domArry.push(dom.offsetTop);
-            console.log(_self.domArry);
+            // console.log(_self.domArry);
         }
         }, 500)},
       getScrollTop() {     
@@ -140,7 +160,7 @@ export default {
           if (!k.isFirst) {
             return
           }
-          console.log(_self.getScrollTop(),_self.domArry[i]);
+        //   console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){
           if((_self.getScrollTop() - _self.domArry[i]) > -280){
             k.isShow = true;
@@ -157,6 +177,27 @@ export default {
             }
         }       
     },
+    // 滚动到顶部
+    scrollToTop(){
+      var obtn = document.getElementById('btn');  //获取回到顶部按钮的ID
+      var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
+      var timer = null; //定义一个定时器
+      var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+      //获取滚动条的滚动高度
+      var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
+      timer = setInterval(function(){
+            //获取滚动条的滚动高度
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //用于设置速度差，产生缓动的效果
+            var speed = Math.floor(-osTop / 6);
+            document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+            isTop =true;  //用于阻止滚动事件清除定时器
+            if(osTop == 0){
+                clearInterval(timer);
+            }
+        },60);
+     
+    }
   }
 }
 </script>
@@ -186,6 +227,14 @@ ul, li, p{
     width:100%;
     /* height:2.60rem; */
     height:100%;
+    /* background-color: rgba(#000, #000, #000, alpha); */
+}
+.designer-rgba{
+    /* height: 2.6rem; */
+    width:100%;height:100%;position: absolute;top:0;left:0;
+    /* background-image:linear-gradient(bottom, rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); */
+    background-image:linear-gradient(bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,.4) 100%);
+    z-index: 10;
 }
 .designer-head{
     position: relative;
@@ -240,10 +289,26 @@ ul, li, p{
 
    @keyframes imgAnimate
    {
-   from { background-size: 103% 103%;}
-   to { background-size: 100% 100%;}
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+   /* from { background-size: 103% 103%;}
+   to { background-size: 100% 100%;} */
    }
 
+/* 滚动顶部按钮 */
+.scroll-to-top{
+  position: fixed;
+  bottom:.4rem;
+  right: 0.1rem;
+  width: .6rem;
+  border-radius: 50%;
+  height: .6rem;
+  z-index: 999;
+}
 </style>
 
 
