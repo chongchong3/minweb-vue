@@ -325,7 +325,7 @@ export default {
                   _self.styleList+=k.style_name;
                   return
               }
-               _self.styleList+='&nbsp;&nbsp;'+k.style_name
+               _self.styleList+='&nbsp;&nbsp;'+k.style_name;
             });
 
             resolve(response);

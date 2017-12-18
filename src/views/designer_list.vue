@@ -50,6 +50,10 @@ export default {
   },
   created(){
     var _self = this;
+      this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "desinerList" //设置左菜单栏高亮
+    });
     // 首次加载数据
     axios.get('/designer/listDesigners', {
         params: {
