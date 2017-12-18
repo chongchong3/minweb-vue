@@ -364,7 +364,7 @@
 					'width':'1rem',
 					'height':'1rem',
 					'border-radius':'50%',
-					"margin-top":"15%",
+					"margin-top":"11%",
 					"margin-left":($(window).width()-100)/2
 				})
 				
@@ -540,7 +540,7 @@
 					'width':'1rem',
 					'height':'1rem',
 					'border-radius':'50%',
-					"margin-top":"15%",
+					"margin-top":"11%",
 					"margin-left":($(window).width()-100)/2
 				})
 				$(".up-icon").animate({
