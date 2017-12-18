@@ -20,7 +20,7 @@
 
     </div>
 </template>
-<style >
+<style scoped>
 .hasTips {
   height: 100%;
 }
