@@ -105,9 +105,8 @@ export default {
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
     });
-    document.body.addEventListener("touchmove", function(e) {
-      // console.log(e.touches[0].clientY);
-      if(touchStartY - e.touches[0].clientY > 10) {
+    document.body.addEventListener("touchmove", function(e) { 
+      if(e.touches[0].clientY - touchStartY > 5) {
           _self.scrollTopIcon = true;
       }else{
         _self.scrollTopIcon = false;;
@@ -150,7 +149,7 @@ export default {
             return
           }
           _self.domArry.push(dom.offsetTop);
-          console.log(_self.domArry)
+          // console.log(_self.domArry)
         }
       }, 50)},
       getScrollTop() {     
@@ -164,7 +163,7 @@ export default {
           if (!k.isFirst) {
             return
           }
-          console.log(_self.getScrollTop(),_self.domArry[i]);
+          // console.log(_self.getScrollTop(),_self.domArry[i]);
           // if(parseInt(allLi[i].offsetTop)>= parseInt(clientHeight)/2){  442
           if((_self.getScrollTop() - _self.domArry[i]) > -280){
             k.isShow = true;
@@ -297,15 +296,15 @@ ul, li{
     animation:imgAnimate 1s;
    }
 
-   @keyframes imgAnimate
-   {
-   0% {
-      transform: scale(1.05);
+  @keyframes imgAnimate
+  {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
   }
-  100% {
-      transform: scale(1);
-  }
-   }
 
 
 /* 滚动顶部按钮 */
@@ -317,5 +316,6 @@ ul, li{
   border-radius: 50%;
   /* background: #f0f; */
   height: .6rem;
+  z-index: 999;
 }
 </style>
