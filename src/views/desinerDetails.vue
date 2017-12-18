@@ -29,9 +29,9 @@
 	    <div v-if="hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
 	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
 	    </div>
-		<div class="caselist-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down">
+		<div class="caselist-c" >
 		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
+		 	<router-link tag="div" class="case-detail-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -168,6 +168,8 @@
 	}
 	.caselist-c{
 		width:100%;
+		height:100%;
+		overflow: scroll;
 		display: none;
 	}
 	.case-detail-c{
@@ -299,7 +301,7 @@
 				}).show()
 				this.step = 2;
 				setTimeout(function(){
-					$(".desinerDetails").css("overflow","visible");
+					$(".caselist-c").css("overflow","scroll");
 				},100)
 			},
 			animateDownwithoutVideo:function(){
@@ -386,19 +388,22 @@
 						this.hideVideo(1);
 						this.animateUp();
 						this.step = 1;
-					}else if(this.step == 3 && $('body').scrollTop() <50){
+					}else if(this.step == 3 && $('.caselist-c').scrollTop() ==0){
+//						alert($('.caselist-c').scrollTop())
+//						alert($($('.case-detail-c')[0]).scrollTop())
 						this.showVideo();
 						this.hideList();
-						$(".desinerDetails").css("overflow","hidden");
+//						$(".caselist-c").css("overflow","hidden");
 						this.step =2;
 					}
 				}else{
 					if(this.step == 1){
 						this.animateDownwithoutVideo();
-					}else if(this.step == 2 && $('body').scrollTop() <100){//&& $('body').scrollTop() == 0
+					}else if(this.step == 2 && $('.caselist-c').scrollTop() ==0){//&& $('body').scrollTop() == 0
+					
 	//					alert($('body').scrollTop())
 						this.hideListwithoutVideo();
-						$(".desinerDetails").css("overflow","hidden");
+//						$(".caselist-c").css("overflow","hidden");
 					}
 				}
 			},
@@ -470,9 +475,9 @@
 				$(".caselist-c").animate({
 					'bottom':"0",
 				}).show()
-				setTimeout(function(){
-					$(".desinerDetails").css("overflow","visible");
-				},100)
+//				setTimeout(function(){
+//					$(".caselist-c").css("overflow","scroll");
+//				},100)
 			},
 			animateDown:function(){
 				$(".por-des-c").animate({
