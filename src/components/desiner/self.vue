@@ -146,9 +146,9 @@ export default {
       this.$emit("transPlayer", this.player);
     },
     videoPlay: function(event) {
-      $(".slef-background").hide();
+      $(".slef-background").addClass("hide");
       $("div[id*='vjs_video_']").width("100%");
-      $(".video-player-box").show();
+      $(".video-player-box").removeClass('hide');
       //    this.player.show();
       this.player.play();
     },
@@ -158,8 +158,8 @@ export default {
     },
 
     videoHide() {
-      $(".slef-background").show();
-      $(".video-player-box").hide();
+      $(".slef-background").removeClass('hide');
+      $(".video-player-box").addClass("hide");
       this.player.pause();
     }
   }
