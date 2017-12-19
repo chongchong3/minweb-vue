@@ -321,7 +321,7 @@ ul, li, p{
 /* 滚动顶部按钮 */
 .scroll-to-top{
   position: fixed;
-  bottom:.2rem;
+  bottom:0.16rem;
   right: 0.16rem;
   width: .4rem;
   border-radius: 50%;
@@ -329,6 +329,7 @@ ul, li, p{
   z-index: 999;
 }
 .icon-img{
+    box-shadow:0 2 3px rgba(0,0,0,.3);
     width:100%;
     height: 100%;
 }
