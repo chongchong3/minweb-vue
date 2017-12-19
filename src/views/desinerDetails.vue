@@ -466,7 +466,7 @@
 				$(".video-c").animate({
 					'bottom':"0",
 				})
-				// $(".vjs-tech")[0].play();
+//				$(".vjs-tech")[0].play();
 //				setTimeout(function(){
 //					$(".desinerDetails").css("overflow","visible");
 //				},100)
@@ -494,7 +494,7 @@
 						'bottom':bottom
 					})
 				}
-				// $(".vjs-tech")[0].pause();
+//				$(".vjs-tech")[0].pause();
 				
 				
 			},

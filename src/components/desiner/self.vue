@@ -1,6 +1,6 @@
 <template>
     <div id="self-wrap" class="slef-wrap">
-        <video-player  @ended="onPlayerEnded($event)" class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
+        <video-player @pause="onPlayerPause($event)" class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
         :options="{preload:true,controls: false,height:''+ht+'',sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
   :playsinline="true"  >
         	<!--@play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"-->
@@ -21,9 +21,6 @@
     </div>
 </template>
 <style scoped>
-.hide {
-  display:none;
-}
 .video-js .vjs-tech {
     height:auto
 }
@@ -141,23 +138,19 @@ export default {
 
   computed: {
     player() {
-      
       return this.$refs.videoPlayer.player;
     }
   },
-  created(){
-
-  },
   methods: {
     setPlayer: function() {
-      this.videoPlay();
       this.$emit("transPlayer", this.player);
     },
     videoPlay: function(event) {
       $(".slef-background").addClass("hide");
       $("div[id*='vjs_video_']").width("100%");
-      $(".video-player-box").removeClass('hide');
-    
+      $(".video-player-box").show();
+      //    this.player.show();
+      this.player.play();
     },
 
     onPlayerEnded(playerCurrentState) {
@@ -165,7 +158,7 @@ export default {
     },
 
     videoHide() {
-      $(".slef-background").removeClass('hide');
+      $(".slef-background").removeClass("hide");
       $(".video-player-box").addClass("hide");
       this.player.pause();
     }
