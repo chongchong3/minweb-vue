@@ -161,7 +161,7 @@ export default {
     },
 
     videoHide() {
-      this.player.pause();
+      this.player.hide();
       $(".slef-background").show()
       $(".video-player-box").hide();
       
