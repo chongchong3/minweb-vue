@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-			<div isScroll="true" @click="back" class="goback"></div>
+			<!--<div isScroll="true" @click="back" class="goback"></div>-->
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
 	        	
 		        <!--<div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
@@ -119,7 +119,7 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.4rem;
+		bottom:.3rem;
 		left:0px;
 		z-index: 11;
 	}
@@ -293,9 +293,9 @@
 		},
 		methods:{
 			
-			back:function(){
-				this.$router.back(-1);
-			},
+//			back:function(){
+//				this.$router.back(-1);
+//			},
 			disableScroll:function(){
 				return false;
 			},
@@ -448,7 +448,7 @@
 								
 							}
 							
-						},10)
+						},30)
 		            	
 
 						
@@ -456,11 +456,26 @@
 				}else{
 					if(this.step == 1){
 						this.animateDownwithoutVideo();
-					}else if(this.step == 2 && $('.caselist-c').scrollTop() <=0){//&& $('body').scrollTop() == 0
-					
-	//					alert($('body').scrollTop())
-						this.hideListwithoutVideo();
-//						$(".caselist-c").css("overflow","hidden");
+					}else if(this.step == 2){//&& $('body').scrollTop() == 0
+						var self= this;
+						var caselist = document.getElementById("caselist-c");
+						
+						var scrollTopStart = caselist.scrollTop;
+						var scrollTopEnd = "";
+						var timer = setInterval(function(){
+							scrollTopEnd = caselist.scrollTop;
+							if(scrollTopEnd<scrollTopStart){
+								scrollTopStart = scrollTopEnd;
+							}else{
+								clearInterval(timer);
+								if(scrollTopEnd<=0){
+									this.hideListwithoutVideo();
+								}
+								
+							}
+							
+						},10)
+						
 					}
 				}
 			},
@@ -485,7 +500,9 @@
 				$(".video-c").animate({
 					'bottom':"0",
 				})
-//				$(".vjs-tech")[0].play();
+				if($(".vjs-tech")[0].paused){
+					$(".vjs-tech")[0].play();
+				}
 //				setTimeout(function(){
 //					$(".desinerDetails").css("overflow","visible");
 //				},100)
@@ -513,7 +530,7 @@
 						'bottom':bottom
 					})
 				}
-//				$(".vjs-tech")[0].pause();
+				$(".vjs-tech")[0].pause();
 				
 				
 			},

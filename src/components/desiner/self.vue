@@ -161,9 +161,10 @@ export default {
     },
 
     videoHide() {
+      this.player.hide();
       $(".slef-background").show()
       $(".video-player-box").hide();
-      this.player.pause();
+      
     }
   }
 };
