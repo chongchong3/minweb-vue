@@ -48,7 +48,7 @@
 	    </div>
 		<div class="caselist-c" id="caselist-c" v-touch:swipeup="disableScroll" v-touch:swipedown="disableScroll">
 		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c" isScroll="true"  v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
+		 	<router-link tag="div" class="case-detail-c"  isScroll="true"  v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -275,20 +275,24 @@
 			},(err)=>{
 				
 			})
-			var self = this;
-			if(this.isAndroid){
-				document.getElementById('caselist-c').addEventListener('scroll', function(e){
-					e.preventDefault();
-						self.triggerFlag = false;
-						self.down();
-						self.triggerFlag = true;
-					}, false);
-			}
+//			var self = this;
+//			if(this.isAndroid){
+//				document.getElementById('caselist-c').addEventListener('scroll', function(e){
+//					e.preventDefault();
+//						self.triggerFlag = false;
+//						self.down();
+//						self.triggerFlag = true;
+//					}, false);
+//			}
 		},
 		created(){
-			
+			window.addEventListener("scroll",function(){
+//				alert()
+//				alert(1111)
+			})
 		},
 		methods:{
+			
 			back:function(){
 				this.$router.back(-1);
 			},
@@ -413,9 +417,9 @@
 					}
 				}
 			},
-			down:function(){
-				
+			down:function(val){
 				if(this.hasVideo){
+//					alert($('.caselist-c').scrollTop())
 					if(this.step == 1){
 						this.animateDown();
 						this.step = 0;
@@ -423,16 +427,31 @@
 						this.hideVideo(1);
 						this.animateUp();
 						this.step = 1;
-					}else if(this.step == 3 && $('.caselist-c').scrollTop() <=0){
-//						alert($('.caselist-c').scrollTop())
-//						alert($($('.case-detail-c')[0]).scrollTop())
-						if(this.isAndroid &&this.triggerFlag){
-							return;
-						}
-						this.showVideo();
-						this.hideList();
-//						$(".caselist-c").css("overflow","hidden");
-						this.step =2;
+					}else if(this.step == 3 ){
+						var self= this;
+						var caselist = document.getElementById("caselist-c");
+						
+						var scrollTopStart = caselist.scrollTop;
+						var scrollTopEnd = "";
+						var timer = setInterval(function(){
+							scrollTopEnd = caselist.scrollTop;
+							if(scrollTopEnd<scrollTopStart){
+								scrollTopStart = scrollTopEnd;
+							}else{
+								clearInterval(timer);
+								if(scrollTopEnd<=0){
+									self.showVideo();
+									self.hideList();
+			//						$(".caselist-c").css("overflow","hidden");
+									self.step =2;
+								}
+								
+							}
+							
+						},10)
+		            	
+
+						
 					}
 				}else{
 					if(this.step == 1){
