@@ -138,8 +138,14 @@ export default {
 
   computed: {
     player() {
+        $(".slef-background").addClass("hide");
+      $("div[id*='vjs_video_']").width("100%");
+      $(".video-player-box").removeClass('hide');
       return this.$refs.videoPlayer.player;
     }
+  },
+  created(){
+
   },
   methods: {
     setPlayer: function() {
