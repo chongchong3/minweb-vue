@@ -235,8 +235,9 @@ ul, li, p{
 }
 .designer-rgba{
     /* height: 2.6rem; */
-    width:100%;height:100%;position: absolute;top:0;left:0;
-    /* background-image:linear-gradient(bottom, rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); */
+    width:100%;height:100%;
+    /* position: absolute; */
+    /* top:0;left:0; */
     background-image:linear-gradient(bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,.4) 100%);
     z-index: 10;
 }
