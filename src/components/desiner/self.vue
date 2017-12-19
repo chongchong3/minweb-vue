@@ -154,7 +154,7 @@ export default {
     },
 
     onPlayerEnded(playerCurrentState) {
-      this.videoHide();
+      this.videoPlay();
     },
 
     videoHide() {
