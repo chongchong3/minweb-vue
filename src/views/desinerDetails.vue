@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-			<div isScroll="true" @click="back" class="goback"></div>
+			<!--<div isScroll="true" @click="back" class="goback"></div>-->
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
 	        	
 		        <!--<div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
@@ -293,9 +293,9 @@
 		},
 		methods:{
 			
-			back:function(){
-				this.$router.back(-1);
-			},
+//			back:function(){
+//				this.$router.back(-1);
+//			},
 			disableScroll:function(){
 				return false;
 			},

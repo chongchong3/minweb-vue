@@ -4,7 +4,7 @@
 		<head-nav></head-nav>
 		<banner-content></banner-content>
 		<slogan></slogan>
-		<case-banner v-show="showFlag" v-if="caseBannerLoadingFlag"></case-banner>
+		<case-banner  v-if="caseBannerLoadingFlag"></case-banner>
 		<desiner-banner v-if="designerBannerLoadingFlag" ></desiner-banner>
 		<div class="index-bottom">
 			<div class="no-more">
