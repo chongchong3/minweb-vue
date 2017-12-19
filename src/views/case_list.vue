@@ -106,7 +106,7 @@ export default {
       touchStartY=e.touches[0].clientY; 
     });
     document.body.addEventListener("touchmove", function(e) { 
-      if(e.touches[0].clientY - touchStartY > 5) {
+      if(e.touches[0].clientY - touchStartY > 2) {
           _self.scrollTopIcon = true;
       }else{
         _self.scrollTopIcon = false;;
