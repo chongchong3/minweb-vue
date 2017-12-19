@@ -107,7 +107,7 @@ export default {
     document.body.addEventListener("touchmove", function(e) {
       // console.log(e.touches[0].clientY);
     //   开始打结束小 为 下拉 
-      if(e.touches[0].clientY - touchStartY > 5) {
+      if(e.touches[0].clientY - touchStartY > 2) {
           _self.scrollTopIcon = true;
       }else{
         _self.scrollTopIcon = false;;

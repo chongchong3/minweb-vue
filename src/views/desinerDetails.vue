@@ -3,7 +3,8 @@
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
 			<div isScroll="true" @click="back" class="goback"></div>
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
-		        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
+	        	
+		        <!--<div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
 		        </div>
 		        
 		        <div class="designer-info-c">
@@ -12,13 +13,29 @@
 		        		报价：{{result.designer_price}}-{{result.designer_high_price}}元/平米
 		        	</span></p>
 		        		
+		        </div>-->
+		         
+		        <div style="position: relative;width: 100%;height:100%">
+			        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
+			        </div>
+			        
+			        <div class="designer-info-c">
+			        	<p class="name">{{result.designer_name}}<br>
+			        	<span class="price">
+			        		报价：{{result.designer_price}}-{{result.designer_high_price}}元/平米
+			        	</span></p>
+			        		
+			        </div>
 		        </div>
+		        
+		        
+		        
 	        </div>
 	        <div class="up-icon"></div>
 	        <div class="detail-describe-c">
 	        	<div class="detail-describe-sub-c">
-	        		<p class="title">奖项</p>  
-	        		<p class="content">{{result.awards}}</p>
+	        		<p class="title" v-if="!result.awards == ''">奖项</p>  
+	        		<p class="content" v-if="!result.awards == ''">{{result.awards}}</p>
 	        		<p class="title">设计理念</p>
 	        		<p class="content">{{result.plantform_descript}}</p>
 	        		<p class="title">个人简介</p>  
@@ -31,7 +48,7 @@
 	    </div>
 		<div class="caselist-c" id="caselist-c" v-touch:swipeup="disableScroll" v-touch:swipedown="disableScroll">
 		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c" isScroll="true" v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
+		 	<router-link tag="div" class="case-detail-c" isScroll="true"  v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -93,7 +110,7 @@
 		height:100%;
 		margin:0px auto;
 		position: absolute;
-		background-size: 100%;
+		background-size: cover;
 		background-repeat: no-repeat;
 	}
 	.portrait-c img{
@@ -102,7 +119,7 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.4rem;;
+		bottom:.4rem;
 		left:0px;
 		z-index: 11;
 	}
@@ -112,7 +129,7 @@
 		padding:0;
 		margin:0px;
 		padding-left:3.2%;
-		display: inline-block;
+		/*display: inline-block;*/
 	}
 	.text-center{
 		text-align: center;
@@ -125,6 +142,8 @@
 	.designer-info-c .price{
 		font-size:.12rem;
 		line-height:.17rem;
+		word-break: keep-all;
+		white-space: nowrap;
 	}
 	
 	.up-icon{
@@ -240,7 +259,9 @@
 				result:{},
 				ht:$(window).height(),
 				player:null,
-				hasVideo:true
+				hasVideo:true,
+				triggerFlag:true,
+				isAndroid:navigator.userAgent.toLowerCase().indexOf("android")>-1
 			}
 		},
 		mounted(){
@@ -255,10 +276,12 @@
 				
 			})
 			var self = this;
-			if(navigator.userAgent.toLowerCase().indexOf("android")>-1){
+			if(this.isAndroid){
 				document.getElementById('caselist-c').addEventListener('scroll', function(e){
 					e.preventDefault();
-					self.down();
+						self.triggerFlag = false;
+						self.down();
+						self.triggerFlag = true;
 					}, false);
 			}
 		},
@@ -345,7 +368,7 @@
 					'width':'1rem',
 					'height':'1rem',
 					'border-radius':'50%',
-					"margin-top":"15%",
+					"margin-top":"11%",
 					"margin-left":($(window).width()-100)/2
 				})
 				
@@ -354,8 +377,9 @@
 					'font-size':'.16rem'
 				})
 				$(".designer-info-c .name").animate({
-					"padding-left":($(window).width()-wth)/2,
-					"text-align":"center"
+//					"padding-left":($(window).width()-wth)/2,
+					"text-align":"center",
+					"paddingLeft":0
 				}).css("textAlign","center")
 				
 				$(".detail-describe-c").animate({
@@ -390,6 +414,7 @@
 				}
 			},
 			down:function(){
+				
 				if(this.hasVideo){
 					if(this.step == 1){
 						this.animateDown();
@@ -401,6 +426,9 @@
 					}else if(this.step == 3 && $('.caselist-c').scrollTop() <=0){
 //						alert($('.caselist-c').scrollTop())
 //						alert($($('.case-detail-c')[0]).scrollTop())
+						if(this.isAndroid &&this.triggerFlag){
+							return;
+						}
 						this.showVideo();
 						this.hideList();
 //						$(".caselist-c").css("overflow","hidden");
@@ -520,21 +548,21 @@
 					'width':'1rem',
 					'height':'1rem',
 					'border-radius':'50%',
-					"margin-top":"15%",
+					"margin-top":"11%",
 					"margin-left":($(window).width()-100)/2
 				})
 				$(".up-icon").animate({
 					'bottom':"0",
 				})
-				var wth = $($(".designer-info-c p")[0]).width();
+				
 				$(".price").animate({
 					'font-size':'.16rem'
 				})
-				$(".designer-info-c .name").animate({
-					"padding-left":($(window).width()-wth)/2,
-					"text-align":"center"
-				}).css("textAlign","center")
 				
+				$(".designer-info-c .name").animate({
+					"text-align":"center",
+					"paddingLeft":0
+				}).css("textAlign","center")
 				$(".detail-describe-c").animate({
 					"bottom":"0",
 					"height":"60%"
