@@ -494,7 +494,7 @@
 						'bottom':bottom
 					})
 				}
-				$(".vjs-tech")[0].pause();
+				// $(".vjs-tech")[0].pause();
 				
 				
 			},
