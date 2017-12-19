@@ -21,6 +21,9 @@
     </div>
 </template>
 <style scoped>
+.hide {
+  display:none;
+}
 .video-js .vjs-tech {
     height:auto
 }
@@ -138,9 +141,7 @@ export default {
 
   computed: {
     player() {
-        $(".slef-background").addClass("hide");
-      $("div[id*='vjs_video_']").width("100%");
-      $(".video-player-box").removeClass('hide');
+      
       return this.$refs.videoPlayer.player;
     }
   },
@@ -149,14 +150,14 @@ export default {
   },
   methods: {
     setPlayer: function() {
+      this.videoPlay();
       this.$emit("transPlayer", this.player);
     },
     videoPlay: function(event) {
       $(".slef-background").addClass("hide");
       $("div[id*='vjs_video_']").width("100%");
       $(".video-player-box").removeClass('hide');
-      //    this.player.show();
-      this.player.play();
+    
     },
 
     onPlayerEnded(playerCurrentState) {
