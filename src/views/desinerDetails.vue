@@ -1,37 +1,17 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
-		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-			<!--<div isScroll="true" @click="back" class="goback"></div>-->
-	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
-	        	
-		        <!--<div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
-		        </div>
-		        
+		<div class="page-swiper ">
+			<div  @click="back" class="goback"></div>
+	        <div class="por-des-c"  >
+	        	<img :src="result.full_body_shot_url" />
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
 		        	<span class="price">
 		        		报价：{{result.designer_price}}-{{result.designer_high_price}}元/平米
 		        	</span></p>
 		        		
-		        </div>-->
-		         
-		        <div style="position: relative;width: 100%;height:100%">
-			        <div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
-			        </div>
-			        
-			        <div class="designer-info-c">
-			        	<p class="name">{{result.designer_name}}<br>
-			        	<span class="price">
-			        		报价：{{result.designer_price}}-{{result.designer_high_price}}元/平米
-			        	</span></p>
-			        		
-			        </div>
 		        </div>
-		        
-		        
-		        
 	        </div>
-	        <div class="up-icon"></div>
 	        <div class="detail-describe-c">
 	        	<div class="detail-describe-sub-c">
 	        		<p class="title" v-if="!result.awards == ''">奖项</p>  
@@ -43,12 +23,13 @@
 	        	</div>
 	        </div>
 	    </div>
-	    <div v-if="hasVideo" class="video-c" @transPlayer="getPlayer"  v-touch:swipeup="up" v-touch:swipedown="down">
+	    <div v-if="hasVideo" class="video-c" >
+	    	<h2 class="designer-title">设计师想对你说</h2>
 	    	<video-comp :selfMes='result' :ht="ht"></video-comp>
 	    </div>
-		<div class="caselist-c" id="caselist-c" v-touch:swipeup="disableScroll" v-touch:swipedown="disableScroll">
-		 	<div class="caselist-down-icon"></div>
-		 	<router-link tag="div" class="case-detail-c"  isScroll="true"  v-touch:swipeup="up" v-touch:swipedown="down" v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
+		<div class="caselist-c" id="caselist-c">
+			<h2 class="designer-title">设计案例</h2>
+		 	<router-link tag="div" class="case-detail-c"   v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?caseId='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
@@ -57,19 +38,52 @@
         		</div>
 		 	</router-link>
         </div>
-        	<!--<div class="case-detail-c" v-for="item in result.designer_case_list"> 
-        	</div>-->
-        	<!--<div class="case-detail-c">
-        		<img src="../../static/images/demo-bg.png" />
-        		<div class="mask"></div>
-        		<div class="des">
-        			<p class="case-name">龙山湖</p>
-        			<p class="case-square-style">200平米 / 现代</p>
-        		</div>
-        	</div>-->
+        <appoinent-desiner :desinerId="desinerId"></appoinent-desiner>
 	</div>
    
 </template>
+
+<script>
+	import {getDesinerDetails} from "@/api/desinerDetails";
+	import videoComp from "../components/desiner/video";
+	import appoinentDesiner from "@/components/appoinentDesiner";
+	export default{
+		data(){
+			return{
+				result:null,
+				ht:document.body.clientHeight,
+				hasVideo:true,
+				desinerId:this.$route.params.desiner_id
+			}
+		},
+		 components: {
+		    videoComp,
+		    appoinentDesiner
+		 },
+		mounted(){
+			this.getDesigner();
+		},
+		created(){
+			
+		},
+		methods:{
+			getDesigner:function(){
+				getDesinerDetails({designer_uid:this.$route.params.desiner_id})
+				.then((res)=>{
+					if(res.status == 200){
+						this.result = res.body.data;
+						this.hasVideo = !this.result.self_introduction_video_url == ""  ;
+					}
+				},(err)=>{
+					
+				})
+			},
+			back:function(){
+				this.$router.back(-1);
+			}
+		}
+	}
+</script>
 <style  scoped="scoped">
 	.goback{
 		width:.13rem;
@@ -82,46 +96,25 @@
 		position: absolute;
 		z-index: 1000;
 	}
-	.filter-c{
-		width:100%;
-		height:100%;
-		position: absolute;
-		background: url(../../static/images/filter.png) repeat;
-		/*z-index: 10;*/
-	}
+	
 	.por-des-c{
 		width:100%;
-		height:100%;
-		position: absolute;
-		z-index: 999;
-		background-size: 100%;
-		background-repeat: no-repeat;
+		position: relative;
 		/*background-color: #000;*/
 		/*filter: blur(1px);*/
 	}
+	.por-des-c img{
+		width:100%;
+	}
 	.desinerDetails{
 		width:100%;
-		height:100%;
 		position: relative;
-		overflow: hidden;
-	}
-	.portrait-c{
-		width:100%;
-		height:100%;
-		margin:0px auto;
-		position: absolute;
-		background-size: cover;
-		background-repeat: no-repeat;
-	}
-	.portrait-c img{
-		width:100%;
 	}
 	.designer-info-c{
 		width:100%;
 		position:absolute;
 		bottom:.3rem;
 		left:0px;
-		z-index: 11;
 	}
 	.designer-info-c p{
 		color:#fff;
@@ -146,31 +139,10 @@
 		white-space: nowrap;
 	}
 	
-	.up-icon{
-		position:absolute;
-		bottom:0px;
-		left:0px;
-		height: .4rem;
-		width:100%;
-		background:url(../../static/images/uparrow.png) center no-repeat;
-		z-index: 999;
-	}
-	.caselist-down-icon{
-		position:absolute;
-		top:0px;
-		left:0px;
-		height: .28rem;
-		width:100%;
-		background:url(../../static/images/dowarrow.png) center no-repeat;
-		z-index: 10;
-	}
+	
 	.detail-describe-c{
 		background:#fff;
 		width:100%;
-		position:absolute;
-		bottom:-100%;
-		left:0px;
-		z-index: 998;
 	}
 	.detail-describe-sub-c{
 		margin:0 4% .4rem;
@@ -187,16 +159,14 @@
 	}
 	.caselist-c{
 		width:100%;
-		height:100%;
-		overflow: scroll;
-		overflow-x: hidden;
-		display: none;
+		border-top:2px solid #c9c9c9;
 	}
 	.case-detail-c{
 		position: relative;
 		height:2.5rem;
 		width:100%;
 		margin-bottom: .1rem;
+		overflow: hidden;
 	}
 	.case-detail-c img{
 		height: 100%;
@@ -234,373 +204,16 @@
 		line-height: .17rem;
 	}
 	.video-c{
+		border-top:2px solid #c9c9c9;
 		width:100%;
-		height:100%;
-		z-index: 997;
-		position: absolute;
-		bottom:-100%;
+		padding-bottom:.3rem;
+	}
+	.designer-title{
+		font-size:.18rem;
+		line-height: .25rem;
+		margin-top: .22rem;
+		margin-bottom: .15rem;
+		margin-left: .15rem;
+		color:#000
 	}
 </style>
-
-<script>
-	import Vue from "vue";
-	import touchdirective from "../components/touchdirective";
-	import $ from 'jquery';
-	import {getDesinerDetails} from "@/api/desinerDetails";
-	import videoComp from "../components/desiner/video";
-	touchdirective(Vue);
-	export default{
-		 components: {
-		    videoComp
-		 },
-		data(){
-			return{
-				step:0,
-				result:null,
-				ht:$(window).height(),
-				player:null,
-				hasVideo:true,
-				triggerFlag:true,
-				isAndroid:navigator.userAgent.toLowerCase().indexOf("android")>-1
-			}
-		},
-		mounted(){
-			getDesinerDetails({designer_uid:this.$route.params.desiner_id})
-			.then((res)=>{
-				if(res.status == 200){
-					this.result = res.body.data;
-					this.hasVideo = !this.result.self_introduction_video_url == ""  ;
-				}
-			},(err)=>{
-				
-			})
-			
-//			var self = this;
-//			if(this.isAndroid){
-//				document.getElementById('caselist-c').addEventListener('scroll', function(e){
-//					e.preventDefault();
-//						self.triggerFlag = false;
-//						self.down();
-//						self.triggerFlag = true;
-//					}, false);
-//			}
-		},
-		created(){
-			
-		},
-		methods:{
-			
-//			back:function(){
-//				this.$router.back(-1);
-//			},
-			disableScroll:function(){
-				return false;
-			},
-			getPlayer:function(player){
-				this.player = player;
-			},
-			getScroll:function(){
-				var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
-				var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
-				var scrollHeight = document.documentElement.scrollTop === 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
-				return (scrollTop + clientHeight) >= (scrollHeight)
-			},
-			hideListwithoutVideo:function(){
-				$(".por-des-c").animate({
-					'top':"0",
-				})
-				$(".detail-describe-c").animate({
-					'bottom':"0"
-				})
-				$(".up-icon").animate({
-					'bottom':"0",
-				})
-				$(".caselist-c").animate({
-					'bottom':"-100%",
-				}).hide();
-				this.step = 1;
-			},
-			showListwithoutVideo:function(){
-				$(".por-des-c").animate({
-					'top':"-100%",
-				})
-				$(".detail-describe-c").animate({
-					'bottom':"100%",
-				})
-				$(".up-icon").animate({
-					'bottom':"100%",
-				})
-				$(".caselist-c").animate({
-					'bottom':"0",
-				}).show()
-				this.step = 2;
-				setTimeout(function(){
-					$(".caselist-c").css("overflow","scroll");
-				},100)
-			},
-			animateDownwithoutVideo:function(){
-				$(".por-des-c").animate({
-					'height':"100%",
-					"padding-top":"0%"
-				})
-				$("#portrait").animate({
-					'width':'100%',
-					'height':'100%',
-					'border-radius':'0',
-					"margin-top":"0",
-					"margin-left":"0"
-				})
-				$(".designer-info-c p").animate({
-					"padding-left":"3.2%"
-				}).css("textAlign","left")
-				$(".price").animate({
-					'font-size':'.12rem'
-				})
-				$(".detail-describe-c").animate({
-					"bottom":"-100%"
-				})
-				this.step = 0;
-			},
-			animateUpwithoutVideo:function(){
-				$(".por-des-c").animate({
-					'height':"40%",
-				})
-				$("#portrait").animate({
-					'width':'1rem',
-					'height':'1rem',
-					'border-radius':'50%',
-					"margin-top":"11%",
-					"margin-left":($(window).width()-100)/2
-				})
-				
-				var wth = $($(".designer-info-c p")[0]).width();
-				$(".price").animate({
-					'font-size':'.16rem'
-				})
-				$(".designer-info-c .name").animate({
-//					"padding-left":($(window).width()-wth)/2,
-					"text-align":"center",
-					"paddingLeft":0
-				}).css("textAlign","center")
-				
-				$(".detail-describe-c").animate({
-					"bottom":"0",
-					"height":"60%"
-				})
-				this.step = 1;
-			},
-			
-			
-			up:function(){
-				if(this.hasVideo){
-					
-					//step 分四个状态，初始状态为0，当手指在屏幕上上划时，由0变为1，转变为圆形头像图界面，再上划时，1变为2，动画至视频播放，2变为3，则是显示案例列表
-					if(this.step == 0){
-						this.animateUp();
-						this.step = 1;
-					}else if(this.step == 1){
-						this.showVideo();
-						this.step = 2;
-					}else if(this.step ==2){
-						this.hideVideo();
-						this.showList();
-						this.step = 3;
-					}
-				}else{
-					if(this.step == 0){
-						this.animateUpwithoutVideo();
-					}else if(this.step == 1){
-						this.showListwithoutVideo();
-					}
-				}
-			},
-			down:function(val){
-				if(this.hasVideo){
-//					alert($('.caselist-c').scrollTop())
-					if(this.step == 1){
-						this.animateDown();
-						this.step = 0;
-					}else if(this.step == 2){//&& $('body').scrollTop() == 0
-						this.hideVideo(1);
-						this.animateUp();
-						this.step = 1;
-					}else if(this.step == 3 ){
-						var self= this;
-						var caselist = document.getElementById("caselist-c");
-						
-						var scrollTopStart = caselist.scrollTop;
-						var scrollTopEnd = "";
-						var timer = setInterval(function(){
-							scrollTopEnd = caselist.scrollTop;
-							if(scrollTopEnd<scrollTopStart){
-								scrollTopStart = scrollTopEnd;
-							}else{
-								clearInterval(timer);
-								if(scrollTopEnd<=0){
-									self.showVideo();
-									self.hideList();
-			//						$(".caselist-c").css("overflow","hidden");
-									self.step =2;
-								}
-								
-							}
-							
-						},30)
-		            	
-
-						
-					}
-				}else{
-					if(this.step == 1){
-						this.animateDownwithoutVideo();
-					}else if(this.step == 2){//&& $('body').scrollTop() == 0
-						var self= this;
-						var caselist = document.getElementById("caselist-c");
-						
-						var scrollTopStart = caselist.scrollTop;
-						var scrollTopEnd = "";
-						var timer = setInterval(function(){
-							scrollTopEnd = caselist.scrollTop;
-							if(scrollTopEnd<scrollTopStart){
-								scrollTopStart = scrollTopEnd;
-							}else{
-								clearInterval(timer);
-								if(scrollTopEnd<=0){
-									self.hideListwithoutVideo();
-								}
-								
-							}
-							
-						},10)
-						
-					}
-				}
-			},
-			showVideo:function(){
-				if(this.step == 1){
-					$(".por-des-c").animate({
-						'top':"-100%",
-					})
-					$(".detail-describe-c").animate({
-						'bottom':"100%",
-					})
-					$(".up-icon").animate({
-						'bottom':"100%",
-					})
-
-				}else if(this.step == 3){
-					$(".caselist-c").animate({
-						'bottom':"-100%",
-					}).hide();
-					
-				}
-				$(".video-c").animate({
-					'bottom':"0",
-				})
-				if($(".vjs-tech")[0].paused){
-					$(".vjs-tech")[0].play();
-				}
-//				setTimeout(function(){
-//					$(".desinerDetails").css("overflow","visible");
-//				},100)
-			},
-			hideVideo:function(flag){
-				if(this.step == 1){
-					$(".por-des-c").animate({
-					'top':"0",
-					})
-					$(".detail-describe-c").animate({
-						'bottom':"0"
-					})
-					$(".up-icon").animate({
-						'bottom':"0",
-					})
-					$(".video-c").animate({
-						'bottom':"-100%",
-					})
-				}else if(this.step == 2){
-					var bottom ="100%";
-					if(flag){
-						bottom ="-100%";
-					}
-					$(".video-c").animate({
-						'bottom':bottom
-					})
-				}
-				$(".vjs-tech")[0].pause();
-				
-				
-			},
-			hideList:function(){
-				$(".vide-c").animate({
-					'bottom':"0",
-				})
-				$(".caselist-c").animate({
-					'bottom':"-100%",
-				}).hide();
-			},
-			showList:function(){
-				$(".vide-c").animate({
-					'bottom':"100%",
-				})
-				$(".caselist-c").animate({
-					'bottom':"0",
-				}).show()
-//				setTimeout(function(){
-//					$(".caselist-c").css("overflow","scroll");
-//				},100)
-			},
-			animateDown:function(){
-				$(".por-des-c").animate({
-					'height':"100%",
-					"padding-top":"0%"
-				})
-				$("#portrait").animate({
-					'width':'100%',
-					'height':'100%',
-					'border-radius':'0',
-					"margin-top":"0",
-					"margin-left":"0"
-				})
-				$(".designer-info-c p").animate({
-					"padding-left":"3.2%"
-				}).css("textAlign","left")
-				$(".price").animate({
-					'font-size':'.12rem'
-				})
-				$(".detail-describe-c").animate({
-					"bottom":"-100%"
-				})
-			},
-			animateUp:function(){
-				$(".por-des-c").animate({
-					'height':"40%",
-					"top":"0"
-				})
-				$("#portrait").animate({
-					'width':'1rem',
-					'height':'1rem',
-					'border-radius':'50%',
-					"margin-top":"11%",
-					"margin-left":($(window).width()-100)/2
-				})
-				$(".up-icon").animate({
-					'bottom':"0",
-				})
-				
-				$(".price").animate({
-					'font-size':'.16rem'
-				})
-				
-				$(".designer-info-c .name").animate({
-					"text-align":"center",
-					"paddingLeft":0
-				}).css("textAlign","center")
-				$(".detail-describe-c").animate({
-					"bottom":"0",
-					"height":"60%"
-				})
-			}
-		}
-	}
-</script>
