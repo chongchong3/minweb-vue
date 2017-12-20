@@ -5,83 +5,113 @@
 				关于设计IN
 			</router-link>
 		</div>
-		<div class="charactic-c">
-			<div class="strict-c">
-				<div class="for-bg strict-bg"></div>
-				严选设计师
+		<div class="special">
+			<div class="section">
+				<div class="aside">
+					<img src="https://img.wesetup.cn/yanxuan.png" class="icon">
+				</div>
+				<div class="cont">
+						<div class="tit">
+							<span class="impt">严</span>
+							<span class="memo">选设计专家</span>
+						</div>
+						<div class="brief">业内最严苛的入驻标准，打造设计服务标杆</div>
+				</div>
 			</div>
-			<div class="listen-service-c">
-				<div class="for-bg listen-bg"></div>
-				设计监管服务
+			<div class="section">
+				<div class="aside">
+					<img src="https://img.wesetup.cn/jianguan.png" class="icon">
+				</div>
+				<div class="cont">
+						<div class="tit">
+							<span class="impt">免</span>
+							<span class="memo">费设计监理</span>
+						</div>
+						<div class="brief">第三方平台专业监理，全程服务跟踪到底</div>
+				</div>
 			</div>
-			<div class="three-c">
-				<div class="for-bg insure-bg"></div>
-				第三方资金担保
+			<div class="section">
+				<div class="aside">
+					<img src="https://img.wesetup.cn/dollar.png" class="icon">
+				</div>
+				<div class="cont">
+						<div class="tit">
+							<span class="impt">安</span>
+							<span class="memo">全资金托管</span>
+						</div>
+						<div class="brief">在线资金托管，分阶段验收，满意后付款</div>
+				</div>
 			</div>
+			<div class="section"></div>
+			<div class="section"></div>
 		</div>
+	
 	</div>
 </template>
 <script>
-	export default{
-		
-	}
+export default {};
 </script>
 <style scoped="scoped">
-	.slogan-c{
-		height:1.9rem;
-		background: url(../../../static/images/slogan-bg.png) center no-repeat;
-		background-size: 100%;
-		border-bottom: .1rem solid #f4f4f4;
-	}
-	.about-shejiin-title{
-		height:.35rem;
-		border-bottom:1px solid #c8c8c8;
-		text-align: center;
-		padding-top:.14rem;
-	}
-	.about-title{
-		line-height: .22rem;
-		font-size:.16rem;
-		display: inline-block;
-		text-align: left;
-		width:1rem;
-		background: url(../../../static/images/more.png) right no-repeat;
-		background-size: .14rem;
-	}
-	.charactic-c{
-		padding-top:.3rem;
-	}
-	.charactic-c div{
-		height:.8rem;
-		font-size: .12rem;
-		line-height: .17rem;
-		width:33%;
-		border: none;
-		margin:0px;
-		padding:0px;
-		float: left;
-		text-align: center;
-	}
-	.charactic-c div img{
-		display: block;
-		width:.52rem;
-		text-align: center;
-	}
-	.charactic-c div .for-bg{
-		height:.52rem;
-		
-		background-size:.52rem;
-		width: 100%;
-		display: block;
-		padding-bottom: .12rem;
-	}
-	.strict-bg{
-		background:url(../../../static/images/strict.png) no-repeat center;
-	}
-	.listen-bg{
-		background:url(../../../static/images/listen.png) no-repeat center;
-	}
-	.insure-bg{
-		background:url(../../../static/images/insure.png) no-repeat center;
-	}
+.slogan-c {
+
+  background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) center
+    no-repeat;
+  background-size: 100%;
+}
+.about-shejiin-title {
+  height: 0.49rem;
+  border-bottom: 1px solid #c8c8c8;
+  text-align: center;
+ 
+}
+.about-title {
+  line-height: .49rem;
+  font-size: 0.16rem;
+  display: inline-block;
+  text-align: left;
+  width: 1rem;
+  background: url(../../../static/images/more.png) right no-repeat;
+  background-size: 0.14rem;
+}
+.special .section {
+  padding-left: 0.38rem;
+  margin-bottom: 0.33rem;
+  margin-top: 0.33rem;
+  overflow: hidden;
+}
+.special .section .aside {
+  float: left;
+
+}
+.special .section  .tit {
+	    overflow: hidden;
+}
+.special .section .cont {
+  float: left;
+
+}
+.special .impt {
+	font-size:.24rem;
+	float:left;
+	margin-right:.08rem;
+
+}
+.special  .brief {
+	color:#000;
+	font-size:.12rem;
+	opacity: .44;
+	margin-top:.02rem;
+	display: inline-block;
+
+}
+.special .memo{
+	font-size: .14rem;
+	float:left;
+	margin-top:.06rem;
+}
+.section .icon {
+  width: 0.33rem;
+  display: block;
+  margin-right: 0.26rem;
+}
 </style>
