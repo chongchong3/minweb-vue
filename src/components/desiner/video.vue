@@ -50,7 +50,7 @@ export default {
       this.player.play();
      
     },
-    onPlayerPlaying(){
+    onPlayerPlay(){
       document.getElementById('playerBtn').style.display="none";
     },
     onPlayerEnded(){
