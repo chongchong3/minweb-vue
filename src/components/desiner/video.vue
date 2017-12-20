@@ -1,6 +1,6 @@
 <template>
     <div class="section video-module">
-            <img :src="'./static/images/video.png'" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
+            <img :src="'./static/images/video.png'"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
                     <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
         :options="{preload:true,controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
    >
@@ -52,6 +52,9 @@ export default {
     },
     onPlayerEnded(){
          document.getElementById('playerBtn').style.display="block";
+    },
+    onPlayerPause(){
+        document.getElementById('playerBtn').style.display="block";
     }
   }
 };
