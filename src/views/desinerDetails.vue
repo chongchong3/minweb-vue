@@ -247,7 +247,7 @@
 	import touchdirective from "../components/touchdirective";
 	import $ from 'jquery';
 	import {getDesinerDetails} from "@/api/desinerDetails";
-	import videoComp from "../components/desiner/self";
+	import videoComp from "../components/desiner/video";
 	touchdirective(Vue);
 	export default{
 		 components: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="section videoBox">
+    <div class="section video-module">
             <img :src="'./static/images/video.png'" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
                     <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
         :options="{preload:true,controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
@@ -7,11 +7,11 @@
         </video-player>
         </div>
 </template>
-<style scoped>
-.videoBox {
+<style >
+.video-module {
   position: relative;
 }
-.playerBtn {
+.video-module .playerBtn {
   position: absolute;
   width: 0.33rem;
   left: 50%;
@@ -31,12 +31,12 @@ import "video.js/dist/video-js.css";
 import Vue from "vue";
 import VueVideoPlayer from "vue-video-player";
 Vue.use(VueVideoPlayer);
+
 export default {
+    props: ["selfMes"],
   data() {
     return {
-      selfMes: {
-        self_introduction_video_url: "https://assets.wesetup.cn/刘奕乐.mp4"
-      }
+      
     };
   },
   computed: {
