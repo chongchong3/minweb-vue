@@ -2,7 +2,7 @@
     <div class="section video-module">
             <img :src="'./static/images/video.png'"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
                     <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
-        :options="{preload:true,controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
+        :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
    >
         </video-player>
         </div>
@@ -51,10 +51,12 @@ export default {
       document.getElementById('playerBtn').style.display="none";
     },
     onPlayerEnded(){
+      debugger
          document.getElementById('playerBtn').style.display="block";
     },
     onPlayerPause(){
-        document.getElementById('playerBtn').style.display="block";
+       
+         this.player.play();
     }
   }
 };
