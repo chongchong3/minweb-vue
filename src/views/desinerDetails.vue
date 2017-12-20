@@ -469,7 +469,7 @@
 							}else{
 								clearInterval(timer);
 								if(scrollTopEnd<=0){
-									this.hideListwithoutVideo();
+									self.hideListwithoutVideo();
 								}
 								
 							}
