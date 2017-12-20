@@ -44,6 +44,8 @@
 </template>
 
 <script>
+	import { MessageBox } from "mint-ui";
+	import "mint-ui/lib/style.css";
 	import {getDesinerDetails} from "@/api/desinerDetails";
 	import videoComp from "../components/desiner/video";
 	import appoinentDesiner from "@/components/appoinentDesiner";
