@@ -256,7 +256,7 @@
 		data(){
 			return{
 				step:0,
-				result:{},
+				result:null,
 				ht:$(window).height(),
 				player:null,
 				hasVideo:true,
@@ -265,7 +265,6 @@
 			}
 		},
 		mounted(){
-			
 			getDesinerDetails({designer_uid:this.$route.params.desiner_id})
 			.then((res)=>{
 				if(res.status == 200){
@@ -275,6 +274,7 @@
 			},(err)=>{
 				
 			})
+			
 //			var self = this;
 //			if(this.isAndroid){
 //				document.getElementById('caselist-c').addEventListener('scroll', function(e){
@@ -286,10 +286,7 @@
 //			}
 		},
 		created(){
-			window.addEventListener("scroll",function(){
-//				alert()
-//				alert(1111)
-			})
+			
 		},
 		methods:{
 			
