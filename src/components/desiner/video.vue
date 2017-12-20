@@ -13,11 +13,11 @@
 }
 .video-module .playerBtn {
   position: absolute;
-  width: 0.33rem;
+  width: 0.66rem;
   left: 50%;
   top: 50%;
-  margin-left: -0.165rem;
-  margin-top: -0.165rem;
+  margin-left: -0.33rem;
+  margin-top: -0.33rem;
   z-index: 99;
 }
 .video-player-box,
