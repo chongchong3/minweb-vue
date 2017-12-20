@@ -11,7 +11,7 @@ const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseL
 // const desinerCaseDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerCaseDetails')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
-const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/aboutUs')
+const aboutUs = () => import(/* webpackChunkName: "mint-case */ '@/views/about_us')
 const chat = () => import(/* webpackChunkName: "mint-chat */ '@/views/chat')
 const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
