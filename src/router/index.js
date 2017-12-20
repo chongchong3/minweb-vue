@@ -22,7 +22,7 @@ const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
 const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/designer_list')
-
+const videoDemo = () => import(/* webpackChunkName: "mint-case */ '@/views/videoDemo')
 export default new Router({
   routes: [
     {
@@ -115,6 +115,11 @@ export default new Router({
       component: case_list,
       meta: {title: '案例列表'}     
     },
-    
+    {
+      path: '/videoDemo',
+      name: 'videoDemo',
+      component: videoDemo,
+      meta: {title: '视频'}     
+    },
   ]
 })
