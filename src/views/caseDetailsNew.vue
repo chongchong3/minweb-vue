@@ -223,7 +223,7 @@ export default {
     };
   },
   computed: {
-    
+
     swiper() {
       return this.$refs.mySwiper.swiper;
     }
@@ -250,7 +250,7 @@ export default {
             }
              document.title=response.data.data.title;
             _self.caseData = response.data.data;
-            _self.desinerId=response.data.designerId;
+            _self.desinerId=response.data.data.designerId;
             var _lt=  _self.caseData.styleList.length;
             _self.caseData.styleList.forEach(function(k,i){
               if(i==0){

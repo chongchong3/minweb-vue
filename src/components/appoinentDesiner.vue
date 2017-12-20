@@ -42,14 +42,18 @@
 
 <script>
 import Vue from "vue";
+import { MessageBox } from "mint-ui";
 import { miniSiteAppoints } from "@/api/appoints"; //预约设计师
 import { checkAppointsStatus } from "@/api/checkAppointsStatus";
 import { checkLoginStatus } from "@/api/CheckLoginStatus"; //查询是否绑定
 export default {
-props: ["designerId"],
+props: ["desinerId"],
 
 mounted(){
-     this.goAuthor();
+    this.$nextTick(function(){
+         this.goAuthor();
+    })
+    
 },
   data() {
     return {
@@ -85,6 +89,7 @@ mounted(){
     },
      appoinmnet() {
       var _self = this;
+      debugger
 
       //查询是否授权绑定用户
       checkLoginStatus({ authorization_id: this.authorId })
@@ -94,9 +99,10 @@ mounted(){
           }
 
           if (!response.data.data.userId) {
+        
             //如果没有绑定跳转登录页面
             return _self.$router.push({
-              path: "/login?designer_uid=" + _self.designerId //
+              path: "/login?designer_uid=" + _self.desinerId //
             });
           }
           var user_id = response.data.data.userId;
@@ -110,7 +116,7 @@ mounted(){
             }
 
             miniSiteAppoints({
-              designer_uid: _self.designerId,
+              designer_uid: _self.desinerId,
               user_id: user_id
             }) //预约设计师
               .then(function(response) {
