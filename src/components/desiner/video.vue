@@ -1,7 +1,7 @@
 <template>
-    <div class="section video-module">
-            <img :src="'./static/images/video.png'"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
-                    <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
+    <div class="section video-module" >
+            <img :src="'./static/images/video.png'"   id="playerBtn">
+                    <video-player   @play="onPlayerPlay($event)"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" @click="boxClick" class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
         :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
    >
         </video-player>
@@ -48,16 +48,24 @@ export default {
   methods: {
     palyer() {
       this.player.play();
+     
+    },
+    onPlayerPlaying(){
       document.getElementById('playerBtn').style.display="none";
     },
     onPlayerEnded(){
-      debugger
+      
          document.getElementById('playerBtn').style.display="block";
     },
     onPlayerPause(){
        
-         this.player.play();
+          document.getElementById('playerBtn').style.display="block";
+    },
+    boxClick(){
+      debugger
+      this.player.play();
     }
+    
   }
 };
 </script>
