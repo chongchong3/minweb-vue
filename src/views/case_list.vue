@@ -24,7 +24,7 @@
         </li>
         
       </ul>
-      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt=""></div>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt="" class="icon-img"></div>
       <loading-animation v-if="loading"></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
   </div>
@@ -107,13 +107,29 @@ export default {
     });
     document.body.addEventListener("touchmove", function(e) { 
       if(e.touches[0].clientY - touchStartY > 2) {
-          _self.scrollTopIcon = true;
+          // _self.scrollTopIcon = true;
       }else{
-        _self.scrollTopIcon = false;;
+        // _self.scrollTopIcon = false;;
       }
     });
   },
   methods:{
+    scroll() {
+        var _self = this;
+        window.addEventListener("scroll", function() {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            if(scrollTop>clientHeight){
+                _self.scrollTopIcon = true;
+            }else{
+                _self.scrollTopIcon = false;
+            }
+            //     delta = afterScrollTop - beforeScrollTop;
+            // if( delta === 0 ) return false;
+            // fn( delta > 0 ? "down" : "up" );
+            // beforeScrollTop = afterScrollTop;
+        }, false);
+    },
     getMoreData() {
       //接口数据
         var _self = this;
@@ -310,12 +326,17 @@ ul, li{
 /* 滚动顶部按钮 */
 .scroll-to-top{
   position: fixed;
-  bottom:.4rem;
-  right: 0.1rem;
-  width: .6rem;
+  bottom:0.16rem;
+  right: 0.16rem;
+  width: .2rem;
   border-radius: 50%;
   /* background: #f0f; */
-  height: .6rem;
+  height: .4rem;
   z-index: 999;
+}
+.icon-img{
+    box-shadow:0 2 3px rgba(0,0,0,.3);
+    width:100%;
+    height: 100%;
 }
 </style>

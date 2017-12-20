@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails">
 		<div class="page-swiper " v-touch:swipeup="up" v-touch:swipedown="down">
-			<div isScroll="true" @click="back" class="goback"></div>
+			<!--<div isScroll="true" @click="back" class="goback"></div>-->
 	        <div class="por-des-c" :style="{backgroundImage: 'url(' + result.background_img + '?imageMogr2/auto-orient/interlace/1/blur/26x10/quality/85|imageslim)'}" >
 	        	
 		        <!--<div id="portrait" :style="{backgroundImage:'url(' + result.full_body_shot_url   + ') '}" class="portrait-c" >
@@ -256,7 +256,7 @@
 		data(){
 			return{
 				step:0,
-				result:{},
+				result:null,
 				ht:$(window).height(),
 				player:null,
 				hasVideo:true,
@@ -265,7 +265,6 @@
 			}
 		},
 		mounted(){
-			
 			getDesinerDetails({designer_uid:this.$route.params.desiner_id})
 			.then((res)=>{
 				if(res.status == 200){
@@ -275,6 +274,7 @@
 			},(err)=>{
 				
 			})
+			
 //			var self = this;
 //			if(this.isAndroid){
 //				document.getElementById('caselist-c').addEventListener('scroll', function(e){
@@ -286,16 +286,13 @@
 //			}
 		},
 		created(){
-			window.addEventListener("scroll",function(){
-//				alert()
-//				alert(1111)
-			})
+			
 		},
 		methods:{
 			
-			back:function(){
-				this.$router.back(-1);
-			},
+//			back:function(){
+//				this.$router.back(-1);
+//			},
 			disableScroll:function(){
 				return false;
 			},
@@ -469,7 +466,7 @@
 							}else{
 								clearInterval(timer);
 								if(scrollTopEnd<=0){
-									this.hideListwithoutVideo();
+									self.hideListwithoutVideo();
 								}
 								
 							}

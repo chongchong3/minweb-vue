@@ -17,7 +17,7 @@
             </router-link>                      
           </li> 
       </ul>
-      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt=""></div>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt="" class="icon-img"></div>
       <loading-animation v-if="loading" ></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
       <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
@@ -94,27 +94,41 @@ export default {
      */    
   },
   mounted(){
+    var _self = this;
     this.$nextTick(function(){
-       
         window.addEventListener('scroll', this.scrollEvent);
     });
     //下滑出现滚动到顶部
-    var touchStartY=0;
-    var _self = this;
+    this.scroll();
+    var touchStartY=0;  
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
     });
     document.body.addEventListener("touchmove", function(e) {
-      // console.log(e.touches[0].clientY);
-    //   开始打结束小 为 下拉 
       if(e.touches[0].clientY - touchStartY > 2) {
-          _self.scrollTopIcon = true;
+        //   _self.scrollTopIcon = true;
       }else{
-        _self.scrollTopIcon = false;;
+        // _self.scrollTopIcon = false;
       }
     });
   },
   methods:{
+    scroll() {
+        var _self = this;
+        window.addEventListener("scroll", function() {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            if(scrollTop>clientHeight){
+                _self.scrollTopIcon = true;
+            }else{
+                _self.scrollTopIcon = false;
+            }
+            //     delta = afterScrollTop - beforeScrollTop;
+            // if( delta === 0 ) return false;
+            // fn( delta > 0 ? "down" : "up" );
+            // beforeScrollTop = afterScrollTop;
+        }, false);
+    },
     getMoreData() {
       //接口数据
         var _self = this;
@@ -307,12 +321,17 @@ ul, li, p{
 /* 滚动顶部按钮 */
 .scroll-to-top{
   position: fixed;
-  bottom:.4rem;
-  right: 0.1rem;
-  width: .6rem;
+  bottom:0.16rem;
+  right: 0.16rem;
+  width: .4rem;
   border-radius: 50%;
-  height: .6rem;
+  height: .4rem;
   z-index: 999;
+}
+.icon-img{
+    box-shadow:0 2 3px rgba(0,0,0,.3);
+    width:100%;
+    height: 100%;
 }
 </style>
 
