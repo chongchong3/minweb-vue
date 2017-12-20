@@ -59,7 +59,7 @@ export default {
     },
     onPlayerPause(){
        
-          document.getElementById('playerBtn').style.display="block";
+          this.player.play();
     },
     
   }
