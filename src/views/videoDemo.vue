@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       selfMes: {
-        self_introduction_video_url: "https://assets.wesetup.cn/刘奕乐.mp4",
+        self_introduction_video_url: "https://qiniu.zhuyihome.com/plugs/chenxuan/1.mp4",
 
       }
     };
