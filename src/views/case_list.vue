@@ -24,7 +24,7 @@
         </li>
         
       </ul>
-      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt="" class="icon-img"></div>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/toTop@3x.png" alt="" class="icon-img"></div>
       <loading-animation v-if="loading"></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
   </div>
@@ -98,8 +98,11 @@ export default {
     this.$nextTick(function(){
       //  this.getStartOffset();
         window.addEventListener('scroll', this.scrollEvent);
+        this.shareWx.getId();
+        this.shareWx.shareReady("看设计案例 | 设计IN-设计师严选平台");
     });
     //下滑出现滚动到顶部
+    this.scroll();
     var touchStartY=0;
     var _self = this;
     document.body.addEventListener("touchstart", function(e) {
@@ -328,14 +331,14 @@ ul, li{
   position: fixed;
   bottom:0.16rem;
   right: 0.16rem;
-  width: .2rem;
+  width: .4rem;
   border-radius: 50%;
   /* background: #f0f; */
   height: .4rem;
   z-index: 999;
 }
 .icon-img{
-    box-shadow:0 2 3px rgba(0,0,0,.3);
+    /* box-shadow:0 2 3px rgba(0,0,0,.3); */
     width:100%;
     height: 100%;
 }

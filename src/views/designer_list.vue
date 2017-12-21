@@ -17,7 +17,7 @@
             </router-link>                      
           </li> 
       </ul>
-      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt="" class="icon-img"></div>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/toTop@3x.png" alt="" class="icon-img"></div>
       <loading-animation v-if="loading" ></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
       <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
@@ -97,6 +97,8 @@ export default {
     var _self = this;
     this.$nextTick(function(){
         window.addEventListener('scroll', this.scrollEvent);
+        this.shareWx.getId();
+        this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
     });
     //下滑出现滚动到顶部
     this.scroll();

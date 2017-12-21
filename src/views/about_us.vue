@@ -13,8 +13,7 @@
             
             <img src="../../static/images/Group@3x.png" alt="" class="slog-img">
             <p class="slog-title">严选设计专家</p>
-            <p class="slog-des"> 业内最严苛的入驻标准—深度面访+专业评审+圈层背调；所有入驻设计师拥有至少8年以上从业资历，并具备丰富的别墅、大宅设计经验。
-            </p>
+            <p class="slog-des"> 业内最严苛的入驻标准—深度面访+专业评审+圈层背调；所有入驻设计师拥有至少8年以上从业资历，并具备丰富的别墅、大宅设计经验。</p>
         </div>
         <div class="many-people">
             <img class="people-img" src="https://img.wesetup.cn/Group 3@3x.png" alt="">
@@ -38,8 +37,7 @@
             <img src="../../static/images/Group 15@3x.png" alt="" class="slog-img">
             <p class="designer-title">安全资金托管</p>
             <p class="designer-des"> 1、在线资金托管，以客户满意为宗旨，实行分阶段验收付款；</p>
-            <p class="designer-des des-margin-top">2、入驻设计师实行信誉保证金合作机制，平台担保为您保驾  
-     护航；</p>
+            <p class="designer-des des-margin-top">2、入驻设计师实行信誉保证金合作机制，平台担保为您保驾护航；</p>
             <p class="designer-des des-margin">3、平台不收取客户任何费用</p>
         </div>
         <div class="many-people">
@@ -98,7 +96,8 @@
 .about .header-banner{
     margin-top:.56rem;
     position: relative;
-    background:url('https://img.wesetup.cn/Group 55@3x.png') no-repeat;
+    /* https://img.wesetup.cn/Group 55@3x.png */
+    background:url('https://img.wesetup.cn/aboutus%20banner.png') no-repeat;
     background-size: 100% auto;
     height:3.4rem;
 

@@ -107,13 +107,13 @@ export default new Router({
       path: '/designer_list',
       name: 'designer_list',
       component: designer_list,
-      meta: {title: '设计师列表'}     
+      meta: {title: '找设计师 | 设计IN-设计师严选平台'}     
     },
     {
       path: '/case_list',
       name: 'case_list',
       component: case_list,
-      meta: {title: '案例列表'}     
+      meta: {title: '看设计案例 | 设计IN-设计师严选平台'}     
     },
     {
       path: '/videoDemo',
