@@ -56,7 +56,7 @@ export default {};
   background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) top center
     no-repeat;
   background-size: 100%;
-	padding-bottom:.165rem;
+	padding-bottom:.33rem;
 }
 .about-shejiin-title {
   height: 0.49rem;
