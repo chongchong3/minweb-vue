@@ -38,7 +38,7 @@
         		</div>
 		 	</router-link>
         </div>
-        <appoinent-desiner v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>
+        <appoinent-desiner :desinerId="desinerId"></appoinent-desiner>
         <div class="bottom-padding">
         	
         </div>
@@ -63,8 +63,7 @@
 				result:null,
 				ht:document.body.clientHeight,
 				hasVideo:true,
-				desinerId:this.$route.params.desiner_id,
-				showFlag:false
+				desinerId:this.$route.params.desiner_id
 			}
 		},
 		 components: {
@@ -73,16 +72,10 @@
 		    designerBanner
 		 },
 		mounted(){
-			var _self=this;
 			this.getDesigner();
 		},
 		created(){
-			var self=this;
-			document.addEventListener("scroll",function(){
-				var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
-				var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
-				self.showFlag = (scrollTop>=clientHeight);
-			},false)
+			
 		},
 		methods:{
 			getDesigner:function(){
@@ -92,13 +85,8 @@
 					.then((res)=>{
 						if(res.status == 200){
 							self.result = res.body.data;
-							
 //							self.result.banner = ["../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png"];
 							self.hasVideo = !self.result.self_introduction_video_url == ""  ;
-							this.$nextTick(function(){
-				                this.shareWx.getId();
-				                this.shareWx.shareReady(self.result.designer_name+"| 设计IN-设计师严选平台",'',self.result.head_image_url+'?imageView2/5/w/50');
-				            });
 						}
 					},(err)=>{
 					

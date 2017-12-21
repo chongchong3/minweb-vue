@@ -36,12 +36,7 @@
            
       </ul>
       <appoinmnet-desiner :desinerId="desinerId"></appoinmnet-desiner>
-      <!-- <div class="footer">
-          <div class="appoint" @click="appoinmnet">
-             <span class="icon"><img src="static/images/clock.png" alt=""></span>
-              <span class="tit">预约设计师</span>
-          </div>
-      </div> -->
+
   </div>
 </template>
 <style scoped>
@@ -164,37 +159,7 @@
   font-size: 0.12rem;
   padding: 0 0.2rem;
 }
-/* .caseDetails .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 0.6rem;
-  border-top: #c9c9c9 1px solid;
-  background: #fff;
-}
-.appoint {
-  margin: 0.1rem 0.38rem;
-  background: #88c462;
-  border-radius: 0.2rem;
-  text-align: center;
-  color: #fff;
-  font-size: 0.16rem;
-  height: 0.4rem;
-  line-height: 0.4rem;
-}
-.appoint .icon {
-  width: 0.2rem;
-  height: 0.21rem;
-  display: inline-block;
-}
-.appoint .icon img {
-  width: 100%;
-  display: block;
-  margin-top: 0.05rem;
-}
-.appoint .tit {
-  display: inline-block;
-} */
+
 </style>
 
 <script>
@@ -235,11 +200,6 @@ export default {
     this.getData();
   },
   mounted(){
-  	var self = this;
-  	this.$nextTick(function(){
-                this.shareWx.getId();
-                this.shareWx.shareReady(self.title+"| 设计IN-设计师严选平台",'',self.image+'?imageView2/5/w/50');
-              });
   },
   methods: {
     goBack() {
@@ -263,6 +223,8 @@ export default {
             _self.caseData = response.data.data;
             _self.desinerId=response.data.data.designerId;
             var _lt=  _self.caseData.styleList.length;
+             _self.shareWx.getId();
+              _self.shareWx.shareReady(self.title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
             _self.caseData.styleList.forEach(function(k,i){
               if(i==0){
                   _self.styleList+=k.style_name;
