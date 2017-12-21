@@ -13,7 +13,7 @@
 <style >
 .video-module {
   position: relative;
-  height: 5.93rem;
+  height: 5.625rem;
   overflow: hidden;
 }
 .video-module .playerBtn {
