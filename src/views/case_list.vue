@@ -102,6 +102,7 @@ export default {
         this.shareWx.shareReady("看设计案例 | 设计IN-设计师严选平台");
     });
     //下滑出现滚动到顶部
+    this.scroll();
     var touchStartY=0;
     var _self = this;
     document.body.addEventListener("touchstart", function(e) {
