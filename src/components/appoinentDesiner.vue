@@ -14,6 +14,7 @@
   height: 0.6rem;
   border-top: #c9c9c9 1px solid;
   background: #fff;
+  z-index: 1000;
 }
 .appoint {
   margin: 0.1rem 0.38rem;
