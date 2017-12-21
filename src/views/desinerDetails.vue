@@ -72,7 +72,10 @@
 		    designerBanner
 		 },
 		mounted(){
+			var _self=this;
 			this.getDesigner();
+			this.shareWx.getId();
+            this.shareWx.shareReady(_self.designer_name+"| 设计IN-设计师严选平台" ,'',_self.head_image_url+'?imageView2/5/w/50');
 		},
 		created(){
 			
