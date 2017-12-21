@@ -17,7 +17,7 @@
             </router-link>                      
           </li> 
       </ul>
-      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/scrollToTop.png" alt="" class="icon-img"></div>
+      <div class="scroll-to-top" v-if="scrollTopIcon" @click="scrollToTop"><img src="../../static/images/toTop@3x.png" alt="" class="icon-img"></div>
       <loading-animation v-if="loading" ></loading-animation>
       <no-more-data-point v-if="!moreData"></no-more-data-point>
       <!-- <h4 v-if="!moreData" class="info">没有更多了...</h4> -->
