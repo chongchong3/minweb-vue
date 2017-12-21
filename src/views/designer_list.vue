@@ -97,6 +97,8 @@ export default {
     var _self = this;
     this.$nextTick(function(){
         window.addEventListener('scroll', this.scrollEvent);
+        this.shareWx.getId();
+        this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
     });
     //下滑出现滚动到顶部
     this.scroll();

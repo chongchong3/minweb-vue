@@ -98,6 +98,8 @@ export default {
     this.$nextTick(function(){
       //  this.getStartOffset();
         window.addEventListener('scroll', this.scrollEvent);
+        this.shareWx.getId();
+        this.shareWx.shareReady("看设计案例 | 设计IN-设计师严选平台");
     });
     //下滑出现滚动到顶部
     var touchStartY=0;
