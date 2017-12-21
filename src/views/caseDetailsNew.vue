@@ -213,6 +213,8 @@ export default {
       caseData: {},
       desinerId:'',
       styleList:'',
+      title:'',
+      image:'',
       designerOption: {
         pagination: "null",
         slidesPerView: "auto",
@@ -232,6 +234,13 @@ export default {
    
     this.getData();
   },
+  mounted(){
+  	var self = this;
+  	this.$nextTick(function(){
+                this.shareWx.getId();
+                this.shareWx.shareReady(self.title+"| 设计IN-设计师严选平台",'',self.image+'?imageView2/5/w/50');
+              });
+  },
   methods: {
     goBack() {
       window.history.back();
@@ -249,6 +258,8 @@ export default {
               return;
             }
              document.title=response.data.data.title;
+             _self.case_title = response.data.data.title;
+              _self.image = response.data.data.image;
             _self.caseData = response.data.data;
             _self.desinerId=response.data.data.designerId;
             var _lt=  _self.caseData.styleList.length;
