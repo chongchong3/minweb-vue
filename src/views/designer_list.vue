@@ -40,6 +40,7 @@ export default {
             loading:false,
             scrollTopIcon:false,
             addClass:[],
+            timer:null,
             page_size: 5,
             domArry: [],
             imgAnimate: []
@@ -105,6 +106,7 @@ export default {
     var touchStartY=0;  
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
+      clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) {
       if(e.touches[0].clientY - touchStartY > 2) {
@@ -201,11 +203,12 @@ export default {
     scrollToTop(){
       var obtn = document.getElementById('btn');  //获取回到顶部按钮的ID
       var clientHeight = document.documentElement.clientHeight;   //获取可视区域的高度
-      var timer = null; //定义一个定时器
+      //var timer = null; //定义一个定时器
       var isTop = true; //定义一个布尔值，用于判断是否到达顶部
+      var _self = this;
       //获取滚动条的滚动高度
       var osTop = document.documentElement.scrollTop || document.body.scrollTop; 
-      timer = setInterval(function(){
+      this.timer = setInterval(function(){
             //获取滚动条的滚动高度
             var osTop = document.documentElement.scrollTop || document.body.scrollTop;
             //用于设置速度差，产生缓动的效果
@@ -213,7 +216,7 @@ export default {
             document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
             isTop =true;  //用于阻止滚动事件清除定时器
             if(osTop == 0){
-                clearInterval(timer);
+                clearInterval(_self.timer);
             }
         },60);
      
