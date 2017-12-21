@@ -2,7 +2,7 @@
     <div class="section video-module" >
             <img :src="'./static/images/video.png'"   id="playerBtn" class="playerBtn" @click="palyer"> 
                     <video-player   @play="onPlayerPlay($event)"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"    class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
-        :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
+        :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}], poster:poster}"
    >
         </video-player>
         </div>
@@ -36,6 +36,7 @@ export default {
     props: ["selfMes"],
   data() {
     return {
+      poster:"http://public.zhuyihome.com/roof/landing_page/plus/Know.png"
       
     };
   },
