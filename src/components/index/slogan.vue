@@ -8,7 +8,7 @@
 		<div class="special">
 			<div class="section">
 				<div class="aside">
-					<img src="https://img.wesetup.cn/yanxuan.png" class="icon">
+					<img src="https://img.wesetup.cn/yanxuanNew.png" class="icon">
 				</div>
 				<div class="cont">
 						<div class="tit">
@@ -20,7 +20,7 @@
 			</div>
 			<div class="section">
 				<div class="aside">
-					<img src="https://img.wesetup.cn/jianguan.png" class="icon">
+					<img src="https://img.wesetup.cn/jianguanNew.png" class="icon">
 				</div>
 				<div class="cont">
 						<div class="tit">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="section">
 				<div class="aside">
-					<img src="https://img.wesetup.cn/dollar.png" class="icon">
+					<img src="https://img.wesetup.cn/danbaoNew.png" class="icon">
 				</div>
 				<div class="cont">
 						<div class="tit">
@@ -54,7 +54,7 @@ export default {};
 <style scoped="scoped">
 .slogan-c {
 
-  background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) center
+  background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) top center
     no-repeat;
   background-size: 100%;
 }
@@ -74,9 +74,7 @@ export default {};
   background-size: 0.14rem;
 }
 .special .section {
-  padding-left: 0.38rem;
-  margin-bottom: 0.33rem;
-  margin-top: 0.33rem;
+  padding:.33rem 0 .165rem .38rem;
   overflow: hidden;
 }
 .special .section .aside {
@@ -93,25 +91,25 @@ export default {};
 .special .impt {
 	font-size:.24rem;
 	float:left;
-	margin-right:.08rem;
+	margin-right:.06rem;
 
 }
 .special  .brief {
 	color:#000;
 	font-size:.12rem;
 	opacity: .44;
-	margin-top:.02rem;
+	margin-top:.04rem;
 	display: inline-block;
 
 }
 .special .memo{
 	font-size: .14rem;
 	float:left;
-	margin-top:.06rem;
+	margin-top:.1rem;
 }
 .section .icon {
-  width: 0.33rem;
+  width: 0.36rem;
   display: block;
-  margin-right: 0.26rem;
+  margin-right: 0.25rem;
 }
 </style>
