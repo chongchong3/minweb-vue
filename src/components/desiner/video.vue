@@ -13,6 +13,8 @@
 <style >
 .video-module {
   position: relative;
+  height: 5.93rem;
+  overflow: hidden;
 }
 .video-module .playerBtn {
   position: absolute;
@@ -24,12 +26,14 @@
   z-index: 99;
 }
 .video-module .back-ground {
-  position: absolute;
-  width:100%;
-  left: 0;
-  top:0;
-  z-index: 22;
-  display: none;
+    position: absolute;
+    width:100%;
+    height: 5.93rem;
+    overflow: hidden;
+    left: 0;
+    top:0;
+    z-index: 22;
+    display: none;
 
 }
 .video-module .back-ground  img {
