@@ -1,8 +1,8 @@
 <template>
-    <div class="section video-module">
-            <img :src="'./static/images/video.png'"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"  class="playerBtn" @click="palyer" id="playerBtn">
-                    <video-player  class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
-        :options="{preload:true,controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
+    <div class="section video-module" >
+            <img :src="'./static/images/video.png'"   id="playerBtn" class="playerBtn" @click="palyer"> 
+                    <video-player   @play="onPlayerPlay($event)"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"    class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
+        :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}]}"
    >
         </video-player>
         </div>
@@ -13,11 +13,11 @@
 }
 .video-module .playerBtn {
   position: absolute;
-  width: 0.33rem;
+  width: 0.66rem;
   left: 50%;
   top: 50%;
-  margin-left: -0.165rem;
-  margin-top: -0.165rem;
+  margin-left: -0.33rem;
+  margin-top: -0.33rem;
   z-index: 99;
 }
 .video-player-box,
@@ -48,14 +48,20 @@ export default {
   methods: {
     palyer() {
       this.player.play();
+     
+    },
+    onPlayerPlay(){
       document.getElementById('playerBtn').style.display="none";
     },
     onPlayerEnded(){
+      
          document.getElementById('playerBtn').style.display="block";
     },
     onPlayerPause(){
-        document.getElementById('playerBtn').style.display="block";
-    }
+       
+           document.getElementById('playerBtn').style.display="block";
+    },
+    
   }
 };
 </script>
