@@ -42,8 +42,6 @@
 						<div class="brief">在线资金托管，分阶段验收，满意后付款</div>
 				</div>
 			</div>
-			<div class="section"></div>
-			<div class="section"></div>
 		</div>
 	
 	</div>
