@@ -17,12 +17,10 @@ const scroll = () => import(/* webpackChunkName: "mint-case */ '@/views/scroll')
 const start = () => import(/* webpackChunkName: "mint-case */ '@/views/start')
 const error = () => import(/* webpackChunkName: "mint-case */ '@/views/404')
 const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetailsNew')
-// const casePrev = () => import(/* webpackChunkName: "mint-case */ '@/views/casePrev')
-
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
 const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/designer_list')
-const videoDemo = () => import(/* webpackChunkName: "mint-case */ '@/views/videoDemo')
+
 export default new Router({
   routes: [
     {
@@ -114,12 +112,6 @@ export default new Router({
       name: 'case_list',
       component: case_list,
       meta: {title: '看设计案例 | 设计IN-设计师严选平台'}     
-    },
-    {
-      path: '/videoDemo',
-      name: 'videoDemo',
-      component: videoDemo,
-      meta: {title: '视频'}     
-    },
+    }
   ]
 })
