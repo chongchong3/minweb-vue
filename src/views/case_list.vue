@@ -331,14 +331,14 @@ ul, li{
   position: fixed;
   bottom:0.16rem;
   right: 0.16rem;
-  width: .2rem;
+  width: .4rem;
   border-radius: 50%;
   /* background: #f0f; */
   height: .4rem;
   z-index: 999;
 }
 .icon-img{
-    box-shadow:0 2 3px rgba(0,0,0,.3);
+    /* box-shadow:0 2 3px rgba(0,0,0,.3); */
     width:100%;
     height: 100%;
 }
