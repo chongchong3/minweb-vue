@@ -59,7 +59,7 @@ export default new Router({
       path: '/desinerDetails/:desiner_id',
       name: 'desinerDetails',
       component: desinerDetails,
-      meta: {title: '设计师详情'}
+      meta: {title: '设计师详情 | 设计IN-设计师严选平台'}
     },
 
     {
