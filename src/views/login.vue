@@ -75,7 +75,11 @@ export default {
 					.then(function(response){
 						if(response.data.code!=200){
 							if(response.data.code==500){
-										return MessageBox('提示', '你已经预约过了');
+										
+										return MessageBox.alert('你已经预约过了').then(action => {
+											window.history.goBack();
+
+										});
 								} 
 							return MessageBox('提示', '查询异常');
 						} 
