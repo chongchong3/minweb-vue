@@ -224,7 +224,7 @@ export default {
             _self.desinerId=response.data.data.designerId;
             var _lt=  _self.caseData.styleList.length;
              _self.shareWx.getId();
-              _self.shareWx.shareReady(self.title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
+              _self.shareWx.shareReady(document.title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
             _self.caseData.styleList.forEach(function(k,i){
               if(i==0){
                   _self.styleList+=k.style_name;
