@@ -25,6 +25,9 @@
   margin-top: -0.33rem;
   z-index: 99;
 }
+.vjs-poster {
+  background-position:0 0;
+}
 .video-module .back-ground {
     position: absolute;
     width:100%;
