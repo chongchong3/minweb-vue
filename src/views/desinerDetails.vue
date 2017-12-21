@@ -1,9 +1,9 @@
 <template>
-	<div class="desinerDetails" id="desinerDetails">
+	<div class="desinerDetails" id="desinerDetails" v-if="result">
+		<div  @click="back" class="goback"></div>
+		<designer-banner :imgItems='result.banner'></designer-banner>
 		<div class="page-swiper ">
-			<div  @click="back" class="goback"></div>
 	        <div class="por-des-c"  >
-	        	<img :src="result.full_body_shot_url" />
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
 		        	<span class="price">
@@ -39,16 +39,24 @@
 		 	</router-link>
         </div>
         <appoinent-desiner :desinerId="desinerId"></appoinent-desiner>
+        <div class="bottom-padding">
+        	
+        </div>
 	</div>
    
 </template>
 
 <script>
+	import Vue from "vue";
 	import { MessageBox } from "mint-ui";
 	import "mint-ui/lib/style.css";
+	import VueAwesomeSwiper from "vue-awesome-swiper";
 	import {getDesinerDetails} from "@/api/desinerDetails";
 	import videoComp from "../components/desiner/video";
 	import appoinentDesiner from "@/components/appoinentDesiner";
+	import designerBanner from "@/components/desiner/designerBanner";
+	
+	Vue.use(VueAwesomeSwiper);
 	export default{
 		data(){
 			return{
@@ -60,7 +68,8 @@
 		},
 		 components: {
 		    videoComp,
-		    appoinentDesiner
+		    appoinentDesiner,
+		    designerBanner
 		 },
 		mounted(){
 			this.getDesigner();
@@ -70,14 +79,18 @@
 		},
 		methods:{
 			getDesigner:function(){
-				getDesinerDetails({designer_uid:this.$route.params.desiner_id})
-				.then((res)=>{
-					if(res.status == 200){
-						this.result = res.body.data;
-						this.hasVideo = !this.result.self_introduction_video_url == ""  ;
-					}
-				},(err)=>{
+				var self = this;
+				this.$nextTick(function(){
+					getDesinerDetails({designer_uid:self.$route.params.desiner_id})
+					.then((res)=>{
+						if(res.status == 200){
+							self.result = res.body.data;
+//							self.result.banner = ["../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png"];
+							self.hasVideo = !self.result.self_introduction_video_url == ""  ;
+						}
+					},(err)=>{
 					
+					})
 				})
 			},
 			back:function(){
@@ -115,7 +128,7 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.3rem;
+		bottom:.35rem;
 		left:0px;
 	}
 	.designer-info-c p{
@@ -217,5 +230,8 @@
 		margin-bottom: .15rem;
 		margin-left: .15rem;
 		color:#000
+	}
+	.bottom-padding{
+		height:.6rem;
 	}
 </style>
