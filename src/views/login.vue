@@ -77,7 +77,7 @@ export default {
 							if(response.data.code==500){
 										
 										return MessageBox.alert('你已经预约过了').then(action => {
-											window.history.goBack();
+											window.history.go(-1);
 
 										});
 								} 
