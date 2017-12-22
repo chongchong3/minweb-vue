@@ -8,9 +8,8 @@
         <li class="case-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
           <router-link :to="'/caseDetailsNew?caseId='+single.id">
           <div class="img-partent" >
-            <!-- {cursor:addClass[index]} -->
-            <!-- v-bind:class="{cursor:addClass}" :style="{'background': 'no-repeat url('+single.head_image_url +')','background-size': '100% 100%'}" -->
-            <img :id="'imgAnimate'+index"  :src="single.widescreen_image" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" alt="" class="case-img ">
+            <!-- v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" -->
+            <img :id="'imgAnimate'+index"  :src="single.widescreen_image"  alt="" class="case-img ">
           </div>
           <div class="case-designer">
             <img :src="single.head_image_url+'?imageView2/2/w/400'" alt="" class="designer-head">

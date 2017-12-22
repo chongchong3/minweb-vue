@@ -5,7 +5,8 @@
       <ul>
           <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
             <router-link :to="'/desinerDetails/'+single.designer_uid">
-                <div  class="designer-single" v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
+            <!-- v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" -->
+                <div  class="designer-single"  :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                     <div class="designer-rgba">
                         <img :src="single.head_image_url"  alt="" class="designer-head">
                         <p class="designer-name">{{single.designer_name}}</p>
