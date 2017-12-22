@@ -133,8 +133,8 @@
   margin: 0 0.05rem;
 }
 .caseDetails .caseList .designer-item {
-  width: 1rem;
-  padding: 0 0.05rem;
+  width: 1.5rem;
+  margin: 0 0.05rem;
 }
 .caseDetails .caseList li img {
   width: 100%;

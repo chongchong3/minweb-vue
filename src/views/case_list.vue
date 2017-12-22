@@ -276,7 +276,9 @@ ul, li{
   height: .16rem;
   line-height: .16rem;
   font-size: .12rem;
-  color:#ccc;
+  /* color:#ccc; */
+  opacity: 0.54;
+  color: #000000;
 }
 .width-line{
   height: .1rem;

@@ -21,12 +21,6 @@
         <div class="designer">
             <img src="../../static/images/Group@3x.png" alt="" class="slog-img">
             <p class="designer-title">免费设计监理</p>
-            <!-- <ol>
-                <li class="designer-des">图纸审核：统一图纸标准，严格审核图纸效果的可落地性，      
-        合理规避设计缺陷。</li>
-                <li class="designer-des">落地跟踪：施工现场实行平台监理、设计师落地跟踪服 
-        务，家装过程轻松管控。</li>
-            </ol> -->
             <p class="designer-des">1、图纸审核：统一图纸标准，严格审核图纸效果的可落地性，合理规避设计缺陷。</p>
         <p class="designer-des des-margin">2、落地跟踪：施工现场实行平台监理、设计师落地跟踪服务，家装过程轻松管控。</p>
         </div>
@@ -44,7 +38,6 @@
             <img class="people-img" src="https://img.wesetup.cn/Group 28@3xnew.png?imageView2/2" alt="">
         </div>
         <div class="long-img">
-            <!-- ../../static/images/service_1.png -->
             <img src="https://img.wesetup.cn/zu1.png?imageView2/2" alt="" class="img-auto">
             <img src="https://img.wesetup.cn/zu2.png?imageView2/2" alt="" class="img-auto">
             <img src="https://img.wesetup.cn/zu3.png?imageView2/2" alt="" class="img-auto">
@@ -233,7 +226,7 @@
 }
 .line-hr{
     margin:0 .22rem;
-    height:2px;
+    height:1px;
     background: #979797;
 }
 .copywrite{
