@@ -12,7 +12,7 @@
         <div class="slog">
             
             <img src="../../static/images/Group@3x.png" alt="" class="slog-img">
-            <p class="slog-title">严选设计专家</p>
+            <p class="designer-title">严选设计专家</p>
             <p class="slog-des"> 业内最严苛的入驻标准—深度面访+专业评审+圈层背调；所有入驻设计师拥有至少8年以上从业资历，并具备丰富的别墅、大宅设计经验。</p>
         </div>
         <div class="many-people">
