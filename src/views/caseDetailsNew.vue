@@ -52,8 +52,8 @@
   z-index: 22;
   left: 0.08rem;
   top: 0.17rem;
-  width: 0.1rem;
-  height: 0.21rem;
+  width: .13rem;
+  height: .21rem;
   display: inline-block;
 }
 .caseDetails .head .icon img {
