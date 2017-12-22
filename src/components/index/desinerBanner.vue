@@ -101,13 +101,14 @@ export default {
 }
 
 .list-title {
-  font-size: 0.16rem;
+  font-size: 0.18rem;
   line-height: 0.22rem; 
   display: inline-block;
   text-align: left;
   background: url(../../../static/images/more.png) right no-repeat;
-  background-size: .14rem;
-  width:.84rem;
+  background-size: .15rem;
+  width:.94rem;
+  font-weight: bold;
 }
 .vertical-bar {
   height: .15rem;

@@ -35,6 +35,7 @@
 }
 .nav .nav-logo-c{
 	height: .8rem;
+	border-top:.15rem #fafafa solid;
 	background: url(../../static/images/nav-log.png) no-repeat center;
 	background-size: 50%;
 }
