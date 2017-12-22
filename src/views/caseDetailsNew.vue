@@ -113,7 +113,7 @@
 }
 .caseDetails .desiner .name {
   font-size: 0.16rem;
-  margin-top: .9rem;
+  margin-top: .09rem;
   display: inline-block;
 }
 .caseDetails .desiner .brief {
