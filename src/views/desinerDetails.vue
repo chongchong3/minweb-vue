@@ -1,9 +1,8 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails" v-if="result">
 		<div  @click="back" class="goback"></div>
-		<designer-banner :imgItems='result.banner'></designer-banner>
-		<div class="page-swiper ">
-	        <div class="por-des-c"  >
+		<div class="designer-banner-c">
+			<designer-banner :imgItems='result.banner'></designer-banner>
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
 		        	<span class="price">
@@ -11,7 +10,8 @@
 		        	</span></p>
 		        		
 		        </div>
-	        </div>
+		</div>
+		<div class="page-swiper ">
 	        <div class="detail-describe-c">
 	        	<div class="detail-describe-sub-c">
 	        		<p class="title" v-if="!result.awards == ''">奖项</p>  
@@ -38,7 +38,7 @@
         		</div>
 		 	</router-link>
         </div>
-        <appoinent-desiner :desinerId="desinerId"></appoinent-desiner>
+        <appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>
         <div class="bottom-padding">
         	
         </div>
@@ -48,8 +48,8 @@
 
 <script>
 	import Vue from "vue";
-	import { MessageBox } from "mint-ui";
-	import "mint-ui/lib/style.css";
+//	import { MessageBox } from "mint-ui";
+//	import "mint-ui/lib/style.css";
 	import VueAwesomeSwiper from "vue-awesome-swiper";
 	import {getDesinerDetails} from "@/api/desinerDetails";
 	import videoComp from "../components/desiner/video";
@@ -63,7 +63,8 @@
 				result:null,
 				ht:document.body.clientHeight,
 				hasVideo:true,
-				desinerId:this.$route.params.desiner_id
+				desinerId:this.$route.params.desiner_id,
+				showFlag:false
 			}
 		},
 		 components: {
@@ -73,9 +74,18 @@
 		 },
 		mounted(){
 			this.getDesigner();
+			document.addEventListener('scroll',()=>{
+		  		this.loadDesigner();
+		  		this.showFlag = true;
+		 	})
 		},
 		created(){
-			
+			var self=this;
+			document.addEventListener("scroll",function(){
+				var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+				var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+				self.showFlag = (scrollTop>=clientHeight);
+			},false)
 		},
 		methods:{
 			getDesigner:function(){
@@ -111,7 +121,9 @@
 		position: absolute;
 		z-index: 1000;
 	}
-	
+	.designer-banner-c{
+		position: relative;
+	}
 	.por-des-c{
 		width:100%;
 		position: relative;
@@ -128,8 +140,12 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.35rem;
+		height:.8rem;
+		bottom:0rem;
 		left:0px;
+		z-index: 1001;
+		background: url(../../static/filter.png);
+		background-size:100% ;
 	}
 	.designer-info-c p{
 		color:#fff;
