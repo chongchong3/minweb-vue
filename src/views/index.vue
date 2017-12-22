@@ -54,7 +54,8 @@ export default {
   data() {
     return {
     	designerBannerLoadingFlag:false,
-   		caseBannerLoadingFlag:false
+   		caseBannerLoadingFlag:false,
+   		showFlag:false
     };
   },
 
@@ -73,7 +74,10 @@ export default {
        this.shareWx.getId();
        this.shareWx.shareReady("设计IN-设计师严选平台");
       })
- 	 
+ 	  document.addEventListener('scroll',()=>{
+  		this.loadDesigner();
+  		this.showFlag = true;
+ 	  })
    
   },
   methods:{
