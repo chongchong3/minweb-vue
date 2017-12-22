@@ -130,9 +130,12 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.35rem;
+		height:.8rem;
+		bottom:0rem;
 		left:0px;
 		z-index: 1001;
+		background: url(../../static/filter.png);
+		background-size:100% ;
 	}
 	.designer-info-c p{
 		color:#fff;
