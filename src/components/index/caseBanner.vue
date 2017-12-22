@@ -139,13 +139,14 @@ export default {
   clear: both;
 }
 .list-title {
-  font-size: 0.16rem;
+  font-size: 0.18rem;
   line-height: 0.22rem; 
   display: inline-block;
   text-align: left;
-  background: url(../../../static/images/more.png) right no-repeat;
-  background-size: .14rem;
-  width:.84rem;
+  background: url(../../../static/images/more.png) right  no-repeat;
+  background-size: .15rem;
+  width:.94rem;
+  font-weight: bold;
 }
 .list-title-c .more {
   float: right;
@@ -218,6 +219,7 @@ export default {
 }
 .name-theme-c {
   margin-left: 0.47rem;
+  margin-top:.02rem;
 }
 .name-theme-c p {
   padding: 0;
