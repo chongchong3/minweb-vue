@@ -13,7 +13,7 @@
       </div>
       <div class="desiner">
           <div class="wp">
-              <img :src="caseData.image+'?imageView2/2/w/100'"  class="headImg">
+              <img :src="caseData.image"  class="headImg">
               <span class="name">{{caseData.name}}</span>
           </div>
           <p class="brief">设计理念:{{caseData.caseIntro}}</p>
