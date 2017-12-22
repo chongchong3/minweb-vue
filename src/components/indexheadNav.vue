@@ -111,7 +111,7 @@ export default {
 	background: #f5f5f5;
 }
 .topNav .cont {
-  margin: 0 0.16rem;
+  margin: 0 .1rem 0 0;
   background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
     no-repeat center;
   height: 100%;
@@ -141,8 +141,6 @@ export default {
 }
 .cursor {
   display: inline-block;
-  width: 0.4rem;
-  height: 0.55rem;
   text-align: center;
 }
 .test {

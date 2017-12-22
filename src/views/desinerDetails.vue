@@ -73,10 +73,11 @@
 		    designerBanner
 		 },
 		mounted(){
+			var self=this;
 			this.getDesigner();
 			document.addEventListener('scroll',()=>{
-		  		this.loadDesigner();
-		  		this.showFlag = true;
+		  		self.loadDesigner();
+		  		self.showFlag = true;
 		 	})
 		},
 		created(){
@@ -95,7 +96,10 @@
 					.then((res)=>{
 						if(res.status == 200){
 							self.result = res.body.data;
-//							self.result.banner = ["../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png","../../static/images/banner.png"];
+							this.$nextTick(function(){
+				                this.shareWx.getId();
+				                this.shareWx.shareReady(self.result.designer_name+"| 设计IN-设计师严选平台",'',self.result.head_image_url+'?imageView2/5/w/50');
+				            });
 							self.hasVideo = !self.result.self_introduction_video_url == ""  ;
 						}
 					},(err)=>{
