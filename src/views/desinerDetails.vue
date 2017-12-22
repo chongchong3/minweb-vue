@@ -181,6 +181,7 @@
 	.detail-describe-sub-c .title{
 		font-size:.18rem;
 		line-height:.25rem;
+		font-weight: bold;
 	}
 	.detail-describe-sub-c .content{
 		font-size:.12rem;

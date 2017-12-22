@@ -1,5 +1,6 @@
 <template>
 	<div class="case-horize-list-c">
+		<div class="case-about-pad"></div>
 		<div class="list-title-c">
 			<router-link to="/caselist" tag="div" class="list-title">
 					设计案例
@@ -98,6 +99,10 @@ export default {
 };
 </script>
 <style scoped="scoped">
+	.case-about-pad{
+		height:.09rem;
+		background:#f4f4f4;
+	}
 .case-horize-list-c {
   background: #fff;
 }
