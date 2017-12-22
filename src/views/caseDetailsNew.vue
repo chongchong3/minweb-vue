@@ -73,11 +73,13 @@
 .descript .cont .tit {
   padding-top: 0;
   font-size: 0.16rem;
-  opacity:.64 ;
+  font-weight: bold;
+ 
 }
 .descript .cont .memo {
   padding-top: 0.08rem;
   font-size: 0.12rem;
+   opacity:.64 ;
 }
 .caseDetails .descript .cont p {
   margin: 0;
@@ -119,6 +121,7 @@
   font-size: 0.12rem;
   padding: 0.1rem 0.2rem 0.15rem;
   margin: 0;
+  opacity: .86;
 }
 .caseDetails ul,
 .caseDetails li {
