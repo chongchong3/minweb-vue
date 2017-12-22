@@ -120,7 +120,9 @@ export default {
 
 .goHome {
   position: absolute;
-
+  width: .4rem;
+    height: .4rem;
+    margin-top: .1rem;
   left: 50%;
   margin-left: -0.2rem;
 }
