@@ -73,6 +73,7 @@
 .descript .cont .tit {
   padding-top: 0;
   font-size: 0.16rem;
+  opacity:.64 ;
 }
 .descript .cont .memo {
   padding-top: 0.08rem;
