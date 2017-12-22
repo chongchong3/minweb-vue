@@ -25,8 +25,7 @@
     data() {
       return {
       	banner:[
-//    		{link:"../../static/images/banner.png",src:""},
-			{link:"https://img.wesetup.cn/banner.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//, ../../static/images/banner.png
+			{link:"https://img.wesetup.cn/webIndexBanner.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//, ../../static/images/banner.png
       	],
 
         swiperOption: {
