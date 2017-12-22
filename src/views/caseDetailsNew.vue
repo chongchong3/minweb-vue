@@ -31,7 +31,7 @@
       <ul class="caseBigList">
           <li  v-for="item in caseData.caseDetailsList">
               <img :src="item.image">
-              <p>{{item.info}}</p>
+              <p v-if="item.info">{{item.info}}</p>
           </li>
            
       </ul>
@@ -142,9 +142,12 @@
 }
 .caseBigList {
   background-color: #eee;
+
+}
+.caseDetails .caseBigList {
+    margin-top:.15rem;
 }
 .caseBigList li {
-  padding: 0.15rem 0 0.1rem 0;
   margin: 0 0 0.1rem 0;
   background-color: #fff;
 }
@@ -157,7 +160,7 @@
   margin: 0;
   line-height: 0.16rem;
   font-size: 0.12rem;
-  padding: 0 0.2rem;
+  padding: 0 .2rem .1rem .2rem;
 }
 
 </style>
