@@ -96,7 +96,7 @@ export default {
   box-shadow: 0px 2px 1px #ccc;
 }
 .topNav .cont {
-  margin: 0 0.16rem;
+  margin: 0 .1rem 0 0;
   background: url(http://ovfllimsi.bkt.clouddn.com/minWebIn.png?imageView2/2/w/80)
     no-repeat center;
   height: 100%;
@@ -112,7 +112,7 @@ export default {
 
 .topNav .btn img {
   width: .2rem;
-  margin-top: 0.22rem;
+  margin-top: 0.20rem;
   float:left;
   margin-left:.095rem;
 }
@@ -126,8 +126,6 @@ export default {
 }
 .cursor {
   display: inline-block;
-  width: 0.4rem;
-  height: 0.55rem;
   text-align: center;
 }
 .test {
