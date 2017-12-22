@@ -53,15 +53,17 @@ export default {};
 <style scoped="scoped">
 .slogan-c {
 
-  background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) top center
-    no-repeat;
+  background: url(https://img.wesetup.cn/minWeb.png?imageView2/5) top center no-repeat;
   background-size: 100% 100%;
-	padding-bottom:.33rem;
+	  background-size: 100% 100%;
+    height: 3.3rem;
+
 }
 .about-shejiin-title {
   height: 0.49rem;
-  border-bottom: 1px solid #c8c8c8;
+  border-bottom: 1px solid #858585 ;
   text-align: center;
+	margin-bottom: .33rem;
  
 }
 .about-title {
@@ -70,11 +72,12 @@ export default {};
   display: inline-block;
   text-align: left;
   width: 1rem;
+	  
   background: url(../../../static/images/more.png) right no-repeat;
   background-size: 0.14rem;
 }
 .special .section {
-  padding:.33rem 0 .165rem .38rem;
+  padding: 0  0 .4rem  .38rem;
   overflow: hidden;
 }
 .special .section .aside {
