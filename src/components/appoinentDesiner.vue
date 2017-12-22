@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
           <div class="appoint" @click="appoinmnet">
-             <span class="icon"><img src="static/images/clock.png" alt=""></span>
+             <span class="icon"><img src="static/images/clockNew.png" alt=""></span>
               <span class="tit">预约设计师</span>
           </div>
       </div>
