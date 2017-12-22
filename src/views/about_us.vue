@@ -46,6 +46,8 @@
             <img src="https://img.wesetup.cn/zu6.png?imageView2/2" alt="" class="img-auto">
             <img src="https://img.wesetup.cn/zu7.png?imageView2/2" alt="" class="img-auto">
             <img src="https://img.wesetup.cn/zu8.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu9.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu10.png?imageView2/2" alt="" class="img-auto">
             <!-- <img src="https://img.wesetup.cn/service_2.png" alt="" class="img-auto">
             <img src="https://img.wesetup.cn/ground_1.png" alt="" class="img-auto"> -->
         </div>
