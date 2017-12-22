@@ -38,7 +38,7 @@
         		</div>
 		 	</router-link>
         </div>
-        <appoinent-desiner :desinerId="desinerId"></appoinent-desiner>
+        <appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>
         <div class="bottom-padding">
         	
         </div>
@@ -63,7 +63,8 @@
 				result:null,
 				ht:document.body.clientHeight,
 				hasVideo:true,
-				desinerId:this.$route.params.desiner_id
+				desinerId:this.$route.params.desiner_id,
+				showFlag:false
 			}
 		},
 		 components: {
@@ -73,9 +74,18 @@
 		 },
 		mounted(){
 			this.getDesigner();
+			document.addEventListener('scroll',()=>{
+		  		this.loadDesigner();
+		  		this.showFlag = true;
+		 	})
 		},
 		created(){
-			
+			var self=this;
+			document.addEventListener("scroll",function(){
+				var clientHeight = document.documentElement.scrollTop === 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+				var scrollTop = document.documentElement.scrollTop === 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+				self.showFlag = (scrollTop>=clientHeight);
+			},false)
 		},
 		methods:{
 			getDesigner:function(){

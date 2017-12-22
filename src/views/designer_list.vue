@@ -267,7 +267,7 @@ ul, li, p{
     top:.4rem;
     width: 1rem;
     height: 1rem;
-    border:1px solid #d0d0d0;
+    border:2px solid #d0d0d0;
     border-radius: 50%;
     display: block;
 }
@@ -275,6 +275,7 @@ ul, li, p{
     margin-top:.54rem;
     font-size: .2rem;
     color: #fff;
+    font-weight: bold;
 }
 .designer-detail{
     margin-top:.12rem;
@@ -285,6 +286,7 @@ ul, li, p{
     margin-top:.12rem;
     font-size: .12rem;
     color: #fff;
+    
 }
 /* 图片动画 */
 .cursor{
@@ -304,7 +306,7 @@ ul, li, p{
 .imgAnimate {
   width:100%;
   background-position: center center;
-  background-size: 103% 103%;
+  background-size: 100% 100%;
 }
 .isShow{
     background-size: 100% 100%;
