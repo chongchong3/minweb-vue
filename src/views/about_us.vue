@@ -16,7 +16,7 @@
             <p class="slog-des"> 业内最严苛的入驻标准—深度面访+专业评审+圈层背调；所有入驻设计师拥有至少8年以上从业资历，并具备丰富的别墅、大宅设计经验。</p>
         </div>
         <div class="many-people">
-            <img class="people-img" src="https://img.wesetup.cn/Group 3@3x.png" alt="">
+            <img class="people-img" src="https://img.wesetup.cn/Group 3@3xnew.png?imageView2/2" alt="">
         </div>
         <div class="designer">
             <img src="../../static/images/Group@3x.png" alt="" class="slog-img">
@@ -31,7 +31,7 @@
         <p class="designer-des des-margin">2、落地跟踪：施工现场实行平台监理、设计师落地跟踪服务，家装过程轻松管控。</p>
         </div>
         <div class="many-people">
-            <img class="people-img" src="https://img.wesetup.cn/Group 27@3x.png" alt="">
+            <img class="people-img" src="https://img.wesetup.cn/Group 27@3xnew.png?imageView2/2" alt="">
         </div>
         <div class="designer">
             <img src="../../static/images/Group 15@3x.png" alt="" class="slog-img">
@@ -41,18 +41,20 @@
             <p class="designer-des des-margin">3、平台不收取客户任何费用</p>
         </div>
         <div class="many-people">
-            <img class="people-img" src="https://img.wesetup.cn/Group 28@3x.png" alt="">
+            <img class="people-img" src="https://img.wesetup.cn/Group 28@3xnew.png?imageView2/2" alt="">
         </div>
         <div class="long-img">
             <!-- ../../static/images/service_1.png -->
-            <img src="https://img.wesetup.cn/service_1.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/service_2.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/service_3.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/service_4.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/service_5.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/ground_1.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/ground_2.png" alt="" class="img-auto">
-            <img src="https://img.wesetup.cn/ground_3.png" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu1.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu2.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu3.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu4.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu5.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu6.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu7.png?imageView2/2" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/zu8.png?imageView2/2" alt="" class="img-auto">
+            <!-- <img src="https://img.wesetup.cn/service_2.png" alt="" class="img-auto">
+            <img src="https://img.wesetup.cn/ground_1.png" alt="" class="img-auto"> -->
         </div>
         <div class="footer">
             <div class="footer-icon">
@@ -96,8 +98,7 @@
 .about .header-banner{
     margin-top:.56rem;
     position: relative;
-    /* https://img.wesetup.cn/Group 55@3x.png */
-    background:url('https://img.wesetup.cn/aboutus%20banner.png') no-repeat;
+    background:url('https://img.wesetup.cn/Group 55@3xnew.png?imageView2/2') no-repeat;
     background-size: 100% auto;
     height:3.4rem;
 

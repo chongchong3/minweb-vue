@@ -1,9 +1,8 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails" v-if="result">
 		<div  @click="back" class="goback"></div>
-		<designer-banner :imgItems='result.banner'></designer-banner>
-		<div class="page-swiper ">
-	        <div class="por-des-c"  >
+		<div class="designer-banner-c">
+			<designer-banner :imgItems='result.banner'></designer-banner>
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
 		        	<span class="price">
@@ -11,7 +10,8 @@
 		        	</span></p>
 		        		
 		        </div>
-	        </div>
+		</div>
+		<div class="page-swiper ">
 	        <div class="detail-describe-c">
 	        	<div class="detail-describe-sub-c">
 	        		<p class="title" v-if="!result.awards == ''">奖项</p>  
@@ -48,8 +48,8 @@
 
 <script>
 	import Vue from "vue";
-	import { MessageBox } from "mint-ui";
-	import "mint-ui/lib/style.css";
+//	import { MessageBox } from "mint-ui";
+//	import "mint-ui/lib/style.css";
 	import VueAwesomeSwiper from "vue-awesome-swiper";
 	import {getDesinerDetails} from "@/api/desinerDetails";
 	import videoComp from "../components/desiner/video";
@@ -111,7 +111,9 @@
 		position: absolute;
 		z-index: 1000;
 	}
-	
+	.designer-banner-c{
+		position: relative;
+	}
 	.por-des-c{
 		width:100%;
 		position: relative;
@@ -128,8 +130,12 @@
 	.designer-info-c{
 		width:100%;
 		position:absolute;
-		bottom:.35rem;
+		height:.8rem;
+		bottom:0rem;
 		left:0px;
+		z-index: 1001;
+		background: url(../../static/filter.png);
+		background-size:100% ;
 	}
 	.designer-info-c p{
 		color:#fff;
