@@ -54,8 +54,7 @@ export default {
   data() {
     return {
     	designerBannerLoadingFlag:false,
-   		caseBannerLoadingFlag:false,
-   		showFlag:false
+   		caseBannerLoadingFlag:false
     };
   },
 
@@ -72,12 +71,9 @@ export default {
     	  this.caseBannerLoadingFlag = true;
       this.$nextTick(function(){
        this.shareWx.getId();
-       this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+       this.shareWx.shareReady("设计IN-设计师严选平台");
       })
- 	  document.addEventListener('scroll',()=>{
-  		this.loadDesigner();
-  		this.showFlag = true;
- 	  })
+ 	 
    
   },
   methods:{

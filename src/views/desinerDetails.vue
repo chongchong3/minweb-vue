@@ -74,6 +74,10 @@
 		 },
 		mounted(){
 			this.getDesigner();
+			document.addEventListener('scroll',()=>{
+		  		this.loadDesigner();
+		  		this.showFlag = true;
+		 	})
 		},
 		created(){
 			var self=this;
