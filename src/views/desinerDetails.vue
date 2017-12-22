@@ -191,7 +191,7 @@
 	}
 	.caselist-c{
 		width:100%;
-		border-top:2px solid #c9c9c9;
+		border-top:1px solid #c9c9c9;
 	}
 	.case-detail-c{
 		position: relative;
@@ -234,9 +234,11 @@
 	.case-detail-c .des .case-square-style{
 		font-size: .12rem;
 		line-height: .17rem;
+		color:#fff;
+		opacity: .54;
 	}
 	.video-c{
-		border-top:2px solid #c9c9c9;
+		border-top:1px solid #c9c9c9;
 		width:100%;
 		padding-bottom:.3rem;
 	}
