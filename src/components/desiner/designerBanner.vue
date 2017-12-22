@@ -5,7 +5,7 @@
 		    <swiper-slide class="swiper-item" v-for="(item,index) in imgItems" :key="index">
 		    	<img :src="item"  />
 		    </swiper-slide>
-		    <div class="swiper-pagination"  slot="pagination"></div>
+		    <div class="swiper-pagination" id="desingerBanner"  slot="pagination"></div>
 		  </swiper>
 	</div>
 
@@ -72,7 +72,7 @@
   	display: block;
   	width: 100%;
   }
-  .swiper-pagination{
+  #desingerBanner {
   	height:0.2rem;
   	width:100%;
   	position: absolute;
@@ -80,7 +80,7 @@
   	left:0px;
   	text-align: right;
   }
-  .swiper-pagination-bullet{
+  #desingerBanner .swiper-pagination-bullet{
   	opacity: .6;
   	background:#fff;
   	display: inline-block;
@@ -89,8 +89,8 @@
   	height:.06rem;
   	border-radius: 50%;
   }
-  .swiper-pagination-bullet-active{
-  	background:#fff;
+  #desingerBanner  .swiper-pagination-bullet-active{
+  	background:#fff !important;
   	opacity: 1;
   }
 </style>
