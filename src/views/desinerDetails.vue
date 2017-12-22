@@ -73,10 +73,11 @@
 		    designerBanner
 		 },
 		mounted(){
+			var self=this;
 			this.getDesigner();
 			document.addEventListener('scroll',()=>{
-		  		this.loadDesigner();
-		  		this.showFlag = true;
+		  		self.loadDesigner();
+		  		self.showFlag = true;
 		 	})
 		},
 		created(){
