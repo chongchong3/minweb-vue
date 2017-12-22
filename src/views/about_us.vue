@@ -189,6 +189,7 @@
 .img-auto{
     width:100%;
     height:auto;
+    display: block;
 }
 
 .footer{
