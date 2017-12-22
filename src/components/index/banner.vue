@@ -10,7 +10,7 @@
 		    	<img :src="item.link+'?imageView2/2/w/750'" :loc="item.src" />
 		    </swiper-slide>
 		    <!-- Optional controls -->
-		    <div class="swiper-pagination"  slot="pagination"></div>
+		    <!--<div class="swiper-pagination"  slot="pagination"></div>-->
 		  </swiper>
 	</div>
 	<div class="banner-hor-c">
@@ -29,11 +29,12 @@
       	],
 
         swiperOption: {
-          autoplay: 3000,
+//        autoplay: 3000,
           grabCursor: true,
           setWrapperSize: true,
           autoHeight: true,
-          pagination: '.swiper-pagination',
+//        pagination: '.swiper-pagination',
+		  pagination:null,
           paginationType:'bullets',
           paginationClickable: true,
           mousewheelControl: true,
