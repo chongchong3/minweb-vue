@@ -38,7 +38,7 @@
         		</div>
 		 	</router-link>
         </div>
-        <!--<appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>-->
+        <appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>
         <div class="bottom-padding">
         	
         </div>
