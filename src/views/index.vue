@@ -54,8 +54,7 @@ export default {
   data() {
     return {
     	designerBannerLoadingFlag:false,
-   		caseBannerLoadingFlag:false,
-   		showFlag:false
+   		caseBannerLoadingFlag:false
     };
   },
 
@@ -76,7 +75,6 @@ export default {
       })
  	  document.addEventListener('scroll',()=>{
   		this.loadDesigner();
-  		this.showFlag = true;
  	  })
    
   },
