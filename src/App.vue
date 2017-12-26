@@ -23,8 +23,7 @@ export default {
 html,body{
   font-size: 100px;
   height: 100%;
-  /* font-family: "Helvetica Neue',Helvetica,Arial,sans-serif" */
-  font-family: '\\5FAE\8F6F\96C5\9ED1,Helvetica Neue,Helvetica,STHeiTi,sans-serif';
+  font-family: "Helvetica Neue',Helvetica,Arial,sans-serif"
 }
 body {
   font-size: 12px;
