@@ -94,7 +94,7 @@
   position: absolute;
   width: 100%;
   height: 0.5rem;
-  background: url("https://img.wesetup.cn/shadowBg.png");
+  background: url("https://img.wesetup.cn/sloganBg.png");
 }
 .caseDetails .desiner {
   margin-top: 0.15rem;

@@ -35,9 +35,12 @@
   width: 100%;
   display: block;
   margin-top: 0.05rem;
+
+  
 }
 .appoint .tit {
   display: inline-block;
+  margin-left: .07rem;
 }
 </style>
 

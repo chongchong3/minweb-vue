@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails" v-if="result">
 		<div  @click="back" class="goback"></div>
-		<div class="designer-banner-c">
+		<div class="designer-banner-c" :style="'height:'+wth*1.5+'px'">
 			<designer-banner :imgItems='result.banner'></designer-banner>
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
@@ -62,6 +62,7 @@
 			return{
 				result:null,
 				ht:document.body.clientHeight,
+				wth:document.body.clientWidth,
 				hasVideo:true,
 				desinerId:this.$route.params.desiner_id,
 				showFlag:false
@@ -123,6 +124,7 @@
 	}
 	.designer-banner-c{
 		position: relative;
+		overflow: hidden;
 	}
 	.por-des-c{
 		width:100%;
@@ -178,14 +180,18 @@
 	.detail-describe-sub-c{
 		margin:0 4% .4rem;
 	}
+	
 	.detail-describe-sub-c .title{
 		font-size:.18rem;
 		line-height:.25rem;
 		font-weight: bold;
+		margin-top:.24rem;
+		margin-bottom: 0;
 	}
 	.detail-describe-sub-c .content{
 		font-size:.12rem;
 		line-height: .17rem;
+		margin:.1rem 0rem;
 		opacity: .54;
 		color:#000;
 	}

@@ -20,10 +20,11 @@ export default {
 </script>
 
 <style>
-html {
+html,body{
   font-size: 100px;
   height: 100%;
-  font-family: "Helvetica Neue',Helvetica,Arial,sans-serif"
+  font-family:Helvetica;
+  /*font-family: "Helvetica Neue',Helvetica,Arial,sans-serif"*/
 }
 body {
   font-size: 12px;
