@@ -72,24 +72,14 @@ export default {
     },
     onPlayerPlay() {
       document.getElementById("playerBtn").style.display = "none";
-       var ua = navigator.userAgent;
-      if (ua.indexOf("Android") ==-1) {
-         document.getElementById("backgroundBg").style.display = "none";
-      }
-     
+      document.getElementById("backgroundBg").style.display = "none";
     },
     onPlayerEnded() {
       document.getElementById("playerBtn").style.display = "block";
-      if (ua.indexOf("Android")==-1 ) {
-         document.getElementById("backgroundBg").style.display = "block";
-      }
- 
+      document.getElementById("backgroundBg").style.display = "block";
     },
     onPlayerPause() {
-      var ua = navigator.userAgent;
-      if (ua.indexOf("Android") ==-1) {
-         document.getElementById("backgroundBg").style.display = "block";
-      }
+      document.getElementById("backgroundBg").style.display = "block";
       document.getElementById("playerBtn").style.display = "block";
     }
   }
