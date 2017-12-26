@@ -235,7 +235,7 @@
     background: #979797;
 }
 .copywrite{
-    margin-top:.1rem;
+    margin-top:.13rem;
     margin-bottom: .13rem;
     text-align: center;
     opacity: 0.6;
