@@ -68,12 +68,13 @@ export default {};
 }
 .about-title {
   line-height: .49rem;
-  font-size: 0.16rem;
+  font-size: 0.18rem;
   display: inline-block;
   text-align: left;
   width: 1rem;
   background: url(../../../static/images/more.png) right no-repeat;
   background-size: 0.14rem;
+	font-weight: bold;
 }
 .special .section {
   padding: 0  0 .4rem  .38rem;
