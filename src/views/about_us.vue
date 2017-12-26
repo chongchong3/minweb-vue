@@ -198,22 +198,24 @@
     display: flex;
 }
 .left-icon{
-    margin-top:.4rem;
+    margin-top:.31rem;
     flex:1;
 
 }
 .icon-img{
     float: left;
+    margin-top:.02rem;
     width:.24rem;
     height: .24rem;
 }
 .right-icon{
-    margin-top:.4rem;
+    margin-top:.31rem;
+    margin-left:.3rem;
     flex:1;
 }
 .icon-des{
     margin:0;
-    padding-left:.3rem;
+    padding-left:.34rem;
     opacity: 0.6;
     font-size: 11px;
     line-height: 14px;
@@ -253,6 +255,9 @@ export default {
         return{
 
         }
+    },
+    beforeCreate(){
+        window.scrollTo(0,0)
     },
     created() {
         this.$store.commit("setNav", {
