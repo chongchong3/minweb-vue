@@ -26,22 +26,21 @@
   z-index: 99;
 }
 .vjs-poster {
-  background-position:0 0;
+  background-position: 0 0;
   background-size: 100% 100%;
 }
 .video-module .back-ground {
-    position: absolute;
-    width:100%;
-    height: 5.93rem;
-    overflow: hidden;
-    left: 0;
-    top:0;
-    z-index: 22;
-    display: none;
-
+  position: absolute;
+  width: 100%;
+  height: 5.93rem;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 22;
+  display: none;
 }
-.video-module .back-ground  img {
-  width:100%;
+.video-module .back-ground img {
+  width: 100%;
 }
 .video-player-box,
 .vjs-tech,
@@ -57,12 +56,9 @@ import VueVideoPlayer from "vue-video-player";
 Vue.use(VueVideoPlayer);
 
 export default {
-    props: ["selfMes"],
+  props: ["selfMes"],
   data() {
-    return {
-
-      
-    };
+    return {};
   },
   computed: {
     player() {
@@ -73,22 +69,29 @@ export default {
   methods: {
     palyer() {
       this.player.play();
+    },
+    onPlayerPlay() {
+      document.getElementById("playerBtn").style.display = "none";
+       var ua = navigator.userAgent;
+      if (ua.indexOf("Android") > 0) {
+         document.getElementById("backgroundBg").style.display = "block";
+      }
      
     },
-    onPlayerPlay(){
-      document.getElementById('playerBtn').style.display="none";
-        document.getElementById('backgroundBg').style.display="none";
+    onPlayerEnded() {
+      document.getElementById("playerBtn").style.display = "block";
+      if (ua.indexOf("Android") > 0) {
+         document.getElementById("backgroundBg").style.display = "block";
+      }
+ 
     },
-    onPlayerEnded(){
-      
-         document.getElementById('playerBtn').style.display="block";
-         document.getElementById('backgroundBg').style.display="block";
-    },
-    onPlayerPause(){
-       
-           document.getElementById('playerBtn').style.display="block";
-    },
-    
+    onPlayerPause() {
+      var ua = navigator.userAgent;
+      if (ua.indexOf("Android") > 0) {
+         document.getElementById("backgroundBg").style.display = "none";
+      }
+      document.getElementById("playerBtn").style.display = "block";
+    }
   }
 };
 </script>
