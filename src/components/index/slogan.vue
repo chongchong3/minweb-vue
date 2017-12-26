@@ -2,7 +2,7 @@
 	<div class="slogan-c">
 		<div class="about-shejiin-title">
 			<router-link class="about-title" tag="div" to="/aboutus">
-				关于设计<span class="in">IN</span>
+				关于设计IN
 			</router-link>
 		</div>
 		<div class="special">
@@ -74,9 +74,7 @@ export default {};
   background-size: 0.14rem;
   font-weight: bold;
 }
-.about-title  .in {
-	font-family: '微软雅黑';
-}
+
 .special .section {
   padding: 0 0 0.4rem 0.38rem;
   overflow: hidden;
