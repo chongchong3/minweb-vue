@@ -71,7 +71,7 @@ export default {};
   font-size: 0.18rem;
   display: inline-block;
   text-align: left;
-  width: 1rem;
+  width: 1.1rem;
   background: url(../../../static/images/more.png) right no-repeat;
   background-size: 0.14rem;
 	font-weight: bold;
