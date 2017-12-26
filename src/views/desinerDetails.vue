@@ -1,7 +1,7 @@
 <template>
 	<div class="desinerDetails" id="desinerDetails" v-if="result">
 		<div  @click="back" class="goback"></div>
-		<div class="designer-banner-c">
+		<div class="designer-banner-c" :style="'height:'+wth*1.5+'px'">
 			<designer-banner :imgItems='result.banner'></designer-banner>
 		        <div class="designer-info-c">
 		        	<p class="name">{{result.designer_name}}<br>
@@ -62,6 +62,7 @@
 			return{
 				result:null,
 				ht:document.body.clientHeight,
+				wth:document.body.clientWidth,
 				hasVideo:true,
 				desinerId:this.$route.params.desiner_id,
 				showFlag:false
