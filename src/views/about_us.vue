@@ -256,6 +256,9 @@ export default {
 
         }
     },
+    beforeCreate(){
+        window.scrollTo(0,0)
+    },
     created() {
         this.$store.commit("setNav", {
         isShow: false, //左侧菜单栏默认为关闭状态
