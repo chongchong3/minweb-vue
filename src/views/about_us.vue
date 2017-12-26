@@ -227,6 +227,7 @@
     position: absolute;
     left:0; right:0;
     bottom:0;
+    height:.4rem;
 }
 .line-hr{
     margin:0 .22rem;
