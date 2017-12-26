@@ -73,22 +73,22 @@ export default {
     onPlayerPlay() {
       document.getElementById("playerBtn").style.display = "none";
        var ua = navigator.userAgent;
-      if (ua.indexOf("Android") > 0) {
-         document.getElementById("backgroundBg").style.display = "block";
+      if (ua.indexOf("Android") ==-1) {
+         document.getElementById("backgroundBg").style.display = "none";
       }
      
     },
     onPlayerEnded() {
       document.getElementById("playerBtn").style.display = "block";
-      if (ua.indexOf("Android") > 0) {
+      if (ua.indexOf("Android")==-1 ) {
          document.getElementById("backgroundBg").style.display = "block";
       }
  
     },
     onPlayerPause() {
       var ua = navigator.userAgent;
-      if (ua.indexOf("Android") > 0) {
-         document.getElementById("backgroundBg").style.display = "none";
+      if (ua.indexOf("Android") ==-1) {
+         document.getElementById("backgroundBg").style.display = "block";
       }
       document.getElementById("playerBtn").style.display = "block";
     }
