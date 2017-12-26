@@ -190,7 +190,7 @@
 
 .footer{
     position: relative;
-    height:2rem;
+    height:1.9rem;
     background: #D8D8D8;
 }
 .footer-icon{
