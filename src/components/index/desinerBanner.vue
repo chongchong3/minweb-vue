@@ -9,10 +9,10 @@
 			<div  class="designer-detail-list-c">
 				<swiper :options="designerOption" >
 			    <!-- slides -->
-			    <swiper-slide class="designer-item" v-for="(designer,index) in designerList" :key="index">
+			    <swiper-slide class="designer-item"   v-for="(designer,index) in designerList" :key="index">
 			    	<router-link :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
 			    		<!--<div  class="detail-designer">-->
-							<div class="img-c" >
+							<div class="img-c" id="imgC" :style="'height:'+designItemWidth*1.5+'px'" >
 								<img :src="designer.slide_gif+'?imageView2/2/w/360'" />
 							</div>
 							<div class="design-des-c">
@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       designerList: [],
+      designItemWidth:0,
       // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
       // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
       notNextTick: true,
@@ -59,10 +60,14 @@ export default {
     }
   },
   mounted() {
+  		
 	   this.getList({ page_size: 6, page_no: 1})
       .then(json => {
         if (json.body.code == "200") {
           this.designerList = json.body.data.result;
+          this.$nextTick(function(){
+          	this.designItemWidth = document.querySelector("#imgC").offsetWidth;
+          })
         }
       })
       .catch(err => {});
@@ -140,7 +145,9 @@ export default {
   width: 100%;
   float: left;
 }
-
+.img-c{
+	overflow: hidden;
+}
 .img-c img {
   width: 100%;
   display: block;
