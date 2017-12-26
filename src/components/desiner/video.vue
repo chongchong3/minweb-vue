@@ -1,9 +1,9 @@
 <template>
     <div class="section video-module" >
             <img :src="'./static/images/video.png'"   id="playerBtn" class="playerBtn" @click="palyer"> 
-            <div class="back-ground" id="backgroundBg">
+            <!-- <div class="back-ground" id="backgroundBg">
               <img :src="selfMes.video_cover_img">
-            </div>
+            </div> -->
                     <video-player   @play="onPlayerPlay($event)"  @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"    class="video-player-box vjs-big-play-centered hide" ref="videoPlayer" 
         :options="{controls: false,sources: [{type: 'video/mp4',src:'' +selfMes.self_introduction_video_url+''}], poster:selfMes.video_cover_img}"
    >
@@ -73,23 +73,23 @@ export default {
     onPlayerPlay() {
       document.getElementById("playerBtn").style.display = "none";
        var ua = navigator.userAgent;
-      if (ua.indexOf("Android") ==-1) {
-         document.getElementById("backgroundBg").style.display = "none";
-      }
+      // if (ua.indexOf("Android") >0) {
+      //    document.getElementById("backgroundBg").style.display = "none";
+      // }
      
     },
     onPlayerEnded() {
       document.getElementById("playerBtn").style.display = "block";
-      if (ua.indexOf("Android")==-1 ) {
-         document.getElementById("backgroundBg").style.display = "block";
-      }
+      // if (ua.indexOf("Android")>1 ) {
+      //    document.getElementById("backgroundBg").style.display = "block";
+      // }
  
     },
     onPlayerPause() {
       var ua = navigator.userAgent;
-      if (ua.indexOf("Android") ==-1) {
-         document.getElementById("backgroundBg").style.display = "block";
-      }
+      // if (ua.indexOf("Android") >1) {
+      //    document.getElementById("backgroundBg").style.display = "block";
+      // }
       document.getElementById("playerBtn").style.display = "block";
     }
   }
