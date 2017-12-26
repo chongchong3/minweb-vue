@@ -38,7 +38,7 @@
         		</div>
 		 	</router-link>
         </div>
-        <appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>
+        <!--<appoinent-desiner  v-show="showFlag" :desinerId="desinerId"></appoinent-desiner>-->
         <div class="bottom-padding">
         	
         </div>
@@ -124,6 +124,7 @@
 	}
 	.designer-banner-c{
 		position: relative;
+		overflow: hidden;
 	}
 	.por-des-c{
 		width:100%;
@@ -179,14 +180,18 @@
 	.detail-describe-sub-c{
 		margin:0 4% .4rem;
 	}
+	
 	.detail-describe-sub-c .title{
 		font-size:.18rem;
 		line-height:.25rem;
 		font-weight: bold;
+		margin-top:.24rem;
+		margin-bottom: 0;
 	}
 	.detail-describe-sub-c .content{
 		font-size:.12rem;
 		line-height: .17rem;
+		margin:.1rem 0rem;
 		opacity: .54;
 		color:#000;
 	}
