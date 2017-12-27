@@ -168,7 +168,7 @@
 .caseBigList li .img-box .space-type {
   position: absolute;
   bottom: 0;
-  width: 64px;
+  padding:0 .16rem;
   height: 24px;
   line-height: 24px;
   text-align: center;
