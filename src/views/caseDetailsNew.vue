@@ -30,7 +30,13 @@
       
       <ul class="caseBigList">
           <li  v-for="item in caseData.caseDetailsList">
-              <img :src="item.image">
+              <div class="img-box">
+                 <img :src="item.image">
+                  <div class="space-type" v-if="item.spaceType">
+                    <span class="shadow"></span>
+                    <span class="ct">{{item.spaceType}}</span>
+                  </div>
+              </div>
               <p v-if="item.info">{{item.info}}</p>
           </li>
            
@@ -155,9 +161,37 @@
   margin: 0 0 0.1rem 0;
   background-color: #fff;
 }
-.caseBigList li img {
-  display: block;
+.caseBigList li .img-box {
+  position: relative;
   margin-bottom: 0.1rem;
+}
+.caseBigList li .img-box .space-type {
+  position: absolute;
+  bottom: 0;
+  padding:0 .16rem;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+
+}
+ .img-box .space-type  .shadow {
+    position: absolute;
+    height: 24px;
+    top:0;
+    left:0;
+    width:100%;
+    background: #000;
+    opacity: 0.3;
+}
+.img-box .space-type  .ct {
+  position: relative;
+  color: #fff;
+  opacity: 1;
+}
+
+.caseBigList li .img-box img {
+  display: block;
+
   width: 100%;
 }
 .caseBigList li p {
