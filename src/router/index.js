@@ -20,6 +20,7 @@ const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/
 // 微网站1.1
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
 const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/designer_list')
+const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/transitionTest')
 
 export default new Router({
   routes: [
@@ -112,6 +113,12 @@ export default new Router({
       name: 'case_list',
       component: case_list,
       meta: {title: '看设计案例 | 设计IN-设计师严选平台'}     
-    }
+    },
+    {
+      path: '/transitionTest',
+      name: 'transitionTest',
+      component: transitionTest,
+      meta: {title: '动画测试'}     
+    },
   ]
 })
