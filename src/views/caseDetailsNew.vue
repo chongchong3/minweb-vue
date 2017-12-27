@@ -32,7 +32,7 @@
           <li  v-for="item in caseData.caseDetailsList">
               <div class="img-box">
                  <img :src="item.image">
-                  <div class="space-type" >
+                  <div class="space-type" v-if="item.spaceType">
                     <span class="shadow"></span>
                     <span class="ct">{{item.spaceType}}</span>
                   </div>
@@ -184,6 +184,7 @@
     opacity: 0.3;
 }
 .img-box .space-type  .ct {
+  position: relative;
   color: #fff;
   opacity: 1;
 }
