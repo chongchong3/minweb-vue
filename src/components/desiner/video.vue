@@ -75,14 +75,17 @@ export default {
     onPlayerPlay() {
       document.getElementById("playerBtn").style.display = "none";
       document.getElementById("backgroundBg").style.display = "none";
+      this.player.show();
     },
     onPlayerEnded() {
       document.getElementById("playerBtn").style.display = "block";
       document.getElementById("backgroundBg").style.display = "block";
+       this.player.hide();
     },
     onPlayerPause() {
       document.getElementById("backgroundBg").style.display = "block";
       document.getElementById("playerBtn").style.display = "block";
+      this.player.hide();
     }
   }
 };
