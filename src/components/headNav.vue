@@ -60,12 +60,22 @@ export default {
         }
         var scrollTop = _self.getScrollTop();
         var screnHt = document.body.clientHeight;
-        if (scrollTop > screnHt / 3) {
-          domNav.style.display = "none";
-          return;
+        if(scrollTop>0){
+        	if((scrollTop-_self.scrollY)>0){
+        		_self.scrollY = scrollTop;
+        		domNav.style.display = "none";
+        	  	return;
+        	}else{
+        		_self.scrollY = scrollTop;
+        		domNav.style.display = "block";
+        		return;
+        	}
         }
-        domNav.style.display = "block";
-        return;
+//      if (scrollTop > screnHt / 3) {
+//        domNav.style.display = "none";
+//        return;
+//      }
+        
       });
     },
     getScrollTop() {
