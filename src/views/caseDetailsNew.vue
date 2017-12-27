@@ -33,6 +33,7 @@
               <div class="img-box">
                  <img :src="item.image">
                   <div class="space-type" >
+                    <span class="shadow"></span>
                     <span class="ct">{{item.spaceType}}</span>
                   </div>
               </div>
@@ -171,8 +172,16 @@
   height: 24px;
   line-height: 24px;
   text-align: center;
-  background: #000;
-  opacity: 0.3;
+
+}
+ .img-box .space-type  .shadow {
+    position: absolute;
+    height: 24px;
+    top:0;
+    left:0;
+    width:100%;
+    background: #000;
+    opacity: 0.3;
 }
 .img-box .space-type  .ct {
   color: #fff;
