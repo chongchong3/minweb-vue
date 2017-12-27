@@ -246,6 +246,7 @@
 	.video-c{
 		border-top:1px solid #c9c9c9;
 		width:100%;
+		min-height: 5.625rem;
 		padding-bottom:.3rem;
 	}
 	.designer-title{

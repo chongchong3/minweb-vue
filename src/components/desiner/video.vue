@@ -15,6 +15,7 @@
   position: relative;
   height: 5.625rem;
   overflow: hidden;
+  width:100%;
 }
 .video-module .playerBtn {
   position: absolute;
@@ -29,6 +30,7 @@
   background-position: 0 0;
   background-size: 100% 100%;
 }
+
 .video-module .back-ground {
   position: absolute;
   width: 100%;
