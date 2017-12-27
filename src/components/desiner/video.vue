@@ -73,19 +73,34 @@ export default {
       this.player.play();
     },
     onPlayerPlay() {
+        var ua = window.navigator.userAgent;
+        if (ua.indexOf("Android") > 0) {
+              this.player.show();
+
+        }
       document.getElementById("playerBtn").style.display = "none";
       document.getElementById("backgroundBg").style.display = "none";
-      this.player.show();
+  
     },
     onPlayerEnded() {
+       var ua = window.navigator.userAgent;
+        if (ua.indexOf("Android") > 0) {
+             this.player.hide();
+
+        }
       document.getElementById("playerBtn").style.display = "block";
       document.getElementById("backgroundBg").style.display = "block";
-       this.player.hide();
+       
+     
     },
     onPlayerPause() {
+       var ua = window.navigator.userAgent;
+        if (ua.indexOf("Android") > 0) {
+             this.player.hide();
+
+        }
       document.getElementById("backgroundBg").style.display = "block";
       document.getElementById("playerBtn").style.display = "block";
-      this.player.hide();
     }
   }
 };
