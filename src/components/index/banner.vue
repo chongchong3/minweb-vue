@@ -10,7 +10,7 @@
 		    	<img :src="item.link+'?imageView2/2/w/750'" :loc="item.src" />
 		    </swiper-slide>
 		    <!-- Optional controls -->
-		    <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+				  <div class="swiper-pagination"  slot="pagination"></div>
 		  </swiper>
 	</div>
 	<div class="banner-hor-c">
@@ -25,7 +25,8 @@
     data() {
       return {
       	banner:[
-			{link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}//, ../../static/images/banner.png
+						{link:"https://img.wesetup.cn/bannerFirst.png",src:"https://d.eqxiu.com/s/Cssq7CeG"},
+					{link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}
       	],
 
         swiperOption: {
@@ -33,7 +34,7 @@
           grabCursor: true,
           setWrapperSize: true,
           autoHeight: true,
-//        pagination: '.swiper-pagination',
+       pagination: '.swiper-pagination',
 		  pagination:null,
           paginationType:'bullets',
           paginationClickable: true,
@@ -105,7 +106,7 @@
   .swiper-pagination-bullet{
   	width:0.4rem;
   	height:0.04rem;
-  	opacity: .6;
+  	/* opacity: .6; */
   	background:#e4e4e4;
   	display: inline-block;
   	margin: 0px 0.04rem;

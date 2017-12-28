@@ -187,6 +187,7 @@
   position: relative;
   color: #fff;
   opacity: 1;
+  z-index:22;
 }
 
 .caseBigList li .img-box img {
