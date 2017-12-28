@@ -78,7 +78,7 @@
             </div>
             <div class="footer-copy">
                 <div class="line-hr"></div>
-                <p class="copywrite">©️2017杭州唯装网络科技有限公司</p>
+                <p class="copywrite">©️2017-2018杭州唯装网络科技有限公司</p>
             </div>
             
         </div>
