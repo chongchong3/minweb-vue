@@ -56,7 +56,7 @@
 .caseDetails .head .icon {
   position: absolute;
   z-index: 22;
-  left: 0.08rem;
+  left: 0.18rem;
   top: 0.17rem;
   width: .13rem;
   height: .21rem;
