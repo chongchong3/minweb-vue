@@ -162,6 +162,7 @@
     margin-bottom: .2rem;
     font-size: 16px;
     line-height: .22rem;
+    font-weight: bold;
     text-align: center;
     color: #000000;
     letter-spacing: 0;
