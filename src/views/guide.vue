@@ -47,8 +47,8 @@ export default {
     
       this.$nextTick(function(){
        this.shareWx.getId();
-    //    title,desc,link,imgUrl
-      this.shareWx.shareReady("设计IN-设计师严选平台",'','','https://m.shejiin.net/#/index');
+    //    title,desc,link,imgUrlhttps://m.shejiin.net
+      this.shareWx.shareReady("设计IN-设计师严选平台",'','https://img.wesetup.cn/logo.png?imageView2/3/w/100',window.location.host+'/#/index');
     })
     
      
