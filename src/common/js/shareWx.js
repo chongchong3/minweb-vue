@@ -3,7 +3,8 @@ import Vue from 'vue'
 
 const getId= function (){
 var api= '/weixin/getWXUrl';
-  Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
+ // Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
+  Vue.http.post(api,{"shareUrl": encodeURIComponent(window.location.href)})
     .then(function(res) {
 
       if (res.status != "200") {
