@@ -3,7 +3,6 @@ import Vue from 'vue'
 
 const getId= function (){
 var api= '/weixin/getWXUrl';
- // Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
   Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
     .then(function(res) {
 
@@ -46,12 +45,12 @@ const  shareReady=function(title,desc,imgUrl,link){
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link||encodeURIComponent(window.location.href),
+          link:link||window.location.href,
           title: title||'设计IN-设计师严选平台', // 分享标题
           desc: desc, // 分享描述
           imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
-           
+            
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
@@ -59,11 +58,12 @@ const  shareReady=function(title,desc,imgUrl,link){
           }
         });
         wx.onMenuShareTimeline({
-            link:link||encodeURIComponent(window.location.href),
+            link:link||window.location.href,
             title: title||'设计IN-设计师严选平台', // 分享标题
             desc: desc, // 分享描述
             imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
+          
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
