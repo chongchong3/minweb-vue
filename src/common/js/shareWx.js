@@ -4,7 +4,7 @@ import Vue from 'vue'
 const getId= function (){
 var api= '/weixin/getWXUrl';
  // Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
-  Vue.http.post(api,{"shareUrl": encodeURIComponent(window.location.href)})
+  Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})
     .then(function(res) {
 
       if (res.status != "200") {
@@ -64,8 +64,6 @@ const  shareReady=function(title,desc,imgUrl,link){
             desc: desc, // 分享描述
             imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
-          		alert("test");
-          		 alert(BASE_API);
             // 用户确认分享后执行的回调函数
           },
           cancel: function() {
