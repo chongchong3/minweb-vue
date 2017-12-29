@@ -9,7 +9,7 @@
        </router-link>
           <span class="btnChat btn btnNav">
                 <router-link class="cursor" to="chat" >
-                    <img src="static/images/call.png" style="margin-top: 0.185rem;margin-left:.095rem;">
+                    <img src="static/images/call.png" style="margin-top: 0.185rem;margin-right:.095rem;">
                 </router-link>
             </span>
       </div>
@@ -124,7 +124,7 @@ export default {
   width: .2rem;
   margin-top: 0.20rem;
   float:left;
-  margin-left:.095rem;
+  margin-left:.195rem;
 }
 
 
