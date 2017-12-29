@@ -117,7 +117,7 @@
 		background:url(../../static/images/chevron left.png) ;
 		display: block;
 		background-size: cover;
-		margin-left: 0.08rem ;
+		margin-left: 0.18rem ;
 		margin-top:0.16rem;
 		position: absolute;
 		z-index: 1000;

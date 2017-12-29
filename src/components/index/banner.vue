@@ -10,7 +10,7 @@
 		    	<img :src="item.link+'?imageView2/2/w/750'" :loc="item.src" />
 		    </swiper-slide>
 		    <!-- Optional controls -->
-		    <!--<div class="swiper-pagination"  slot="pagination"></div>-->
+				  <div class="swiper-pagination"  slot="pagination"></div>
 		  </swiper>
 	</div>
 	<div class="banner-hor-c">
@@ -26,6 +26,9 @@
       return {
       	banner:[
 			{link:"https://img.wesetup.cn/webIndexBannerNew29.jpg?imageView2/2",src:"http://g.eqxiu.com/s/JSiNdILo"}//, ../../static/images/banner.png
+
+					// 	{link:"https://img.wesetup.cn/bannerNewImg.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"},
+					// {link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}
       	],
 
         swiperOption: {
@@ -33,9 +36,8 @@
           grabCursor: true,
           setWrapperSize: true,
           autoHeight: true,
-//        pagination: '.swiper-pagination',
-		  pagination:null,
-          paginationType:'bullets',
+					pagination: '.swiper-pagination',
+					paginationType:'bullets',
           paginationClickable: true,
           mousewheelControl: true,
           observeParents: true,
@@ -84,9 +86,7 @@
 		height:100%;
 		overflow: hidden;
 	}
-	.swiper-pagination-bullet-active{
-		background:#8AE251 !important;
-	}
+
   .swiper-item {
     height: 100%;
     float: left;
@@ -96,23 +96,24 @@
   	width: 100%;
   }
   .swiper-pagination{
-  	padding-top: .02rem;
-  	height:0.2rem;
-  	position:static;
+ 
   	width:100%;
   	text-align: center;
   }
+	.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+		bottom:.11rem;
+	}
   .swiper-pagination-bullet{
-  	width:0.4rem;
-  	height:0.04rem;
-  	opacity: .6;
-  	background:#e4e4e4;
-  	display: inline-block;
-  	margin: 0px 0.04rem;
-  	border-radius: 0;
-  }
-  .swiper-pagination-bullet-active{
+  	width:0.06rem;
+  	height:0.06rem;
   	background:#fff;
-  	opacity: 1;
+  	display: inline-block;
+  	border-radius: 50%;
+		opacity: .4;
+		position: relative;
   }
+.swiper-pagination-bullet-active{
+		opacity: 1;
+	}
+
 </style>
