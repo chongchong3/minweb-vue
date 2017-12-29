@@ -46,7 +46,7 @@ const  shareReady=function(title,desc,imgUrl,link){
     wx.ready(function() {
         // 在这里调用 API
         wx.onMenuShareAppMessage({
-          link:link||window.location.href,
+          link:link||encodeURIComponent(window.location.href),
           title: title||'设计IN-设计师严选平台', // 分享标题
           desc: desc, // 分享描述
           imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
@@ -59,11 +59,12 @@ const  shareReady=function(title,desc,imgUrl,link){
           }
         });
         wx.onMenuShareTimeline({
-            link:link||window.location.href,
+            link:link||encodeURIComponent(window.location.href),
             title: title||'设计IN-设计师严选平台', // 分享标题
             desc: desc, // 分享描述
             imgUrl: imgUrl||qiniuImg+'logo.png?imageView2/3/w/100', // 分享图标
           success: function(success) {
+          		alert("test");
           		 alert(BASE_API);
             // 用户确认分享后执行的回调函数
           },
