@@ -95,7 +95,7 @@
 							self.result = res.body.data;
 							this.$nextTick(function(){
 				                this.shareWx.getId();
-				                this.shareWx.shareReady(self.result.designer_name+"| 设计IN-设计师严选平台",'',self.result.head_image_url+'?imageView2/5/w/50');
+				                this.shareWx.shareReady(self.result.designer_name+"| 设计IN-设计师严选平台",'',self.result.head_image_url+'?imageView2/2/w/50');
 				            });
 							self.hasVideo = !self.result.self_introduction_video_url == ""  ;
 						}
