@@ -34,7 +34,7 @@
         		<div class="mask"></div>
         		<div class="des">
         			<p class="case-name">{{item.premises_name}}</p>
-        			<p class="case-square-style">{{item.house_type_name}} /<span v-for="style in item.style_list">{{style.style_name}} </span></p>
+        			<p class="case-square-style">{{item.area}}平米 /<span v-for="style in item.style_list">{{style.style_name}} </span></p>
         		</div>
 		 	</router-link>
         </div>
