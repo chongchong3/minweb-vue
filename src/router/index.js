@@ -52,7 +52,7 @@ export default new Router({
       path: '/desinerList',
       name: 'desinerList',
       component: designer_list,
-      meta: {title: '找设计师 | 设计IN-设计师严选平台'}
+      meta: {title: '找设计师 | 设计IN-设计师严选平台', keepAlive: true}
     },
     {
       path: '/desinerDetails/:desiner_id',
@@ -65,7 +65,7 @@ export default new Router({
       path: '/caseList',
       name: 'caseList',
       component: case_list,
-      meta: {title: '看设计案例 | 设计IN-设计师严选平台'}
+      meta: {title: '看设计案例 | 设计IN-设计师严选平台',keepAlive: true}
     },
     {
       path: '/aboutUs',
@@ -106,13 +106,17 @@ export default new Router({
       path: '/designer_list',
       name: 'designer_list',
       component: designer_list,
-      meta: {title: '找设计师 | 设计IN-设计师严选平台'}     
+      meta: {title: '找设计师 | 设计IN-设计师严选平台', keepAlive: true}     
     },
     {
       path: '/case_list',
       name: 'case_list',
       component: case_list,
-      meta: {title: '看设计案例 | 设计IN-设计师严选平台'}     
+      meta: {
+        title: '看设计案例 | 设计IN-设计师严选平台',
+        keepAlive: true
+
+      }     
     },
     {
       path: '/transitionTest',
