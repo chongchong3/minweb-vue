@@ -93,6 +93,12 @@ export default {
           _self.getMoreData();
         }
     });
+    var case_list_top = sessionStorage.getItem("case_list_top");
+    if(case_list_top){
+      window.scrollTo(0, case_list_top);
+    }
+    
+
   },
   mounted(){
     this.$nextTick(function(){
@@ -107,6 +113,8 @@ export default {
     var _self = this;
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem("case_list_top", scrollTop);
       clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) { 
@@ -128,10 +136,6 @@ export default {
             }else{
                 _self.scrollTopIcon = false;
             }
-            //     delta = afterScrollTop - beforeScrollTop;
-            // if( delta === 0 ) return false;
-            // fn( delta > 0 ? "down" : "up" );
-            // beforeScrollTop = afterScrollTop;
         }, false);
     },
     getMoreData() {
