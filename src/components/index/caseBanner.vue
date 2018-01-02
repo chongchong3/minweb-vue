@@ -45,9 +45,12 @@ export default {
       caseList: [],
       notNextTick: true,
       caseOption: {
+       
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
+        loop: true,
+        loopedSlides:4,
         onTransitionStart(swiper) {},
         onClick(swiper) {}
 
