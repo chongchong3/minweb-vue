@@ -1,22 +1,18 @@
 <template>
   <div class="login-c">
       <div class="login-title">
-				<div class="aside">
-					<img src="static/images/login_hd.png">
-				</div>
-				<div class="cont">
-					<p class="tit">手机登录</p>
-					<p class="brief">帮助您快速的预约设计师</p>
-				</div>
+      	<div class="logo-c">
+      		
+      	</div>
 				<span class="close" @click="goBack()">	<img src="static/images/loginClose.png"></span>
 			</div>
       <div class="input-c">
       	<div class="input-box">
 	      	<input class="phone-num" @keyup="validatePhone($el,$event)"  maxlength="11"   id="phone" placeholder="输入手机号" type="tel"/>
+	      	<input type="button" id="validBtn" v-bind:class="['valid-btn',{'valid-enable':validEnable}]"  @click="getValidCode" :disabled="isDisable" value="获取验证码"/>
       	</div>
       	<div class="input-box code">
-	      	<input class="valid-code" @keyup="validCode" id="validCode" maxlength="4" placeholder="输入验证码" type="number"/>
-	      	<input type="button" id="validBtn" v-bind:class="['valid-btn',{'valid-enable':validEnable}]"  @click="getValidCode" :disabled="isDisable" value="获取验证码"/>
+	      	<input class="valid-code" @keyup="validCode" id="validCode" maxlength="4" placeholder="输入四位验证码" type="number"/>
       	</div>
       </div>
 		<div class="submit">
@@ -174,7 +170,7 @@ export default {
 			  let num = 60;
 			  let timer = setInterval(function () {
 			    num--
-			    element.value = num + 'S';
+			    element.value = "重新获取 ("+num + ')';
 			    if (num === 0) {
 			    	if(vue.validPhone()){
 				      vue.isDisable = false;
@@ -201,6 +197,13 @@ export default {
 };
 </script>
 <style scoped="scoped">
+.logo-c{
+	width:.7rem;
+	height:.69rem;
+	background: url(../../static/images/loginlogo.png) no-repeat;
+	background-size:100% ;
+	margin:0 auto;
+}
 .login-c {
   width: 100%;
   height: 100%;
@@ -208,9 +211,9 @@ export default {
 }
 .login-title {
 	height: 1.1rem;
-	background: #000018;
 	overflow: hidden;
 	position: relative;
+	padding-top:.6rem;
 }
 .login-title .aside {
 	width:.85rem;
@@ -238,12 +241,17 @@ export default {
 .login-title .close{
 	display: inline-block;
 	position: absolute;
-	right: .15rem;
+	right: .09rem;
 	top:.1rem;
-	width:.15rem;
+	width:.31rem;
 	padding:.05rem;
 	
 }
+.valid-code:focus,.phone-num:focus{
+	color: #000;
+	opacity: 1;
+}
+input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
 .login-title .close img{
 	width:100%;
 
@@ -253,9 +261,9 @@ export default {
 }
 .input-c .input-box {
 	width:100%;
-	padding:.22rem 0;
+	padding:.22rem 0 .09rem 0rem;
 	position: relative;
-	border-bottom:#eee 1px solid;
+	border-bottom:rgba(0,0,0,.4) 1px solid;
 	outline: none;
 }
 .input-c .input-box  input {
@@ -263,16 +271,18 @@ export default {
 	border:none;
 }
 .input-c .input-box.code {
-	width:2.35rem;
+	/*width:2.35rem;*/
 }
 .input-box  input {
 	font-size:.14rem;
-	color:#333;
-	line-height: .25REM;
+	color:#000;
+	opacity: .4;
+	line-height: .2rem;
+	width:50%;
 }
-input::-webkit-input-placeholder {color:#A2ACC5;}
-input::-moz-input-placeholder {color:#A2ACC5;}
-input::-ms-input-placeholder {color:#A2ACC5;}
+input::-webkit-input-placeholder {color:#000;}
+input::-moz-input-placeholder {color:#000;}
+input::-ms-input-placeholder {color:#000;}
 
 .valid-send-des-c {
 	margin-top:.33rem;
@@ -288,27 +298,28 @@ input::-ms-input-placeholder {color:#A2ACC5;}
 .input-box  input.valid-btn {
 	line-height: .3rem;
 	width:1rem;
-	border-radius: .02rem;
-	color:#888;
-	font-size:.12rem;
+	/*border-radius: .02rem;*/
+	color:#000;
+	opacity: .4;
+	font-size:.14rem;
 	text-align: center;	
-	border: #888 1px solid;
+	/*border: #888 1px solid;*/
 	background-color: #fff;
 	position: absolute;
-	right: -1rem;
+	right: 0rem;
 	top: .2rem;
 }
 .input-box  input:disabled{
-	border:1px solid #ccc;
+	/*border:1px solid #ccc;*/
 	background-color:#fff;
-	color:#ccc;
+	color:#000;
+	opacity: .4;
 }
 
-/* .input-box  input.valid-enable {
-	color:#888;
-	border:#888 1px solid;
-
-} */
+ .input-box  input.valid-enable {
+	color:#88c462;
+	opacity: 1;
+} 
 .phone-remove-icon {
   display: inline-block;
   position: absolute;
@@ -325,17 +336,19 @@ input::-ms-input-placeholder {color:#A2ACC5;}
 }
 .submit .login-btn-c {
 	width:100%;
-	line-height: .44rem;
+	line-height: .4rem;
 	font-size:.18rem;
-	color:#C3C7D2;
+	color:#fff;
 	outline: none;
-	background: #eeeeee;
-	border:none;
+	background: #88c462;
+	border:1px solid #88c462;
+	border-radius: .2rem;
+	opacity: .4;
 }
 .submit .login-btn-enable{
 	color:#fff;	
-	background-color: #82dd47;
-
+	background-color: #88c462;
+	opacity: 1;
 }
 
 </style>
