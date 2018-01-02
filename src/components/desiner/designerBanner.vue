@@ -27,7 +27,7 @@
           paginationClickable: true,
           mousewheelControl: true,
           loop: true,
-          loopedSlides:3,
+          loopedSlides:1,
           observeParents: true
         }
       }

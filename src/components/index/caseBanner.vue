@@ -50,11 +50,8 @@ export default {
         slidesPerView: "auto",
         paginationClickable: true,
         loop: true,
-<<<<<<< HEAD
         loopedSlides:1,
-=======
-        loopedSlides:3,
->>>>>>> 48bbd9cbe90f7e7633d2779023eb860ca9cbd10a
+
         onTransitionStart(swiper) {},
         onClick(swiper) {}
 
