@@ -91,9 +91,10 @@ export default {
             _self.getMoreData();
         }
     });
-    /**@augments
-     * 循环遍历 li
-     */    
+    var designer_list_top = sessionStorage.getItem("designer_list_top");
+    if(designer_list_top){
+      window.scrollTo(0, designer_list_top);
+    }   
   },
   mounted(){
     var _self = this;
@@ -107,6 +108,8 @@ export default {
     var touchStartY=0;  
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem("designer_list_top", scrollTop);
       clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) {
@@ -128,10 +131,6 @@ export default {
             }else{
                 _self.scrollTopIcon = false;
             }
-            //     delta = afterScrollTop - beforeScrollTop;
-            // if( delta === 0 ) return false;
-            // fn( delta > 0 ? "down" : "up" );
-            // beforeScrollTop = afterScrollTop;
         }, false);
     },
     getMoreData() {
@@ -170,7 +169,6 @@ export default {
             return
             }
             _self.domArry.push(dom.offsetTop);
-            // console.log(_self.domArry);
         }
         }, 500)},
       getScrollTop() {     

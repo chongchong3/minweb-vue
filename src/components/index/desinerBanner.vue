@@ -43,7 +43,11 @@ export default {
       notNextTick: true,
       designerOption: {
         loop: true,
+<<<<<<< HEAD
       loopedSlides:1,
+=======
+      loopedSlides:6,
+>>>>>>> 48bbd9cbe90f7e7633d2779023eb860ca9cbd10a
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
