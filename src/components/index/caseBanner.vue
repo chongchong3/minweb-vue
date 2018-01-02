@@ -13,15 +13,15 @@
 				    <swiper-slide class="case-item" v-for="(list,index) in caseList" :key="index">
 			    		<div class="" v-bind:class="['detail-case',{'detail-case-border-rgt':index != caseList.length-1}] ">
 			    			<div v-for="(onecase,idx) in list" class="onecase-c"  v-bind:class="['',{'onecase-c-bottom':idx != list.length-1}] ">
-			    				<div class="img-c"  @click="jumpTo(onecase)">
+			    				<router-link class="img-c"  tag="div" :to="'/caseDetailsNew?caseId='+onecase.id" >
 									<img postpone="postpone" :src="onecase.widescreen_image+'?imageView2/2/w/640'" />
-								</div>
+								</router-link>
 								<div class="des-c">
 									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
 										<img  :src="onecase.head_image_url+'?imageView2/2/w/100'" />
 									</router-link>
 									<div class="name-theme-c">
-										<p class="theme"  @click="jumpTo(onecase)">{{onecase.title}}</p>
+										<router-link class="theme"  :to="'/caseDetailsNew?caseId='+onecase.id" tag="p">{{onecase.title}}</router-link>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
 											{{onecase.area}}平米 /<span v-for="style in onecase.style_list">{{style.style_name}} </span>
 										</router-link>
@@ -50,7 +50,7 @@ export default {
         slidesPerView: "auto",
         paginationClickable: true,
         loop: true,
-        loopedSlides:4,
+        loopedSlides:3,
         onTransitionStart(swiper) {},
         onClick(swiper) {}
 

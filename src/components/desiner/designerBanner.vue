@@ -26,6 +26,8 @@
           paginationType:'bullets',
           paginationClickable: true,
           mousewheelControl: true,
+          loop: true,
+          loopedSlides:3,
           observeParents: true
         }
       }
