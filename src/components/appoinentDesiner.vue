@@ -69,11 +69,7 @@ mounted(){
     goAuthor() {
       this.authorId = this.getCookie("wechat_id");
       if (this.isWeiXin() && !this.authorId) {
-        window.location.href =
-          "/minisite/login?originUrl=" +
-          encodeURIComponent(
-            window.location.host + "/#" + this.$route.fullPath
-          );
+        window.location.href = "/minisite/login?originUrl=" + window.location.href;
         return;
       }
     },
