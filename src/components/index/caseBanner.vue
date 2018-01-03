@@ -13,7 +13,7 @@
 				    <swiper-slide class="case-item" v-for="(list,index) in caseList" :key="index">
 			    		<div class="" v-bind:class="['detail-case',{'detail-case-border-rgt':index != caseList.length-1}] ">
 			    			<div v-for="(onecase,idx) in list" class="onecase-c"  v-bind:class="['',{'onecase-c-bottom':idx != list.length-1}] ">
-			    				<router-link class="img-c"  tag="div" :to="'/caseDetailsNew?caseId='+onecase.id" >
+			    				<router-link class="img-c"  tag="div" :to="'/caseDetailsNew/'+onecase.id" >
 									<img postpone="postpone" :src="onecase.widescreen_image+'?imageView2/2/w/640'" />
 								</router-link>
 								<div class="des-c">
@@ -21,7 +21,7 @@
 										<img  :src="onecase.head_image_url+'?imageView2/2/w/100'" />
 									</router-link>
 									<div class="name-theme-c">
-										<router-link class="theme"  :to="'/caseDetailsNew?caseId='+onecase.id" tag="p">{{onecase.title}}</router-link>
+										<router-link class="theme"  :to="'/caseDetailsNew/'+onecase.id" tag="p">{{onecase.title}}</router-link>
 										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
 											{{onecase.area}}平米 /<span v-for="style in onecase.style_list">{{style.style_name}} </span>
 										</router-link>
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     jumpTo(onecase) {
-      this.$router.push({path:'./caseDetailsNew?caseId='+onecase.id});
+      this.$router.push({path:'./caseDetailsNew/'+onecase.id});
     },
     getList(params) {
       var _self = this;
