@@ -89,7 +89,7 @@
 			getDesigner:function(){
 				var self = this;
 				this.$nextTick(function(){
-					getDesinerDetails({designer_uid:self.$route.params.desiner_id})
+					getDesinerDetails({designer_uid:self.$route.query.desiner_id})
 					.then((res)=>{
 						if(res.status == 200){
 							self.result = res.body.data;
