@@ -124,5 +124,10 @@ export default new Router({
       component: transitionTest,
       meta: {title: '动画测试'}     
     },
-  ]
+  ],
+  // beforeRouteLeave(to, from, next){
+  //   let position = window.scrollY();
+  //   this.$store.commit('SAVE_POSITION', position); //离开路由时把位置存起来
+  //   next();
+  // }
 })
