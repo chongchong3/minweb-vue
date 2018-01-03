@@ -48,7 +48,8 @@ export default {
         addClass:[],
         dataJson: null,
         domArry: [],
-        imgAnimate: []
+        imgAnimate: [],
+        case_list_top:0
       }
   },
   created(){
@@ -57,11 +58,11 @@ export default {
       current: "case_list" //设置左菜单栏高亮
     });
     var _self = this;
-    var case_list_top = sessionStorage.getItem("case_list_top");
-    console.log('top值获取case_list_top==='+case_list_top);
-    if(case_list_top){
-      window.scrollTo(0, case_list_top);
-    }
+    // this.case_list_top = sessionStorage.getItem("case_list_top");
+    // console.log('top值获取case_list_top==='+this.case_list_top);
+    // if(this.case_list_top){
+    //   window.scrollTo(0, this.case_list_top);
+    // }
     // 首次加载数据
     axios.get('/minisite/getDesignerCase', {
         params: {
@@ -115,8 +116,8 @@ export default {
     var _self = this;
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      sessionStorage.setItem("case_list_top", scrollTop);
+      _self.case_list_top = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem("case_list_top", _self.case_list_top);
       clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) { 
