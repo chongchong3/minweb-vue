@@ -63,9 +63,9 @@ export default {
               _self.case_title = response.data.data.title;
               _self.image = response.data.data.image;
               _self.caseDetails=response.data.data.caseDetail;
-              this.$nextTick(function(){
-               this.shareWx.getId();
-                this.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
+              _self.$nextTick(function(){
+               _self.shareWx.getId();
+                _self.shareWx.shareReady(_self.case_title+"| 设计IN-设计师严选平台",'',_self.image+'?imageView2/5/w/50');
               });
               _self.desinerMes={
                 designer_uid:response.data.data.designerId,
