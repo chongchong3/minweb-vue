@@ -170,7 +170,7 @@ export default {
 			  let num = 60;
 			  let timer = setInterval(function () {
 			    num--
-			    element.value = "重新获取 ("+num + ')';
+			    element.value = "重新获取（"+num + '）';
 			    if (num === 0) {
 			    	if(vue.validPhone()){
 				      vue.isDisable = false;
