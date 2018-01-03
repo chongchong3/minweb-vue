@@ -12,7 +12,7 @@
 	      	<input type="button" id="validBtn" v-bind:class="['valid-btn',{'valid-enable':validEnable}]"  @click="getValidCode" :disabled="isDisable" value="获取验证码"/>
       	</div>
       	<div class="input-box code">
-	      	<input class="valid-code" @keyup="validCode" id="validCode" maxlength="4" placeholder="输入四位验证码" type="number"/>
+	      	<input class="valid-code" @keyup="validCode" id="validCode" maxlength="4" placeholder="输入四位验证码" type="tel"/>
       	</div>
       </div>
 		<div class="submit">
