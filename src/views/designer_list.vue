@@ -34,7 +34,7 @@ export default {
     components:{loadingAnimation, leftNav, headNav, noMoreDataPoint},
     data(){
         var _self = this;
-        var designer_list_top = sessionStorage.getItem("designer_list_top");
+        var designer_list_top = localStorage.getItem("designer_list_top");
         console.log('top值获取designer_list_top==='+designer_list_top);
         if(designer_list_top){
              _self.$nextTick(function () {
@@ -120,7 +120,7 @@ export default {
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
       _self.designer_list_top = document.documentElement.scrollTop || document.body.scrollTop;
-      sessionStorage.setItem("designer_list_top", _self.designer_list_top);
+      localStorage.setItem("designer_list_top", _self.designer_list_top);
       clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) {
