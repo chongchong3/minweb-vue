@@ -23,8 +23,6 @@ const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/d
 const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/transitionTest')
 
 export default new Router({
-	history:true,
-	saveScrollPosition:true,
   routes: [
     {
       path: '/',
