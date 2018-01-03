@@ -1,5 +1,5 @@
 <template>
-  <div class="designer">
+  <div class="designer" ref="designer">
       <left-nav></left-nav>
 	<head-nav></head-nav>
       <ul>
@@ -34,11 +34,11 @@ export default {
     components:{loadingAnimation, leftNav, headNav, noMoreDataPoint},
     data(){
         var _self = this;
-        var designer_list_top = localStorage.getItem("designer_list_top");
+        var designer_list_top = sessionStorage.getItem("designer_list_top");
         console.log('top值获取designer_list_top==='+designer_list_top);
         if(designer_list_top){
              _self.$nextTick(function () {
-                window.scrollTo(0, designer_list_top)
+                _self.$refs.designer.scrollTo(0, designer_list_top)
             });
         }
         return{
@@ -119,10 +119,14 @@ export default {
     var touchStartY=0;  
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
-      _self.designer_list_top = document.documentElement.scrollTop || document.body.scrollTop;
-      localStorage.setItem("designer_list_top", _self.designer_list_top);
       clearInterval(_self.timer);
     });
+    this.$refs.designer.addEventListener("touchstart", function(e){
+        _self.designer_list_top = document.documentElement.scrollTop || document.body.scrollTop;
+        sessionStorage.setItem("designer_list_top", _self.designer_list_top);
+    })
+
+
     document.body.addEventListener("touchmove", function(e) {
       if(e.touches[0].clientY - touchStartY > 2) {
         //   _self.scrollTopIcon = true;
