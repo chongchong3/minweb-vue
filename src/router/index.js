@@ -23,10 +23,7 @@ const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/d
 const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/transitionTest')
 
 export default new Router({
-<<<<<<< HEAD
   mode: 'history',
-=======
->>>>>>> 17cd66ef33cd3f334487bb6b919a4d04786083ee
   routes: [
     {
       path: '/',
