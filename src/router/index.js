@@ -24,6 +24,7 @@ const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/t
 
 export default new Router({
   mode: 'history',
+  saveScrollPosition:true,
   routes: [
     {
       path: '/',
