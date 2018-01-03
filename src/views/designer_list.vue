@@ -33,6 +33,14 @@ import headNav from "../components/headNav"; //引用顶部菜单栏
 export default {
     components:{loadingAnimation, leftNav, headNav, noMoreDataPoint},
     data(){
+        var _self = this;
+        var designer_list_top = sessionStorage.getItem("designer_list_top");
+        console.log('top值获取designer_list_top==='+designer_list_top);
+        if(designer_list_top){
+             _self.$nextTick(function () {
+                window.scrollTo(0, designer_list_top)
+            });
+        }
         return{
             page_no: 1,
             page_count: 1,
@@ -44,7 +52,8 @@ export default {
             timer:null,
             page_size: 5,
             domArry: [],
-            imgAnimate: []
+            imgAnimate: [],
+            designer_list_top:null
         }
   },
   beforeCreate(){
@@ -56,11 +65,11 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "desinerList" //设置左菜单栏高亮
     });
-    var designer_list_top = sessionStorage.getItem("designer_list_top");
-    console.log('top值获取designer_list_top==='+designer_list_top);
-    if(designer_list_top){
-      window.scrollTo(0, designer_list_top);
-    }
+    // this.designer_list_top = sessionStorage.getItem("designer_list_top");
+    // console.log('top值获取designer_list_top==='+this.designer_list_top);
+    // if(this.designer_list_top){
+    // //   window.scrollTo(0, this.designer_list_top);
+    // }
     // 首次加载数据
     axios.get('/designer/listDesigners', {
         params: {
@@ -110,8 +119,8 @@ export default {
     var touchStartY=0;  
     document.body.addEventListener("touchstart", function(e) {
       touchStartY=e.touches[0].clientY; 
-      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      sessionStorage.setItem("designer_list_top", scrollTop);
+      _self.designer_list_top = document.documentElement.scrollTop || document.body.scrollTop;
+      sessionStorage.setItem("designer_list_top", _self.designer_list_top);
       clearInterval(_self.timer);
     });
     document.body.addEventListener("touchmove", function(e) {
@@ -122,6 +131,13 @@ export default {
       }
     });
   },
+//   updated(){
+//       this.$nextTick(function(){
+//         let position = this.$store.state.position //返回页面取出来
+//         console.log(position)
+//         window.scroll(0, position)
+//        }) 
+//   },
   methods:{
     scroll() {
         var _self = this;
