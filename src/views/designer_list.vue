@@ -57,7 +57,7 @@ export default {
       current: "desinerList" //设置左菜单栏高亮
     });
     var designer_list_top = sessionStorage.getItem("designer_list_top");
-    console.log('top值获取designer_list_top==='+case_list_top);
+    console.log('top值获取designer_list_top==='+designer_list_top);
     if(designer_list_top){
       window.scrollTo(0, designer_list_top);
     }
