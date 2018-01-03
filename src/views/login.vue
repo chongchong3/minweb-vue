@@ -297,7 +297,7 @@ input::-ms-input-placeholder {color:#000;}
 
 .input-box  input.valid-btn {
 	line-height: .3rem;
-	width:1rem;
+	width:1.2rem;
 	/*border-radius: .02rem;*/
 	color:#000;
 	opacity: .4;
