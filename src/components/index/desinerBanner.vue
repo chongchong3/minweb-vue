@@ -12,13 +12,13 @@
 			    <swiper-slide class="designer-item"   v-for="(designer,index) in designerList" :key="index">
 			    	<div :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
 			    		<!--<div  class="detail-designer">-->
-							<div :to="'/desinerDetails/'+designer.designer_uid" class="img-c" id="imgC" :style="'height:'+designItemWidth*1.5+'px'" >
-								<img :to="'/desinerDetails/'+designer.designer_uid" :src="designer.slide_gif+'?imageView2/2/w/360'" />
+							<div :to="'/desinerDetails?desiner_id='+designer.designer_uid" class="img-c" id="imgC" :style="'height:'+designItemWidth*1.5+'px'" >
+								<img :to="'/desinerDetails?desiner_id='+designer.designer_uid" :src="designer.slide_gif+'?imageView2/2/w/360'" />
 							</div>
-							<div :to="'/desinerDetails/'+designer.designer_uid" class="design-des-c">
-								<p :to="'/desinerDetails/'+designer.designer_uid" class="name">{{designer.designer_name}}</p>
-								<p :to="'/desinerDetails/'+designer.designer_uid" class="profession" >{{designer.city}} / {{designer.decoration_type}} / {{designer.service_years}}年</p>
-								<p :to="'/desinerDetails/'+designer.designer_uid" class="profession">{{designer.studio}}</p> 
+							<div :to="'/desinerDetails?desiner_id='+designer.designer_uid" class="design-des-c">
+								<p :to="'/desinerDetails?desiner_id='+designer.designer_uid" class="name">{{designer.designer_name}}</p>
+								<p :to="'/desinerDetails?desiner_id='+designer.designer_uid" class="profession" >{{designer.city}} / {{designer.decoration_type}} / {{designer.service_years}}年</p>
+								<p :to="'/desinerDetails?desiner_id='+designer.designer_uid" class="profession">{{designer.studio}}</p> 
 							</div>
 						<!--</div>-->
 			    	</div>

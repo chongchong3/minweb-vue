@@ -64,7 +64,7 @@
 				ht:document.body.clientHeight,
 				wth:document.body.clientWidth,
 				hasVideo:true,
-				desinerId:this.$route.params.desiner_id,
+				desinerId:this.$route.query.desiner_id,
 				showFlag:false
 			}
 		},

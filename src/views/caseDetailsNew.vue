@@ -253,7 +253,7 @@ export default {
       return new Promise((resolve, reject) => {
         _self.$http
           .get("/minisite/getDesignerCaseDetail", {
-            params: { case_id: _self.$route.params.case_id }
+            params: { case_id: _self.$route.query.case_id }
           })
           .then(response => {
             if (response.data.code != 200) {

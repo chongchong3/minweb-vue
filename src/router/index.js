@@ -56,7 +56,7 @@ export default new Router({
       meta: {title: '找设计师 | 设计IN-设计师严选平台', keepAlive: true}
     },
     {
-      path: '/desinerDetails/:desiner_id',
+      path: '/desinerDetails', //desiner_id
       name: 'desinerDetails',
       component: desinerDetails,
       meta: {title: '设计师详情 | 设计IN-设计师严选平台'}
@@ -90,7 +90,7 @@ export default new Router({
       
     },
     {
-      path: '/caseDetailsNew/:case_id',
+      path: '/caseDetailsNew',//case_id
       name: 'caseDetailsNew',
       component: caseDetailsNew,
       meta: {title: '新案例详情'} 
