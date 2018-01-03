@@ -13,18 +13,18 @@
 				    <swiper-slide class="case-item" v-for="(list,index) in caseList" :key="index">
 			    		<div class="" v-bind:class="['detail-case',{'detail-case-border-rgt':index != caseList.length-1}] ">
 			    			<div v-for="(onecase,idx) in list" class="onecase-c"  v-bind:class="['',{'onecase-c-bottom':idx != list.length-1}] ">
-			    				<router-link class="img-c"  tag="div" :to="'/caseDetailsNew/'+onecase.id" >
-									<img postpone="postpone" :src="onecase.widescreen_image+'?imageView2/2/w/640'" />
-								</router-link>
+			    				<p class="img-c"  tag="div" :to="'/caseDetailsNew/'+onecase.id" >
+									<img postpone="postpone" :to="'/caseDetailsNew/'+onecase.id" :src="onecase.widescreen_image+'?imageView2/2/w/640'" />
+								</p>
 								<div class="des-c">
-									<router-link :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
-										<img  :src="onecase.head_image_url+'?imageView2/2/w/100'" />
-									</router-link>
+									<p :to="'/desinerDetails/'+onecase.designer_uid" class="portrait" tag="div">
+										<img class="portait-img" :to="'/desinerDetails/'+onecase.designer_uid"  :src="onecase.head_image_url+'?imageView2/2/w/100'" />
+									</p>
 									<div class="name-theme-c">
-										<router-link class="theme"  :to="'/caseDetailsNew/'+onecase.id" tag="p">{{onecase.title}}</router-link>
-										<router-link :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
+										<p class="theme"  :to="'/caseDetailsNew/'+onecase.id" tag="p">{{onecase.title}}</p>
+										<p :to="'/desinerDetails/'+onecase.designer_uid" tag="p" class="name">
 											{{onecase.area}}平米 /<span v-for="style in onecase.style_list">{{style.style_name}} </span>
-										</router-link>
+										</p>
 										
 									</div>
 								</div>
@@ -49,11 +49,11 @@ export default {
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
-        // loop: true,
-        // loopedSlides:1,
-
-        onTransitionStart(swiper) {},
-        onClick(swiper) {}
+        loop: true,
+        loopedSlides:3,
+        onClick:(swiper,event)=>{
+        	this.$router.push({path:'.'+event.target.getAttribute('to')});
+        },
 
       }
     };

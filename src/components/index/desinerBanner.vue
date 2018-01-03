@@ -10,18 +10,18 @@
 				<swiper :options="designerOption" >
 			    <!-- slides -->
 			    <swiper-slide class="designer-item"   v-for="(designer,index) in designerList" :key="index">
-			    	<router-link :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
+			    	<div :to="'/desinerDetails/'+designer.designer_uid" tag="div" class="detail-designer">
 			    		<!--<div  class="detail-designer">-->
-							<div class="img-c" id="imgC" :style="'height:'+designItemWidth*1.5+'px'" >
-								<img :src="designer.slide_gif+'?imageView2/2/w/360'" />
+							<div :to="'/desinerDetails/'+designer.designer_uid" class="img-c" id="imgC" :style="'height:'+designItemWidth*1.5+'px'" >
+								<img :to="'/desinerDetails/'+designer.designer_uid" :src="designer.slide_gif+'?imageView2/2/w/360'" />
 							</div>
-							<div class="design-des-c">
-								<p class="name">{{designer.designer_name}}</p>
-								<p class="profession" >{{designer.city}} / {{designer.decoration_type}} / {{designer.service_years}}年</p>
-								<p class="profession">{{designer.studio}}</p> 
+							<div :to="'/desinerDetails/'+designer.designer_uid" class="design-des-c">
+								<p :to="'/desinerDetails/'+designer.designer_uid" class="name">{{designer.designer_name}}</p>
+								<p :to="'/desinerDetails/'+designer.designer_uid" class="profession" >{{designer.city}} / {{designer.decoration_type}} / {{designer.service_years}}年</p>
+								<p :to="'/desinerDetails/'+designer.designer_uid" class="profession">{{designer.studio}}</p> 
 							</div>
 						<!--</div>-->
-			    	</router-link>
+			    	</div>
 			    </swiper-slide>
 			    <!-- Optional controls -->
 			    <!--<div class="swiper-pagination"  slot="pagination"></div>-->
@@ -45,8 +45,11 @@ export default {
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
-        onTransitionStart(swiper) {},
-        onClick(swiper) {}
+         loop: true,
+        loopedSlides:3,
+        onClick:(swiper,e)=>{
+        	this.$router.push({path:'.'+e.target.getAttribute('to')});
+        }
         // more Swiper configs and callbacks...
         // ...
       }
