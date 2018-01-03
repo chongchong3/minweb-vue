@@ -6,7 +6,7 @@
     <!-- </div> -->
       <ul>
         <li class="case-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
-          <router-link :to="'/caseDetailsNew/'+single.id">
+          <router-link :to="'/caseDetailsNew?case_id='+single.id">
           <div class="img-partent" >
             <!-- v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" -->
             <img :id="'imgAnimate'+index"  :src="single.widescreen_image"  alt="" class="case-img ">

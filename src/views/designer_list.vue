@@ -4,7 +4,7 @@
 	<head-nav></head-nav>
       <ul>
           <li class="designer-li" v-for="(single, index) in dataJson" :id="'imgAnimate'+index">
-            <router-link :to="'/desinerDetails/'+single.designer_uid">
+            <router-link :to="'/desinerDetails?desiner_id='+single.designer_uid">
             <!-- v-bind:class="[imgAnimate[index].isShow ? 'isShow' : '', 'imgAnimate']" -->
                 <div  class="designer-single"  :style="{'background': 'no-repeat url('+single.background_img +')','background-size': '100% 100%'}">
                     <div class="designer-rgba">
