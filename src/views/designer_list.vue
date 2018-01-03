@@ -56,6 +56,11 @@ export default {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "desinerList" //设置左菜单栏高亮
     });
+    var designer_list_top = sessionStorage.getItem("designer_list_top");
+    console.log('top值获取designer_list_top==='+case_list_top);
+    if(designer_list_top){
+      window.scrollTo(0, designer_list_top);
+    }
     // 首次加载数据
     axios.get('/designer/listDesigners', {
         params: {
@@ -91,10 +96,7 @@ export default {
             _self.getMoreData();
         }
     });
-    var designer_list_top = sessionStorage.getItem("designer_list_top");
-    if(designer_list_top){
-      window.scrollTo(0, designer_list_top);
-    }   
+       
   },
   mounted(){
     var _self = this;
