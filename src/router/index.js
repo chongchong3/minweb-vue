@@ -131,4 +131,14 @@ export default new Router({
   //   this.$store.commit('SAVE_POSITION', position); //离开路由时把位置存起来
   //   next();
   // }
+  scrollBehavior(to, from, savedPosition){
+    if(savedPosition){
+      return savedPosition
+    }else{
+      if (from.meta.keepAlive) {
+        from.meta.savedPosition = document.body.scrollTop
+      }
+      return { x: 0, y: to.meta.savedPosition || 0 }
+    }
+  }
 })

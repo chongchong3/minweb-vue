@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!-- <keep-alive>
+    <keep-alive>
       <router-view v-wechat-title="$route.meta.title" v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive> -->
+    </keep-alive>
     <!-- v-if="!$route.meta.keepAlive" -->
-     <router-view v-wechat-title="$route.meta.title"></router-view>
+     <router-view v-wechat-title="$route.meta.title" v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
