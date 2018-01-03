@@ -89,7 +89,7 @@ export default new Router({
       
     },
     {
-      path: '/caseDetailsNew',
+      path: '/caseDetailsNew/:case_id',
       name: 'caseDetailsNew',
       component: caseDetailsNew,
       meta: {title: '新案例详情'} 
