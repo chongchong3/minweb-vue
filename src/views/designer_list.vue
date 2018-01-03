@@ -38,7 +38,7 @@ export default {
         console.log('top值获取designer_list_top==='+designer_list_top);
         if(designer_list_top){
              _self.$nextTick(function () {
-                window.scrollTop(designer_list_top);
+                window.scrollTo(0, designer_list_top)
             });
         }
         return{
@@ -131,13 +131,13 @@ export default {
       }
     });
   },
-  updated(){
-      this.$nextTick(function(){
-        let position = this.$store.state.position //返回页面取出来
-        console.log(position)
-        window.scroll(0, position)
-       }) 
-  },
+//   updated(){
+//       this.$nextTick(function(){
+//         let position = this.$store.state.position //返回页面取出来
+//         console.log(position)
+//         window.scroll(0, position)
+//        }) 
+//   },
   methods:{
     scroll() {
         var _self = this;
