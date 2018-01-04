@@ -149,6 +149,7 @@ export default {
   text-align: left;
   background: url(../../../static/images/more.png) right  no-repeat;
   background-size: .15rem;
+  background-position-y: 4px;
   width:.94rem;
   font-weight: bold;
 }

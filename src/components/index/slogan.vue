@@ -72,6 +72,7 @@ export default {};
   width: 1.1rem;
   background: url(../../../static/images/more.png) right no-repeat;
   background-size: 0.14rem;
+  background-position-y: 17px;
   font-weight: bold;
 }
 
