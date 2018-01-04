@@ -29,7 +29,7 @@
 	    </div>
 		<div class="caselist-c" id="caselist-c">
 			<h2 class="designer-title">设计案例</h2>
-		 	<router-link tag="div" class="case-detail-c"   v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew/'+item.designer_case_uid" :key='index'>
+		 	<router-link tag="div" class="case-detail-c"   v-for="(item,index) in result.designer_case_list" :to="'/caseDetailsNew?case_id='+item.designer_case_uid" :key='index'>
         		<img :src="item.wide_screen_image" />
         		<div class="mask"></div>
         		<div class="des">
