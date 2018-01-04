@@ -25,8 +25,8 @@
     data() {
       return {
       	banner:[
-			{link:"https://img.wesetup.cn/webIndexBannerNew29-15.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"},//, ../../static/images/banner.png
-			{link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}
+			{link:"https://img.wesetup.cn/webIndexBannerNew29-15.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"}//, ../../static/images/banner.png
+//			{link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}
 					// 	{link:"https://img.wesetup.cn/bannerNewImg.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"},
 					// {link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"}
       	],
@@ -36,8 +36,8 @@
           grabCursor: true,
           setWrapperSize: true,
           autoHeight: true,
-					pagination: '.swiper-pagination',
-					paginationType:'bullets',
+			pagination: null,
+			paginationType:'bullets',
           paginationClickable: true,
           mousewheelControl: true,
           observeParents: true,
