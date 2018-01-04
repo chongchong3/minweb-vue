@@ -42,7 +42,9 @@ var api= '/weixin/getWXUrl';
 const  shareReady=function(title,desc,imgUrl,link){
   var qiniuImg=process.env.QINIU_IMG;
   var BASE_API=window.location.href;
+  
     wx.ready(function() {
+      wx.showOptionMenu();
         // 在这里调用 API
         wx.onMenuShareAppMessage({
           link:link||window.location.href,
@@ -74,10 +76,7 @@ const  shareReady=function(title,desc,imgUrl,link){
         
         });
       });
-      document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-        // 通过下面这个API显示右上角按钮
-        WeixinJSBridge.call('showOptionMenu');
-     });
+   
 }
 
 
