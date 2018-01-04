@@ -5,7 +5,6 @@ const getId= function (){
 var api= '/weixin/getWXUrl';
   Vue.http.post(api,{"shareUrl": window.location.href.replace(location.hash, "")})//window.location.href.replace(location.hash, "")
     .then(function(res) {
-
       if (res.status != "200") {
         return
       }

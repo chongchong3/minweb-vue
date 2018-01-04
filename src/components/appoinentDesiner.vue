@@ -56,8 +56,9 @@ props: ["desinerId"],
 mounted(){
     this.$nextTick(function(){
          this.goAuthor();
+
     });
-    this.shareWx.enableShare();
+   
     
 },
   data() {
