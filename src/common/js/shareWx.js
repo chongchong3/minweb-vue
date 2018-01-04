@@ -44,7 +44,7 @@ const  shareReady=function(title,desc,imgUrl,link){
   var BASE_API=window.location.href;
   
     wx.ready(function() {
-      wx.showOptionMenu();
+  
         // 在这里调用 API
         wx.onMenuShareAppMessage({
           link:link||window.location.href,
@@ -80,5 +80,11 @@ const  shareReady=function(title,desc,imgUrl,link){
 }
 
 
+var enableShare = function(){
+	getId();
+	wx.ready(function () {
+	 		wx.showOptionMenu();
+  });
+}
 
-export default {getId,shareReady}
+export default {getId,shareReady,enableShare}

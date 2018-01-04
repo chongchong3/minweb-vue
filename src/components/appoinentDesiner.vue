@@ -56,7 +56,8 @@ props: ["desinerId"],
 mounted(){
     this.$nextTick(function(){
          this.goAuthor();
-    })
+    });
+    this.shareWx.enableShare();
     
 },
   data() {
@@ -69,7 +70,6 @@ mounted(){
     goAuthor() {
       this.authorId = this.getCookie("wechat_id");
       if (this.isWeiXin() && !this.authorId) {
-        debugger
         window.location.href = "/minisite/login?originUrl=" + window.location.href;
         return;
       }
@@ -90,7 +90,7 @@ mounted(){
     },
      appoinmnet() {
       var _self = this;
-      debugger
+      
 
       //查询是否授权绑定用户
       checkLoginStatus({ authorization_id: this.authorId })
