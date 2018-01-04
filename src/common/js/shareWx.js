@@ -74,6 +74,10 @@ const  shareReady=function(title,desc,imgUrl,link){
         
         });
       });
+      document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        // 通过下面这个API显示右上角按钮
+        WeixinJSBridge.call('showOptionMenu');
+     });
 }
 
 
