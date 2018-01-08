@@ -32,7 +32,7 @@
 					</div>
 					<div class="des-c">
 						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../dist/static/images/caseDetails/smCase2.png" />
+							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
 						</div>
 						<div class="name-theme-c">
 							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
@@ -47,7 +47,7 @@
 					</div>
 					<div class="des-c">
 						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../dist/static/images/caseDetails/smCase2.png" />
+							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
 						</div>
 						<div class="name-theme-c">
 							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
@@ -99,6 +99,7 @@
 			}
 		},
 		mounted(){
+			var self = this;
 			getBuildCaseType('page_no=1&page_size=3&premises_uid=43207696970363462')
 			.then(function(res){
 				
@@ -106,6 +107,11 @@
 				
 			})
 			getHouseTypeList({premisesUid:43207696967626320})
+			.then(function(res){
+				if(res.status == "200"){
+					self.result = res.body.data;
+				}
+			})
 		},
 		methods:{
 			back:function(){
@@ -127,7 +133,7 @@
 	.goback{
 		width:.13rem;
 		height:.21rem;
-		background:url(../../static/images/chevron left.png) ;
+		background:url('../../static/images/chevron left.png') ;
 		display: block;
 		background-size: cover;
 		margin-left: 0.14rem ;

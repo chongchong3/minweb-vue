@@ -114,7 +114,7 @@
 	.goback{
 		width:.13rem;
 		height:.21rem;
-		background:url(../../static/images/chevron left.png) ;
+		background:url('../../static/images/chevron left.png') ;
 		display: block;
 		background-size: cover;
 		margin-left: 0.18rem ;
