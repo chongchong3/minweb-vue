@@ -21,6 +21,8 @@ const caseDetailsNew = () => import(/* webpackChunkName: "mint-case */ '@/views/
 const case_list = () => import(/* webpackChunkName: "mint-case */ '@/views/case_list')
 const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/designer_list')
 const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/transitionTest')
+const floor_case_list = () =>import('@/views/floor_case_list')
+const house_type_list = () =>import('@/views/house_type_list')
 
 export default new Router({
   mode: 'history',
@@ -120,10 +122,16 @@ export default new Router({
       }     
     },
     {
-      path: '/transitionTest',
-      name: 'transitionTest',
-      component: transitionTest,
-      meta: {title: '动画测试'}     
+      path: '/house_type_list',
+      name: 'house_type_list',
+      component: house_type_list,
+      meta: {title: '户型列表'}     
+    },
+    {
+      path: '/floor_case_list',
+      name: 'floor_case_list',
+      component: floor_case_list,
+      meta: {title: '小区案例列表'}     
     },
     
   ],
