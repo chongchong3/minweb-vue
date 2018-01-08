@@ -28,7 +28,7 @@
 			<div class="case-list-c">
 				<div  class="onecase-c" >
     				<div class="case-img-c" >
-						<img  src="../../dist/static/images/banner.jpg" />
+						<img  src="../../static/images/banner.jpg" />
 					</div>
 					<div class="des-c">
 						<div  class="portrait" tag="div">
