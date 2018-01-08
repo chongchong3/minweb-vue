@@ -2,7 +2,7 @@
 	<div class="floor-c">
 		<div  @click="back" class="goback"></div>
 		<div class="building-banner-c" :style="'height:'+wth*0.4+'px'">
-			<img src="../../dist/static/images/banner.jpg">
+			<img src="../../static/images/banner.jpg">
 			<div class="building-des-c">
 				<p class="build-name">世贸天辰</p>
 				<p class="build-addr">艮山西路1005号</p>
@@ -28,11 +28,11 @@
 			<div class="case-list-c">
 				<div  class="onecase-c" >
     				<div class="case-img-c" >
-						<img  src="../../dist/static/images/banner.jpg" />
+						<img  src="../../static/images/banner.jpg" />
 					</div>
 					<div class="des-c">
 						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../dist/static/images/caseDetails/smCase2.png" />
+							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
 						</div>
 						<div class="name-theme-c">
 							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
@@ -43,11 +43,11 @@
     			</div>
     			<div  class="onecase-c" >
     				<div class="case-img-c" >
-						<img  src="../../dist/static/images/banner.jpg" />
+						<img  src="../../static/images/banner.jpg" />
 					</div>
 					<div class="des-c">
 						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../dist/static/images/caseDetails/smCase2.png" />
+							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
 						</div>
 						<div class="name-theme-c">
 							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
@@ -105,7 +105,7 @@
 			},function(err){
 				
 			})
-			getHouseTypeList({premisesUid:43207696967626320})
+			//getHouseTypeList({premisesUid:43207696967626320})
 		},
 		methods:{
 			back:function(){
