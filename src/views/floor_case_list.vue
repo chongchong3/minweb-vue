@@ -3,11 +3,11 @@
       <left-nav></left-nav>
 	<head-nav></head-nav>
       <ul>
-          <li class="floor-li">
+          <li class="floor-li" v-for="(single, index) in dataJson">
             <router-link to="">
                 <div class="case-img">
                     <img src=""  alt="" class="img-size">
-                    <img src="" alt="" class="icon-img">
+                    <img src="" alt="" class="icon-img" v-if="single.panoramagram_flag ==1">
                 </div>        
             </router-link>
             <div class="floor-footer">
@@ -54,7 +54,7 @@ export default {
         params: {
             page_size: 100, 
             page_no: 1,
-            premises_uid: id
+            house_type_uid: id
         }
     })
     .then(function (response) {
