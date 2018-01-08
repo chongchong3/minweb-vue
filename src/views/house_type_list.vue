@@ -1,17 +1,17 @@
 <template>
   <div class="house" ref="house">
-      <left-nav></left-nav>
-	<head-nav></head-nav>
+      <!-- <left-nav></left-nav>
+	<head-nav></head-nav> -->
       <ul>
-          <li class="house-li">
+          <li class="house-li" v-for="(single, index) in dataJson ">
               <div class="list">
                   <img src="" alt="" class="house-img">
                   <div class="list-center">
-                      <p class="case-name">两室两厅一卫</p>
+                      <p class="case-name">{{single.house_type}}</p>
                       <p class="case-number">案例(4)</p>
                       <p class="house-name">B1户型</p>
                   </div>
-                  <div class="list-right">128m²</div>
+                  <div class="list-right">{{single.area}}m²</div>
               </div>
               <div class="line-border"></div>
           </li> 
@@ -34,17 +34,27 @@ export default {
             dataJson: null,
             loading:false,
             scrollTopIcon:false,
-            addClass:[],
             timer:null,
             page_size: 5,
-            domArry: [],
-            imgAnimate: [],
             designer_list_top:null
         }
   },
   beforeCreate(){
   },
-  created(){ 
+  created(){
+    var _self = this;
+    // location/getHouseTypeList /minisite/getDesignerCase
+    axios.post('location/getHouseTypeList', {
+        premisesUid:'43207696967626320'
+    })
+    .then(function (response) {
+        _self.dataJson = response.data.data.list;
+        console.log(_self.dataJson)
+    //   _self.page_count = response.data.page_count;   
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
   },
   mounted(){  
   },
@@ -61,7 +71,7 @@ ul, li, p{
 }
 .house{
     /*margin-top:.56rem;*/
-    padding-top:.56rem;
+    /* padding-top:.56rem; */
 }
 .house-li{
     position: relative;

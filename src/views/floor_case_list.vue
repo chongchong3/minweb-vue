@@ -13,7 +13,7 @@
             <div class="floor-footer">
                 <img src="" alt="" class="designer-header"> 
                 <div class="des-detail">
-                    <p class="case-font">两室两厅一卫 / 87 m<sup>2</sup> / 中式</p> 
+                    <p class="case-font">两室两厅一卫 / 87 m² / 中式</p> 
                     <p class="case-name">荷兰物价光棍啊</p>              
                 </div>
             </div>
