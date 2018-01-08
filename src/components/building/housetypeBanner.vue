@@ -7,7 +7,7 @@
 			    <swiper-slide class="designer-item"   v-for="(designer,index) in designerList" :key="index">
 			    	<div  tag="div" class="detail-designer">
 						<div  class="img-c"  >
-							<img  src="../../../static/images/aboutus02.jpg" />
+							<img  src="../../../dist/static/images/aboutus02.jpg" />
 							<p class="house-area">4室2厅2卫/122m<sup>2</sup></p>
 							<p class="house-abtype">B1户型</p>
 						</div>
