@@ -41,8 +41,6 @@ export default {
             addClass:[],
             timer:null,
             page_size: 5,
-            domArry: [],
-            imgAnimate: [],
             designer_list_top:null
         }
   },
@@ -50,6 +48,23 @@ export default {
 
   },
   created(){
+      var _self = this;
+      var id = this.$route.query.id;
+      axios.get('/minisite/getByHouseType', {
+        params: {
+            page_size: 100, 
+            page_no: 1,
+            premises_uid: id
+        }
+    })
+    .then(function (response) {
+      _self.dataJson = response.data.data.result;
+      console.log(response.data.data)
+      
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
   },
   mounted(){
     var _self = this;

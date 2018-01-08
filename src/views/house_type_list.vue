@@ -4,15 +4,17 @@
 	<head-nav></head-nav> -->
       <ul>
           <li class="house-li" v-for="(single, index) in dataJson ">
-              <div class="list">
-                  <img src="" alt="" class="house-img">
-                  <div class="list-center">
-                      <p class="case-name">{{single.house_type}}</p>
-                      <p class="case-number">案例(4)</p>
-                      <p class="house-name">B1户型</p>
-                  </div>
-                  <div class="list-right">{{single.area}}m²</div>
-              </div>
+              <router-link :to="'/floor_case_list?id='+single.house_type_uid">
+                <div class="list">
+                    <img :src="single.house_type_img_url" alt="" class="house-img">
+                    <div class="list-center">
+                        <p class="case-name">{{single.house_type_pattern}}</p>
+                        <p class="case-number">案例({{single.case_count}})</p>
+                        <p class="house-name">{{single.house_type_name}}</p>
+                    </div>
+                    <div class="list-right">{{single.house_type_area}}m²</div>
+                </div>
+              </router-link>
               <div class="line-border"></div>
           </li> 
       </ul>
@@ -48,8 +50,8 @@ export default {
         premisesUid:'43207696967626320'
     })
     .then(function (response) {
-        _self.dataJson = response.data.data.list;
-        console.log(_self.dataJson)
+        _self.dataJson = response.data.data.result;
+        console.log(response.data.data.result)
     //   _self.page_count = response.data.page_count;   
     })
     .catch(function (error) {
