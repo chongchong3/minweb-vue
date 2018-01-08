@@ -84,6 +84,16 @@ module.exports = {
         changeOrigin: true,
       
       },
+      '/minisite/getByHouseType': {//获取楼盘案例列表
+        target: 'http://192.168.14.175:8420/',
+        changeOrigin: true,
+      
+      },
+      '/location/getHouseTypeList': {//获取楼盘案例列表
+        target: 'http://192.168.14.175:8420/',
+        changeOrigin: true,
+      
+      },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
