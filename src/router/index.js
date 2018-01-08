@@ -23,6 +23,8 @@ const designer_list = () => import(/* webpackChunkName: "mint-case */ '@/views/d
 const transitionTest = () =>import(/* webpackChunkName: "mint-case */ '@/views/transitionTest')
 const floor_case_list = () =>import('@/views/floor_case_list')
 const house_type_list = () =>import('@/views/house_type_list')
+const building = () =>import('@/views/buildingdetail')
+const housetype = () =>import('@/views/housetypedetail')
 
 export default new Router({
   mode: 'history',
@@ -133,7 +135,18 @@ export default new Router({
       component: floor_case_list,
       meta: {title: '小区案例列表'}     
     },
-    
+    {
+      path: '/building',
+      name: 'building',
+      component: building,
+      meta: {title: '楼盘详情'}     
+    },
+    {
+      path: '/housetype',
+      name: 'housetype',
+      component: housetype,
+      meta: {title: '户型详情'}     
+    },
   ],
   // beforeRouteLeave(to, from, next){
   //   let position = window.scrollY();
