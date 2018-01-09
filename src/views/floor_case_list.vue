@@ -1,20 +1,22 @@
 <template>
   <div class="floor" ref="floor">
-      <left-nav></left-nav>
-	<head-nav></head-nav>
+      <!-- <left-nav></left-nav>
+	<head-nav></head-nav> -->
       <ul>
           <li class="floor-li" v-for="(single, index) in dataJson">
             <router-link to="">
                 <div class="case-img">
-                    <img src=""  alt="" class="img-size">
-                    <img src="" alt="" class="icon-img" v-if="single.panoramagram_flag ==1">
+                    <img :src="single.case_image_url"  alt="" class="img-size">
+                    <img src="../../static/images/720icon.png" alt="" class="icon-img">
+                    <!-- v-if="single.panoramagram_flag ==1" -->
                 </div>        
             </router-link>
             <div class="floor-footer">
                 <img src="" alt="" class="designer-header"> 
                 <div class="des-detail">
-                    <p class="case-font">两室两厅一卫 / 87 m² / 中式</p> 
-                    <p class="case-name">荷兰物价光棍啊</p>              
+                    <p class="case-font">{{single.house_type_name}} / {{single.house_area}} m² / <span v-for="style in single.style_list">
+                        {{style.style_name}}</span></p> 
+                    <p class="case-name">{{single.title}}</p>              
                 </div>
             </div>
             <div class="line-border"></div>                      
@@ -87,7 +89,7 @@ ul, li, p{
   list-style-type: none;
 }
 .floor{
-    padding-top:.56rem;
+    /* padding-top:.56rem; */
 }
 .floor-li{
     margin:.1rem .15rem 0rem .15rem;
@@ -98,7 +100,7 @@ ul, li, p{
     position: relative;
     margin-right:.3rem;
     height: 1.72rem;
-    background: #ccc;
+    /* background: #ccc; */
 }
 .img-size{
     width:100%;
@@ -112,7 +114,7 @@ ul, li, p{
     width: .4rem;
     height: .4rem;
     border-radius: 50%;
-    background: rgba(0,0,0,0.60);;
+    background: rgba(0,0,0,0.60);
 }
 .floor-footer{
     margin-top:.1rem;
@@ -127,12 +129,19 @@ ul, li, p{
 }
 .des-detail{
     margin-left: .06rem;
+    margin-right: .3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .case-font{
     line-height:.22rem;
     font-size: 16px;
     color: #000000;
     letter-spacing: -0.38px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .case-name{
     line-height: .17rem;
