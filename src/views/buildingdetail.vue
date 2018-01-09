@@ -1,61 +1,47 @@
 <template>
-	<div class="floor-c">
+	<div class="floor-c" v-if="buildingInfo">
 		<div  @click="back" class="goback"></div>
 		<div class="building-banner-c" :style="'height:'+wth*0.4+'px'">
-			<img src="../../static/images/banner.jpg">
+			<img :src="buildingInfo.foreground_picture">
 			<div class="building-des-c">
-				<p class="build-name">世贸天辰</p>
-				<p class="build-addr">艮山西路1005号</p>
+				<p class="build-name">{{buildingInfo.premises_name}}</p>
+				<p class="build-addr">{{buildingInfo.premises_location}}</p>
 			</div>
 		</div>
 		<div class="build-info-c">
-			<p >物业类型:<span class="info-value">公寓</span></p>
-			<p >竣工时间:<span class="info-value">公寓</span></p>
-			<p >开&nbsp;&nbsp;发&nbsp;&nbsp;<span style="margin-left: -2px;">商:</span><span class="info-value">公寓</span></p>
+			<p >物业类型:<span class="info-value">{{buildingInfo.premises_estate_type}}</span></p>
+			<p >竣工时间:<span class="info-value">{{buildingInfo.premises_completed_time}}</span></p>
+			<p >开&nbsp;&nbsp;发&nbsp;&nbsp;<span style="margin-left: -2px;">商:</span><span class="info-value">{{buildingInfo.premises_developer}}</span></p>
 		</div>
-		<div class="house-type-c">
+		<div class="house-type-c" v-if="houseTypeResult">
 			<div class="house-type-title">
-				<p>户型<span class="account">(6)</span></p>
+				<p>户型<span class="account">({{houseTypeResult.total}})</span></p>
 			</div>
 			<div class="house-type-banner-c">
-				<housetype-banner></housetype-banner>
+				<housetype-banner :buildingName='buildingInfo.premises_name' :houseTypeList='houseTypeResult.result'></housetype-banner>
 			</div>
 		</div>
 		<div class="house-case-list-c">
 			<div class="house-type-title">
-				<p>楼盘案例<span class="account">(6)</span></p>
+				<p>楼盘案例<span class="account">({{caseTotal}})</span></p>
 			</div>
-			<div class="case-list-c">
-				<div  class="onecase-c" >
+			<div class="case-list-c" v-if="result">
+				<div  class="onecase-c" v-for="(item,index) in result" >
     				<div class="case-img-c" >
-						<img  src="../../static/images/banner.jpg" />
+						<img  :src="item.case_image_url" />
 					</div>
-					<div class="des-c">
-						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
+					<div :class="['des-c',{'last':index == (result.length-1)}]">
+						<div  class="portrait" >
+							<img class="portait-img"   :src="item.head_image_url" />
 						</div>
 						<div class="name-theme-c">
-							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
-							<p class="name">荷兰武极管</p>
+							<p class="theme">{{item.house_type_name}}/{{item.house_area}}m<sup>2</sup>/<span v-for="st in item.style_list">{{st.style_name}} </span></p>
+							<p class="name">{{item.title}}</p>
 							
 						</div>
 					</div>
     			</div>
-    			<div  class="onecase-c" >
-    				<div class="case-img-c" >
-						<img  src="../../static/images/banner.jpg" />
-					</div>
-					<div class="des-c">
-						<div  class="portrait" tag="div">
-							<img class="portait-img"   src="../../static/images/caseDetails/smCase2.png" />
-						</div>
-						<div class="name-theme-c">
-							<p class="theme">4室2厅2卫/128m<sup>2</sup>/欧式</p>
-							<p class="name">荷兰武极管</p>
-							
-						</div>
-					</div>
-    			</div>
+    			
 			</div>
 		</div>
 	</div>
@@ -66,7 +52,7 @@
 	import "@/common/css/swiper.min.css";
 	import VueAwesomeSwiper from "vue-awesome-swiper";
 	import housetypeBanner from "../components/building/housetypeBanner";
-	import {getBuildCaseType,getHouseTypeList} from "@/api/building";
+	import {getBuildCaseType,getHouseTypeList,getBuildingInfo} from "@/api/building";
 	Vue.use(VueAwesomeSwiper);
 	export default{
 		 components: {
@@ -74,13 +60,15 @@
 		  },
 		data(){
 			return{
+				caseList:null,
+				caseTotal:null,
 				result:null,
+				houseTypeResult:null,
+				buildingInfo:null,
+				premises_uid:null,
 				ht:document.body.clientHeight,
 				wth:document.body.clientWidth,
-				banner:[
-		      	    {link:"https://img.wesetup.cn/webIndexBannerNew.png",src:"http://g.eqxiu.com/s/JSiNdILo"},
-					{link:"https://img.wesetup.cn/webIndexBannerNew29-15.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"}//, ../../static/images/banner.png
-		      	],
+				
 				swiperOption: {
 		          grabCursor: true,
 		          setWrapperSize: true,
@@ -99,13 +87,33 @@
 			}
 		},
 		mounted(){
-			getBuildCaseType('page_no=1&page_size=3&premises_uid=43207696970363462')
+			var self = this;
+			self.premises_uid = this.$route.query.buildUid;
+			getBuildCaseType('page_no=1&page_size=3&premises_uid='+self.premises_uid)
 			.then(function(res){
-				
+				if(res.status == "200"){
+					self.result = res.body.data.result;
+					self.caseTotal = res.body.data.total;
+				}
 			},function(err){
 				
 			})
-			//getHouseTypeList({premisesUid:43207696967626320})
+			getHouseTypeList({premisesUid:self.premises_uid})
+			.then(function(res){
+				if(res.status == "200"){
+					self.houseTypeResult = res.body.data;
+				}
+			},function(err){
+				
+			})
+			getBuildingInfo('buildingPremisesUid='+self.premises_uid )
+			.then(function(res){
+				if(res.status == "200"){
+					self.buildingInfo = res.body.data;
+				}
+			},function(){
+				
+			})
 		},
 		methods:{
 			back:function(){
@@ -223,7 +231,7 @@
 		
 	}
 	.case-list-c{
-		border-bottom:.1rem solid #f2f2f2;
+		border-bottom:.6rem solid #f2f2f2;
 		padding:0rem .15rem 0;
 	}
 	
@@ -236,13 +244,10 @@
 	  border-bottom: 1px solid #c9c9c9;
 	  overflow: hidden;
 	}
-	.des-c:after {
-	  content: "";
-	  display: block;
-	  height: 0;
-	  visibility: hidden;
-	  clear: both;
+	.last{
+		border-bottom: 0px solid #c9c9c9;
 	}
+	
 	.portrait {
 	  width: 0.4rem;
 	  float: left;

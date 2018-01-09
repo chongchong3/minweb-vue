@@ -4,13 +4,13 @@
 			<div  class="designer-detail-list-c">
 				<swiper :options="designerOption" >
 			    <!-- slides -->
-			    <swiper-slide class="designer-item"   v-for="(designer,index) in designerList" :key="index">
+			    <swiper-slide class="designer-item"   v-for="(item,index) in houseTypeList" :key="index">
 			    	<div  tag="div" class="detail-designer">
-						<div  class="img-c"  >
-							<img  src="../../../static/images/aboutus02.jpg" />
-							<p class="house-area">4室2厅2卫/122m<sup>2</sup></p>
-							<p class="house-abtype">B1户型</p>
-						</div>
+						<router-link  tag="div" class="img-c" :to="'/housetype?houseUid='+item.house_type_uid+'&premisesUid='+item.building_premises_uid+'&buildingName='+buildingName" >
+							<img  :src="item.house_type_img_url" />
+							<p class="house-area">{{item.house_type_pattern}}/{{item.house_type_area}}m<sup>2</sup></p>
+							<p class="house-abtype">{{item.house_type_name}}</p>
+						</router-link>
 			    	</div>
 			    </swiper-slide>
 			  </swiper>
@@ -19,9 +19,8 @@
 	</div>
 </template>
 <script>
-import store from "@/store";
-import { getDesinerMes } from "@/api/desinerList";
 export default {
+  props: ["houseTypeList","buildingName"],
   data() {
     return {
       designerList: [],
@@ -33,8 +32,8 @@ export default {
         pagination: "null",
         slidesPerView: "auto",
         paginationClickable: true,
-         loop: true,
-        loopedSlides:3,
+//       loop: true,
+//      loopedSlides:2,
         onClick:(swiper,e)=>{
         	this.$router.push({path:'.'+e.target.getAttribute('to')});
         }
@@ -51,31 +50,9 @@ export default {
     }
   },
   mounted() {
-  		
-	   this.getList({ page_size: 6, page_no: 1})
-      .then(json => {
-        if (json.body.code == "200") {
-          this.designerList = json.body.data.result;
-          this.$nextTick(function(){
-//        	this.designItemWidth = document.querySelector("#imgC").offsetWidth;
-          })
-        }
-      })
-      .catch(err => {});
   },
   methods: {
-    getList(params) {
-      var _self = this;
-      return new Promise((resolve, reject) => {
-        getDesinerMes(params)
-          .then(response => {
-            resolve(response);
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
-    }
+   
   }
 };
 </script>

@@ -91,8 +91,14 @@ module.exports = {
         target: 'http://192.168.14.175:8420/', // 楼盘户型案例列表
         changeOrigin: true,
       },
-      
-
+      '/location/getPremises':{
+        target: 'http://shejiin.dev:8420/', // 楼盘户型案例列表
+        changeOrigin: true,
+      },
+			'/location/getHouseType':{
+        target: 'http://shejiin.dev:8420/', // 楼盘户型案例列表
+        changeOrigin: true,
+      },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
