@@ -14,21 +14,23 @@
 			<p >开&nbsp;&nbsp;发&nbsp;&nbsp;<span style="margin-left: -2px;">商:</span><span class="info-value">{{buildingInfo.premises_developer}}</span></p>
 		</div>
 		<div class="house-type-c" v-if="houseTypeResult">
-			<div class="house-type-title">
+			<router-link tag="div" class="house-type-title" :to="'/house_type_list?premises_uid='+premises_uid">
 				<p>户型<span class="account">({{houseTypeResult.total}})</span></p>
-			</div>
+			</router-link>
 			<div class="house-type-banner-c">
 				<housetype-banner :buildingName='buildingInfo.premises_name' :houseTypeList='houseTypeResult.result'></housetype-banner>
 			</div>
 		</div>
 		<div class="house-case-list-c">
-			<div class="house-type-title">
+			<router-link tag="div" class="house-type-title" :to="'/floor_case_list?premises_uid='+premises_uid">
 				<p>楼盘案例<span class="account">({{caseTotal}})</span></p>
-			</div>
+			</router-link>
 			<div class="case-list-c" v-if="result">
-				<div  class="onecase-c" v-for="(item,index) in result" >
+				<router-link tag="div"   class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid">
     				<div class="case-img-c" >
 						<img  :src="item.case_image_url" />
+						<div v-if="item.panoramagram_flag == 1" class="panoramagram">
+						</div>
 					</div>
 					<div :class="['des-c',{'last':index == (result.length-1)}]">
 						<div  class="portrait" >
@@ -40,7 +42,7 @@
 							
 						</div>
 					</div>
-    			</div>
+    			</router-link>
     			
 			</div>
 		</div>
@@ -91,7 +93,7 @@
 			self.premises_uid = this.$route.query.buildUid;
 			getBuildCaseType('page_no=1&page_size=3&premises_uid='+self.premises_uid)
 			.then(function(res){
-				if(res.status == "200"){
+				if(res.status == "200" && res.body.data){
 					self.result = res.body.data.result;
 					self.caseTotal = res.body.data.total;
 				}
@@ -288,6 +290,16 @@
 	}
 	.case-img-c{
 		width:100%;
+		position: relative;
+	}
+	.panoramagram{
+		position: absolute;
+		right: 6px;
+		bottom: 6px;
+		width: .4rem;
+		height:.4rem;
+		background:url(../../static/images/720icon.png) no-repeat;
+		background-size:100%;
 	}
 	.case-img-c img{
 		width:100%;

@@ -34,9 +34,12 @@
 			</div>
 			<div class="case-list-c">
 				
-				<div  class="onecase-c" v-for="(item,index) in result" >
+				<router-link tag="div"  class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid">
     				<div class="case-img-c" >
 						<img  :src="item.case_image_url" />
+						<!--<img src="../../dist/static/images/banner.jpg" />-->
+						<div v-if="item.panoramagram_flag == 1" class="panoramagram">
+						</div>
 					</div>
 					<div  :class="['des-c',{'last-case':index == (result.length-1) }]">
 						<div  class="portrait" tag="div">
@@ -47,7 +50,7 @@
 							<p class="name">{{item.title}}</p>
 						</div>
 					</div>
-    			</div>
+    			</router-link>
     			
 			</div>
 		</div>
@@ -327,6 +330,16 @@
 	  padding-bottom: 0.1rem;
 	  border-bottom: 1px solid #c9c9c9;
 	  overflow: hidden;
+	  position: relative;
+	}
+	.panoramagram{
+		position: absolute;
+		right: 6px;
+		bottom: 6px;
+		width: .4rem;
+		height:.4rem;
+		background:url(../../static/images/720icon.png) no-repeat;
+		background-size:100%;
 	}
 	.des-c:after {
 	  content: "";
@@ -375,6 +388,7 @@
 	}
 	.case-img-c{
 		width:100%;
+		position: relative;
 	}
 	.case-img-c img{
 		width:100%;
