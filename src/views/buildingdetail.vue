@@ -18,7 +18,7 @@
 				<p>户型<span class="account">({{houseTypeResult.total}})</span></p>
 			</router-link>
 			<div class="house-type-banner-c">
-				<housetype-banner :buildingName='buildingInfo.premises_name' :houseTypeList='houseTypeResult.result'></housetype-banner>
+				<housetype-banner  :houseTypeList='houseTypeResult.result'></housetype-banner>
 			</div>
 		</div>
 		<div class="house-case-list-c">

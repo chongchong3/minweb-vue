@@ -2,7 +2,7 @@
 	<div class="floor-c" v-if="houseInfo">
 		<div  @click="back" class="goback"></div>
 		<div class="housetype-banner-c" :style="'height:'+wth*2/3+'px'">
-			<img src="../../static/images/banner_P1.jpg">
+			<img :src="houseInfo.house_type_img_url">
 			<div class="housetype-des-c">
 				<p class="build-name">{{houseInfo.house_type_pattern}}</p>
 			</div>
@@ -10,7 +10,7 @@
 		<div class="build-info-c">
 			<p >户型面积:<span class="info-value">{{houseInfo.house_type_area}}m<sup>2</sup></span></p>
 			<p >户型分布:<span class="info-value">{{houseInfo.house_type_distribute}}</span></p>
-			<p >楼&nbsp;&nbsp;&nbsp;盘&nbsp;&nbsp;&nbsp;&nbsp;:</span><span class="info-value">{{buildingName}}</span></p>
+			<p >楼&nbsp;&nbsp;&nbsp;盘&nbsp;&nbsp;&nbsp;&nbsp;:</span><span class="info-value">{{houseInfo.premises_name}}</span></p>
 		</div>
 		<div class="house-type-c" v-if="houseTypeArr">
 			<div class="house-type-title">
@@ -111,7 +111,7 @@
 			var self = this;
 			this.houseTypeUid = this.$route.query.houseUid;
 			var premisesUid = this.$route.query.premisesUid;
-			this.buildingName = this.$route.query.buildingName;
+//			this.buildingName = this.$route.query.buildingName;
 			getBuildCaseType('page_no=1&page_size=100000&house_type_uid='+this.houseTypeUid)
 			.then(function(res){
 				if(res.status == "200"){
