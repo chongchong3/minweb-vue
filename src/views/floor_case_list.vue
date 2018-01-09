@@ -12,7 +12,7 @@
                 </div>        
             </router-link>
             <div class="floor-footer">
-                <img src="" alt="" class="designer-header"> 
+                <img :src="single.head_image_url" alt="" class="designer-header"> 
                 <div class="des-detail">
                     <p class="case-font">{{single.house_type_name}} / {{single.house_area}} m² / <span v-for="style in single.style_list">
                         {{style.style_name}}</span></p> 
@@ -61,7 +61,6 @@ export default {
     })
     .then(function (response) {
       _self.dataJson = response.data.data.result;
-      console.log(response.data.data)
       
     })
     .catch(function (error) {
@@ -89,6 +88,7 @@ ul, li, p{
   list-style-type: none;
 }
 .floor{
+    overflow-x:hidden
     /* padding-top:.56rem; */
 }
 .floor-li{
@@ -125,7 +125,7 @@ ul, li, p{
     width: 0.4rem;
     height: 0.4rem;
     border-radius: 50%;
-    background: #f0f;
+    /* background: #f0f; */
 }
 .des-detail{
     margin-left: .06rem;

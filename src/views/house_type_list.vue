@@ -51,7 +51,6 @@ export default {
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
-        console.log(response.data.data.result)
     //   _self.page_count = response.data.page_count;   
     })
     .catch(function (error) {
