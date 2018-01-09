@@ -46,7 +46,7 @@ export default {
         slidesPerView: "auto",
         paginationClickable: true,
          loop: true,
-        loopedSlides:3,
+        loopedSlides:6,
         onClick:(swiper,e)=>{
         	this.$router.push({path:'.'+e.target.getAttribute('to')});
         }
