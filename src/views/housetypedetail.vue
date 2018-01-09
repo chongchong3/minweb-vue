@@ -112,7 +112,7 @@
 			this.houseTypeUid = this.$route.query.houseUid;
 			var premisesUid = this.$route.query.premisesUid;
 			this.buildingName = this.$route.query.buildingName;
-			getBuildCaseType('page_no=1&page_size=3&house_type_uid='+this.houseTypeUid)
+			getBuildCaseType('page_no=1&page_size=100000&house_type_uid='+this.houseTypeUid)
 			.then(function(res){
 				if(res.status == "200"){
 					self.result = res.body.data.result;
