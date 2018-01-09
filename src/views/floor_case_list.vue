@@ -7,8 +7,8 @@
             <router-link to="">
                 <div class="case-img">
                     <img :src="single.case_image_url"  alt="" class="img-size">
-                    <img src="../../static/images/720icon.png" alt="" class="icon-img">
-                    <!-- v-if="single.panoramagram_flag ==1" -->
+                    <img v-if="single.panoramagram_flag ==1" src="../../static/images/720icon.png" alt="" class="icon-img">
+                    
                 </div>        
             </router-link>
             <div class="floor-footer">
@@ -43,7 +43,8 @@ export default {
             addClass:[],
             timer:null,
             page_size: 5,
-            designer_list_top:null
+            designer_list_top:null,
+            houseUid:null
         }
   },
   beforeCreate(){
@@ -51,27 +52,48 @@ export default {
   },
   created(){
       var _self = this;
-      var id = this.$route.query.id;
-      axios.get('/minisite/getByHouseType', {
-        params: {
-            page_size: 100, 
-            page_no: 1,
-            house_type_uid: id
-        }
-    })
-    .then(function (response) {
-      _self.dataJson = response.data.data.result;
-      
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+      const house_type_uid = this.$route.query.house_type_uid; //  户型ID
+      const premises_uid = this.$route.query.premises_uid;
+      this.houseUid = this.$route.query.id;
+    //   根据户型拿去案例 house_type_uid   根据楼盘拿去案例  premises_uid
+    if(house_type_uid){
+        axios.get('/minisite/getByHouseType', {
+            params: {
+                page_size: 100, 
+                page_no: 1,
+                house_type_uid: house_type_uid
+            }
+        })
+        .then(function (response) {
+            _self.dataJson = response.data.data.result;
+        
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }else{
+        axios.get('/minisite/getByHouseType', {
+            params: {
+                page_size: 100, 
+                page_no: 1,
+                premises_uid: premises_uid
+            }
+        })
+        .then(function (response) {
+            _self.dataJson = response.data.data.result;
+        
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    
   },
   mounted(){
     var _self = this;
     this.$nextTick(function(){
         this.shareWx.getId();
-        this.shareWx.shareReady("找设计师 | 设计IN-设计师严选平台");
+        this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
     });
     
   },

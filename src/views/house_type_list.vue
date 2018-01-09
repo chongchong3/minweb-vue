@@ -4,17 +4,20 @@
 	<head-nav></head-nav> -->
       <ul>
           <li class="house-li" v-for="(single, index) in dataJson ">
-              <router-link :to="'/floor_case_list?id='+single.house_type_uid">
                 <div class="list">
-                    <img :src="single.house_type_img_url" alt="" class="house-img">
-                    <div class="list-center">
-                        <p class="case-name">{{single.house_type_pattern}}</p>
-                        <p class="case-number">案例({{single.case_count}})</p>
-                        <p class="house-name">{{single.house_type_name}}</p>
-                    </div>
+                    <router-link :to="`housetype?houseUid=${single.house_type_uid}&premisesUid=${single.building_premises_uid}&buildingName=${single.premises_name}`">
+                        <img :src="single.house_type_img_url" alt="" class="house-img">
+                    </router-link>
+                    <!-- <router-link :to="'/floor_case_list?house_type_uid='+single.house_type_uid"> -->
+                        <div class="list-center">
+                            <p class="case-name">{{single.house_type_pattern}}</p>
+                            <p class="case-number">案例({{single.case_count}})</p>
+                            <p class="house-name">{{single.house_type_name}}</p>
+                        </div>
+                    <!-- </router-link> -->
                     <div class="list-right">{{single.house_type_area}}m²</div>
                 </div>
-              </router-link>
+              
               <div class="line-border"></div>
           </li> 
       </ul>
@@ -46,12 +49,12 @@ export default {
   created(){
     var _self = this;
     // location/getHouseTypeList /minisite/getDesignerCase
+    const premises_uid = this.$route.query.premises_uid;
     axios.post('location/getHouseTypeList', {
         premisesUid:'43207696967626320'
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
-    //   _self.page_count = response.data.page_count;   
     })
     .catch(function (error) {
         console.log(error);
