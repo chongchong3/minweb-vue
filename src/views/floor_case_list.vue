@@ -4,7 +4,7 @@
 	<head-nav></head-nav> -->
       <ul>
           <li class="floor-li" v-for="(single, index) in dataJson">
-            <router-link to="">
+            <router-link :to="`/caseDetailsNew?case_id=${single.case_uid}`">
                 <div class="case-img">
                     <img :src="single.case_image_url"  alt="" class="img-size">
                     <img v-if="single.panoramagram_flag ==1" src="../../static/images/720icon.png" alt="" class="icon-img">
