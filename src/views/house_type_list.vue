@@ -4,10 +4,11 @@
 	<head-nav></head-nav> -->
       <ul>
           <li class="house-li" v-for="(single, index) in dataJson ">
+              <router-link :to="`housetype?houseUid=${single.house_type_uid}&premisesUid=${single.building_premises_uid}`">
                 <div class="list">
-                    <router-link :to="`housetype?houseUid=${single.house_type_uid}&premisesUid=${single.building_premises_uid}`">
+                    
                         <img :src="single.house_type_img_url" alt="" class="house-img">
-                    </router-link>
+                    
                     <!-- <router-link :to="'/floor_case_list?house_type_uid='+single.house_type_uid"> -->
                         <div class="list-center">
                             <p class="case-name">{{single.house_type_pattern}}</p>
@@ -17,7 +18,7 @@
                     <!-- </router-link> -->
                     <div class="list-right">{{single.house_type_area}}m²</div>
                 </div>
-              
+              </router-link>
               <div class="line-border"></div>
           </li> 
       </ul>
