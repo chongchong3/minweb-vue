@@ -5,7 +5,7 @@
       <ul>
           <li class="house-li" v-for="(single, index) in dataJson ">
                 <div class="list">
-                    <router-link :to="`housetype?houseUid=${single.house_type_uid}&premisesUid=${single.building_premises_uid}&buildingName=${single.premises_name}`">
+                    <router-link :to="`housetype?houseUid=${single.house_type_uid}&premisesUid=${single.building_premises_uid}`">
                         <img :src="single.house_type_img_url" alt="" class="house-img">
                     </router-link>
                     <!-- <router-link :to="'/floor_case_list?house_type_uid='+single.house_type_uid"> -->
