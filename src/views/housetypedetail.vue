@@ -34,7 +34,7 @@
 			</div>
 			<div class="case-list-c">
 				
-				<router-link tag="div"  class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid">
+				<router-link tag="div"  class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid" :key="index">
     				<div class="case-img-c" >
 						<img  :src="item.case_image_url" />
 						<!--<img src="../../dist/static/images/banner.jpg" />-->
@@ -157,7 +157,7 @@
 								self.showColFlag = true;
 							}
 					        self.shareWx.getId();
-					        self.shareWx.shareReady(self.houseInfo.premises_name+','+self.houseInfo.house_type_pattern+" | 设计IN-设计师严选平台",self.houseInfo.house_type_analyze,self.houseInfo.house_type_img_url+"?imageView2/0/w/100/h/100/q/75|imageslim");
+					        self.shareWx.shareReady(self.houseInfo.premises_name+','+self.houseInfo.house_type_pattern+" | 设计IN-设计师严选平台",self.houseInfo.house_type_analyze,self.houseInfo.house_type_img_url+"?imageView2/3/w/100/h/100");
 						})
 					}
 				},function(){

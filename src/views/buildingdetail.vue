@@ -26,7 +26,7 @@
 				<p>楼盘案例<span class="account">({{caseTotal}})</span></p>
 			</router-link>
 			<div class="case-list-c" v-if="result">
-				<router-link tag="div"   class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid">
+				<router-link tag="div"   class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid" :key="index">
     				<div class="case-img-c" >
 						<img  :src="item.case_image_url" />
 						<div v-if="item.panoramagram_flag == 1" class="panoramagram">
@@ -62,6 +62,7 @@
 		  },
 		data(){
 			return{
+				intervalFun:null,
 				caseList:null,
 				caseTotal:null,
 				result:null,
@@ -69,23 +70,9 @@
 				buildingInfo:null,
 				premises_uid:null,
 				ht:document.body.clientHeight,
-				wth:document.body.clientWidth,
+				wth:document.body.clientWidth
 				
-				swiperOption: {
-		          grabCursor: true,
-		          setWrapperSize: true,
-		          autoHeight: true,
-			      pagination: null,
-		          paginationClickable: true,
-		          mousewheelControl: true,
-		          observeParents: true,
-		
-		          onTransitionStart (swiper) {
-		          },
-		          onClick(swiper){
-		          	window.location.href = swiper.$(swiper.clickedSlide).children("img").attr("loc");
-		          }
-		        }
+				
 			}
 		},
 		mounted(){
@@ -112,16 +99,28 @@
 			.then(function(res){
 				if(res.status == "200"){
 					self.buildingInfo = res.body.data;
-					self.$nextTick(function(){
-				        self.shareWx.getId();
-				        self.shareWx.shareReady(self.buildingInfo.premises_name+" | 设计IN-设计师严选平台","方案"+self.caseTotal+"个",self.buildingInfo.foreground_picture+"?imageView2/0/w/100/h/100/q/75|imageslim");
-				    })
+					self.intervalFun = setInterval(function(){
+						if(self.caseTotal !=null){
+							self.share();
+							clearInterval(self.intervalFun);
+						}
+					},10)
+//					self.$nextTick(function(){
+//				        self.shareWx.getId();
+//				        self.shareWx.shareReady(self.buildingInfo.premises_name+" | 设计IN-设计师严选平台","方案:"+self.caseTotal+"个",self.buildingInfo.foreground_picture+"?imageView2/3/w/100/h/100");
+//				    })
 				}
 			},function(){
 				
 			})
 		},
 		methods:{
+			share:function(){
+				this.$nextTick(function(){
+			        this.shareWx.getId();
+			        this.shareWx.shareReady(this.buildingInfo.premises_name+" | 设计IN-设计师严选平台","方案:"+this.caseTotal+"个",this.buildingInfo.foreground_picture+"?imageView2/3/w/100/h/100");
+			    })
+			},
 			back:function(){
 				this.$router.back(-1);
 			}
