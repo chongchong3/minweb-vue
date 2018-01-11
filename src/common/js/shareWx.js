@@ -78,6 +78,18 @@ const  shareReady=function(title,desc,imgUrl,link){
    
 }
 
+var forbidden = function () {
+  wx.hideAllNonBaseMenuItem();
+
+}
+
+var disableShare = function(){
+	getId();
+	wx.ready(function () {
+	 		wx.hideOptionMenu();
+  });
+}
+
 
 var enableShare = function(){
 	getId();
@@ -86,4 +98,4 @@ var enableShare = function(){
   });
 }
 
-export default {getId,shareReady,enableShare}
+export default {getId,shareReady,enableShare,disableShare,forbidden}

@@ -60,12 +60,15 @@ export default {
     .catch(function (error) {
         console.log(error);
     });
+    document.title = `${this.dataJson[0].premises_name} | 户型`;
   },
   mounted(){ 
         var _self = this;
         this.$nextTick(function(){
-            this.shareWx.getId();
-            this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
+            // this.shareWx.getId();
+            this.shareWx.disableShare();
+            // this.shareWx.forbidden();
+            // this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
         }); 
   },
   methods:{ 

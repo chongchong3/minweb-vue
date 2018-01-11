@@ -87,13 +87,16 @@ export default {
             console.log(error);
         });
     }
-    
+    document.title = `${this.dataJson[0].premises_name} | 案例`;
   },
   mounted(){
     var _self = this;
     this.$nextTick(function(){
-        this.shareWx.getId();
-        this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
+        this.shareWx.disableShare();
+        // this.shareWx.forbidden();
+
+        // this.shareWx.getId();
+        // this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
     });
     
   },
