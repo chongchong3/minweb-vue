@@ -61,7 +61,12 @@ export default {
         console.log(error);
     });
   },
-  mounted(){  
+  mounted(){ 
+        var _self = this;
+        this.$nextTick(function(){
+            this.shareWx.getId();
+            this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
+        }); 
   },
   methods:{ 
   }
