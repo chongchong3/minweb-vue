@@ -155,6 +155,7 @@
 							document.title="世茂天宸 | "+self.houseInfo.house_type_name;
 							if(document.querySelector(".house-analysis").offsetHeight>80){
 								self.showColFlag = true;
+								document.querySelector(".house-analysis").style.height = ".8rem";
 							}
 					        self.shareWx.getId();
 					        self.shareWx.shareReady(self.houseInfo.premises_name+','+self.houseInfo.house_type_pattern+" | 设计IN-设计师严选平台",self.houseInfo.house_type_analyze,self.houseInfo.house_type_img_url+"?imageView2/3/w/100/h/100");
@@ -221,7 +222,7 @@
 	.house-analysis{
 		font-size: .14rem;
 		line-height:.2rem;
-		max-height:.8rem;
+		/*max-height:.8rem;*/
 		overflow: hidden;
 		z-index: -1;
 		position: relative;
