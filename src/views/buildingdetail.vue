@@ -114,7 +114,7 @@
 					self.buildingInfo = res.body.data;
 					self.$nextTick(function(){
 				        self.shareWx.getId();
-				        self.shareWx.shareReady(self.premises_name+" | 设计IN-设计师严选平台","方案"+self.caseTotal+"个",self.buildingInfo.foreground_picture+"?imageView2/0/w/100/h/100/q/75|imageslim");
+				        self.shareWx.shareReady(self.buildingInfo.premises_name+" | 设计IN-设计师严选平台","方案"+self.caseTotal+"个",self.buildingInfo.foreground_picture+"?imageView2/0/w/100/h/100/q/75|imageslim");
 				    })
 				}
 			},function(){
