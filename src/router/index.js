@@ -139,7 +139,7 @@ export default new Router({
       path: '/building',
       name: 'building',
       component: building,
-      meta: {title: '楼盘详情'}     
+      meta: {title: '世茂天宸'}     
     },
     {
       path: '/housetype',

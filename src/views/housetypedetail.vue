@@ -20,11 +20,11 @@
 				<div :class="['house-analysis',{'analysis-visible':!isCollpase}]">
 					{{houseInfo.house_type_analyze}}
 				</div>
-				<div class="mask-c" v-if="isCollpase">
+				<div  class="mask-c" v-if="showColFlag&&isCollpase">
 					<div class="analysis-mask">
 					</div>
 				</div>
-				<div  @click="colExtendFun"  :class="['collpase-extend-btn',{'collpase-bg':!isCollpase}]">
+				<div v-if="showColFlag"  @click="colExtendFun"  :class="['collpase-extend-btn',{'collpase-bg':!isCollpase}]">
 				</div>
 			</div>
 		</div>
@@ -81,6 +81,7 @@
 				buildingName:'',
 				houseInfo:null,
 				houseTypeUid:null,
+				showColFlag:false,
 				isCollpase:true,
 				caseList:null,
 				caseTotal:null,
@@ -107,45 +108,62 @@
 		        }
 			}
 		},
+		created(){
+			
+		},
+		watch:{
+			 "$route": "getData"
+		},
 		mounted(){
-			var self = this;
-			this.houseTypeUid = this.$route.query.houseUid;
-			var premisesUid = this.$route.query.premisesUid;
-//			this.buildingName = this.$route.query.buildingName;
-			getBuildCaseType('page_no=1&page_size=100000&house_type_uid='+this.houseTypeUid)
-			.then(function(res){
-				if(res.status == "200"){
-					self.result = res.body.data.result;
-					self.caseTotal = res.body.data.total;
-				}
-			},function(err){
-				
-			})
-			getHouseTypeList({premisesUid:premisesUid})
-			.then(function(res){
-				if(res.status == "200"){
-					self.houseTypeArr = [];
-					self.houseTypetotal = res.body.data.total-1;
-					var tempItems = res.body.data.result;
-					for(let i=0;i<tempItems.length;i++){
-						if(tempItems[i].house_type_uid != self.houseTypeUid){
-							self.houseTypeArr.push(tempItems[i]);
-						}
-					}
-				}
-			},function(err){
-				
-			})
-			getHouseTypeInfo('houseTypeUid='+this.houseTypeUid)
-			.then(function(res){
-				if(res.status == "200"){
-					self.houseInfo = res.data.data;
-				}
-			},function(){
-				
-			})
+			this.getData();
 		},
 		methods:{
+			getData:function(){
+				var self = this;
+				this.houseTypeUid = this.$route.query.houseUid;
+				var premisesUid = this.$route.query.premisesUid;
+	//			this.buildingName = this.$route.query.buildingName;
+				getBuildCaseType('page_no=1&page_size=100000&house_type_uid='+this.houseTypeUid)
+				.then(function(res){
+					if(res.status == "200"){
+						self.result = res.body.data.result;
+						self.caseTotal = res.body.data.total;
+					}
+				},function(err){
+					
+				})
+				getHouseTypeList({premisesUid:premisesUid})
+				.then(function(res){
+					if(res.status == "200"){
+						self.houseTypeArr = [];
+						self.houseTypetotal = res.body.data.total-1;
+						var tempItems = res.body.data.result;
+						for(let i=0;i<tempItems.length;i++){
+							if(tempItems[i].house_type_uid != self.houseTypeUid){
+								self.houseTypeArr.push(tempItems[i]);
+							}
+						}
+					}
+				},function(err){
+					
+				})
+				getHouseTypeInfo('houseTypeUid='+this.houseTypeUid)
+				.then(function(res){
+					if(res.status == "200"){
+						self.houseInfo = res.data.data;
+						self.$nextTick(function(){
+							document.title="世茂天宸 | "+self.houseInfo.house_type_name;
+							if(document.querySelector(".house-analysis").offsetHeight>80){
+								self.showColFlag = true;
+							}
+					        self.shareWx.getId();
+					        self.shareWx.shareReady(self.houseInfo.premises_name+','+self.houseInfo.house_type_pattern+" | 设计IN-设计师严选平台",self.houseInfo.house_type_analyze,self.houseInfo.house_type_img_url+"?imageView2/0/w/100/h/100/q/75|imageslim");
+						})
+					}
+				},function(){
+					
+				})
+			},
 			back:function(){
 				this.$router.back(-1);
 			},
@@ -203,7 +221,7 @@
 	.house-analysis{
 		font-size: .14rem;
 		line-height:.2rem;
-		height:.8rem;
+		max-height:.8rem;
 		overflow: hidden;
 		z-index: -1;
 		position: relative;
