@@ -52,7 +52,7 @@ export default {
     // location/getHouseTypeList /minisite/getDesignerCase
     const premises_uid = this.$route.query.premises_uid;
     axios.post('location/getHouseTypeList', {
-        premisesUid:'43207696967626320'
+        premisesUid: premises_uid
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
