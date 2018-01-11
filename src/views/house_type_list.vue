@@ -48,6 +48,7 @@ export default {
   beforeCreate(){
   },
   created(){
+    this.shareWx.disableShare();
     var _self = this;
     // location/getHouseTypeList /minisite/getDesignerCase
     const premises_uid = this.$route.query.premises_uid;
