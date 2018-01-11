@@ -127,13 +127,13 @@ export default new Router({
       path: '/house_type_list',
       name: 'house_type_list',
       component: house_type_list,
-      meta: {title: '户型列表'}     
+      meta: {title: '世茂天宸 | 户型'}     
     },
     {
       path: '/floor_case_list',
       name: 'floor_case_list',
       component: floor_case_list,
-      meta: {title: '小区案例列表'}     
+      meta: {title: '世茂天宸 | 案例'}     
     },
     {
       path: '/building',
