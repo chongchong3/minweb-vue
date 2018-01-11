@@ -146,8 +146,7 @@ export default new Router({
       name: 'housetype',
       component: housetype,
       meta: {title: '户型详情'}     
-    },
-    { path: '/vr/index.html', redirect: '/vr/index.html' }
+    }
   ],
   // beforeRouteLeave(to, from, next){
   //   let position = window.scrollY();
