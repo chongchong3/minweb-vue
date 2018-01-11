@@ -7,7 +7,7 @@
 			    <swiper-slide class="designer-item"   v-for="(item,index) in houseTypeList" :key="index">
 			    	<div  tag="div" class="detail-designer">
 						<router-link  tag="div" class="img-c" :to="'/housetype?houseUid='+item.house_type_uid+'&premisesUid='+item.building_premises_uid" >
-							<img  :src="item.house_type_img_url" />
+							<img  :src="item.house_type_img_url"  />
 							<p class="house-area">{{item.house_type_pattern}}/{{item.house_type_area}}m<sup>2</sup></p>
 							<p class="house-abtype">{{item.house_type_name}}</p>
 						</router-link>
@@ -35,7 +35,7 @@ export default {
 //       loop: true,
 //      loopedSlides:2,
         onClick:(swiper,e)=>{
-        	this.$router.push({path:'.'+e.target.getAttribute('to')});
+//      	this.$router.push({path:'.'+e.target.getAttribute('to')});
         }
         // more Swiper configs and callbacks...
         // ...
