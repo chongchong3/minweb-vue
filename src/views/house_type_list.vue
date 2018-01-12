@@ -49,6 +49,7 @@ export default {
   },
   created(){
     this.shareWx.disableShare();
+    this.shareWx.forbidden();
     var _self = this;
     // location/getHouseTypeList /minisite/getDesignerCase
     const premises_uid = this.$route.query.premises_uid;
@@ -68,7 +69,7 @@ export default {
         this.$nextTick(function(){
             // this.shareWx.getId();
             this.shareWx.disableShare();
-            // this.shareWx.forbidden();
+            this.shareWx.forbidden();
             // this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
         }); 
   },

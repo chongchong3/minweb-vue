@@ -52,6 +52,7 @@ export default {
   },
   created(){
       this.shareWx.disableShare();
+      this.shareWx.forbidden();
       var _self = this;
       const house_type_uid = this.$route.query.house_type_uid; //  户型ID
       const premises_uid = this.$route.query.premises_uid;
@@ -93,8 +94,8 @@ export default {
   mounted(){
     var _self = this;
     this.$nextTick(function(){
-        // this.shareWx.disableShare();
-        // this.shareWx.forbidden();
+        this.shareWx.disableShare();
+        this.shareWx.forbidden();
 
         // this.shareWx.getId();
         // this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
