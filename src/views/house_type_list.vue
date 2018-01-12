@@ -49,10 +49,8 @@ export default {
       //this.shareWx.disableShare();
   },
   created(){
-    
-    // this.shareWx.forbidden();
+    this.shareWx.forbidden();
     var _self = this;
-    // location/getHouseTypeList /minisite/getDesignerCase
     const premises_uid = this.$route.query.premises_uid;
     axios.post('location/getHouseTypeList', {
         premisesUid: premises_uid
@@ -68,7 +66,7 @@ export default {
   },
   mounted(){ 
         var _self = this;
-       // this.shareWx.disableShare();
+       this.shareWx.disableShare();
         this.$nextTick(function(){
             // this.shareWx.getId();
             // this.shareWx.disableShare();

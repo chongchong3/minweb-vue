@@ -48,11 +48,10 @@ export default {
         }
   },
   beforeCreate(){
-    //   this.shareWx.disableShare();
   },
   created(){
     //   this.shareWx.disableShare();
-    //   this.shareWx.forbidden();
+      this.shareWx.forbidden();
       var _self = this;
       const house_type_uid = this.$route.query.house_type_uid; //  户型ID
       const premises_uid = this.$route.query.premises_uid;
@@ -93,7 +92,7 @@ export default {
   },
   mounted(){
     var _self = this;
-    // this.shareWx.disableShare();
+    this.shareWx.disableShare();
     this.$nextTick(function(){
         // this.shareWx.disableShare();
         // this.shareWx.forbidden();

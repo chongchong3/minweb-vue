@@ -29,7 +29,10 @@ var api= '/weixin/getWXUrl';
           "chooseImage",
           "previewImage",
           "uploadImage",
-          "downloadImage"
+          "downloadImage",
+          'hideAllNonBaseMenuItem',
+          'showAllNonBaseMenuItem',
+          'hideMenuItems'
         ] // 必填，需要使用的JS接口列表
       });
     })
