@@ -46,7 +46,7 @@ export default {
         }
   },
   beforeCreate(){
-      this.shareWx.disableShare();
+      //this.shareWx.disableShare();
   },
   created(){
     
@@ -59,6 +59,7 @@ export default {
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
+        _self.shareWx.disableShare();
     })
     .catch(function (error) {
         console.log(error);
@@ -67,6 +68,7 @@ export default {
   },
   mounted(){ 
         var _self = this;
+       // this.shareWx.disableShare();
         this.$nextTick(function(){
             // this.shareWx.getId();
             // this.shareWx.disableShare();
