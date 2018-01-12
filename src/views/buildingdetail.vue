@@ -160,9 +160,11 @@
 	.building-des-c{
 		position: absolute;
 		width:100%;
-		height:.42rem;
-		left:.15rem;
-		bottom:.06rem;
+		height:.7rem;
+		left:0rem;
+		bottom:0rem;
+		padding-left:.15rem;
+		background:url(../../static/images/buildfilter.png);
 	}
 	.building-des-c p{
 		padding:0;
@@ -173,11 +175,19 @@
 		line-height: .25rem;
 		font-weight: bold;
 		color: rgba(255,255,255,.86);
+		vertical-align: bottom;
+		position: absolute;
+		bottom: .27rem;
+		color: rgba(255,255,255,.86);
 	}
 	.build-addr{
 		font-size:.12rem;
 		line-height: .17rem;
 		color: rgba(255,255,255,.76);
+		vertical-align: bottom;
+		position: absolute;
+		bottom: .1rem;
+		color: rgba(255,255,255,.86);
 	}
 	.build-info-c{
 		border-bottom:.1rem solid #f2f2f2;
