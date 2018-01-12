@@ -46,10 +46,11 @@ export default {
         }
   },
   beforeCreate(){
+      this.shareWx.disableShare();
   },
   created(){
-    this.shareWx.disableShare();
-    this.shareWx.forbidden();
+    
+    // this.shareWx.forbidden();
     var _self = this;
     // location/getHouseTypeList /minisite/getDesignerCase
     const premises_uid = this.$route.query.premises_uid;
@@ -62,14 +63,14 @@ export default {
     .catch(function (error) {
         console.log(error);
     });
-    document.title = `${this.dataJson[0].premises_name} | 户型`;
+    // document.title = `${this.dataJson[0].premises_name} | 户型`;
   },
   mounted(){ 
         var _self = this;
         this.$nextTick(function(){
             // this.shareWx.getId();
-            this.shareWx.disableShare();
-            this.shareWx.forbidden();
+            // this.shareWx.disableShare();
+            // this.shareWx.forbidden();
             // this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
         }); 
   },

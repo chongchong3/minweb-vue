@@ -48,11 +48,11 @@ export default {
         }
   },
   beforeCreate(){
-
+      this.shareWx.disableShare();
   },
   created(){
-      this.shareWx.disableShare();
-      this.shareWx.forbidden();
+    //   this.shareWx.disableShare();
+    //   this.shareWx.forbidden();
       var _self = this;
       const house_type_uid = this.$route.query.house_type_uid; //  户型ID
       const premises_uid = this.$route.query.premises_uid;
@@ -89,13 +89,13 @@ export default {
             console.log(error);
         });
     }
-    document.title = `${this.dataJson[0].premises_name} | 案例`;
+    // document.title = `${this.dataJson[0].premises_name} | 案例`;
   },
   mounted(){
     var _self = this;
     this.$nextTick(function(){
-        this.shareWx.disableShare();
-        this.shareWx.forbidden();
+        // this.shareWx.disableShare();
+        // this.shareWx.forbidden();
 
         // this.shareWx.getId();
         // this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
