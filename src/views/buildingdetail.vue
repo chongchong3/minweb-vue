@@ -27,7 +27,7 @@
 			</router-link>
 			<div class="case-list-c" v-if="result">
 				<router-link tag="div"   class="onecase-c" v-for="(item,index) in result"  :to="'/caseDetailsNew?case_id='+item.case_uid" :key="index">
-    				<div class="case-img-c" >
+    			<div class="case-img-c" :style="'height:'+(wth-30)*0.5+'px'" >
 						<img  :src="item.case_image_url" />
 						<div v-if="item.panoramagram_flag == 1" class="panoramagram">
 						</div>
@@ -220,6 +220,9 @@
 		line-height: .17rem;
 		margin-left:.04rem;
 		vertical-align: middle;
+		font-weight:normal ;
+		position: relative;
+		bottom: .02rem;
 	}
 	.house-type-banner-c{
 		padding:.1rem 0 .21rem .15rem;
@@ -296,6 +299,7 @@
 	.case-img-c{
 		width:100%;
 		position: relative;
+		overflow: hidden;
 	}
 	.panoramagram{
 		position: absolute;

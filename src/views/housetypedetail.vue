@@ -215,7 +215,7 @@
 		left:0rem;
 		bottom:0rem;
 		padding-left:.15rem;
-		background:url(../../static/images/filter.png);
+		background:url(../../static/images/buildfilter.png);
 	}
 	.housetype-des-c p{
 		padding:0;
@@ -254,9 +254,11 @@
 		height: .12rem;
 		margin-top:.15rem;
 		background: url(../../static/images/extend.png) no-repeat center;
+		background-size:.16rem;
 	}
 	.collpase-bg{
 		background: url(../../static/images/collpase.png) no-repeat center;
+		background-size:.16rem;
 	}
 	.build-name{
 		font-size:.18rem;
@@ -322,6 +324,9 @@
 		line-height: .17rem;
 		margin-left:.04rem;
 		vertical-align: middle;
+		font-weight:normal ;
+		position: relative;
+		bottom: .02rem;
 	}
 	.house-type-banner-c{
 		padding:.2rem .15rem .15rem .15rem ;
