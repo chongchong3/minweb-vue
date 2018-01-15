@@ -10,6 +10,10 @@
                     <p class="memo"><span v-html="styleList"></span>/{{caseData.area}}平米</p>
               </div>
           </div>
+          <div class="fullFloor">
+            <div class="shadow"></div>
+            <div class="tips">点击浏览全景</div>
+          </div>
       </div>
       <div class="desiner">
           <div class="wp">
@@ -53,6 +57,38 @@
 .caseDetails .head {
   position: relative;
 }
+.fullFloor {
+    margin-left:-.506rem;
+    margin-top:-.14rem;
+  position: absolute;
+  width:1.02rem;
+  height: .28rem;
+  line-height: .28rem;;
+  left:50%;
+  top:50%;
+
+}
+.fullFloor  .shadow {
+  width:100%;
+  background: #000;
+    border-radius: .04rem;
+  opacity: .5;;
+  height: .28rem;
+  left: 0;
+  top:0;
+}
+.fullFloor .tips{
+  position: absolute;
+  text-align: center;
+
+  left: 0;
+  top:0;
+  width:100%;
+  line-height: .28rem;
+  height: .28rem;
+  z-index: 22;
+  color:#fff;
+}
 .caseDetails .head .icon {
   position: absolute;
   z-index: 22;
@@ -77,13 +113,13 @@
   padding-left: 0.2rem;
 }
 .descript .cont .tit {
-  padding-top: 0;
+ padding-top: .14rem;
   font-size: 0.16rem;
   font-weight: bold;
  
 }
 .descript .cont .memo {
-  padding-top: 0.08rem;
+  padding-top: 0.02rem;
   font-size: 0.12rem;
    opacity:.64 ;
 }

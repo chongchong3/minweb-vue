@@ -137,6 +137,7 @@ export default {
       menu: [
         { link: "index", icon: "home", name: "首页" },
         { link: "case_list", icon: "view", name: "查看案例" },
+         { link: "floor_case_list", icon: "floor", name: "楼盘专区" },
         { link: "desinerList", icon: "person", name: "找设计师" },
         { link: "chat", icon: "onchat", name: "在线咨询" },
         { link: "aboutUs", icon: "warn", name: "关于" }

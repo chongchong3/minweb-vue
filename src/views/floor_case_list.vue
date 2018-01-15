@@ -51,6 +51,10 @@ export default {
   },
   created(){
     //   this.shareWx.disableShare();
+    this.$store.commit("setNav", {
+      isShow: false, //左侧菜单栏默认为关闭状态
+      current: "floor_case_list" //设置左菜单栏高亮
+    });
       this.shareWx.forbidden();
       var _self = this;
       const house_type_uid = this.$route.query.house_type_uid; //  户型ID
