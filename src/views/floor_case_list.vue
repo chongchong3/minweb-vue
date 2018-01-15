@@ -50,12 +50,10 @@ export default {
   beforeCreate(){
   },
   created(){
-    //   this.shareWx.disableShare();
     this.$store.commit("setNav", {
       isShow: false, //左侧菜单栏默认为关闭状态
       current: "floor_case_list" //设置左菜单栏高亮
     });
-      this.shareWx.forbidden();
       var _self = this;
       const house_type_uid = this.$route.query.house_type_uid; //  户型ID
       const premises_uid = this.$route.query.premises_uid;
@@ -100,9 +98,8 @@ export default {
     this.$nextTick(function(){
         // this.shareWx.disableShare();
         // this.shareWx.forbidden();
-
-        // this.shareWx.getId();
-        // this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
+        this.shareWx.getId();
+        this.shareWx.shareReady("楼盘案例列表 | 设计IN-设计师严选平台");
     });
     
   },

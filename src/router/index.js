@@ -5,9 +5,9 @@ import Router from 'vue-router'
 Vue.use(Router)
 const Index = () => import(/* webpackChunkName: "mint-index" */ '@/views/index')
 const guide = () => import(/* webpackChunkName: "mint-guide" */ '@/views/guide')
-const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerList')
+const desinerList = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/designer_list')
 const desinerDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerDetails')
-const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/caseList')
+const caseList = () => import(/* webpackChunkName: "mint-case" */ '@/views/case_list')
 // const desinerCaseDetails = () => import(/* webpackChunkName: "mint-desiner" */ '@/views/desinerCaseDetails')
 const login = () => import(/* webpackChunkName: "mint-login */ '@/views/login')
 const caseDetails = () => import(/* webpackChunkName: "mint-case */ '@/views/caseDetails')
@@ -25,6 +25,7 @@ const floor_case_list = () =>import('@/views/floor_case_list')
 const house_type_list = () =>import('@/views/house_type_list')
 const building = () =>import('@/views/buildingdetail')
 const housetype = () =>import('@/views/housetypedetail')
+const floor_list = () =>import('@/views/floor_list')
 
 export default new Router({
   mode: 'history',
@@ -146,6 +147,12 @@ export default new Router({
       name: 'housetype',
       component: housetype,
       meta: {title: '户型详情'}     
+    },
+    {
+      path: '/floor_list',
+      name: 'floor_list',
+      component: floor_list,
+      meta: {title: '楼盘列表'}     
     }
   ],
   // beforeRouteLeave(to, from, next){

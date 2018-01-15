@@ -46,10 +46,8 @@ export default {
         }
   },
   beforeCreate(){
-      //this.shareWx.disableShare();
   },
   created(){
-    this.shareWx.forbidden();
     var _self = this;
     const premises_uid = this.$route.query.premises_uid;
     axios.post('location/getHouseTypeList', {
@@ -70,8 +68,8 @@ export default {
         this.$nextTick(function(){
             // this.shareWx.getId();
             // this.shareWx.disableShare();
-            // this.shareWx.forbidden();
-            // this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
+            this.shareWx.forbidden();
+            this.shareWx.shareReady("户型列表 | 设计IN-设计师严选平台");
         }); 
   },
   methods:{ 
