@@ -55,7 +55,7 @@ props: ["desinerId"],
 
 mounted(){
     this.$nextTick(function(){
-      //   this.goAuthor();
+        this.goAuthor();
 
     });
    
@@ -75,6 +75,7 @@ mounted(){
         window.location.href = "/minisite/login?originUrl=" + window.location.href;
         return;
       }
+       window.location.href = "/minisite/login?originUrl=" + window.location.href; //pctest
     },
     getCookie(name) {
       var arr,
