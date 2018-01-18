@@ -90,6 +90,9 @@ export default {
             console.log(error);
         });
     }
+    if(this.dataJson){
+        document.title = `${this.dataJson[0].premises_name} | 案例`;
+    }
     // document.title = `${this.dataJson[0].premises_name} | 案例`;
   },
   mounted(){
