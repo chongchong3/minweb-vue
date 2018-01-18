@@ -6,11 +6,11 @@ export default {
     beforeCreate(){
      if(!getCookie("isFirstLoad")){
         setCookie('isFirstLoad',true,60*24*30*12);
-        window.location.href="/#/guide";
+        window.location.href="/guide";
       return
 
     }
-      window.location.href="/#/index";
+      window.location.href="/index";
   },
 }
 
