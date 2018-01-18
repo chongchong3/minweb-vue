@@ -75,7 +75,7 @@ mounted(){
         window.location.href = "/minisite/login?originUrl=" + window.location.href;
         return;
       }
-       window.location.href = "/minisite/login?originUrl=" + window.location.href; //pctest
+     
     },
     getCookie(name) {
       var arr,
