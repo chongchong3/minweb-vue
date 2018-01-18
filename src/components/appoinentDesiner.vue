@@ -55,7 +55,7 @@ props: ["desinerId"],
 
 mounted(){
     this.$nextTick(function(){
-         this.goAuthor();
+      //   this.goAuthor();
 
     });
    
@@ -71,7 +71,7 @@ mounted(){
     goAuthor() {
       this.authorId = this.getCookie("wechat_id");
       if (this.isWeiXin() && !this.authorId) {
-        debugger
+       
         window.location.href = "/minisite/login?originUrl=" + window.location.href;
         return;
       }
