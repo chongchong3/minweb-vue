@@ -5,7 +5,7 @@
 			<img :src="buildingInfo.foreground_picture">
 			<div class="building-des-c">
 				<p class="build-name">{{buildingInfo.premises_name}}</p>
-				<p class="build-addr">{{buildingInfo.premises_location}}</p>
+				<p class="build-addr">{{buildingInfo.politicalDivisionName}}</p>
 			</div>
 		</div>
 		<div class="build-info-c">
