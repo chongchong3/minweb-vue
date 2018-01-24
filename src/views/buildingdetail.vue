@@ -99,6 +99,7 @@
 			.then(function(res){
 				if(res.status == "200"){
 					self.buildingInfo = res.body.data;
+					self.buildingInfo.politicalDivisionName = self.buildingInfo.politicalDivisionName.replace("区","")
 //					self.intervalFun = setInterval(function(){
 //						if(self.caseTotal !=null){
 //							self.share();

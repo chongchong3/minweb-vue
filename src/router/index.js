@@ -140,7 +140,7 @@ export default new Router({
       path: '/building',
       name: 'building',
       component: building,
-      meta: {title: '世茂天宸'}     
+      meta: {title: ''}     
     },
     {
       path: '/housetype',
