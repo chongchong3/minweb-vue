@@ -6,8 +6,7 @@
         <li class="floor-li" v-for="(single, index) in dataJson" >
           <router-link :to="'/building?buildUid='+single.building_premises_uid">
           <div class="img-partent" >
-            <img  :src="single.background_picture"  alt="" class="floor-img ">
-            <!-- <img  src="https://assets.wesetup.cn/2017/12/21/1513821899057-ztq9mf2i1m2jdxug5uahsemi.jpg"  alt="" class="floor-img "> -->
+            <img  :src="single.foreground_picture"  alt="" class="floor-img ">
           </div>
           <div class="floor-des">
               <p class="floor-title">{{single.premises_name}}</p>
