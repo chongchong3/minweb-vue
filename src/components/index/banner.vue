@@ -24,7 +24,7 @@
     data() {
       return {
       	banner:[
-      	    {link:"https://img.wesetup.cn/bannerFLoorNew.jpg",src:window.location.origin+"/building?buildUid=43315366809567955"},
+      	    {link:"https://img.wesetup.cn/bannerFLoorNew.jpg",src:window.location.origin+"/building?buildUid=43315366809568831"},
 			{link:"https://img.wesetup.cn/webIndexBannerNew29-15.jpg",src:"https://d.eqxiu.com/s/Cssq7CeG"}//, ../../static/images/banner.png
       	],
 

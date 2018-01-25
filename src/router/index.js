@@ -140,7 +140,7 @@ export default new Router({
       path: '/building',
       name: 'building',
       component: building,
-      meta: {title: '世茂天宸'}     
+      meta: {title: ''}     
     },
     {
       path: '/housetype',
@@ -152,7 +152,7 @@ export default new Router({
       path: '/floor_list',
       name: 'floor_list',
       component: floor_list,
-      meta: {title: '楼盘列表'}     
+      meta: {title: '楼盘专区'}     
     }
   ],
   // beforeRouteLeave(to, from, next){

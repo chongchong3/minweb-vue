@@ -5,7 +5,7 @@
 			<img :src="buildingInfo.foreground_picture">
 			<div class="building-des-c">
 				<p class="build-name">{{buildingInfo.premises_name}}</p>
-				<p class="build-addr">{{buildingInfo.premises_location}}</p>
+				<p class="build-addr">{{buildingInfo.politicalDivisionName}}</p>
 			</div>
 		</div>
 		<div class="build-info-c">
@@ -99,13 +99,16 @@
 			.then(function(res){
 				if(res.status == "200"){
 					self.buildingInfo = res.body.data;
+					self.buildingInfo.politicalDivisionName = self.buildingInfo.politicalDivisionName.replace("区","")
 //					self.intervalFun = setInterval(function(){
 //						if(self.caseTotal !=null){
 //							self.share();
 //							clearInterval(self.intervalFun);
 //						}
 //					},10)
+					
 					setTimeout(function(){
+						document.title = self.buildingInfo.premises_name;
 						self.$nextTick(function(){
 					        self.shareWx.getId();
 					        self.shareWx.shareReady(self.buildingInfo.premises_name+" | 设计IN-设计师严选平台","方案:"+self.caseTotal+"个",self.buildingInfo.foreground_picture+"?imageView2/3/w/100/h/100");
@@ -115,6 +118,7 @@
 			},function(){
 				
 			})
+			
 		},
 		methods:{
 			share:function(){

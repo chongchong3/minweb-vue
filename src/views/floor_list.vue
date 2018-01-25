@@ -6,12 +6,11 @@
         <li class="floor-li" v-for="(single, index) in dataJson" >
           <router-link :to="'/building?buildUid='+single.building_premises_uid">
           <div class="img-partent" >
-            <img  :src="single.background_picture"  alt="" class="floor-img ">
-            <!-- <img  src="https://assets.wesetup.cn/2017/12/21/1513821899057-ztq9mf2i1m2jdxug5uahsemi.jpg"  alt="" class="floor-img "> -->
+            <img  :src="single.foreground_picture"  alt="" class="floor-img ">
           </div>
           <div class="floor-des">
               <p class="floor-title">{{single.premises_name}}</p>
-              <p class="floor-detail">{{single.premises_location}}</p>
+              <p class="floor-detail">{{single.politicalDivisionName}}</p>
           </div>
           </router-link>
           <div class="width-line"></div>
@@ -58,6 +57,9 @@ export default {
     })
     .then(function (response) {
       _self.dataJson = response.data.data.result;
+      _self.dataJson.forEach(element => {
+         element.politicalDivisionName =  element.politicalDivisionName.replace("区","")
+      });
       _self.page_count = response.data.data.total;
       if (_self.dataJson.length < _self.page_size) {
           _self.moreData = false;
@@ -121,6 +123,9 @@ export default {
         for (var i = 0; i < data.length; i++) {
           _self.dataJson.push(data[i]);
         }
+        _self.dataJson.forEach(element => {
+         element.politicalDivisionName =  element.politicalDivisionName.replace("区","")
+      });
       })
       .catch(err => {});
     },

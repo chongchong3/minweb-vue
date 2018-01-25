@@ -55,6 +55,7 @@ export default {
     })
     .then(function (response) {
         _self.dataJson = response.data.data.result;
+        document.title = `${_self.dataJson[0].premises_name} | 户型`;
         _self.shareWx.disableShare();
     })
     .catch(function (error) {
