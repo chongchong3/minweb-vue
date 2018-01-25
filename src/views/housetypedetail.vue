@@ -207,6 +207,7 @@
 	}
 	.housetype-banner-c img{
 		width:100%;
+		margin-top: -16%;
 	}
 	.housetype-des-c{
 		position: absolute;
