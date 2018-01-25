@@ -10,7 +10,7 @@
                     <p class="memo"><span v-html="styleList"></span>/{{caseData.area}}平米</p>
               </div>
           </div>
-          <div class="fullFloor">
+          <div class="fullFloor" v-if="caseData.panoramagramFlag == '1'"  @click="tovr">
             <div class="shadow"></div>
             <div class="tips">点击浏览全景</div>
           </div>
@@ -283,7 +283,9 @@ export default {
     goBack() {
       window.history.back();
     },
-
+    tovr(){
+      window.location.href = 'https://720.shejiin.net/vrtest.html?caseId=0001';
+    },
     getData() {
       var _self = this;
       return new Promise((resolve, reject) => {
