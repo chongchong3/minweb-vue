@@ -160,6 +160,7 @@
 	}
 	.building-banner-c img{
 		width:100%;
+		margin-top: -16%;
 	}
 	.building-des-c{
 		position: absolute;
