@@ -119,7 +119,7 @@ export default {
 	overflow: hidden;
 }
 .img-border{
-	border:2px solid #c9c9c9;
+	border:1px solid #c9c9c9;
 }
 .img-c img {
   width: 100%;

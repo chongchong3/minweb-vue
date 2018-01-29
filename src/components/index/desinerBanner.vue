@@ -142,8 +142,8 @@ export default {
   font-size: 18px;
   background: #fff;
   width: 57.6%;
-  margin-left:4.5%;
-  margin-top:4.5%;
+  margin-left:.15rem;
+  margin-top:.15rem;
 }
 .detail-designer {
   width: 100%;
